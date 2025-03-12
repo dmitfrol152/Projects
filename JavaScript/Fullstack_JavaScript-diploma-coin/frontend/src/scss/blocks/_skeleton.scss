@@ -1,0 +1,103 @@
+.skeleton {
+  &__accounts-top {
+
+    max-width: 540px;
+    min-height: 44px;
+    border-radius: 7px;
+
+    @media (max-width: 1179px) {
+      max-width: 300px;
+      min-height: 120px;
+    }
+
+    @media (max-width: 450px) {
+      max-width: 100%;
+    }
+  }
+
+  &__accounts-down {
+    max-width: 209px;
+    min-height: 52px;
+    border-radius: 7px;
+
+    @media (max-width: 450px) {
+      max-width: 100%;
+    }
+  }
+
+  &__accounts-list {
+    max-width: calc(100% / 3 - 47px);
+    min-height: 156px;
+    border-radius: 9px;
+
+    @media (max-width: 1179px) {
+      max-width: calc(50% - 35px);
+      min-height: 156px;
+    }
+
+    @media (max-width: 800px) {
+      max-width: 100%;
+      min-height: 156px;
+    }
+  }
+
+  // detail
+
+  &__accounts-top-detail {
+    max-width: 275px;
+    min-height: 40px;
+  }
+
+  &__accounts-down-detail {
+    max-width: 209px;
+    min-height: 52px;
+    border-radius: 7px;
+
+    @media (max-width: 450px) {
+      max-width: 100%;
+    }
+  }
+
+  &__accounts-top-detail-two {
+    max-width: 367px;
+    min-height: 40px;
+  }
+
+  &__accounts-down-detail-two {
+    max-width: 201px;
+    min-height: 23px;
+  }
+
+  &__accounts-transfer-detail {
+    max-width: 606px;
+    min-height: 288px;
+    border-radius: 50px;
+
+    @media (max-width: 1280px) {
+      max-width: 100%;
+      min-height: 222px;
+    }
+  }
+
+  &__accounts-dynamics-detail {
+    max-width: 684px;
+    min-height: 288px;
+    border-radius: 50px;
+
+    @media (max-width: 1280px) {
+      max-width: 100%;
+      min-height: 288px;
+    }
+  }
+
+  &__accounts-table-detail {
+    max-width: 100%;
+    min-height: 345px;
+    border-radius: 50px;
+
+    @media (max-width: 1280px) {
+      max-width: 100%;
+      min-height: 980px;
+    }
+  }
+}

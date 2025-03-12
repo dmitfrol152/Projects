@@ -1,0 +1,153 @@
+.header {
+  padding: 10px 0;
+  border-bottom: 1px solid $color-endeavour;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background-color: $color-white;
+  transition: background-color ease-in 0.3s 0.2s, border-color ease-in 0.5s;
+  transform: translateY(-100%);
+  opacity: 0;
+  //animation: headerSlideInDown 0.7s ease-in forwards 0.2s;
+  animation: headerSlideInDown 0.7s ease-in forwards 6.2s;
+
+  $root: &;
+
+  &--open {
+    @include vp-1023 {
+      transition: background-color ease-in 0.3s, border-color ease-in 0.3s;
+      background-color: $color-endeavour;
+      border-color: $color-white;
+
+      #{$root}__logo-link {
+        color: $color-white;
+      }
+
+      .header__phone {
+        color: $color-white;
+      }
+
+      .header__users-link {
+        color: $color-white;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-link {
+    display: flex;
+    align-items: center;
+    color: $color-endeavour;
+    margin: 0 50px 0 0;
+
+    @media (max-width: 1150px) {
+      margin: 0 20px 0 0;
+    }
+
+    @include vp-767 {
+      margin: 0 10px 0 0;
+    }
+
+    svg {
+      height: 60px;
+      width: 170px;
+      transition: color ease-in 0.3s;
+    }
+  }
+
+  &__main-nav {
+    margin: 0 20px 0 0;
+  }
+
+  &__phone {
+    color: $color-endeavour;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 30px 0 auto;
+    white-space: nowrap;
+    transition: color ease-in 0.3s;
+
+    @media (max-width: 1150px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include vp-1023 {
+      font-size: 18px;
+      line-height: 22px;
+      margin: 0 24px 0 auto;
+    }
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__users-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    gap: 25px;
+    display: flex;
+    align-items: center;
+
+    @include vp-1023 {
+      gap: 20px;
+    }
+
+    @include vp-767 {
+      margin: 0 0 0 auto;
+    }
+  }
+
+  &__users-item--burger {
+    display: none;
+
+    @include vp-1023 {
+      display: flex;
+    }
+  }
+
+  &__users-link {
+    padding: 0;
+    border: none;
+    display: flex;
+    background-color: transparent;
+    color: $color-endeavour;
+
+    svg {
+      height: 32px;
+      width: 32px;
+      transition: color ease-in 0.3s;
+
+      @media (max-width: 1150px) {
+        height: 28px;
+        width: 28px;
+      }
+
+      @include vp-1023 {
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+}
+
+@keyframes headerSlideInDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

@@ -1,0 +1,75 @@
+.custom-input-transfer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 18px;
+  min-width: 300px;
+
+  @media (max-width: 1439px) {
+    width: 100%;
+  }
+
+  @media (max-width: 1179px) {
+    min-width: unset;
+  }
+
+  &--account .custom-input-transfer__label {
+    left: -206px;
+  }
+
+  &--count .custom-input-transfer__label {
+    left: -145px;
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-family: "Ubuntu";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #182233;
+
+    @media (max-width: 1439px) {
+      display: none;
+    }
+  }
+
+  &__field {
+    padding: 10px 10px 10px 16px;
+    font-family: "Ubuntu";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    border: 1px solid #9ca3af;
+    border-radius: 7px;
+    min-width: 100%;
+    transition: border ease-in 0.3s;
+
+    &::placeholder {
+      color: #6b7280;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid rgb(8, 44, 84);
+    }
+
+    &:hover {
+      border: 1px solid rgb(8, 44, 84);
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    font-family: "WorkSans";
+    font-size: 12px;
+    font-weight: 700;
+    color: red;
+  }
+}

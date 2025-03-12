@@ -1,0 +1,34 @@
+.custom-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-input__field {
+  padding: 10px 10px 10px 45px;
+  min-width: 100%;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.5em;
+  color: #a67b73;
+  background-color: #f6eae8;
+}
+
+.custom-input__field::placeholder {
+  color: #a67b73;
+}
+
+.custom-input__field:focus-visible {
+  outline: 1px solid #a67b73;
+}
+
+.custom-input__field:hover {
+  outline: 1px solid #a67b73;
+}
+
+.custom-input__logo {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+}

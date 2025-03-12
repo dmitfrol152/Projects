@@ -1,0 +1,54 @@
+.custom-input {
+  width: 100%;
+  $root: &;
+
+  &--error {
+    .custom-input__field {
+      border-color: $color-red-orange;
+    }
+
+    .custom-input__error {
+      display: block;
+    }
+  }
+
+  &__field {
+    border: 1px solid transparent;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 23.4px;
+    outline: none;
+    padding: 17px 20px;
+    transition: border-color $transition-300;
+    width: 100%;
+
+    @include vp-1023 {
+      padding: 15px 20px;
+    }
+
+    @include vp-767 {
+      padding: 15px 20px;
+      font-size: 16px;
+      line-height: 20.8px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      border-color: $color-free-speech-blue;
+    }
+
+    &::placeholder {
+      color: $color-suva-grey;
+    }
+  }
+
+  &__error {
+    margin: 4px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    color: $color-red-orange;
+    display: none;
+  }
+}

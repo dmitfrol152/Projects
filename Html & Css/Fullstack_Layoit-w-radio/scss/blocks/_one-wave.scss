@@ -1,0 +1,286 @@
+.one-wave {
+  padding: 94px 0 133px;
+  background-color: $color-background2;
+
+  @include vp-1155 {
+    padding: 94px 0;
+  }
+
+  @include vp-750 {
+    padding: 94px 0 52px;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 30px;
+
+    @include vp-975 {
+      flex-direction: column;
+      gap: 51px;
+    }
+
+    @include vp-750 {
+      gap: 33px;
+    }
+  }
+
+  &__left {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 160px;
+      height: 160px;
+      background-image: url("../images/sprite/icon-new.svg");
+      background-position: top left;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      @include vp-1155 {
+        top: 19%;
+        width: 100px;
+        height: 100px;
+      }
+
+      @include vp-975 {
+        top: 0;
+        width: 160px;
+        height: 160px;
+      }
+
+      @include vp-750 {
+        width: 20%;
+        height: 25%;
+        left: 3px;
+      }
+
+      @include vp-360 {
+        width: 62px;
+        height: 62px;
+        left: 3px;
+      }
+    }
+
+    @include vp-1155 {
+      justify-content: unset;
+      padding: 123px 0 0 0;
+    }
+
+    @include vp-975 {
+      padding: 0;
+      margin: -40px 0 0;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    max-width: 445px;
+    overflow: hidden;
+
+    @include vp-1155 {
+      max-width: 396px;
+    }
+
+    @include vp-975 {
+      max-width: 100%;
+    }
+  }
+
+  &__right-title {
+    margin: 0 0 19px 0;
+    padding: 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 48px;
+    color: $color-gold;
+
+    @include vp-975 {
+      max-width: 441px;
+    }
+
+    @include vp-750 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+
+  &__right-inner {
+    padding: 29px 0 0;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../images/sprite/icon-spiral-mini.svg");
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include vp-1155 {
+      background-image: url("../images/sprite/icon-spiral-mini2.svg");
+    }
+
+    @include vp-975 {
+      background-image: url("../images/sprite/icon-spiral-mini3.svg");
+    }
+
+    @include vp-750 {
+      background-image: url("../images/sprite/icon-spiral-mini4.svg");
+    }
+  }
+
+  &__right-description {
+    margin: 0 0 9px 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 29px;
+    color: $color-white;
+
+    @include vp-1155 {
+      margin: 0 0 10px 0;
+    }
+
+    @include vp-750 {
+      font-size: 14px;
+      line-height: 22px;
+      margin: 0 0 12px 0;
+    }
+  }
+
+  &__right-description--margin {
+    margin: 0 0 30px 0;
+
+    @include vp-750 {
+      margin: 0 0 12px 0;
+      max-width: 255px;
+    }
+  }
+
+  &__right-description-standart {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  &__right-price {
+    margin: 0 0 30px 0;
+    padding: 0;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 30px;
+    color: $color-white;
+
+    @include vp-750 {
+      margin: 0 0 20px 0;
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+
+  &__right-btn:hover &__right-btn-text {
+    color: $color-black-main;
+  }
+
+  &__right-btn:focus-visible &__right-btn-text {
+    color: $color-black-main;
+  }
+
+  &__right-btn:active &__right-btn-text {
+    color: $color-black-main;
+  }
+
+  &__right-btn {
+    padding: 23px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid $color-gold;
+    border-radius: 100px;
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    transition: $transition-300;
+
+    &:hover {
+      border: 2px solid $color-gold;
+      background-color: $color-gold;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border: 2px solid $color-gold;
+      background-color: $color-darkgold;
+    }
+
+    &:active {
+      border: 2px solid $color-darkgold;
+      background-color: $color-darkgold;
+    }
+
+    @include vp-1155 {
+      padding: 24px 12px;
+    }
+
+    @include vp-750 {
+      padding: 14px 16px;
+    }
+  }
+
+  &__right-btn-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__right-btn svg .icon-yandex-bc {
+    color: $color-gold;
+    transition: $transition-300;
+  }
+
+  &__right-btn:hover svg .icon-yandex-bc {
+    color: $color-black-main;
+  }
+
+  &__right-btn:focus-visible svg .icon-yandex-bc {
+    color: $color-gold;
+  }
+
+  &__right-btn:active svg .icon-yandex-bc {
+    color: $color-black-main;
+  }
+
+  &__right-btn svg .icon-yandex-text {
+    color: $color-black-main;
+    transition: $transition-300;
+  }
+
+  &__right-btn:hover svg .icon-yandex-text {
+    color: $color-gold;
+  }
+
+  &__right-btn:focus-visible svg .icon-yandex-text {
+    color: $color-black-main;
+  }
+
+  &__right-btn:active svg .icon-yandex-text {
+    color: $color-darkgold;
+  }
+
+  &__right-btn-text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    color: $color-gold;
+    transition: $transition-300;
+
+    @include vp-750 {
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+}

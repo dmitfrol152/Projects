@@ -1,0 +1,10 @@
+.app {
+  display: flex;
+  min-width: 100%;
+  min-height: calc(100vh - 106px);
+  flex-direction: column;
+
+  @media(max-width: 800px) {
+    padding: 106px 0 0;
+  }
+}

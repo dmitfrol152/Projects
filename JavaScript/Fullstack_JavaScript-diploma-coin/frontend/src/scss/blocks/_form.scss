@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  flex-grow: 1;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__btn {
+    padding: 14px 21px;
+    transition: background-color ease-in 0.3s, outline ease-in 0.3s;
+
+    &:focus-visible {
+      outline: 1px solid rgb(8, 44, 84);
+      background-color: rgba(17, 106, 204, 0.8);
+    }
+
+    &:hover {
+      background-color: rgba(17, 106, 204, 0.8);
+    }
+
+    &:active {
+      background-color: rgb(15, 93, 176);
+    }
+  }
+}

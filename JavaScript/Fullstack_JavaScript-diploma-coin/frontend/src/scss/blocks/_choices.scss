@@ -1,0 +1,30 @@
+.choices {
+  width: 300px;
+  border: 1px solid #116acc;
+  border-radius: 7px;
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
+
+  &--currency {
+    width: unset;
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted,
+  .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+    background-color: #a0c3ff;
+  }
+
+  .is-selected {
+    position: relative;
+  }
+
+  .is-selected:not(:first-child)::before {
+    content: url('../images/icon-check.svg');
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+}

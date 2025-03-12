@@ -1,0 +1,113 @@
+.hero {
+  background-color: $color-white;
+
+  &__wrapper {
+    padding: 94px 0;
+    background-image: url("../images/sprite/icon-microphone.svg");
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: 350px 372px;
+
+    @include vp-1155 {
+      padding: 90px 0;
+      background-size: 272px 278px;
+      background-position: top 74px right -7px;
+    }
+
+    @include vp-975 {
+      background-image: unset;
+    }
+
+    @include vp-750 {
+      padding: 35px 0 40px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 14px 0;
+    padding: 0;
+    font-size: 60px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 60px;
+    color: $color-black-main;
+    max-width: 635px;
+
+    &-bold {
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @include vp-1155 {
+      max-width: 539px;
+      margin: 0 0 17px 0;
+    }
+
+    @include vp-750 {
+      font-size: 32px;
+      line-height: 32px;
+      margin: 0 0 8px 0;
+    }
+  }
+
+  &__description {
+    margin: 0 0 45px 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: $color-black-main;
+    max-width: 635px;
+
+    &-standart {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @include vp-1155 {
+      margin: 0 0 20px 0;
+      max-width: 539px;
+    }
+
+    @include vp-975 {
+      margin: 0 0 18px 0;
+    }
+
+    @include vp-750 {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__btn {
+    padding: 25px 54px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    color: $color-white;
+    background-color: $color-blue;
+    width: max-content;
+    border-radius: 40px;
+    transition: $transition-300;
+
+    &:hover {
+      background-color: $color-violet;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-active;
+      background-color: $color-violet;
+    }
+
+    &:active {
+      background-color: $color-active;
+      outline: 2px solid $color-active;
+    }
+
+    @include vp-750 {
+      font-size: 16px;
+      line-height: 16px;
+      padding: 17px 47px;
+    }
+  }
+}

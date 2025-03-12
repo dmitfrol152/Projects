@@ -1,0 +1,185 @@
+.guests {
+  padding: 94px 0;
+  background-color: $color-black-main;
+
+  @include vp-750 {
+    padding: 54px 0 57px;
+  }
+
+  &__title {
+    margin: 0 0 12px 0;
+    padding: 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 48px;
+    color: $color-white;
+
+    @include vp-750 {
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+
+  &__text-bold {
+    margin: 0 0 8px 0;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    color: $color-gray;
+
+    @include vp-1155 {
+      max-width: 536px;
+    }
+
+    @include vp-750 {
+      font-size: 14px;
+      line-height: 21px;
+      margin: 0;
+    }
+  }
+
+  &__text-regular {
+    margin: 0 0 53px 0;
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: $color-gray;
+    max-width: 825px;
+
+    @include vp-1155 {
+      margin: 0 0 50px 0;
+      max-width: 536px;
+      line-height: 32px;
+    }
+
+    @include vp-750 {
+      font-size: 14px;
+      line-height: 22px;
+      margin: 0 0 30px 0;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    list-style-type: none;
+
+    @include vp-750 {
+      gap: 30px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    max-width: 920px;
+    min-height: 272px;
+    gap: 30px;
+
+    @include vp-975 {
+      flex-direction: column;
+    }
+
+    @include vp-750 {
+      gap: 12px;
+    }
+  }
+
+  &__image {
+    min-width: 432px;
+    width: 100%;
+
+    @include vp-975 {
+      min-height: 340px;
+    }
+
+    @include vp-750 {
+      min-width: unset;
+      height: 159px;
+      min-height: unset;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    @include vp-975 {
+      margin: 0 0 31px 0;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include vp-975 {
+      max-width: 362px;
+    }
+
+    @include vp-750 {
+      max-width: unset;
+    }
+  }
+
+  &__inner-title {
+    margin: 0 0 8px 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    color: $color-white;
+  }
+
+  &__inner-description {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 29px;
+    color: $color-gray;
+  }
+
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    border: 2px solid $color-violet;
+    border-radius: 77px;
+    color: $color-violet;
+    width: max-content;
+    transition: $transition-300;
+
+    &:hover {
+      color: $color-white;
+      border: 2px solid $color-violet;
+      background-color: $color-violet;
+    }
+
+    &:focus-visible {
+      outline: none;
+      color: $color-white;
+      border: 2px solid $color-blue;
+      background-color: $color-blue;
+    }
+
+    &:active {
+      color: $color-white;
+      border: 2px solid $color-active;
+      background-color: $color-active;
+    }
+
+    @include vp-750 {
+      padding: 7px 15px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.stars {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.stars__icon {
+  width: 30px;
+  height: 30px;
+  color: #f73f1a;
+  cursor: pointer;
+}
+
+input[type=radio] {
+  display: none;
+}

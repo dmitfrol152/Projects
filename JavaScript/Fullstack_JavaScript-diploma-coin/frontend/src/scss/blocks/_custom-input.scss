@@ -1,0 +1,62 @@
+.custom-input {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 18px;
+
+  &--login .custom-input__label {
+    left: -65px;
+  }
+
+  &--password .custom-input__label {
+    left: -75px;
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-family: "Ubuntu";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #182233;
+  }
+
+  &__field {
+    padding: 10px 10px 10px 16px;
+    font-family: "Ubuntu";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    border: 1px solid #9ca3af;
+    border-radius: 7px;
+    min-width: 100%;
+    transition: border ease-in 0.3s;
+
+    &::placeholder {
+      color: #6b7280;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid rgb(8, 44, 84);
+    }
+
+    &:hover {
+      border: 1px solid rgb(8, 44, 84);
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    font-family: "WorkSans";
+    font-size: 12px;
+    font-weight: 700;
+    color: red;
+  }
+}

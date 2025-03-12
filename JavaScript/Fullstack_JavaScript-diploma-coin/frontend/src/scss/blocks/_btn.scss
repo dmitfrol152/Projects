@@ -1,0 +1,15 @@
+.btn {
+  display: flex;
+  flex-direction: column;
+  font-family: "Ubuntu";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  background-color: rgba(17, 106, 204, 1);
+  width: max-content;
+  cursor: pointer;
+}

@@ -1,0 +1,41 @@
+.custom-input {
+  position: relative;
+  $root: &;
+
+  &--error {
+    .custom-input__field {
+      background-color: $color-orange-red;
+    }
+
+    .custom-input__error {
+      display: flex;
+    } 
+  }
+
+  &__field {
+    border: 1px solid transparent;
+    background-color: rgba($color-jaguar, .05);
+    border-radius: 200px;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 15px 20px;
+    width: 100%;
+    outline: none;
+    transition: background-color $transition-300;
+    
+    &:hover,
+    &:focus-visible {
+      background-color: rgba($color-jaguar, .1);
+    }
+
+    &::placeholder {
+      color: rgba($color-jaguar, 0.3);
+    }
+  }
+
+  &__error {
+    flex-direction: column;
+    color: $color-orange-red;
+    display: none;
+  }
+}

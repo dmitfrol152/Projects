@@ -1,0 +1,63 @@
+.custom-checkbox {
+  @include vp-750 {
+    margin: -8px 0 0 2px;
+  }
+
+  &__field:focus-visible {
+    outline: none;
+  }
+
+  &__field:hover + &__label,
+  &__field:focus-visible + &__label {
+    color: $color-violet;
+  }
+
+  &__field:checked + .custom-checkbox__label .custom-checkbox__svg {
+    opacity: 1;
+  }
+
+  &__label {
+    position: relative;
+    padding: 0 0 0 23px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    color: $color-white;
+    cursor: pointer;
+    transition: $transition-300;
+
+    @include vp-750 {
+      padding: 0 0 0 21px;
+      font-size: 9px;
+      line-height: 9px;
+    }
+  }
+
+  &__label::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $color-white;
+    background-color: $color-black-main;
+
+    @include vp-750 {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  &__svg {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    left: 2px;
+    bottom: 3px;
+    color: $color-violet;
+    width: 10px;
+    height: 8px;
+    transition: $transition-300;
+  }
+}

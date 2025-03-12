@@ -1,0 +1,41 @@
+@mixin vp-1260 {
+  @media (max-width: $vp-desctop) {
+    @content;
+  }
+}
+
+@mixin vp-1155 {
+  @media (max-width: $vp-tablet) {
+    @content;
+  }
+}
+
+@mixin vp-1024 {
+  @media (max-width: $vp-tablet2) {
+    @content;
+  }
+}
+
+@mixin vp-975 {
+  @media (max-width: $vp-mobile) {
+    @content;
+  }
+}
+
+@mixin vp-765 {
+  @media (max-width: $vp-mobile-mini) {
+    @content;
+  }
+}
+
+@mixin vp-750 {
+  @media (max-width: $vp-mobile-micro) {
+    @content;
+  }
+}
+
+@mixin vp-360 {
+  @media (max-width: $vp-mobile-micro2) {
+    @content;
+  }
+}

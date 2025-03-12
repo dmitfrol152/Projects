@@ -1,0 +1,25 @@
+.map-banks {
+  padding: 50px 0;
+
+  &__title {
+    margin: 0 0 56px 0;
+    padding: 0;
+    font-family: "WorkSans";
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 40px;
+    color: #000;
+  }
+
+  &__wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 728px;
+
+    @media (max-width: 450px) {
+      min-height: unset;
+      height: 450px;
+    }
+  }
+}

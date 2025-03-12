@@ -1,0 +1,238 @@
+.header {
+  padding: 32px 0;
+  background-color: $color-white;
+
+  @include vp-1155 {
+    position: relative;
+    padding: 33px 0 22px;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $color-background;
+      position: absolute;
+      top: 80px;
+      left: 0;
+    }
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $color-background;
+      position: absolute;
+      top: 143px;
+      left: 0;
+    }
+
+    @include vp-975 {
+      &::after {
+        top: 139px;
+      }
+    }
+
+    @include vp-750 {
+      padding: 21px 0 22px;
+
+      &::before {
+        top: 55px;
+      }
+
+      &::after {
+        top: 104px;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+
+    @include vp-1155 {
+      position: relative;
+      flex-direction: column;
+      gap: 55px;
+      align-items: flex-start;
+    }
+
+    @include vp-750 {
+      gap: 39px;
+    }
+  }
+
+  &__logo-link,
+  &__logo-svg {
+    color: $color-background2;
+    width: 160px;
+    height: 20px;
+
+    @include vp-1155 {
+      width: 112px;
+      height: 14px;
+    }
+
+    @include vp-750 {
+      width: 87px;
+      height: 10px;
+    }
+  }
+
+  &__logo-link {
+
+    &:focus-visible {
+      outline: 1px solid $color-violet;
+      outline-offset: 2px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+    @include vp-1155 {
+      align-items: flex-start;
+      flex-direction: column-reverse;
+      gap: 22px;
+    }
+
+    @include vp-750 {
+      overflow: auto;
+    }
+  }
+
+  &__nav-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    column-gap: 59px;
+    row-gap: 20px;
+    flex-wrap: wrap;
+
+    @include vp-1155 {
+      column-gap: 105px;
+    }
+
+    @include vp-1024 {
+      column-gap: 90px;
+    }
+
+    @include vp-975 {
+      gap: 56px;
+    }
+
+    @include vp-765 {
+      gap: 50px;
+    }
+
+    @include vp-750 {
+      gap: 33px;
+      column-gap: 105px;
+      flex-wrap: nowrap;
+      overflow: auto;
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      margin: 0 -32px;
+      padding: 0 32px;
+    }
+
+    @include vp-360 {
+      column-gap: 34px;
+    }
+  }
+
+  &__nav-item--margin {
+    @include vp-975 {
+      margin: 0 0 0 -8px;
+    }
+  }
+
+  &__nav-link:focus-visible::before {
+    opacity: 1;
+  }
+
+  &__nav-link {
+    position: relative;
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $color-black-main;
+    transition: $transition-300;
+    z-index: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      opacity: 0;
+      top: -2px;
+      left: -2px;
+      bottom: -2px;
+      right: -2px;
+      background-color: $color-violet;
+      z-index: -1;
+      transition: $transition-300;
+    }
+
+    @include vp-975 {
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    &:hover {
+      color: $color-blue;
+    }
+
+    &:focus-visible {
+      outline: none;
+      color: $color-white;
+      background-color: $color-violet;
+    }
+
+    &:active {
+      background-color: transparent;
+      color: $color-active;
+    }
+  }
+
+  &__btn-search {
+    color: $color-blue;
+
+    &:hover {
+      color: $color-violet;
+    }
+
+    &:focus-visible {
+      outline: none;
+      color: $color-violet;
+    }
+
+    &:active {
+      color: $color-active;
+    }
+
+    @include vp-1155 {
+      position: absolute;
+      top: -5px;
+      right: 0;
+    }
+
+  }
+
+  &__btn-search-svg {
+    color: inherit;
+    width: 24px;
+    height: 24px;
+    transition: $transition-300;
+  }
+
+}

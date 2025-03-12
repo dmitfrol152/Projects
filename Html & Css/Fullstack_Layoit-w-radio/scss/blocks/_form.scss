@@ -1,0 +1,44 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 27px;
+  column-gap: 10px;
+
+  @include vp-750 {
+    row-gap: 26px;
+  }
+
+  &__btn {
+    padding: 25px 54px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    color: $color-white;
+    background-color: $color-blue;
+    border-radius: 40px;
+    width: max-content;
+    max-width: 920px;
+    transition: $transition-300;
+
+    &:hover {
+      background-color: $color-violet;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-active;
+      background-color: $color-violet;
+    }
+
+    &:active {
+      background-color: $color-active;
+      outline: 2px solid $color-active;
+    }
+
+    @include vp-750 {
+      margin: 4px 0 0;
+      font-size: 16px;
+      line-height: 16px;
+      padding: 17px 45px;
+    }
+  }
+}

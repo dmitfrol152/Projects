@@ -1,0 +1,396 @@
+.broadcast {
+  padding: 94px 0;
+  background-color: $color-white;
+
+  @include vp-975 {
+    position: relative;
+    padding: 94px 0 217px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 156px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $color-background;
+    }
+  }
+
+  @include vp-750 {
+    padding: 54px 0 221px;
+    position: relative;
+
+    &::after {
+      bottom: 190px;
+    }
+  }
+
+  @include vp-360 {
+    padding: 54px 0 223px;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 30px;
+
+    @include vp-975 {
+      position: relative;
+      flex-direction: column;
+      gap: 109px;
+    }
+
+    @include vp-750 {
+      gap: 29px;
+      position: static;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 255px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 48px;
+    color: $color-black-main;
+
+    @include vp-750 {
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+
+  &__inner {
+    padding: 113px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-image: url("../images/sprite/icon-microphone-mini.svg");
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 70px 96px;
+
+    @include vp-975 {
+      position: absolute;
+      background-position: top left 98px;
+      padding: 0 0 0 188px;
+      bottom: -188px;
+      left: 0;
+      gap: 8px;
+    }
+
+    @include vp-750 {
+      padding: 0 0 0 90px;
+      background-size: 77px 105px;
+      background-position: top left 0px;
+      flex-direction: column-reverse;
+      bottom: 53px;
+      left: 10px;
+      gap: 6px;
+      max-width: 256px;
+    }
+  }
+
+  &__inner-btn {
+    padding: 9px 55px;
+    border: 2px solid $color-black-main;
+    border-radius: 77px;
+    width: max-content;
+    max-width: 100%;
+    transition: $transition-300;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-blue;
+      border: 2px solid $color-blue;
+    }
+
+    &:focus-visible {
+      color: $color-white;
+      border: 2px solid $color-blue;
+      outline: none;
+      background-color: $color-violet;
+    }
+
+    &:active {
+      color: $color-white;
+      background-color: $color-active;
+      border: 2px solid $color-active;
+    }
+
+    @include vp-750 {
+      padding: 7px 30px;
+    }
+  }
+
+  &__inner-btn-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    color: $color-black-main;
+  }
+
+  &__inner-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: $color-gray;
+
+    @include vp-975 {
+      max-width: 255px;
+    }
+
+    @include vp-750 {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__inner-text-standart {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  &__right {
+    margin: 0;
+    padding: 14px 0 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+
+    @include vp-1155 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include vp-750 {
+      padding: 0;
+    }
+  }
+
+  &__right-item {
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    border: 1px solid $color-background;
+
+    @include vp-750 {
+      min-height: 149px;
+    }
+  }
+
+  &__right-item--2 &__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-2.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-2-mobile.jpg");
+    }
+  }
+
+  &__right-item--3 &__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-3.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-3-mobile.jpg");
+    }
+  }
+
+  &__right-item--4 &__right-inner::before{
+    background-image: url("../images/broadcast/img-broadcast-4.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-4-mobile.jpg");
+    }
+  }
+
+  &__right-item--5 &__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-5.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-5-mobile.jpg");
+    }
+  }
+
+  &__right-item--6 &__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-6.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-6-mobile.jpg");
+    }
+  }
+
+  &__right-inner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__right-inner::before {
+    content: "";
+    display: flex;
+    min-height: 148px;
+    width: 100%;
+    background-image: url("../images/broadcast/img-broadcast-1.jpg");
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include vp-750 {
+      min-height: 50px;
+      background-image: url("../images/broadcast/img-broadcast-1-mobile.jpg");
+    }
+  }
+
+  &__right-inner-info {
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    flex-grow: 1;
+
+    @include vp-750 {
+      padding: 10px 10px 12px 10px;
+    }
+  }
+
+  &__right-title {
+    margin: 0 0 2px 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    color: $color-black-main;
+
+    @include vp-750 {
+      margin: 0 0 6px 0;
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  &__right-text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    color: $color-gray;
+    display: block;
+
+    @include vp-750 {
+      font-size: 9px;
+      line-height: 9px;
+    }
+  }
+
+  &__right-link:focus-visible::before {
+    opacity: 1;
+  }
+
+  &__right-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    color: $color-black-main;
+    width: max-content;
+    transition: $transition-300;
+    z-index: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      opacity: 0;
+      top: -2px;
+      left: -2px;
+      bottom: -2px;
+      right: -2px;
+      background-color: $color-violet;
+      z-index: -1;
+      transition: $transition-300;
+    }
+
+    &:hover {
+      color: $color-violet;
+    }
+
+    &:focus-visible {
+      color: $color-white;
+      outline: none;
+      background-color: $color-violet;
+    }
+
+    &:active {
+      color: $color-active;
+      background-color: transparent;
+    }
+
+    @include vp-750 {
+      color: $color-blue;
+    }
+  }
+
+  &__right-link-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    font-style: italic;
+
+    @include vp-750 {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .broadcast__right-item--2 .broadcast__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-2@2x.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-2-mobile@2x.jpg");
+    }
+  }
+  .broadcast__right-item--3 .broadcast__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-3@2x.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-3-mobile@2x.jpg");
+    }
+  }
+  .broadcast__right-item--4 .broadcast__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-4@2x.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-4-mobile@2x.jpg");
+    }
+  }
+  .broadcast__right-item--5 .broadcast__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-5@2x.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-5-mobile@2x.jpg");
+    }
+  }
+  .broadcast__right-item--6 .broadcast__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-6@2x.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-6-mobile@2x.jpg");
+    }
+  }
+  .broadcast__right-inner::before {
+    background-image: url("../images/broadcast/img-broadcast-1@2x.jpg");
+
+    @include vp-750 {
+      background-image: url("../images/broadcast/img-broadcast-1-mobile@2x.jpg");
+    }
+  }
+}

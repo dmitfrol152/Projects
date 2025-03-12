@@ -1,0 +1,33 @@
+.custom-checkbox {
+  &__field:checked + &__label {
+    color: $color-blue;
+    border: 1px solid $color-blue;
+  }
+
+  &__field:hover + &__label {
+    background-color: $color-dim-gray;
+    color: $color-white;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    background-color: transparent;
+    border: 1px solid $color-dim-gray;
+    border-radius: 4px;
+    color: $color-dim-gray;
+    cursor: pointer;
+
+    transition: background-color $transition-300, color $transition-300,
+      border-color $transition-300;
+
+    @include vp-1023 {
+      padding: 7px 9px;
+    }
+  }
+}

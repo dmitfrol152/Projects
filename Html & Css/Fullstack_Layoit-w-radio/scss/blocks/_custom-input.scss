@@ -1,0 +1,71 @@
+.custom-input {
+  display: flex;
+  gap: 30px;
+  max-width: 920px;
+
+  @include vp-975 {
+    flex-direction: column;
+  }
+
+  &--error &__error {
+    display: block;
+  }
+
+  &__field {
+    position: relative;
+    padding: 22px 32px;
+    border: 1px solid $color-white;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $color-white;
+    background-color: $color-black-main;
+    width: 100%;
+    transition: $transition-300;
+
+    &:hover {
+      border: 1px solid $color-white;
+      background-color: $color-background2;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid $color-violet;
+      background-color: $color-background2;
+    }
+
+    @include vp-975 {
+      padding: 21px 32px;
+    }
+
+    @include vp-750 {
+      padding: 13px 24px;
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+
+  &__field::placeholder {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $color-gray;
+
+    @include vp-750 {
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+
+  &__error {
+    position: absolute;
+    display: none;
+    top: 9px;
+    left: 32px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    color: $color-error;
+  }
+}

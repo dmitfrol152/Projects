@@ -1,0 +1,33 @@
+/* GLOBAL */
+
+@use "./global/normalize";
+@use "./global/fonts";
+@use "./global/container";
+@use "./global/reboot";
+@use "./global/visually-hidden";
+
+/* BLOCKS */
+
+@use "./blocks/btn";
+@use "./blocks/app";
+@use "./blocks/nav";
+@use "./blocks/header";
+@use "./blocks/modal";
+@use "./blocks/form";
+@use "./blocks/form-transfer";
+@use "./blocks/custom-input";
+@use "./blocks/custom-input-transfer";
+@use "./blocks/accounts";
+@use "./blocks/account";
+@use "./blocks/pagination-button";
+@use "./blocks/currency";
+@use "./blocks/form-currency-transfer";
+@use "./blocks/custom-select-currency-transfer";
+@use "./blocks/custom-input-currency-transfer";
+@use "./blocks/map-banks";
+@use "./blocks/skeleton";
+
+/* NPM */
+
+@use "choices.js/src/styles/choices";
+@use "./blocks/choices" as custom-choices;

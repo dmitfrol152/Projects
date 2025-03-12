@@ -1,0 +1,92 @@
+.subscribe-banner {
+  width: 100%;
+  min-height: 176px;
+  border-radius: 15px;
+  background: url("../images/subscribe-banner.png") no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  padding: 30px 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include vp-1023 {
+    min-height: 196px;
+    padding: 40px 20px 20px;
+  }
+
+  @include vp-767 {
+    padding: 30px 12px 20px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color-endeavour, 0.7);
+  }
+
+  @media (min-resolution: 2dppx) {
+    background: url("../images/subscribe-banner@2x.png") no-repeat center;
+    background-size: cover;
+  }
+
+  @include vp-1023 {
+    background: url("../images/subscribe-banner-tablet.png") no-repeat;
+    background-size: cover;
+  }
+
+  @media (min-resolution: 2dppx) and (max-width: $vp-tablet) {
+    background: url("../images/subscribe-banner-tablet@2x.png") no-repeat center;
+    background-size: cover;
+  }
+
+  @include vp-767 {
+    min-height: 126px;
+    background: url("../images/subscribe-banner-mobile.png") no-repeat;
+    background-size: cover;
+  }
+
+  @media (min-resolution: 2dppx) and (max-width: $vp-mobile) {
+    background: url("../images/subscribe-banner-mobile@2x.png") no-repeat center;
+    background-size: cover;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    color: $color-white;
+    text-align: center;
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0 0 22px;
+
+    @include vp-767 {
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
+  &__link {
+    padding: 12px 20px;
+    background-color: $color-endeavour;
+    color: $color-white;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    border-radius: 6px;
+    margin: auto 0 0;
+
+    @include vp-1023 {
+      padding: 15px 20px;
+    }
+  }
+}

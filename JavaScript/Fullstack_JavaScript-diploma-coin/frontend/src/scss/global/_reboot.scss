@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "WorkSans", Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+main {
+  flex-grow: 1;
+}
+
+img {
+  display: block;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+}

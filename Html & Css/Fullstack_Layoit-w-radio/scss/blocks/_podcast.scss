@@ -1,0 +1,387 @@
+.podcast {
+  padding: 94px 0;
+  background-color: $color-background;
+
+  @include vp-750 {
+    padding: 55px 0 53px;
+  }
+
+  &__title {
+    margin: 0 0 30px 0;
+    padding: 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 48px;
+    color: $color-black-main;
+
+    @include vp-750 {
+      margin: 0 0 20px 0;
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    @include vp-975 {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    display: flex;
+    min-height: 140px;
+
+    @include vp-975 {
+      width: 100%;
+    }
+
+    @include vp-750 {
+      min-height: 185px;
+      flex-direction: column;
+    }
+  }
+
+  &__item--2 &__link::before {
+    background-image: url("../images/podcast/img-podcast-2.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-2-mobile.jpg");
+    }
+  }
+
+  &__item--3 &__link::before {
+    background-image: url("../images/podcast/img-podcast-3.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-3-mobile.jpg");
+    }
+  }
+
+  &__item--4 &__link::before {
+    background-image: url("../images/podcast/img-podcast-4.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-4-mobile.jpg");
+    }
+  }
+
+  &__item--5 &__link::before {
+    background-image: url("../images/podcast/img-podcast-5.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-5-mobile.jpg");
+    }
+  }
+
+  &__item--6 &__link::before {
+    background-image: url("../images/podcast/img-podcast-6.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-6-mobile.jpg");
+    }
+  }
+
+  &__item--7 &__link::before {
+    background-image: url("../images/podcast/img-podcast-7.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-7-mobile.jpg");
+    }
+  }
+
+  &__item--8 &__link::before {
+    background-image: url("../images/podcast/img-podcast-8.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-8-mobile.jpg");
+    }
+  }
+
+  &__link {
+    position: relative;
+    padding: 40px 78px 40px 142px;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-white;
+    height: 100%;
+    width: 100%;
+    transition: $transition-300;
+
+    &:hover {
+      background-color: darken($color-white, 5%);
+    }
+
+    &:focus-visible {
+      background-color: darken($color-white, 10%);
+    }
+
+    &:active {
+      background-color: darken($color-white, 15%);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 112px;
+      height: 100%;
+      background-color: $color-background;
+      background-image: url("../images/podcast/img-podcast-1.jpg");
+      background-position: top left;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      @include vp-750 {
+        min-width: 150px;
+        height: 100%;
+      }
+
+      @include vp-360 {
+        min-width: 100%;
+        height: 72px;
+        background-image: url("../images/podcast/img-podcast-1-mobile.jpg");
+      }
+    }
+
+    @include vp-750 {
+      padding: 40px 40px 40px 180px
+    }
+
+    @include vp-360 {
+      padding: 102px 16px 30px;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &__link-time {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    color: $color-black-main;
+  }
+
+  &__link-title {
+    margin: 0 0 4px 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $color-black-main;
+
+    @include vp-750 {
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+
+  &__link-author {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    color: $color-gray;
+
+    @include vp-750 {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  &__link-date {
+    min-width: 51px;
+    padding: 3px 3px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 10px;
+    color: $color-black-main;
+    background-color: $color-background;
+
+    @include vp-750 {
+      bottom: auto;
+      top: 0;
+    }
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .podcast__item--2 .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-2@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-2-mobile@2x.jpg");
+    }
+  }
+  .podcast__item--3 .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-3@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-3-mobile@2x.jpg");
+    }
+  }
+  .podcast__item--4 .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-4@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-4-mobile@2x.jpg");
+    }
+  }
+  .podcast__item--5 .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-5@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-51-mobile@2x.jpg");
+    }
+  }
+  .podcast__item--6 .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-6@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-6-mobile@2x.jpg");
+    }
+  }
+  .podcast__item--7 .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-7@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-7-mobile@2x.jpg");
+    }
+  }
+  .podcast__item--8 .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-8@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-8-mobile@2x.jpg");
+    }
+  }
+  .podcast__link::before {
+    background-image: url("../images/podcast/img-podcast-1@2x.jpg");
+
+    @include vp-750 {
+      min-width: 150px;
+      height: 100%;
+    }
+
+    @include vp-360 {
+      min-width: 100%;
+      height: 72px;
+      background-image: url("../images/podcast/img-podcast-1-mobile@2x.jpg");
+    }
+  }
+}

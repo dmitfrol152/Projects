@@ -1,0 +1,45 @@
+.form-transfer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 25px;
+    width: 100%;
+
+    @media (max-width: 1280px) {
+      flex-direction: row;
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
+  }
+
+  &__btn {
+    padding: 14px 24px;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    transition:
+      background-color ease-in 0.3s,
+      outline ease-in 0.3s;
+
+    &:focus-visible {
+      outline: 1px solid rgb(8, 44, 84);
+      background-color: rgba(17, 106, 204, 0.8);
+    }
+
+    &:hover {
+      background-color: rgba(17, 106, 204, 0.8);
+    }
+
+    &:active {
+      background-color: rgb(15, 93, 176);
+    }
+  }
+}

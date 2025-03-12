@@ -1,0 +1,22 @@
+/* Global */
+/* ------------------------------------ */
+@import "global/_normalize";
+@import "global/_fonts";
+@import "global/_variables";
+@import "global/_mixins";
+@import "global/_reboot";
+@import "global/_container";
+@import "global/_visually-hidden";
+
+/* Blocks */
+/* ------------------------------------ */
+@import "blocks/_loader";
+@import "blocks/_header";
+@import "blocks/_main-nav";
+@import "blocks/_intro";
+@import "blocks/_hot-news";
+@import "blocks/_burger";
+@import "blocks/_news-card";
+@import "blocks/_subscribe-banner";
+@import "blocks/_socials";
+@import "blocks/_footer";
