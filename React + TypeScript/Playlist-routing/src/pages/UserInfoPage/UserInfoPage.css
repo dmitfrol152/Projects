@@ -1,0 +1,15 @@
+.userInfoPage {
+  color: darkcyan;
+}
+
+.userInfoPage__playlist {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.userInfoPage__description--last {
+  margin: auto 0 0;
+  padding: 0 0 10px 0;
+  border-bottom: 2px solid gray;
+}
