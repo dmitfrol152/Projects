@@ -47,20 +47,34 @@ export const PlaylistsPage = () => {
   );
 
   return (
-    <div className="playlistsPage">
+    <div className="playlistsPage" data-testid={"test-container"}>
       <h2>PlaylistsPage</h2>
 
       <div className="playlists">
         <label>
           введите жанр{" "}
-          <input type="text" value={searchGenre} onChange={handleSearchGenre} />
+          <input
+            data-testid={"test-input-genre"}
+            type="text"
+            value={searchGenre}
+            onChange={handleSearchGenre}
+          />
         </label>
         <label>
           введите название{" "}
-          <input type="text" value={searchName} onChange={handleSearchName} />
+          <input
+            data-testid={"test-input-name"}
+            type="text"
+            value={searchName}
+            onChange={handleSearchName}
+          />
         </label>
         {filtredPlaylists.map(({ id, name }) => (
-          <NavLink to={`/playlists/${id}`} key={id}>
+          <NavLink
+            to={`/playlists/${id}`}
+            key={id}
+            data-testid={"playlists-item"}
+          >
             {name}
           </NavLink>
         ))}

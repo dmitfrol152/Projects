@@ -12,7 +12,7 @@ export function UserInfoPage() {
         <h2>UserInfoPage</h2>
 
         <div className="users">
-          <p>пользователя таким userId нет</p>
+          <p>Пользователя с таким userId нет</p>
         </div>
       </div>
     );

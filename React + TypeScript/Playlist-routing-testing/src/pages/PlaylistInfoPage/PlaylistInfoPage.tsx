@@ -12,14 +12,14 @@ export const PlaylistInfoPage = () => {
         <h2>PlaylistInfoPage</h2>
 
         <div className="playlist">
-          <p>Плейлсита с таким playlistId не существует</p>
+          <p>Плейлиста с таким playlistId не существует</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="playlistInfoPage">
+    <div className="playlistInfoPage" data-testid={"playlists-page"}>
       <h2>PlaylistInfoPage</h2>
 
       <div className="playlistInfoPage__inner">
@@ -34,8 +34,8 @@ export const PlaylistInfoPage = () => {
           Название: <b>{playlist.name}</b>
         </p>
         <ul className="playlistInfoPage__list">
-          {playlist.songs.map((song) => {
-            return <li key={playlist.id}>- {song}</li>;
+          {playlist.songs.map((song, index) => {
+            return <li key={`${playlist.id}-${index}`}>- {song}</li>;
           })}
         </ul>
       </div>
