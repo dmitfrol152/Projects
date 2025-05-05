@@ -1,0 +1,279 @@
+.movieInfoHero {
+  padding: 32px 0 20px;
+
+  @include vp-768 {
+    padding: 0 0 24px;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    align-items: center;
+
+    @include vp-1280 {
+      gap: 16px;
+    }
+
+    @include vp-768 {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 24px;
+    }
+  }
+
+  &__info {
+    height: 100%;
+  }
+
+  &__image {
+    position: relative;
+    height: 552px;
+    overflow: hidden;
+    border-radius: 16px;
+
+    @include vp-1024 {
+      height: 350px;
+    }
+
+    @include vp-768 {
+      height: 234px;
+      width: 100%;
+    }
+  }
+
+  &__imagePoster {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 40s linear infinite;
+  }
+
+  &__imagePosterEmpty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+
+    @include vp-768 {
+      gap: 32px;
+    }
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include vp-768 {
+      gap: 12px;
+    }
+  }
+
+  &__informationTitle {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    color: $color-white;
+
+    @include vp-768 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__informationDescription {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: $color-white-07;
+
+    @include vp-768 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 255px;
+
+    @include vp-768 {
+      max-width: 100%;
+    }
+  }
+
+  &__informationSecondaery {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    row-gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  &__informationRating {
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 16px;
+  }
+
+  &__informationRatingGold {
+    background-color: $color-gold;
+  }
+
+  &__informationRatingGreen {
+    background-color: $color-green;
+  }
+
+  &__informationRatingGray {
+    background-color: $color-gray;
+  }
+
+  &__informationRatingRed {
+    background-color: $color-red;
+  }
+
+  &__informationRatingWhite {
+    background-color: transparent;
+  }
+
+  &__informationIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__informationText {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white;
+  }
+
+  &__informationYear,
+  &__informationGenres,
+  &__informationTime {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white-07;
+
+    @include vp-768 {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    transform: translate(-50%, -65%);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  75% {
+    transform: translate(-50%, -35%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 376px) {
+  @keyframes float {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    25% {
+      transform: translate(-50%, -75%);
+    }
+    50% {
+      transform: translate(-50%, -50%);
+    }
+    75% {
+      transform: translate(-50%, -15%);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  @keyframes float {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    25% {
+      transform: translate(-50%, -85%);
+    }
+    50% {
+      transform: translate(-50%, -50%);
+    }
+    75% {
+      transform: translate(-50%, -15%);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  @keyframes float {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    25% {
+      transform: translate(-50%, -75%);
+    }
+    50% {
+      transform: translate(-50%, -50%);
+    }
+    75% {
+      transform: translate(-50%, -25%);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  @keyframes float {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    25% {
+      transform: translate(-50%, -60%);
+    }
+    50% {
+      transform: translate(-50%, -50%);
+    }
+    75% {
+      transform: translate(-50%, -40%);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+}

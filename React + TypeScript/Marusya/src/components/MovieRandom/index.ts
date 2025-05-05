@@ -1,0 +1,1 @@
+export { MovieRandom } from "./MovieRandom";

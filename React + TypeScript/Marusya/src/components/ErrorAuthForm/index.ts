@@ -1,0 +1,1 @@
+export { ErrorAuthForm } from "./ErrorAuthForm";

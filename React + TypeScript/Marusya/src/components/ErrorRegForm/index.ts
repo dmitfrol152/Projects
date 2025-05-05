@@ -1,0 +1,1 @@
+export { ErrorRegForm } from "./ErrorRegForm";

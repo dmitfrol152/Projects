@@ -1,0 +1,14 @@
+.logo {
+  &:focus-visible {
+    outline: none;
+  }
+
+  &__img {
+    width: auto;
+    height: 32px;
+
+    @include vp-768 {
+      height: 18px;
+    }
+  }
+}

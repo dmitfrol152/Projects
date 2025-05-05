@@ -1,0 +1,40 @@
+// Colors
+$color-white: #ffffff;
+$color-white-08: rgba(255, 255, 255, 0.8);
+$color-white-07: rgba(255, 255, 255, 0.7);
+$color-white-025: rgba(255, 255, 255, 0.25);
+$color-white-033: rgba(255, 255, 255, 0.33);
+$color-white-05: rgba(255, 255, 255, 0.5);
+$color-transparent-trailer: rgba(10, 11, 11, 0.7);
+$color-black: #000000;
+$color-black-05: rgba(0, 0, 0, 0.5);
+$color-black-04: rgba(0, 0, 0, 0.4);
+$color-gray-empty: #b4b4b4;
+$color-bc-secondary: #393b3c;
+$color-bc-secondary2: #27292a;
+$color-disabled: rgba(255, 255, 255, 0.5);
+$color-border-down: #dc5dfc;
+$color-border: #b4a9ff;
+$color-gold: #a59400;
+$color-green: #308e21;
+$color-gray: #777777;
+$color-gray-social: #cccccc;
+$color-red: #c82020;
+$color-number: #6a5dc2;
+$color-btn-primary: #67a5eb;
+$color-btn-disabled: #45526e;
+$color-btn-disable2: #747474;
+
+// Typography
+$ff-main: "Play", "Arial", sans-serif;
+
+// Viewport
+$vp-big: 1340px;
+$vp-hd: 1280px;
+$vp-full: 1024px;
+$vp-tablet: 768px;
+$vp-tablet-animation: 600px;
+$vp-mobile: 376px;
+
+// Animation
+$transition-300: ease-in 0.3s;

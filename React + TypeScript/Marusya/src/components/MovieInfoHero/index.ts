@@ -1,0 +1,1 @@
+export { MovieInfoHero } from "./MovieInfoHero";

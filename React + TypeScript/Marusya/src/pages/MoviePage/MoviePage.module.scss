@@ -1,0 +1,15 @@
+.moviePage {
+  &__error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__errorText {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white;
+  }
+}

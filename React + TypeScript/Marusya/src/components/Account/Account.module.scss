@@ -1,0 +1,124 @@
+.account {
+  &__link {
+    position: relative;
+    display: block;
+    font-family: $ff-main;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: $color-white;
+    transform: scale(1);
+    transition: transform $transition-300;
+
+    @include vp-768 {
+      display: none;
+    }
+
+    &:focus-visible {
+      transform: scale(1.1);
+      outline: none;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    height: 1.5px;
+    width: 0;
+    transform: translateX(-50%);
+    background-color: $color-border-down;
+    opacity: 0;
+    transition: width $transition-300, opacity $transition-300;
+  }
+
+  &__linkActive {
+    transform: scale(1.1);
+
+    &::before {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    flex-direction: column;
+
+    @include vp-768 {
+      display: none;
+    }
+  }
+
+  &__btnMobile {
+    display: none;
+
+    @include vp-768 {
+      display: flex;
+      flex-direction: column;
+      color: $color-white;
+
+      button {
+        transform: scale(1);
+        transition: transform $transition-300;
+
+        &:focus-visible {
+          transform: scale(1.1);
+          outline: none;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &:active {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__linkMobile {
+    display: none;
+
+    @include vp-768 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      color: $color-white;
+      transform: scale(1);
+      transition: transform $transition-300;
+
+      &:focus-visible {
+        transform: scale(1.1);
+        outline: none;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__linkMobileIcon {
+    width: 24px;
+    height: 24px;
+    color: $color-white;
+  }
+}

@@ -1,0 +1,153 @@
+.moviesByGenre {
+  padding: 64px 0 160px;
+
+  @include vp-768 {
+    padding: 16px 0 40px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    @include vp-768 {
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $color-white;
+
+    @include vp-768 {
+      gap: 8px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    color: $color-white;
+
+    @include vp-768 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 336px);
+    column-gap: 40px;
+    row-gap: 64px;
+
+    @include vp-1340 {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: unset;
+    }
+
+    @include vp-1280 {
+      gap: 24px;
+    }
+
+    @include vp-768 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include vp-376 {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background-color: $color-black;
+    border: 1px solid $color-white-025;
+    border-radius: 16px;
+    box-shadow: 0px 0px 80px 0px $color-white-033;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform $transition-300;
+
+    @include vp-376 {
+      max-height: 502px;
+    }
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(1.025);
+    }
+  }
+
+  &__cardEmpty {
+    background-color: transparent;
+  }
+
+  &__cardPoster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+
+    @include vp-768 {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__link {
+    transform: scale(1);
+    transition: transform $transition-300;
+    width: max-content;
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(1.025);
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+
+    @include vp-376 {
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.genres {
+  padding: 64px 0 160px;
+
+  @include vp-768 {
+    padding: 16px 0 40px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    @include vp-768 {
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    color: $color-white;
+
+    @include vp-768 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    row-gap: 64px;
+
+    @include vp-1340 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include vp-1024 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include vp-768 {
+      gap: 24px;
+    }
+
+    @include vp-600 {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    min-height: 304px;
+    height: 100%;
+    background-color: $color-black;
+    border: 1px solid $color-white-025;
+    border-radius: 24px;
+    box-shadow: 0px 0px 80px 0px $color-white-033;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform $transition-300;
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(1.025);
+    }
+  }
+
+  &__cardImage {
+    margin: 0 0 2px 0;
+    height: 220px;
+  }
+
+  &__cardText {
+    display: block;
+    padding: 20px 10px 30px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: $color-white;
+  }
+}

@@ -1,0 +1,25 @@
+.errorAuthForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &__text {
+    display: block;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: $color-black;
+    text-align: center;
+  }
+
+  &__description {
+    display: block;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: $color-black;
+    text-align: center;
+  }
+}

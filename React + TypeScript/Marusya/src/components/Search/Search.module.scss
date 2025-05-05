@@ -1,0 +1,315 @@
+.customInput {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  max-width: 655px;
+  opacity: 1;
+  pointer-events: all;
+  transition: transform $transition-300, opacity $transition-300;
+
+  @include vp-768 {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -24px;
+    z-index: 20;
+    max-width: 100%;
+    transform: translateY(-75px);
+
+    &.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-75px);
+    }
+  }
+
+  &__field {
+    padding: 12px 52px;
+    font-family: $ff-main;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white;
+    min-height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: $color-bc-secondary;
+    transition: border-color $transition-300;
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-border;
+
+      ~ .customInput__icon {
+        color: $color-border;
+      }
+    }
+
+    &:hover {
+      border-color: $color-border;
+
+      ~ .customInput__icon {
+        color: $color-border;
+      }
+    }
+  }
+
+  &__field::placeholder {
+    font-family: $ff-main;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-disabled;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    color: $color-disabled;
+    transition: color $transition-300;
+
+    path {
+      fill: currentColor;
+      fill-opacity: 1;
+    }
+  }
+
+  &__fill {
+    color: $color-white-08;
+  }
+}
+
+.search {
+  &__block {
+    margin: 0;
+    padding: 8px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 559px;
+    min-height: 108px;
+    background-color: $color-bc-secondary;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    z-index: 20;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: $color-white;
+
+    @include vp-1340 {
+      width: 100%;
+    }
+
+    @include vp-1024 {
+      width: 475px;
+    }
+
+    @include vp-768 {
+      padding: 24px 20px;
+      top: 64px;
+      width: 100%;
+      flex-direction: row;
+      align-items: unset;
+      justify-content: unset;
+      gap: 16px;
+      flex-wrap: nowrap;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__blockItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 92px;
+    width: 100%;
+
+    @include vp-768 {
+      min-height: 330px;
+      min-width: 220px;
+    }
+  }
+
+  &__blockLink {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    width: 100%;
+    background-color: $color-bc-secondary;
+    transition: border-color $transition-300, background-color $transition-300;
+
+    @include vp-768 {
+      height: 100%;
+      border-radius: unset;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-white-05;
+    }
+
+    &:hover {
+      border-color: $color-white-05;
+    }
+
+    &:active {
+      border-color: $color-white-05;
+      background-color: $color-bc-secondary2;
+    }
+  }
+
+  &__blockCard {
+    padding: 20px 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+
+    @include vp-768 {
+      padding: 0;
+      flex-direction: column;
+      align-items: unset;
+    }
+  }
+
+  &__blockImage {
+    height: auto;
+    max-width: 40px;
+
+    @include vp-768 {
+      max-width: 158px;
+    }
+  }
+
+  &__blockInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__blockInfoSecondary {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 5px;
+    flex-wrap: wrap;
+
+    @include vp-768 {
+      row-gap: 12px;
+    }
+  }
+
+  &__blockInfoRating {
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 16px;
+  }
+
+  &__blockInfoRatingGold {
+    background-color: $color-gold;
+  }
+
+  &__blockInfoRatingGreen {
+    background-color: $color-green;
+  }
+
+  &__blockInfoRatingGray {
+    background-color: $color-gray;
+  }
+
+  &__blockInfoRatingRed {
+    background-color: $color-red;
+  }
+
+  &__blockInfoRatingWhite {
+    background-color: transparent;
+  }
+
+  &__blockInfoIcon {
+    width: 10px;
+    height: 10px;
+  }
+
+  &__blockInfoText {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: $color-white;
+  }
+
+  &__blockInfoYear,
+  &__blockInfoGenres,
+  &__blockInfoTime {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-white-07;
+  }
+
+  &__blockInfoTitle {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white;
+  }
+}
+
+.customInputMobile {
+  display: none;
+  pointer-events: none;
+
+  @include vp-768 {
+    display: block;
+    pointer-events: all;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    color: $color-white;
+    transform: scale(1);
+    transition: transform $transition-300;
+
+    &:focus-visible {
+      transform: scale(1.1);
+      outline: none;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1.05);
+    }
+  }
+}
