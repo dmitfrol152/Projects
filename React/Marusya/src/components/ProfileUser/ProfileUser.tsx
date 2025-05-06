@@ -1,4 +1,4 @@
-import styles from "./profileUser.module.scss";
+import styles from "./ProfileUser.module.scss";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AnimatePresence, motion } from "framer-motion";
