@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IMovieProps } from "./types";
-import styles from "./movieInfoMore.module.scss";
+import styles from "./MovieInfoMore.module.scss";
 import Skeleton from "react-loading-skeleton";
 import { AnimatePresence, motion } from "framer-motion";
 
