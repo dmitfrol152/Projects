@@ -7,6 +7,7 @@ import Skeleton from "react-loading-skeleton";
 import { GENRES_MOVIE } from "../../constants/genres";
 import IconBack from "../../assets/images/icon-back.svg?react";
 import { Button } from "../Button/Button";
+import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
 
 export const MoviesByGenre: FC<IGenresProps> = ({
   data,
@@ -92,7 +93,7 @@ export const MoviesByGenre: FC<IGenresProps> = ({
                         src={
                           movie.posterUrl !== null
                             ? movie.posterUrl
-                            : "/src/assets/images/emptyPoster/empty-poster.png"
+                            : emptyPoster
                         }
                         alt={`Постер к фильму: ${movie.title}`}
                       />

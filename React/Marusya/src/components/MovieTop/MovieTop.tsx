@@ -4,6 +4,7 @@ import { IMovieTopProps } from "./types";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
 
 export const MovieTop: FC<IMovieTopProps> = ({ data, loading }) => {
   // Skeleton
@@ -66,7 +67,7 @@ export const MovieTop: FC<IMovieTopProps> = ({ data, loading }) => {
                           src={
                             movie.posterUrl !== null
                               ? movie.posterUrl
-                              : "/src/assets/images/emptyPoster/empty-poster.png"
+                              : emptyPoster
                           }
                           alt={`Постер к фильму: ${movie.title}`}
                         />

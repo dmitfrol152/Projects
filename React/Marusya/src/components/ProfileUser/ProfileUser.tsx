@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import IconMail from "../../assets/images/icon-mail.svg?react";
 import IconClose from "../../assets/images/icon-close.svg?react";
 import useFavoriteMovie from "../../hooks/useFavoriteMovie";
+import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
 
 export const ProfileUser: FC<DataProfileProps> = ({
   dataProfile,
@@ -165,7 +166,7 @@ export const ProfileUser: FC<DataProfileProps> = ({
                                 src={
                                   movie.posterUrl !== null
                                     ? movie.posterUrl
-                                    : "/src/assets/images/emptyPoster/empty-poster.png"
+                                    : emptyPoster
                                 }
                                 alt={`Постер к фильму: ${movie.title}`}
                               />

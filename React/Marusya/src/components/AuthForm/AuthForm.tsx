@@ -22,6 +22,8 @@ import {
 } from "../../store/loginFormSlice";
 import { ErrorAuthForm } from "../ErrorAuthForm";
 import { ErrorRegForm } from "../ErrorRegForm";
+import logoWhite from "../../assets/images/logo/img-logo-white.png";
+import logoWhite2x from "../../assets/images/logo/img-logo-white@2x.png";
 
 export const AuthForm = () => {
   const authFormVisibleValue = useSelector(
@@ -94,8 +96,8 @@ export const AuthForm = () => {
           >
             <img
               className={styles.authForm__img}
-              src="/src/assets/images/logo/img-logo-white.png"
-              srcSet="/src/assets/images/logo/img-logo-white@2x.png 2x"
+              src={logoWhite}
+              srcSet={`${logoWhite2x} 2x`}
               alt="Логотип"
             />
             {authType === "login" ? (

@@ -5,6 +5,7 @@ import StarIcon from "../../assets/images/icon-star.svg?react";
 import FavoriteIcon from "../../assets/images/icon-favorite.svg?react";
 import FavoriteFillIcon from "../../assets/images/icon-favorite-fill.svg?react";
 import ReloadIcon from "../../assets/images/icon-reload.svg?react";
+import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AnimatePresence, motion } from "framer-motion";
@@ -250,7 +251,7 @@ export const MovieRandom: FC<IMovieRandomProps> = ({
                   src={
                     data.posterUrl !== null
                       ? data.posterUrl
-                      : "/src/assets/images/emptyPoster/empty-poster.png"
+                      : emptyPoster
                   }
                   alt={`Постер к фильму: ${data.title}`}
                 />
@@ -265,7 +266,6 @@ export const MovieRandom: FC<IMovieRandomProps> = ({
               onClose={handleNotVisibleTrailer}
               title={data.title}
             />
-            ;
           </motion.div>
         </AnimatePresence>
       </div>

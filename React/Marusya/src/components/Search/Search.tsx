@@ -8,6 +8,7 @@ import { Button } from "../Button/Button";
 import useSearchMovie from "../../hooks/useSearchMovie";
 import { Link, useSearchParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
 
 export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -141,9 +142,7 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
                         <img
                           className={styles.search__blockImage}
                           src={
-                            movie.posterUrl !== null
-                              ? movie.posterUrl
-                              : "/src/assets/images/emptyPoster/empty-poster.png"
+                            movie.posterUrl !== null ? movie.posterUrl : emptyPoster
                           }
                           alt={`Постер к фильму: ${movie.title}`}
                         />

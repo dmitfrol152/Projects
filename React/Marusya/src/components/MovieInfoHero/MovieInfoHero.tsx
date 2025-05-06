@@ -12,6 +12,7 @@ import useProfile from "../../hooks/useProfile";
 import useFavoriteMovie from "../../hooks/useFavoriteMovie";
 import { authFormVisible } from "../../store/authFormVisibleSlice";
 import { Trailer } from "../Trailer";
+import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
 
 export const MovieInfoHero: FC<IMovieProps> = ({ data, loading }) => {
   const {
@@ -211,7 +212,7 @@ export const MovieInfoHero: FC<IMovieProps> = ({ data, loading }) => {
                   src={
                     data.posterUrl !== null
                       ? data.posterUrl
-                      : "/src/assets/images/emptyPoster/empty-poster.png"
+                      : emptyPoster
                   }
                   alt={`Постер к фильму: ${data.title}`}
                 />

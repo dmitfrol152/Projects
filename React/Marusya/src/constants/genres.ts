@@ -1,102 +1,123 @@
+import historyImg from "../assets/images/genres/history.png";
+import horrorImg from "../assets/images/genres/horror.png";
+import scifiImg from "../assets/images/genres/scifi.png";
+import standupImg from "../assets/images/genres/stand-up.png";
+import fantasyImg from "../assets/images/genres/fantasy.png";
+import dramaImg from "../assets/images/genres/drama.png";
+import mysteryImg from "../assets/images/genres/mystery.png";
+import familyImg from "../assets/images/genres/family.png";
+import comedyImg from "../assets/images/genres/comedy.png";
+import romanceImg from "../assets/images/genres/romance.png";
+import musicImg from "../assets/images/genres/music.png";
+import crimeImg from "../assets/images/genres/crime.png";
+import tvMovieImg from "../assets/images/genres/tv-movie.png";
+import documentaryImg from "../assets/images/genres/documentary.png";
+import actionImg from "../assets/images/genres/action.png";
+import thrillerImg from "../assets/images/genres/thriller.png";
+import westernImg from "../assets/images/genres/western.png";
+import animationImg from "../assets/images/genres/animation.png";
+import warImg from "../assets/images/genres/war.png";
+import adventureImg from "../assets/images/genres/adventure.png";
+
 export const GENRES_MOVIE = {
   history: {
     title: "Исторический",
-    image: "/src/assets/images/genres/history.png",
+    image: historyImg,
     alt: "Изображение жанра фильма исторический",
   },
   horror: {
     title: "Ужасы",
-    image: "/src/assets/images/genres/horror.png",
+    image: horrorImg,
     alt: "Изображение жанра фильма ужасы",
   },
   scifi: {
     title: "Научная фантастика",
-    image: "/src/assets/images/genres/scifi.png",
+    image: scifiImg,
     alt: "Изображение жанра фильма научная фантастика",
   },
   "stand-up": {
     title: "Стенд-ап",
-    image: "/src/assets/images/genres/stand-up.png",
+    image: standupImg,
     alt: "Изображение жанра фильма стенд-ап",
   },
   fantasy: {
     title: "Фантастика",
-    image: "/src/assets/images/genres/fantasy.png",
+    image: fantasyImg,
     alt: "Изображение жанра фильма фантастика",
   },
   drama: {
     title: "Драма",
-    image: "/src/assets/images/genres/drama.png",
+    image: dramaImg,
     alt: "Изображение жанра фильма драма",
   },
   mystery: {
     title: "Мистика",
-    image: "/src/assets/images/genres/mystery.png",
+    image: mysteryImg,
     alt: "Изображение жанра фильма мистика",
   },
   family: {
     title: "Семейный",
-    image: "/src/assets/images/genres/family.png",
+    image: familyImg,
     alt: "Изображение жанра фильма семейный",
   },
   comedy: {
     title: "Комедия",
-    image: "/src/assets/images/genres/comedy.png",
+    image: comedyImg,
     alt: "Изображение жанра фильма комедия",
   },
   romance: {
     title: "Романтика",
-    image: "/src/assets/images/genres/romance.png",
+    image: romanceImg,
     alt: "Изображение жанра фильма романтика",
   },
   music: {
     title: "Музыкальный",
-    image: "/src/assets/images/genres/music.png",
+    image: musicImg,
     alt: "Изображение жанра фильма музыкальный",
   },
   crime: {
     title: "Криминал",
-    image: "/src/assets/images/genres/crime.png",
+    image: crimeImg,
     alt: "Изображение жанра фильма криминал",
   },
   "tv-movie": {
     title: "Телефильм",
-    image: "/src/assets/images/genres/tv-movie.png",
+    image: tvMovieImg,
     alt: "Изображение жанра фильма телефильм",
   },
   documentary: {
     title: "Документальный",
-    image: "/src/assets/images/genres/documentary.png",
+    image: documentaryImg,
     alt: "Изображение жанра фильма документальный",
   },
   action: {
     title: "Боевик",
-    image: "/src/assets/images/genres/action.png",
+    image: actionImg,
     alt: "Изображение жанра фильма боевик",
   },
   thriller: {
     title: "Триллер",
-    image: "/src/assets/images/genres/thriller.png",
+    image: thrillerImg,
     alt: "Изображение жанра фильма триллер",
   },
   western: {
     title: "Вестерн",
-    image: "/src/assets/images/genres/western.png",
+    image: westernImg,
     alt: "Изображение жанра фильма вестерн",
   },
   animation: {
     title: "Мультфильм",
-    image: "/src/assets/images/genres/animation.png",
+    image: animationImg,
     alt: "Изображение жанра фильма мультфильм",
   },
   war: {
     title: "Военный",
-    image: "/src/assets/images/genres/war.png",
+    image: warImg,
     alt: "Изображение жанра фильма военный",
   },
   adventure: {
     title: "Приключение",
-    image: "/src/assets/images/genres/adventure.png",
+    image: adventureImg,
     alt: "Изображение жанра фильма приключение",
   },
 };
