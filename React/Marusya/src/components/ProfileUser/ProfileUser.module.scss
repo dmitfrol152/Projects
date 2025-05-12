@@ -73,6 +73,7 @@
     grid-template-rows: repeat(3, 336px);
     column-gap: 40px;
     row-gap: 64px;
+    width: 100%;
 
     @include mixins.vp-1340 {
       grid-template-columns: repeat(4, 1fr);
@@ -118,6 +119,8 @@
   &__card {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-height: 100%;
     background-color: variables.$color-black;
     border: 1px solid variables.$color-white-025;

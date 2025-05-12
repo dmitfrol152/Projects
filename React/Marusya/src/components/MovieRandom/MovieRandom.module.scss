@@ -31,6 +31,9 @@
 
   &__image {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 552px;
     overflow: hidden;
     border-radius: 16px;

@@ -32,6 +32,7 @@ export const MovieRandom: FC<IMovieRandomProps> = ({
   const { deleteFavoriteMovie, postFavoriteMovie } = useFavoriteMovie();
   const dispatch = useDispatch();
   const [isVisibleTrailer, setIsVisibleTrailer] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
 
   useEffect(() => {
     if (isVisibleTrailer === true) {
@@ -243,7 +244,7 @@ export const MovieRandom: FC<IMovieRandomProps> = ({
                 </div>
               </div>
               <div className={styles.movieRandom__image}>
-                {loading && <ClipLoader color="#dc5dfc" size={100} />}
+                {imageLoading && <ClipLoader color="#dc5dfc" size={100} />}
                 <img
                   className={
                     data.posterUrl !== null
@@ -252,6 +253,7 @@ export const MovieRandom: FC<IMovieRandomProps> = ({
                   }
                   src={data.posterUrl !== null ? data.posterUrl : emptyPoster}
                   alt={`Постер к фильму: ${data.title}`}
+                  onLoad={() => setImageLoading(false)}
                 />
               </div>
             </div>

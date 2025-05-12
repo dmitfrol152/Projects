@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IGenresProps } from "./types";
 import styles from "./MoviesByGenre.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,6 +8,7 @@ import { GENRES_MOVIE } from "../../constants/genres";
 import IconBack from "../../assets/images/icon-back.svg?react";
 import { Button } from "../Button/Button";
 import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
+import { ClipLoader } from "react-spinners";
 
 export const MoviesByGenre: FC<IGenresProps> = ({
   data,
@@ -17,6 +18,8 @@ export const MoviesByGenre: FC<IGenresProps> = ({
   isLoadingMore,
   disabledBtn,
 }) => {
+  const [imageLoading, setImageLoading] = useState(true);
+
   // Skeleton
   if (loading || !data) {
     return (
@@ -88,6 +91,9 @@ export const MoviesByGenre: FC<IGenresProps> = ({
                           : `${styles.moviesByGenre__card} ${styles.moviesByGenre__cardEmpty}`
                       }
                     >
+                      {imageLoading && (
+                        <ClipLoader color="#dc5dfc" size={100} />
+                      )}
                       <img
                         className={styles.moviesByGenre__cardPoster}
                         src={
@@ -96,6 +102,7 @@ export const MoviesByGenre: FC<IGenresProps> = ({
                             : emptyPoster
                         }
                         alt={`Постер к фильму: ${movie.title}`}
+                        onLoad={() => setImageLoading(false)}
                       />
                     </Link>
                   </li>

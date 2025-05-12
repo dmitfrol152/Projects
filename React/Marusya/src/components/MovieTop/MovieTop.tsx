@@ -1,12 +1,15 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./MovieTop.module.scss";
 import { IMovieTopProps } from "./types";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
+import { ClipLoader } from "react-spinners";
 
 export const MovieTop: FC<IMovieTopProps> = ({ data, loading }) => {
+  const [imageLoading, setImageLoading] = useState(true);
+
   // Skeleton
   if (loading || !data) {
     return (
@@ -58,6 +61,9 @@ export const MovieTop: FC<IMovieTopProps> = ({ data, loading }) => {
                             : `${styles.movieTop__card} ${styles.movieTop__cardShadowNone}`
                         }
                       >
+                        {imageLoading && (
+                          <ClipLoader color="#dc5dfc" size={100} />
+                        )}
                         <img
                           className={
                             movie.posterUrl !== null
@@ -70,6 +76,7 @@ export const MovieTop: FC<IMovieTopProps> = ({ data, loading }) => {
                               : emptyPoster
                           }
                           alt={`Постер к фильму: ${movie.title}`}
+                          onLoad={() => setImageLoading(false)}
                         />
                         {movie.posterUrl === null && (
                           <span className={styles.movieTop__cardEmptyPoster}>

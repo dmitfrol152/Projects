@@ -13,6 +13,7 @@ import useFavoriteMovie from "../../hooks/useFavoriteMovie";
 import { authFormVisible } from "../../store/authFormVisibleSlice";
 import { Trailer } from "../Trailer";
 import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
+import { ClipLoader } from "react-spinners";
 
 export const MovieInfoHero: FC<IMovieProps> = ({ data, loading }) => {
   const {
@@ -24,6 +25,7 @@ export const MovieInfoHero: FC<IMovieProps> = ({ data, loading }) => {
   const { deleteFavoriteMovie, postFavoriteMovie } = useFavoriteMovie();
   const dispatch = useDispatch();
   const [isVisibleTrailer, setIsVisibleTrailer] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
 
   useEffect(() => {
     if (isVisibleTrailer === true) {
@@ -203,18 +205,16 @@ export const MovieInfoHero: FC<IMovieProps> = ({ data, loading }) => {
                 </div>
               </div>
               <div className={styles.movieInfoHero__image}>
+                {imageLoading && <ClipLoader color="#dc5dfc" size={100} />}
                 <img
                   className={
                     data.posterUrl !== null
                       ? styles.movieInfoHero__imagePoster
                       : styles.movieInfoHero__imagePosterEmpty
                   }
-                  src={
-                    data.posterUrl !== null
-                      ? data.posterUrl
-                      : emptyPoster
-                  }
+                  src={data.posterUrl !== null ? data.posterUrl : emptyPoster}
                   alt={`Постер к фильму: ${data.title}`}
+                  onLoad={() => setImageLoading(false)}
                 />
               </div>
             </div>

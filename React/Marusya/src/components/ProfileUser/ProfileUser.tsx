@@ -12,6 +12,7 @@ import IconMail from "../../assets/images/icon-mail.svg?react";
 import IconClose from "../../assets/images/icon-close.svg?react";
 import useFavoriteMovie from "../../hooks/useFavoriteMovie";
 import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
+import { ClipLoader } from "react-spinners";
 
 export const ProfileUser: FC<DataProfileProps> = ({
   dataProfile,
@@ -22,6 +23,7 @@ export const ProfileUser: FC<DataProfileProps> = ({
   const [activeLink, setActiveLink] = useState("favorites");
   const [widthScreen, setWidthScreen] = useState(innerWidth);
   const { deleteFavoriteMovie } = useFavoriteMovie();
+  const [imageLoading, setImageLoading] = useState(true);
 
   function handleExit() {
     exitMutation.mutate();
@@ -161,6 +163,9 @@ export const ProfileUser: FC<DataProfileProps> = ({
                                   : `${styles.profileUser__card} ${styles.profileUser__cardEmpty}`
                               }
                             >
+                              {imageLoading && (
+                                <ClipLoader color="#dc5dfc" size={100} />
+                              )}
                               <img
                                 className={styles.profileUser__cardPoster}
                                 src={
@@ -169,6 +174,7 @@ export const ProfileUser: FC<DataProfileProps> = ({
                                     : emptyPoster
                                 }
                                 alt={`Постер к фильму: ${movie.title}`}
+                                onLoad={() => setImageLoading(false)}
                               />
                             </Link>
                             <Button
