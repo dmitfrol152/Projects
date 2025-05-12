@@ -3,7 +3,9 @@ import { IProfile, UserSchema } from "./types";
 import { BASE_URL } from "../../constants/api";
 
 export function fetchProfile(): Promise<IProfile> {
-  return fetch(`${BASE_URL}/profile`)
+  return fetch(`${BASE_URL}/profile`, {
+    credentials: "include",
+  })
     .then(validateResponse)
     .then((response) => response.json())
     .then((data) => {
