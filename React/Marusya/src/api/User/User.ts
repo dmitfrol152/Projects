@@ -28,6 +28,7 @@ export function loginUser(userData: LoginUserProps): Promise<void> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(userData),
+    credentials: "include",
   })
     .then(validateResponse)
     .then(() => undefined);
@@ -37,5 +38,6 @@ export function loginUser(userData: LoginUserProps): Promise<void> {
 export function logoutUser() {
   return fetch(`${BASE_URL}/auth/logout`, {
     method: "GET",
+    credentials: "include",
   }).then(() => undefined);
 }

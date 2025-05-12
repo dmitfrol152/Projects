@@ -139,7 +139,9 @@ export function fetchMovieRandomList(): Promise<IMovie> {
 
 // Movies Fvorites GET //
 export function fetchMovieFvoritesList(): Promise<MovieList> {
-  return fetch(`${BASE_URL}/favorites`)
+  return fetch(`${BASE_URL}/favorites`, {
+    credentials: "include",
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Ошибка в получении данных с сервера");
@@ -166,6 +168,7 @@ export function addMovieToFavorites(newId: number | null) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ id }),
+    credentials: "include",
   })
     .then(validateResponse)
     .then(() => undefined);
@@ -175,6 +178,7 @@ export function addMovieToFavorites(newId: number | null) {
 export function deleteMovieFromFavorites(id: number | null) {
   return fetch(`${BASE_URL}/favorites/${id}`, {
     method: "DELETE",
+    credentials: "include",
   })
     .then(() => undefined)
     .catch((error) => {
