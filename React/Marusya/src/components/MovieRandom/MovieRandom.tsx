@@ -16,6 +16,7 @@ import useFavoriteMovie from "../../hooks/useFavoriteMovie";
 import { authFormVisible } from "../../store/authFormVisibleSlice";
 import { useDispatch } from "react-redux";
 import { Trailer } from "../Trailer";
+import { ClipLoader } from "react-spinners";
 
 export const MovieRandom: FC<IMovieRandomProps> = ({
   data,
@@ -242,17 +243,14 @@ export const MovieRandom: FC<IMovieRandomProps> = ({
                 </div>
               </div>
               <div className={styles.movieRandom__image}>
+                {loading && <ClipLoader color="#dc5dfc" size={100} />}
                 <img
                   className={
                     data.posterUrl !== null
                       ? styles.movieRandom__imagePoster
                       : styles.movieRandom__imagePosterEmpty
                   }
-                  src={
-                    data.posterUrl !== null
-                      ? data.posterUrl
-                      : emptyPoster
-                  }
+                  src={data.posterUrl !== null ? data.posterUrl : emptyPoster}
                   alt={`Постер к фильму: ${data.title}`}
                 />
               </div>
