@@ -1,3 +1,6 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .customInput {
   position: relative;
   display: flex;
@@ -5,9 +8,10 @@
   max-width: 655px;
   opacity: 1;
   pointer-events: all;
-  transition: transform $transition-300, opacity $transition-300;
+  transition: transform variables.$transition-300,
+    opacity variables.$transition-300;
 
-  @include vp-768 {
+  @include mixins.vp-768 {
     opacity: 0;
     pointer-events: none;
     position: absolute;
@@ -34,42 +38,42 @@
 
   &__field {
     padding: 12px 52px;
-    font-family: $ff-main;
+    font-family: variables.$ff-main;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
+    color: variables.$color-white;
     min-height: 100%;
     width: 100%;
     border: 1px solid transparent;
     border-radius: 8px;
-    background-color: $color-bc-secondary;
-    transition: border-color $transition-300;
+    background-color: variables.$color-bc-secondary;
+    transition: border-color variables.$transition-300;
 
     &:focus-visible {
       outline: none;
-      border-color: $color-border;
+      border-color: variables.$color-border;
 
       ~ .customInput__icon {
-        color: $color-border;
+        color: variables.$color-border;
       }
     }
 
     &:hover {
-      border-color: $color-border;
+      border-color: variables.$color-border;
 
       ~ .customInput__icon {
-        color: $color-border;
+        color: variables.$color-border;
       }
     }
   }
 
   &__field::placeholder {
-    font-family: $ff-main;
+    font-family: variables.$ff-main;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: $color-disabled;
+    color: variables.$color-disabled;
   }
 
   &__icon {
@@ -79,8 +83,8 @@
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    color: $color-disabled;
-    transition: color $transition-300;
+    color: variables.$color-disabled;
+    transition: color variables.$transition-300;
 
     path {
       fill: currentColor;
@@ -89,7 +93,7 @@
   }
 
   &__fill {
-    color: $color-white-08;
+    color: variables.$color-white-08;
   }
 }
 
@@ -107,24 +111,24 @@
     justify-content: center;
     width: 559px;
     min-height: 108px;
-    background-color: $color-bc-secondary;
-    border: 1px solid $color-border;
+    background-color: variables.$color-bc-secondary;
+    border: 1px solid variables.$color-border;
     border-radius: 8px;
     z-index: 20;
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white;
+    color: variables.$color-white;
 
-    @include vp-1340 {
+    @include mixins.vp-1340 {
       width: 100%;
     }
 
-    @include vp-1024 {
+    @include mixins.vp-1024 {
       width: 475px;
     }
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       padding: 24px 20px;
       top: 64px;
       width: 100%;
@@ -148,7 +152,7 @@
     min-height: 92px;
     width: 100%;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       min-height: 330px;
       min-width: 220px;
     }
@@ -160,26 +164,27 @@
     border: 1px solid transparent;
     border-radius: 6px;
     width: 100%;
-    background-color: $color-bc-secondary;
-    transition: border-color $transition-300, background-color $transition-300;
+    background-color: variables.$color-bc-secondary;
+    transition: border-color variables.$transition-300,
+      background-color variables.$transition-300;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       height: 100%;
       border-radius: unset;
     }
 
     &:focus-visible {
       outline: none;
-      border-color: $color-white-05;
+      border-color: variables.$color-white-05;
     }
 
     &:hover {
-      border-color: $color-white-05;
+      border-color: variables.$color-white-05;
     }
 
     &:active {
-      border-color: $color-white-05;
-      background-color: $color-bc-secondary2;
+      border-color: variables.$color-white-05;
+      background-color: variables.$color-bc-secondary2;
     }
   }
 
@@ -190,7 +195,7 @@
     gap: 16px;
     height: 100%;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       padding: 0;
       flex-direction: column;
       align-items: unset;
@@ -201,7 +206,7 @@
     height: auto;
     max-width: 40px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       max-width: 158px;
     }
   }
@@ -219,7 +224,7 @@
     row-gap: 5px;
     flex-wrap: wrap;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       row-gap: 12px;
     }
   }
@@ -233,19 +238,19 @@
   }
 
   &__blockInfoRatingGold {
-    background-color: $color-gold;
+    background-color: variables.$color-gold;
   }
 
   &__blockInfoRatingGreen {
-    background-color: $color-green;
+    background-color: variables.$color-green;
   }
 
   &__blockInfoRatingGray {
-    background-color: $color-gray;
+    background-color: variables.$color-gray;
   }
 
   &__blockInfoRatingRed {
-    background-color: $color-red;
+    background-color: variables.$color-red;
   }
 
   &__blockInfoRatingWhite {
@@ -261,7 +266,7 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
-    color: $color-white;
+    color: variables.$color-white;
   }
 
   &__blockInfoYear,
@@ -270,7 +275,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: $color-white-07;
+    color: variables.$color-white-07;
   }
 
   &__blockInfoTitle {
@@ -279,7 +284,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
+    color: variables.$color-white;
   }
 }
 
@@ -287,7 +292,7 @@
   display: none;
   pointer-events: none;
 
-  @include vp-768 {
+  @include mixins.vp-768 {
     display: block;
     pointer-events: all;
   }
@@ -295,9 +300,9 @@
   &__icon {
     width: 24px;
     height: 24px;
-    color: $color-white;
+    color: variables.$color-white;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &:focus-visible {
       transform: scale(1.1);

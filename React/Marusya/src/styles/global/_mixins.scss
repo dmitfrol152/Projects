@@ -1,35 +1,37 @@
+@use './variables' as variables;
+
 @mixin vp-1340 {
-  @media (max-width: $vp-big) {
+  @media (max-width: variables.$vp-big) {
     @content;
   }
 }
 
 @mixin vp-1280 {
-  @media (max-width: $vp-hd) {
+  @media (max-width: variables.$vp-hd) {
     @content;
   }
 }
 
 @mixin vp-1024 {
-  @media (max-width: $vp-full) {
+  @media (max-width: variables.$vp-full) {
     @content;
   }
 }
 
 @mixin vp-768 {
-  @media (max-width: $vp-tablet) {
+  @media (max-width: variables.$vp-tablet) {
     @content;
   }
 }
 
 @mixin vp-600 {
-  @media (max-width: $vp-tablet-animation) {
+  @media (max-width: variables.$vp-tablet-animation) {
     @content;
   }
 }
 
 @mixin vp-376 {
-  @media (max-width: $vp-mobile) {
+  @media (max-width: variables.$vp-mobile) {
     @content;
   }
 }

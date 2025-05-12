@@ -1,7 +1,10 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .genres {
   padding: 64px 0 160px;
 
-  @include vp-768 {
+  @include mixins.vp-768 {
     padding: 16px 0 40px;
   }
 
@@ -10,7 +13,7 @@
     flex-direction: column;
     gap: 64px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 40px;
     }
   }
@@ -21,9 +24,9 @@
     font-weight: 700;
     font-size: 48px;
     line-height: 56px;
-    color: $color-white;
+    color: variables.$color-white;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       font-size: 24px;
       line-height: 32px;
     }
@@ -38,19 +41,19 @@
     column-gap: 40px;
     row-gap: 64px;
 
-    @include vp-1340 {
+    @include mixins.vp-1340 {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @include vp-1024 {
+    @include mixins.vp-1024 {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 24px;
     }
 
-    @include vp-600 {
+    @include mixins.vp-600 {
       display: flex;
       flex-direction: column;
     }
@@ -61,13 +64,13 @@
     flex-direction: column;
     min-height: 304px;
     height: 100%;
-    background-color: $color-black;
-    border: 1px solid $color-white-025;
+    background-color: variables.$color-black;
+    border: 1px solid variables.$color-white-025;
     border-radius: 24px;
-    box-shadow: 0px 0px 80px 0px $color-white-033;
+    box-shadow: 0px 0px 80px 0px variables.$color-white-033;
     overflow: hidden;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &:focus-visible {
       outline: none;
@@ -95,6 +98,6 @@
     font-size: 24px;
     line-height: 32px;
     text-align: center;
-    color: $color-white;
+    color: variables.$color-white;
   }
 }

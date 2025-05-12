@@ -1,3 +1,5 @@
+@use "/src/styles/global/variables" as variables;
+
 .moviePage {
   &__error {
     display: flex;
@@ -10,6 +12,6 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
+    color: variables.$color-white;
   }
 }

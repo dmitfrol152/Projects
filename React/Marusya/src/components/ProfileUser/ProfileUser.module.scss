@@ -1,7 +1,10 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .profileUser {
   padding: 64px 0 0;
 
-  @include vp-768 {
+  @include mixins.vp-768 {
     padding: 16px 0 152px;
   }
 
@@ -10,7 +13,7 @@
     flex-direction: column;
     gap: 64px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 40px;
     }
   }
@@ -21,9 +24,9 @@
     font-weight: 700;
     font-size: 48px;
     line-height: 56px;
-    color: $color-white;
+    color: variables.$color-white;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       font-size: 24px;
       line-height: 32px;
     }
@@ -34,7 +37,7 @@
     align-items: center;
     gap: 64px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 24px;
     }
   }
@@ -44,7 +47,7 @@
     align-items: center;
     gap: 10px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 8px;
     }
   }
@@ -58,7 +61,7 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white;
+    color: variables.$color-white;
   }
 
   &__favorites {
@@ -71,16 +74,16 @@
     column-gap: 40px;
     row-gap: 64px;
 
-    @include vp-1340 {
+    @include mixins.vp-1340 {
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: unset;
     }
 
-    @include vp-1280 {
+    @include mixins.vp-1280 {
       gap: 40px;
     }
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       display: flex;
       flex-wrap: nowrap;
       overflow: auto;
@@ -116,15 +119,15 @@
     display: flex;
     flex-direction: column;
     min-height: 100%;
-    background-color: $color-black;
-    border: 1px solid $color-white-025;
+    background-color: variables.$color-black;
+    border: 1px solid variables.$color-white-025;
     border-radius: 16px;
-    box-shadow: 0px 0px 80px 0px $color-white-033;
+    box-shadow: 0px 0px 80px 0px variables.$color-white-033;
     overflow: hidden;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       width: 224px;
       box-shadow: none;
       min-height: unset;
@@ -178,15 +181,15 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: $color-white-05;
+    background-color: variables.$color-white-05;
     width: 60px;
     height: 60px;
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white;
+    color: variables.$color-white;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       width: 48px;
       height: 48px;
     }
@@ -202,12 +205,12 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
+    color: variables.$color-white;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       font-size: 14px;
       line-height: 20px;
-      color: $color-white-05;
+      color: variables.$color-white-05;
     }
   }
 
@@ -215,9 +218,9 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white;
+    color: variables.$color-white;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       font-size: 18px;
       line-height: 24px;
     }
@@ -238,22 +241,22 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
-    background-color: $color-btn-primary;
+    color: variables.$color-white;
+    background-color: variables.$color-btn-primary;
     border-radius: 28px;
     transform: scale(1);
-    transition: background-color $transition-300, color $transition-300,
-      transform $transition-300;
+    transition: background-color variables.$transition-300,
+      color variables.$transition-300, transform variables.$transition-300;
 
     &:focus-visible {
       outline: none;
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:hover {
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:active {
@@ -263,14 +266,14 @@
     &:disabled {
       cursor: none;
       pointer-events: none;
-      color: $color-disabled;
-      background-color: $color-btn-disable2;
+      color: variables.$color-disabled;
+      background-color: variables.$color-btn-disable2;
     }
   }
 
   &__close {
     width: 24px;
     height: 24px;
-    color: $color-black;
+    color: variables.$color-black;
   }
 }

@@ -1,3 +1,5 @@
+@use "/src/styles/global/variables" as variables;
+
 .successForm {
   display: flex;
   flex-direction: column;
@@ -9,7 +11,7 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
-    color: $color-black;
+    color: variables.$color-black;
     text-align: center;
   }
 
@@ -19,6 +21,6 @@
     font-size: 18px;
     line-height: 24px;
     text-align: center;
-    color: $color-black;
+    color: variables.$color-black;
   }
 }

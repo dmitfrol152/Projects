@@ -14,15 +14,15 @@ export default defineConfig({
       },
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `
-          @import "/src/styles/global/_mixins";
-          @import "/src/styles/global/_variables";
-          @import "/src/styles/global/_visually-hidden";
-        `,
-      },
-    },
-  },
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `
+  //         @import "/src/styles/global/_mixins";
+  //         @import "/src/styles/global/_variables";
+  //         @import "/src/styles/global/_visually-hidden";
+  //       `,
+  //     },
+  //   },
+  // },
 });

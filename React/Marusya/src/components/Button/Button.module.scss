@@ -1,3 +1,6 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .button {
   margin: 0;
   padding: 0;
@@ -15,7 +18,7 @@
     right: 14px;
     pointer-events: all;
     transform: translate(0, -50%) scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &::before {
       content: "";
@@ -24,11 +27,12 @@
       left: 50%;
       width: 14px;
       height: 2px;
-      background-color: $color-disabled;
+      background-color: variables.$color-disabled;
       transform: translate(-50%, -50%) rotate(0);
       opacity: 0;
-      transition: opacity $transition-300, transform $transition-300,
-        background-color $transition-300;
+      transition: opacity variables.$transition-300,
+        transform variables.$transition-300,
+        background-color variables.$transition-300;
     }
 
     &::after {
@@ -38,11 +42,12 @@
       left: 50%;
       width: 14px;
       height: 2px;
-      background-color: $color-disabled;
+      background-color: variables.$color-disabled;
       transform: translate(-50%, -50%) rotate(0);
       opacity: 0;
-      transition: opacity $transition-300, transform $transition-300,
-        background-color $transition-300;
+      transition: opacity variables.$transition-300,
+        transform variables.$transition-300,
+        background-color variables.$transition-300;
     }
 
     &:focus-visible {
@@ -59,7 +64,7 @@
 
       &:before,
       &:after {
-        background-color: $color-border;
+        background-color: variables.$color-border;
       }
     }
   }
@@ -70,22 +75,22 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
-    background-color: $color-btn-primary;
+    color: variables.$color-white;
+    background-color: variables.$color-btn-primary;
     border-radius: 28px;
     transform: scale(1);
-    transition: background-color $transition-300, color $transition-300,
-      transform $transition-300;
+    transition: background-color variables.$transition-300,
+      color variables.$transition-300, transform variables.$transition-300;
 
     &:focus-visible {
       outline: none;
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:hover {
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:active {
@@ -95,8 +100,8 @@
     &:disabled {
       cursor: none;
       pointer-events: none;
-      color: $color-disabled;
-      background-color: $color-btn-disabled;
+      color: variables.$color-disabled;
+      background-color: variables.$color-btn-disabled;
     }
   }
 
@@ -106,22 +111,22 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
-    background-color: $color-bc-secondary;
+    color: variables.$color-white;
+    background-color: variables.$color-bc-secondary;
     border-radius: 28px;
     transform: scale(1);
-    transition: background-color $transition-300, color $transition-300,
-      transform $transition-300;
+    transition: background-color variables.$transition-300,
+      color variables.$transition-300, transform variables.$transition-300;
 
     &:focus-visible {
       outline: none;
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:hover {
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:active {
@@ -131,19 +136,19 @@
     &:disabled {
       cursor: none;
       pointer-events: none;
-      color: $color-disabled;
-      background-color: $color-btn-disable2;
+      color: variables.$color-disabled;
+      background-color: variables.$color-btn-disable2;
     }
   }
 
   &[data-variant="link"] {
-    font-family: $ff-main;
+    font-family: variables.$ff-main;
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white;
+    color: variables.$color-white;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &:focus-visible {
       transform: scale(1.1);
@@ -163,10 +168,10 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
-    color: $color-black;
-    font-family: $ff-main;
+    color: variables.$color-black;
+    font-family: variables.$ff-main;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &:focus-visible {
       transform: scale(1.1);
@@ -191,12 +196,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $color-white;
+    background-color: variables.$color-white;
     border-radius: 50%;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       right: 0;
     }
 
@@ -223,10 +228,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $color-white;
+    background-color: variables.$color-white;
     border-radius: 50%;
     transform: scale(1);
-    transition: transform $transition-300, opacity $transition-300;
+    transition: transform variables.$transition-300,
+      opacity variables.$transition-300;
     opacity: 0;
     pointer-events: none;
 
@@ -245,13 +251,13 @@
   }
 
   &[data-variant="link"] {
-    font-family: $ff-main;
+    font-family: variables.$ff-main;
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white;
+    color: variables.$color-white;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &:focus-visible {
       transform: scale(1.1);
@@ -268,10 +274,10 @@
   }
 
   &[data-variant="profile"] {
-    color: $color-white;
-    font-family: $ff-main;
+    color: variables.$color-white;
+    font-family: variables.$ff-main;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &:focus-visible {
       transform: scale(1.05);
@@ -294,9 +300,10 @@
       height: 1.5px;
       width: 0;
       transform: translateX(-50%);
-      background-color: $color-border-down;
+      background-color: variables.$color-border-down;
       opacity: 0;
-      transition: width $transition-300, opacity $transition-300;
+      transition: width variables.$transition-300,
+        opacity variables.$transition-300;
     }
 
     &.active {
@@ -326,7 +333,7 @@
     width: max-content;
     height: unset;
 
-    @include vp-376 {
+    @include mixins.vp-376 {
       width: 100%;
     }
   }

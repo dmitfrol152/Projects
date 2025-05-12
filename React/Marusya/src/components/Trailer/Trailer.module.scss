@@ -1,17 +1,21 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .trailer {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $color-black-05;
+  background-color: variables.$color-black-05;
   z-index: 10;
   overflow: hidden;
   height: 100%;
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
-  transition: opacity $transition-300, transform $transition-300;
+  transition: opacity variables.$transition-300,
+    transform variables.$transition-300;
 
   &__wrapper {
     position: absolute;
@@ -23,20 +27,20 @@
     align-items: center;
     width: 960px;
     height: 540px;
-    background-color: $color-bc-secondary;
-    border: 1px solid $color-white-05;
+    background-color: variables.$color-bc-secondary;
+    border: 1px solid variables.$color-white-05;
 
-    @include vp-1280 {
+    @include mixins.vp-1280 {
       width: 700px;
       height: 393px;
     }
 
-    @include vp-1024 {
+    @include mixins.vp-1024 {
       width: 500px;
       height: 280px;
     }
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       width: 300px;
       height: 168px;
     }
@@ -45,7 +49,7 @@
   &__close {
     width: 24px;
     height: 24px;
-    color: $color-black;
+    color: variables.$color-black;
     cursor: pointer;
   }
 
@@ -55,7 +59,7 @@
     cursor: pointer;
     z-index: 10;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
     &:focus-visible {
       transform: scale(1.1);
@@ -76,15 +80,15 @@
     bottom: -70px;
     right: -1px;
     height: 70px;
-    background-color: $color-transparent-trailer;
-    color: $color-white;
+    background-color: variables.$color-transparent-trailer;
+    color: variables.$color-white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     line-height: 28px;
-    border: 1px solid $color-white-05;
+    border: 1px solid variables.$color-white-05;
     border-top: transparent;
   }
 
@@ -94,8 +98,8 @@
     top: -70px;
     right: -1px;
     height: 70px;
-    background-color: $color-transparent-trailer;
-    color: $color-border-down;
+    background-color: variables.$color-transparent-trailer;
+    color: variables.$color-border-down;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,7 +107,7 @@
     font-weight: 700;
     font-size: 38px;
     line-height: 42px;
-    border: 1px solid $color-white-05;
+    border: 1px solid variables.$color-white-05;
     border-bottom: transparent;
     text-transform: uppercase;
     letter-spacing: 13px;

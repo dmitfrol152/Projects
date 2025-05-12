@@ -1,7 +1,10 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .header {
   padding: 24px 0;
 
-  @include vp-768 {
+  @include mixins.vp-768 {
     padding: 16px 0;
   }
 
@@ -11,11 +14,11 @@
     justify-content: space-between;
     gap: 80px;
 
-    @include vp-1280 {
+    @include mixins.vp-1280 {
       gap: 40px;
     }
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       padding: 4px 0;
       position: relative;
       gap: 20px;
@@ -28,7 +31,7 @@
     gap: 40px;
     flex-grow: 1;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 20px;
       justify-content: flex-end;
     }

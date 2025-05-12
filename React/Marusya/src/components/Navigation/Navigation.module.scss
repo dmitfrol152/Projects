@@ -1,3 +1,6 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .nav {
   display: flex;
   align-items: center;
@@ -5,16 +8,16 @@
 
   &__links {
     position: relative;
-    font-family: $ff-main;
+    font-family: variables.$ff-main;
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white;
+    color: variables.$color-white;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
     display: block;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       display: none;
     }
 
@@ -45,9 +48,10 @@
     height: 1.5px;
     width: 0;
     transform: translateX(-50%);
-    background-color: $color-border-down;
+    background-color: variables.$color-border-down;
     opacity: 0;
-    transition: width $transition-300, opacity $transition-300;
+    transition: width variables.$transition-300,
+      opacity variables.$transition-300;
   }
 
   &__linksActive {
@@ -64,13 +68,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: $color-white;
+    color: variables.$color-white;
     width: 24px;
     height: 24px;
     transform: scale(1);
-    transition: transform $transition-300;
+    transition: transform variables.$transition-300;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       display: flex;
     }
 

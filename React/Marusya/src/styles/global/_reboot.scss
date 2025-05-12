@@ -1,3 +1,5 @@
+@use './variables' as variables;
+
 *,
 *::after,
 *::before {
@@ -28,9 +30,9 @@ body {
   padding: 0;
   font-size: 16px;
   line-height: 24px;
-  font-family: $ff-main;
-  color: $color-black;
-  background-color: $color-white;
+  font-family: variables.$ff-main;
+  color: variables.$color-black;
+  background-color: variables.$color-white;
 }
 
 .no-scroll {

@@ -1,13 +1,15 @@
+@use './mixins' as mixins;
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 80px;
 
-  @include vp-1280 {
+  @include mixins.vp-1280 {
     padding: 0 40px;
   }
 
-  @include vp-768 {
+  @include mixins.vp-768 {
     padding: 0 20px;
   }
 }

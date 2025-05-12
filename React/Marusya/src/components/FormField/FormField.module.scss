@@ -1,3 +1,5 @@
+@use "/src/styles/global/variables" as variables;
+
 .formField {
   position: relative;
   width: 100%;
@@ -5,35 +7,35 @@
   &__input {
     padding: 16px 16px 16px 52px;
     width: 100%;
-    border: 1px solid $color-black-04;
+    border: 1px solid variables.$color-black-04;
     border-radius: 8px;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: $color-black;
-    transition: border-color $transition-300;
+    color: variables.$color-black;
+    transition: border-color variables.$transition-300;
 
     &::placeholder {
       font-weight: 400;
       font-size: 18px;
       line-height: 24px;
-      color: $color-black-04;
+      color: variables.$color-black-04;
     }
 
     &:focus-visible {
       outline: none;
-      border-color: $color-border;
+      border-color: variables.$color-border;
 
       ~ .formField__icon {
-        color: $color-border;
+        color: variables.$color-border;
       }
     }
 
     &:hover {
-      border-color: $color-border;
+      border-color: variables.$color-border;
 
       ~ .formField__icon {
-        color: $color-border;
+        color: variables.$color-border;
       }
     }
   }
@@ -46,31 +48,31 @@
     display: block;
     width: 24px;
     height: 24px;
-    color: $color-black-04;
-    transition: color $transition-300;
+    color: variables.$color-black-04;
+    transition: color variables.$transition-300;
   }
 
   &__error {
-    color: $color-red;
+    color: variables.$color-red;
   }
 }
 
 .error {
   .formField__icon {
-    color: $color-red;
+    color: variables.$color-red;
   }
   .formField__input {
-    border-color: $color-red;
+    border-color: variables.$color-red;
 
     &:focus-visible {
       ~ .formField__icon {
-        color: $color-red;
+        color: variables.$color-red;
       }
     }
 
     &:hover {
       ~ .formField__icon {
-        color: $color-red;
+        color: variables.$color-red;
       }
     }
   }

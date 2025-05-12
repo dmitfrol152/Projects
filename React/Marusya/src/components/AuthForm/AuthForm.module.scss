@@ -1,17 +1,21 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .authForm {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $color-black-05;
+  background-color: variables.$color-black-05;
   z-index: 10;
   overflow: hidden;
   height: 100%;
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
-  transition: opacity $transition-300, transform $transition-300;
+  transition: opacity variables.$transition-300,
+    transform variables.$transition-300;
 
   &__wrapper {
     padding: 64px 40px;
@@ -25,10 +29,10 @@
     align-items: center;
     width: 420px;
     height: auto;
-    background-color: $color-white;
+    background-color: variables.$color-white;
     border-radius: 24px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       width: 335px;
       padding: 10px;
     }
@@ -39,7 +43,7 @@
     height: 29.5px;
     width: auto;
 
-    @include vp-1280 {
+    @include mixins.vp-1280 {
       margin: 0;
     }
   }
@@ -47,7 +51,7 @@
   &__close {
     width: 24px;
     height: 24px;
-    color: $color-black;
+    color: variables.$color-black;
   }
 }
 

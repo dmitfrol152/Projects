@@ -1,7 +1,10 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
 .movieRandom {
   padding: 32px 0 20px;
 
-  @include vp-768 {
+  @include mixins.vp-768 {
     padding: 0 0 24px;
   }
 
@@ -11,11 +14,11 @@
     gap: 5px;
     align-items: center;
 
-    @include vp-1280 {
+    @include mixins.vp-1280 {
       gap: 16px;
     }
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       display: flex;
       flex-direction: column-reverse;
       gap: 24px;
@@ -32,11 +35,11 @@
     overflow: hidden;
     border-radius: 16px;
 
-    @include vp-1024 {
+    @include mixins.vp-1024 {
       height: 350px;
     }
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       height: 234px;
       width: 100%;
     }
@@ -63,7 +66,7 @@
     justify-content: center;
     gap: 60px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 32px;
     }
   }
@@ -73,7 +76,7 @@
     flex-direction: column;
     gap: 16px;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       gap: 12px;
     }
   }
@@ -84,9 +87,9 @@
     font-weight: 700;
     font-size: 48px;
     line-height: 56px;
-    color: $color-white;
+    color: variables.$color-white;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       font-size: 24px;
       line-height: 32px;
     }
@@ -98,9 +101,9 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: $color-white-07;
+    color: variables.$color-white-07;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       font-size: 18px;
       line-height: 24px;
     }
@@ -112,7 +115,7 @@
     gap: 16px;
     max-width: 538px;
 
-    @include vp-1024 {
+    @include mixins.vp-1024 {
       display: grid;
       grid-template-columns: minmax(100px, 1fr) 68px 68px;
       grid-template-rows: repeat(2, 56px);
@@ -127,7 +130,7 @@
     align-items: center;
     width: 100%;
 
-    @include vp-1024 {
+    @include mixins.vp-1024 {
       grid-column: span 3;
     }
   }
@@ -142,22 +145,22 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
-    background-color: $color-bc-secondary;
+    color: variables.$color-white;
+    background-color: variables.$color-bc-secondary;
     border-radius: 28px;
     transform: scale(1);
-    transition: background-color $transition-300, color $transition-300,
-      transform $transition-300;
+    transition: background-color variables.$transition-300,
+      color variables.$transition-300, transform variables.$transition-300;
 
     &:focus-visible {
       outline: none;
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:hover {
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
     }
 
     &:active {
@@ -167,8 +170,8 @@
     &:disabled {
       cursor: none;
       pointer-events: none;
-      color: $color-disabled;
-      background-color: $color-btn-disable2;
+      color: variables.$color-disabled;
+      background-color: variables.$color-btn-disable2;
     }
   }
 
@@ -195,19 +198,19 @@
   }
 
   &__informationRatingGold {
-    background-color: $color-gold;
+    background-color: variables.$color-gold;
   }
 
   &__informationRatingGreen {
-    background-color: $color-green;
+    background-color: variables.$color-green;
   }
 
   &__informationRatingGray {
-    background-color: $color-gray;
+    background-color: variables.$color-gray;
   }
 
   &__informationRatingRed {
-    background-color: $color-red;
+    background-color: variables.$color-red;
   }
 
   &__informationRatingWhite {
@@ -223,7 +226,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white;
+    color: variables.$color-white;
   }
 
   &__informationYear,
@@ -232,9 +235,9 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    color: $color-white-07;
+    color: variables.$color-white-07;
 
-    @include vp-768 {
+    @include mixins.vp-768 {
       font-size: 14px;
       line-height: 20px;
     }
