@@ -28,6 +28,10 @@ export const MovieInfoHero: FC<IMovieProps> = ({ data, loading }) => {
   const [imageLoading, setImageLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [dataProfile]);
+
+  useEffect(() => {
     if (isVisibleTrailer === true) {
       document.body.classList.add("no-scroll");
     } else {

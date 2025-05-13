@@ -9,32 +9,38 @@ import useSearchMovie from "../../hooks/useSearchMovie";
 import { Link, useSearchParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import emptyPoster from "../../assets/images/emptyPoster/empty-poster.png";
+import useDebounce from "../../hooks/useDebounce";
 
 export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [inputValue, setInputValue] = useState(searchParams.get("title") || "");
+  const debouncedSearchValue = useDebounce(inputValue, 500);
   const { data, isLoading, isError } = useSearchMovie();
   const [searchMobileVisible, setSearchMobileVisible] =
     useState<boolean>(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const genres = searchParams.get("genres") || "";
-  const search = searchParams.get("title") || "";
 
-  const searchTap = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValueSearch = event.target.value;
+  useEffect(() => {
     const params: Record<string, string> = {};
 
     if (genres) {
       params.genres = genres;
     }
 
-    if (newValueSearch) {
-      params.title = newValueSearch.toLowerCase();
+    if (debouncedSearchValue) {
+      params.title = debouncedSearchValue.toLowerCase();
     }
 
     setSearchParams(params);
+  }, [debouncedSearchValue, genres, setSearchParams]);
+
+  const searchTap = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
   };
 
   const handleDeleteSearchValue = () => {
+    setInputValue("");
     const params: Record<string, string> = {};
 
     if (genres) {
@@ -54,6 +60,14 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
         const newParams = new URLSearchParams(searchParams);
         newParams.delete("title");
         setSearchParams(newParams);
+        setInputValue("");
+        // const params: Record<string, string> = {};
+    
+        // if (genres) {
+        //   params.genres = genres;
+        // }
+    
+        // setSearchParams(params);
       }
 
       const searchButton = document.querySelector(
@@ -73,7 +87,7 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [searchParams, setSearchParams, searchMobileVisible]);
+  }, [searchMobileVisible, searchParams, setSearchParams]);
 
   function handleSearchVisibleMobile() {
     setSearchMobileVisible((prev) => !prev);
@@ -90,14 +104,14 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
           className={styles.customInput__field}
           type={type}
           aria-label={label}
-          value={search}
+          value={inputValue}
           placeholder={placeholder}
           onChange={searchTap}
         />
         <SearchIcon
           aria-label="Сбросить поиск"
           className={`${styles.customInput__icon} ${
-            search !== "" ? styles.customInput__fill : ""
+            inputValue !== "" ? styles.customInput__fill : ""
           }`}
         />
         <Button
@@ -105,10 +119,10 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
           title={null}
           variant="reset"
           size="small"
-          visible={search !== ""}
+          visible={inputValue !== ""}
           onClick={handleDeleteSearchValue}
         />
-        {search && (
+        {inputValue && (
           <div ref={searchRef}>
             {isLoading && (
               <ul className={styles.search__block}>
@@ -142,7 +156,9 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
                         <img
                           className={styles.search__blockImage}
                           src={
-                            movie.posterUrl !== null ? movie.posterUrl : emptyPoster
+                            movie.posterUrl !== null
+                              ? movie.posterUrl
+                              : emptyPoster
                           }
                           alt={`Постер к фильму: ${movie.title}`}
                         />

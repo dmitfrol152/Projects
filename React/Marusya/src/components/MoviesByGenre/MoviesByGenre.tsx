@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { IGenresProps } from "./types";
 import styles from "./MoviesByGenre.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,7 +18,18 @@ export const MoviesByGenre: FC<IGenresProps> = ({
   isLoadingMore,
   disabledBtn,
 }) => {
-  const [imageLoading, setImageLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState<{ [key: number]: boolean }>({});
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [genre]);
+
+  const handleImageLoad = (id: number) => {
+    setLoadedImages(prev => ({
+      ...prev,
+      [id]: true
+    }));
+  };
 
   // Skeleton
   if (loading || !data) {
@@ -91,8 +102,16 @@ export const MoviesByGenre: FC<IGenresProps> = ({
                           : `${styles.moviesByGenre__card} ${styles.moviesByGenre__cardEmpty}`
                       }
                     >
-                      {imageLoading && (
-                        <ClipLoader color="#dc5dfc" size={100} />
+                      {!loadedImages[movie.id] && (
+                        <div style={{ 
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          transform: 'translate(-50%, -50%)',
+                          zIndex: 1
+                        }}>
+                          <ClipLoader color="#dc5dfc" size={100} />
+                        </div>
                       )}
                       <img
                         className={styles.moviesByGenre__cardPoster}
@@ -102,7 +121,7 @@ export const MoviesByGenre: FC<IGenresProps> = ({
                             : emptyPoster
                         }
                         alt={`Постер к фильму: ${movie.title}`}
-                        onLoad={() => setImageLoading(false)}
+                        onLoad={() => handleImageLoad(movie.id)}
                       />
                     </Link>
                   </li>

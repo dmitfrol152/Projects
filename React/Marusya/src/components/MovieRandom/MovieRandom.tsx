@@ -44,6 +44,10 @@ export const MovieRandom: FC<IMovieRandomProps> = ({
     }
   }, [isVisibleTrailer]);
 
+  useEffect(() => {
+    setImageLoading(true);
+  }, [data?.id]);
+
   function handleVisibleTrailer() {
     setIsVisibleTrailer(true);
   }
