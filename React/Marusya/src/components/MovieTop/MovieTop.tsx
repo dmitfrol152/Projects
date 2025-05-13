@@ -62,7 +62,17 @@ export const MovieTop: FC<IMovieTopProps> = ({ data, loading }) => {
                         }
                       >
                         {imageLoading && (
-                          <ClipLoader color="#dc5dfc" size={100} />
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "50%",
+                              left: "50%",
+                              transform: "translate(-50%, -50%)",
+                              zIndex: 1,
+                            }}
+                          >
+                            <ClipLoader color="#dc5dfc" size={100} />
+                          </div>
                         )}
                         <img
                           className={

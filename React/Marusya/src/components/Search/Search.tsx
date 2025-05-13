@@ -32,23 +32,8 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
       params.title = debouncedSearchValue.toLowerCase();
     }
 
-    setSearchParams(params);
+    setSearchParams(params, { replace: true });
   }, [debouncedSearchValue, genres, setSearchParams]);
-
-  const searchTap = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleDeleteSearchValue = () => {
-    setInputValue("");
-    const params: Record<string, string> = {};
-
-    if (genres) {
-      params.genres = genres;
-    }
-
-    setSearchParams(params);
-  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -59,14 +44,14 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
       ) {
         const newParams = new URLSearchParams(searchParams);
         newParams.delete("title");
-        setSearchParams(newParams);
+        setSearchParams(newParams, { replace: true });
         setInputValue("");
         // const params: Record<string, string> = {};
-    
+
         // if (genres) {
         //   params.genres = genres;
         // }
-    
+
         // setSearchParams(params);
       }
 
@@ -88,6 +73,21 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [searchMobileVisible, searchParams, setSearchParams]);
+
+  const searchTap = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleDeleteSearchValue = () => {
+    setInputValue("");
+    const params: Record<string, string> = {};
+
+    if (genres) {
+      params.genres = genres;
+    }
+
+    setSearchParams(params);
+  };
 
   function handleSearchVisibleMobile() {
     setSearchMobileVisible((prev) => !prev);
@@ -148,7 +148,10 @@ export const Search: FC<ISearchProps> = ({ type, label, placeholder }) => {
                 {data.map((movie) => (
                   <li key={movie.id} className={styles.search__blockItem}>
                     <Link
-                      onClick={handleSearchVisibleMobile}
+                      onClick={() => {
+                        handleSearchVisibleMobile();
+                        handleDeleteSearchValue();
+                      }}
                       to={`/movie/${movie.id}`}
                       className={styles.search__blockLink}
                     >
