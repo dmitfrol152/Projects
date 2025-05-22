@@ -1,0 +1,18 @@
+@use "/src/styles/global/variables" as variables;
+
+.todosFilter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  &__btn {
+    cursor: pointer;
+    color: variables.$color-black;
+    font-weight: 700;
+  }
+
+  &__btnActive {
+    border: 1px solid variables.$color-pink;
+    cursor: auto;
+  }
+}
