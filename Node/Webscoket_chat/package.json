@@ -1,0 +1,26 @@
+{
+  "name": "11_websocket",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie": "^1.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nanoid": "^5.1.5",
+    "ws": "^8.18.2"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.9"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0"
+  }
+}

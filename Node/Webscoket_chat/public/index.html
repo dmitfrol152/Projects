@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/css/uikit.min.css" />
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    #chat {
+      padding: 20px;
+      border: 1px solid #eee;
+      min-height: 200px;
+      max-height: 500px;
+      width: 80%;
+      max-width: 800px;
+      overflow-y: auto;
+    }
+
+    .name {
+      color: green;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+
+    .message {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="login">
+    <fieldset class="uk-fieldset">
+      <div class="uk-margin">
+        <input class="uk-input username" type="text" placeholder="Username">
+      </div>
+      <div class="uk-margin">
+        <input class="uk-input password" type="password" placeholder="Password">
+      </div>
+    </fieldset>
+    <button class="uk-button uk-button-primary">Login</button>
+  </form>
+  <div id="chat" style="display: none;"></div>
+  <div id="new-message-container" class="uk-margin" style="display: none;">
+    <input id="new-message" class="uk-input" type="text">
+  </div>
+
+  <script type="module" src="./client.js"></script>
+</body>
+
+</html>
