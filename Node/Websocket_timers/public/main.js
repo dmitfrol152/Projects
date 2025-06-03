@@ -89,8 +89,7 @@
           .join(":");
       },
       initSocket() {
-        const wsProto = location.protocol === "https" ? "wss" : "ws";
-        this.socket = io(`${wsProto}://${location.host}`, {
+        this.socket = io('projects-production-dada.up.railway.app', {
           auth: {
             sessionId: window.AUTH_TOKEN
           }
