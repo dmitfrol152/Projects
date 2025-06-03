@@ -41,6 +41,7 @@
       desc: "",
       activeTimers: [],
       oldTimers: [],
+      socket: null
     },
     methods: {
       fetchActiveTimers() {
@@ -87,44 +88,37 @@
           .map((x) => (x < 10 ? "0" : "") + x)
           .join(":");
       },
+      initSocket() {
+        const wsProto = location.protocol === "https" ? "wss" : "ws";
+        this.socket = io(`${wsProto}://${location.host}`, {
+          auth: {
+            sessionId: window.AUTH_TOKEN
+          }
+        });
+
+        this.socket.on("active_timers", (timers) => {
+          this.activeTimers = timers;
+        });
+
+        this.socket.on("old_timers", (timers) => {
+          this.oldTimers = timers;
+        });
+
+        this.socket.on("connect_error", (error) => {
+          console.error("Socket connection error:", error);
+          alert("Ошибка подключения к серверу");
+        });
+      }
     },
     created() {
       this.fetchActiveTimers();
-      setInterval(() => {
-        this.fetchActiveTimers();
-      }, 1000);
       this.fetchOldTimers();
-
-      const wsProto = location.protocol === "https" ? "wss" : "ws";
-      const client = new WebSocket(`${wsProto}://${location.host}`);
-
-      client.addEventListener("message", async (message) => {
-        let dataStr;
-        if (message.data instanceof Blob) {
-          dataStr = await message.data.text();
-        } else {
-          dataStr = message.data;
-        }
-
-        try {
-          const data = JSON.parse(dataStr);
-          if (data.type === "active_timers") {
-            this.activeTimers = data.message;
-          } else if (data.type === "old_timers") {
-            this.oldTimers = data.message;
-          }
-        } catch (err) {
-          console.error(err);
-        }
-      });
-
-      fetchJson("/api/timers?isActive=true").then((timers) => {
-        this.activeTimers = timers;
-      });
-
-      fetchJson("/api/timers?isActive=false").then((timers) => {
-        this.oldTimers = timers;
-      });
+      this.initSocket();
     },
+    beforeDestroy() {
+      if (this.socket) {
+        this.socket.disconnect();
+      }
+    }
   });
 })();

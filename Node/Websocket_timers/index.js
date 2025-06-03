@@ -7,13 +7,18 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const crypto = require("crypto");
 const http = require("http");
-const { WebSocketServer } = require("ws");
+const { Server } = require("socket.io");
 const { MongoClient, ObjectId } = require("mongodb");
-const cookie = require("cookie");
 
 const clientPromise = new MongoClient(process.env.DB_URL);
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+  }
+});
 
 nunjucks.configure("views", {
   autoescape: true,
@@ -42,11 +47,6 @@ app.use(async (req, res, next) => {
     next(err);
   }
 });
-
-const server = http.createServer(app);
-const wss = new WebSocketServer({ noServer: true });
-
-const clients = new Map();
 
 const gatHash = (pas) => {
   const hash = crypto.createHash("sha256");
@@ -235,6 +235,45 @@ app.get("/api/timers", async (req, res) => {
   }
 });
 
+io.use(async (socket, next) => {
+  try {
+    const sessionId = socket.handshake.auth.sessionId;
+    if (!sessionId) {
+      return next(new Error("Unauthorized"));
+    }
+
+    const client = await clientPromise;
+    const db = client.db("users");
+    const user = await findUserBySessionId(db, sessionId);
+
+    if (!user) {
+      return next(new Error("Unauthorized"));
+    }
+
+    socket.userId = user._id;
+    next();
+  } catch (error) {
+    next(new Error("Internal Server Error"));
+  }
+});
+
+io.on("connection", async (socket) => {
+  const userId = socket.userId;
+  console.log("Пользователь подключился:", userId);
+
+  try {
+    await sendOldTimers(userId);
+    await sendUpdatedTimers(userId);
+    await sendActiveTimers(userId);
+  } catch (err) {
+    console.error("Ошибка при отправке таймеров:", err);
+  }
+
+  socket.on("disconnect", () => {
+    console.log("Пользователь отключился:", userId);
+  });
+});
+
 const sendUpdatedTimers = async (userId) => {
   try {
     const client = await clientPromise;
@@ -249,14 +288,7 @@ const sendUpdatedTimers = async (userId) => {
       progress: Number(Date.now() - timer.start),
     }));
 
-    const fullMessage = JSON.stringify({
-      type: "active_timers",
-      message: formattedActiveTimers,
-    });
-
-    for (const client of clients.values()) {
-      client.send(fullMessage);
-    }
+    io.emit("active_timers", formattedActiveTimers);
   } catch (err) {
     console.error("Ошибка при отправке активных таймеров:", err);
   }
@@ -277,14 +309,7 @@ const sendOldTimers = async (userId) => {
       duration: Number(timer.duration),
     }));
 
-    const fullMessage = JSON.stringify({
-      type: "old_timers",
-      message: formattedOldTimers,
-    });
-
-    for (const client of clients.values()) {
-      client.send(fullMessage);
-    }
+    io.emit("old_timers", formattedOldTimers);
   } catch (err) {
     console.error("Ошибка при отправке таймеров:", err);
   }
@@ -312,14 +337,7 @@ const sendActiveTimers = async (userId) => {
           progress: Number(Date.now() - timer.start),
         }));
 
-        const fullMessage = JSON.stringify({
-          type: "active_timers",
-          message: formattedActiveTimers,
-        });
-
-        for (const client of clients.values()) {
-          client.send(fullMessage);
-        }
+        io.emit("active_timers", formattedActiveTimers);
       } catch (err) {
         console.error("Ошибка при отправке активных таймеров:", err);
       }
@@ -403,51 +421,6 @@ app.post("/api/timers/:id/stop", async (req, res) => {
   await sendUpdatedTimers(user._id);
   await sendOldTimers(user._id);
   res.json(modifiedTimer);
-});
-
-wss.on("connection", async (ws, req) => {
-  const userId = req.userId;
-  clients.set(userId, ws);
-
-  try {
-    await sendOldTimers(userId);
-    await sendUpdatedTimers(userId);
-    await sendActiveTimers(userId);
-  } catch (err) {
-    console.error("Ошибка при отправке таймеров:", err);
-  }
-
-  ws.on("close", () => {
-    clients.delete(userId);
-  });
-});
-
-server.on("upgrade", async (req, socket, head) => {
-  const cookies = cookie.parse(req.headers["cookie"]);
-  const token = cookies && cookies["sessionId"];
-
-  try {
-    const client = await clientPromise;
-    req.db = client.db("users");
-    const user = await findUserBySessionId(req.db, token);
-    const userId = token && user._id;
-
-    if (!userId) {
-      socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
-      socket.destroy();
-      return;
-    }
-
-    req.userId = user._id;
-
-    wss.handleUpgrade(req, socket, head, (ws) => {
-      wss.emit("connection", ws, req);
-    });
-  } catch (error) {
-    console.error(error);
-    socket.write("HTTP/1.1 500 Internal Server Error\r\n\r\n");
-    socket.destroy();
-  }
 });
 
 const port = process.env.PORT || 3000;
