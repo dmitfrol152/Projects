@@ -21,8 +21,25 @@ const db = knex({
   connection: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
+  },
+  pool: {
+    min: 0,
+    max: 7,
+    createTimeoutMillis: 30000,
+    acquireTimeoutMillis: 30000,
+    idleTimeoutMillis: 30000,
+    reapIntervalMillis: 1000,
+    createRetryIntervalMillis: 100,
   }
 });
+
+db.raw('SELECT 1')
+  .then(() => {
+    console.log('Database connection successful');
+  })
+  .catch((err) => {
+    console.error('Database connection failed:', err);
+  });
 
 nunjucks.configure("views", {
   autoescape: true,
