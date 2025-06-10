@@ -14,6 +14,8 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
 const db = knex({
   client: "pg",
   connection: process.env.DB_CONNECTIONSTRING,
@@ -87,10 +89,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: nanoid(),
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: { secure: process.env.NODE_ENV === 'production' },
   }),
 );
 app.use(passport.initialize());
@@ -100,7 +102,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/github/callback",
+      callbackURL: `${BASE_URL}/auth/github/callback`,
       scope: ["read:user"],
     },
     async function (accessToken, refreshToken, profile, cb) {
@@ -445,5 +447,5 @@ app.get("/auth/github/callback", passport.authenticate("github", { failureRedire
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
-  console.log(`   Listening on http://localhost:${port}`);
+  console.log(`   Listening on ${BASE_URL}`);
 });
