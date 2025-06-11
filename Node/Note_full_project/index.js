@@ -172,16 +172,20 @@ app.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   const user = await findUserByUsername(username);
   if (!user) {
+    console.log("Login failed: User not found for username", username);
     return res.redirect("/?authError=true");
   }
   const hashText = getHash(password);
   if (hashText !== user.password) {
+    console.log("Login failed: Incorrect password for user", username);
     return res.redirect("/?authError=true");
   }
   req.login(user, (err) => {
     if (err) {
+      console.error("Login error during req.login:", err);
       return next(err);
     }
+    console.log("User logged in successfully. Redirecting to /dashboard. User ID:", user.id);
     return res.redirect("/dashboard");
   });
 });
@@ -190,6 +194,7 @@ app.post("/signup", async (req, res, next) => {
   const { username, password } = req.body;
   const user = await findUserByUsername(username);
   if (user || !password || !username) {
+    console.log("Signup failed: User already exists or invalid input. Username:", username);
     return res.redirect("/?authError=true");
   }
   const hashText = getHash(password);
@@ -204,8 +209,10 @@ app.post("/signup", async (req, res, next) => {
 
   req.login(createdUser, (err) => {
     if (err) {
+      console.error("Signup error during req.login:", err);
       return next(err);
     }
+    console.log(`User signed up successfully. Redirecting to /dashboard#/note/${demoNote.id}. User ID: ${createdUser.id}`);
     return res.redirect(`/dashboard#/note/${demoNote.id}`);
   });
 });
@@ -223,7 +230,9 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/dashboard", async (req, res) => {
+  console.log("Accessing /dashboard route. req.user:", req.user ? req.user.username : "undefined");
   if (!req.user) {
+    console.log("User not authenticated on /dashboard. Redirecting to /.");
     return res.redirect("/");
   }
   res.render("dashboard", { user: req.user });
