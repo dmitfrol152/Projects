@@ -9,6 +9,7 @@ import GitHubStrategy from "passport-github";
 import passport from "passport";
 import session from "express-session";
 import knex from "knex";
+import connectPgSimple from "connect-pg-simple";
 
 dotenv.config();
 const app = express();
@@ -113,6 +114,10 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: { secure: process.env.NODE_ENV === 'production' },
+    store: new connectPgSimple.Store({
+      knex: db,
+      tableName: 'sessions',
+    }),
   }),
 );
 app.use(passport.initialize());
