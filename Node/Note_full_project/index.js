@@ -114,7 +114,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: { secure: process.env.NODE_ENV === 'production' },
-    store: new connectPgSimple.Store({
+    store: new (connectPgSimple(session))({
       knex: db,
       tableName: 'sessions',
     }),
