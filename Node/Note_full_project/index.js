@@ -15,6 +15,8 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
+app.set("trust proxy", 1);
+
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 const db = knex({
