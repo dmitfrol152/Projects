@@ -113,7 +113,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: process.env.NODE_ENV === 'production' },
+    cookie: { secure: process.env.NODE_ENV === 'production', sameSite: 'none' },
     store: new (connectPgSimple(session))({
       knex: db,
       tableName: 'sessions',
