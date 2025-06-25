@@ -1,0 +1,1 @@
+export { UserInfoComponent } from "./UserInfoComponent";

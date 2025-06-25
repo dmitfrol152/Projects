@@ -1,0 +1,18 @@
+@use "/src/styles/global/variables" as variables;
+
+.userPage {
+  &__error {
+    padding: 381px 0 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__errorText {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: variables.$color-black;
+  }
+}

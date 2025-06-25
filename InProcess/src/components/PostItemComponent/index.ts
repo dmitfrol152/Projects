@@ -1,0 +1,1 @@
+export { PostItemComponent } from "./PostItemComponent";

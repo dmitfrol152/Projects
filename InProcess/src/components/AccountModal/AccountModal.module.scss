@@ -1,0 +1,38 @@
+@use "/src/styles/global/variables" as variables;
+
+.accountModal {
+  padding: 8px;
+
+  position: absolute;
+  top: 30px;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  background-color: variables.$color-white;
+  border-radius: 2px;
+
+  &__link {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 183%;
+    color: variables.$color-black;
+    transition: transform variables.$transition-300;
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.1);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1.05);
+    }
+  }
+}

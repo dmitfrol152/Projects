@@ -1,0 +1,1 @@
+export { HeroSecond } from "./HeroSecond";

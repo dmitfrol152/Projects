@@ -1,0 +1,24 @@
+@use "/src/styles/global/variables" as variables;
+
+.logo {
+  transform: scale(1);
+  transition: transform variables.$transition-300;
+
+  &:focus-visible {
+    outline: none;
+    transform: scale(1.05);
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1.025);
+  }
+
+  &__image {
+    width: auto;
+    height: 41px;
+  }
+}

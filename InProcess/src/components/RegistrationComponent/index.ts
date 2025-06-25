@@ -1,0 +1,1 @@
+export { RegistrationComponent } from "./RegistrationComponent";

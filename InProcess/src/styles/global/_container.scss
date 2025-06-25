@@ -1,0 +1,20 @@
+// @use "./mixins" as mixins;
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 375px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+
+  // @include mixins.vp-1280 {
+  //   padding: 0 40px;
+  // }
+
+  // @include mixins.vp-768 {
+  //   padding: 0 20px;
+  // }
+}

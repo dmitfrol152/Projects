@@ -1,0 +1,20 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  padding: 381px 0 60px;
+
+  &__list {
+    margin: 0 0 60px;
+    padding: 0;
+    list-style-type: none;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 30px;
+  }
+
+  &__item {
+    min-height: 552px;
+  }
+}

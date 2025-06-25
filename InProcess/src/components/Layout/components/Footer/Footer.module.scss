@@ -1,0 +1,51 @@
+@use "/src/styles/global/variables" as variables;
+
+.footer {
+  padding: 10px 0;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__link {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    transform: scale(1);
+    color: variables.$color-orange;
+    border: 1.5px solid variables.$color-orange-dark;
+    border-radius: 8px;
+    transition: transform variables.$transition-300,
+      color variables.$transition-300, border-color variables.$transition-300;
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.05);
+      color: variables.$color-green;
+      border-color: variables.$color-green;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      color: variables.$color-green;
+      border-color: variables.$color-green;
+    }
+
+    &:active {
+      transform: scale(1.025);
+      color: variables.$color-green;
+      border-color: variables.$color-green;
+    }
+  }
+}
