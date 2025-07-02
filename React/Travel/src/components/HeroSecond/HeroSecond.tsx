@@ -1,6 +1,6 @@
 import { useState } from "react";
-import HeroImage from "../../assets/images/hero/Hero.jpg";
-import HeroImage2x from "../../assets/images/hero/Hero@2x.jpg";
+import HeroImage from "../../assets/images/hero/hero.jpg";
+import HeroImage2x from "../../assets/images/hero/hero@2x.jpg";
 import styles from "./HeroSecond.module.scss";
 import { FadeLoader } from "react-spinners";
 
