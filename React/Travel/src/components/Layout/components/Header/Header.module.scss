@@ -1,0 +1,21 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+
+  &__wrapper {
+    padding: 29px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid variables.$color-white-06;
+
+    @include mixins.vp-768 {
+      flex-direction: column;
+    }
+  }
+}

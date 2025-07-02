@@ -1,0 +1,136 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.infoPost {
+  display: flex;
+  flex-direction: column;
+  padding: 180px 0 60px;
+  flex-grow: 1;
+
+  @include mixins.vp-768 {
+    padding: 130px 0 60px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: variables.$color-white;
+    flex-grow: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid variables.$color-gray-light;
+  }
+
+  &__photo {
+    position: relative;
+    height: 450px;
+    width: 100%;
+  }
+
+  &__photoImg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__inner {
+    padding: 30px 102px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include mixins.vp-1024 {
+      padding: 30px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__infoTitle {
+    margin: 0 0 15px 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 100%;
+    color: variables.$color-black;
+  }
+
+  &__infoDescription {
+    margin: 0 0 50px 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: variables.$color-black;
+  }
+
+  &__infoList {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__infoItemTitle {
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: variables.$color-black;
+  }
+
+  &__infoItemCreated {
+    margin: 0 0 5px 0;
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: variables.$color-gray;
+  }
+
+  &__infoItemDescription {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: variables.$color-black;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    @include mixins.vp-768 {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__buttonsBack {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__buttonsText {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 13px;
+    color: variables.$color-orange;
+    transition: color variables.$transition-300;
+  }
+
+  &__buttonsSvg {
+    width: 24px;
+    height: 24px;
+    color: variables.$color-orange;
+    transition: color variables.$transition-300;
+  }
+}

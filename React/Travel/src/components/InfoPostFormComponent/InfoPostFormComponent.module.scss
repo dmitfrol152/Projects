@@ -1,0 +1,98 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.review {
+  display: flex;
+  flex-direction: column;
+  padding: 180px 0 60px;
+  flex-grow: 1;
+
+  @include mixins.vp-768 {
+    padding: 130px 0 60px;
+  }
+
+  &__form {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: variables.$color-white;
+    flex-grow: 1;
+    border-radius: 10px;
+    border: 1px solid variables.$color-gray-light;
+  }
+
+  &__formWrapper {
+    position: relative;
+    max-width: 695px;
+    width: 100%;
+  }
+
+  &__formTitle {
+    margin: 0 0 50px 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 100%;
+    color: variables.$color-black;
+    text-align: center;
+  }
+
+  &__formInputs {
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+  }
+
+  &__formButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+
+    @include mixins.vp-768 {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__formError {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: variables.$color-red;
+    text-align: center;
+  }
+
+  &__formButtonsBack {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__formButtonsText {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 13px;
+    color: variables.$color-orange;
+    transition: color variables.$transition-300;
+  }
+
+  &__formButtonsSvg {
+    width: 24px;
+    height: 24px;
+    color: variables.$color-orange;
+    transition: color variables.$transition-300;
+  }
+}

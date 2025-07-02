@@ -1,7 +1,0 @@
-@use "./variables" as variables;
-
-@mixin vp-1440 {
-  @media (max-width: variables.$vp-big) {
-    @content;
-  }
-}

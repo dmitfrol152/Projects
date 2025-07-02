@@ -1,0 +1,1 @@
+export { InfoPostFormComponent } from "./InfoPostFormComponent";

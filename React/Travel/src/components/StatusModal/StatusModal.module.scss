@@ -1,0 +1,55 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.statusModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: variables.$color-black-05;
+
+  @include mixins.vp-768 {
+    padding: 0 20px;
+  }
+
+  &__modal {
+    position: relative;
+    margin: 282px 0 0;
+    padding: 45px 60px;
+    max-width: 695px;
+    width: 100%;
+    background-color: variables.$color-white;
+    border-radius: 20px;
+    border: 1px solid variables.$color-gray-light;
+  }
+
+  &__modalTitle {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+    color: variables.$color-black;
+  }
+
+  &__modalBtn {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 21px;
+    height: 24px;
+  }
+
+  &__modalSvg {
+    top: 9px;
+    right: 9px;
+    width: 21px;
+    height: 24px;
+    color: variables.$color-black;
+  }
+}

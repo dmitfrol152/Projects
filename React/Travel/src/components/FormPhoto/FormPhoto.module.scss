@@ -1,0 +1,66 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.customFileInput {
+  position: relative;
+  width: max-content;
+
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @include mixins.vp-768 {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: start;
+    }
+  }
+
+  &__field {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__labelInner {
+    padding: 5px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: variables.$color-white;
+    border: 1px solid variables.$color-gray-middle;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  &__labelSvg {
+    width: 14px;
+    height: 14px;
+    color: variables.$color-black-025;
+  }
+
+  &__labelText,
+  &__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: variables.$color-black;
+  }
+
+  &__error {
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: variables.$color-red;
+  }
+}

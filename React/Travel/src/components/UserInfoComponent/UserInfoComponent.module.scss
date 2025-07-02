@@ -1,0 +1,127 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 180px 0 60px;
+  flex-grow: 1;
+
+  @include mixins.vp-768 {
+    padding: 130px 0 60px;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 30px;
+
+    @include mixins.vp-768 {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__image {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__photo {
+    position: relative;
+    height: 240px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  &__photoImg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__title {
+    margin: 0 0 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  &__titleText {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 100%;
+    color: variables.$color-black;
+  }
+
+  &__country,
+  &__city,
+  &__bio {
+    margin: 0 0 5px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__city {
+    margin: 0 0 30px 0;
+  }
+
+  &__countryTitle,
+  &__cityTitle,
+  &__bioTitle {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: variables.$color-black-085;
+  }
+
+  &__countryText,
+  &__cityText,
+  &__bioText {
+    display: block;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    color: variables.$color-black;
+  }
+
+  &__svg {
+    width: 32px;
+    height: 32px;
+    color: variables.$color-gray-edit;
+  }
+
+  &__photoBlock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__photoSvg {
+    width: 32px;
+    height: 32px;
+    color: variables.$color-orange;
+  }
+
+  &__photoText {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    color: variables.$color-orange;
+    text-underline-offset: 3px;
+  }
+}
