@@ -40,6 +40,10 @@ export const RegistrationComponent = () => {
   const emptyValue = !emailValue || !passwordValue || !confirmPasswordValue;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (emptyValue !== null) {
       setError(null);
     }

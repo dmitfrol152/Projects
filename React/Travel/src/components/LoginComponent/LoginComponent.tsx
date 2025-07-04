@@ -38,6 +38,10 @@ export const LoginComponent = () => {
   const emptyValue = !emailValue || !passwordValue;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (errorValue) {
       setErrorValue(false);
     }
