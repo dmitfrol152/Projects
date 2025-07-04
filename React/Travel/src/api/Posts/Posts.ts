@@ -8,10 +8,11 @@ import {
   ReviewDataResponseProps,
   ReviewIdProps,
 } from "./types";
+import { BASE_URL } from "../../constants/api";
 
 // get posts
 export function fetchPostList(): Promise<PostsList> {
-  return fetch(`/api/posts`)
+  return fetch(`${BASE_URL}/posts`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Ошибка получения данных с сервера");
@@ -36,7 +37,7 @@ export function fetchPostList(): Promise<PostsList> {
 
 // get info post
 export function fetchInfoPost(postId: string): Promise<PostInfoProps> {
-  return fetch(`/api/posts/${postId}`)
+  return fetch(`${BASE_URL}/posts/${postId}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Ошибка получения данных с сервера");
@@ -64,7 +65,7 @@ export function fetchAddReview(
   postId: ReviewIdProps,
   data: ReviewDataProps
 ): Promise<ReviewDataResponseProps> {
-  return fetch(`/api/posts/${postId.postId}/comments`, {
+  return fetch(`${BASE_URL}/posts/${postId.postId}/comments`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -81,7 +82,7 @@ export function fetchAddReview(
 
 // add post
 export function fetchAddPost(data: FormData): Promise<PostInfoProps> {
-  return fetch("/api/posts", {
+  return fetch(`${BASE_URL}/posts`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

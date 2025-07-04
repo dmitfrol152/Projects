@@ -6,12 +6,13 @@ import {
   UserDataProps,
   UserSchema,
 } from "./types";
+import { BASE_URL } from "../../constants/api";
 
 // check user
 export function fetchUser() {
   const token = localStorage.getItem("token");
 
-  return fetch("/api/user", {
+  return fetch(`${BASE_URL}/user`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -31,7 +32,7 @@ export function fetchUser() {
 
 // logout user
 export function logoutUser() {
-  return fetch("/api/logout", {
+  return fetch(`${BASE_URL}/logout`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -41,7 +42,7 @@ export function logoutUser() {
 
 // login user
 export function loginUser(userData: UserDataProps): Promise<void> {
-  return fetch("/api/login", {
+  return fetch(`${BASE_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -58,7 +59,7 @@ export function loginUser(userData: UserDataProps): Promise<void> {
 
 // registration user
 export function registrationUser(userData: UserDataProps): Promise<void> {
-  return fetch("/api/register", {
+  return fetch(`${BASE_URL}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -75,7 +76,7 @@ export function registrationUser(userData: UserDataProps): Promise<void> {
 
 // edit user
 export function editUser(editUserData: FormData): Promise<EditUserProps> {
-  return fetch("/api/user", {
+  return fetch(`${BASE_URL}/user`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -93,7 +94,7 @@ export function editUser(editUserData: FormData): Promise<EditUserProps> {
 export function editPasswordUser(
   editPasswordUserData: EditPasswordUserProps
 ): Promise<EditPasswordUserReturnProps> {
-  return fetch("/api/user/password", {
+  return fetch(`${BASE_URL}/user/password`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
