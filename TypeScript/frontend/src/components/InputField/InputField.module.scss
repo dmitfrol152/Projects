@@ -1,0 +1,38 @@
+@use "/src/styles/global/variables" as variables;
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid variables.$color-gray-text;
+    border-radius: 10px;
+    transition: border-color variables.$transition-300;
+
+    &::placeholder {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: variables.$color-gray-text;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: variables.$color-orange;
+    }
+
+    &:hover {
+      border-color: variables.$color-orange;
+    }
+  }
+
+  &__error {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: variables.$color-red;
+  }
+}

@@ -1,0 +1,75 @@
+@use "/src/styles/global/variables" as variables;
+
+.tracksFavorite {
+  margin: 0 0 0 46px;
+  padding: 35px 0 83px;
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__tableTitle {
+    margin: 0 0 22px 0;
+    text-align: start;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 100%;
+    color: variables.$color-black-text;
+  }
+
+  &__tableSvg {
+    width: 16px;
+    height: 16px;
+    color: variables.$color-gray-text;
+  }
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  tbody tr {
+    border-top: 1px solid variables.$color-gray-logo;
+  }
+
+  tbody tr:last-child {
+    border-bottom: 1px solid variables.$color-gray-logo;
+  }
+
+  th,
+  td {
+    text-align: left;
+  }
+
+  th:last-child {
+    text-align: center;
+  }
+
+  tr {
+    display: grid;
+    grid-template-columns:
+      40px 1fr minmax(200px, 262px) minmax(150px, 195px)
+      143px;
+  }
+
+  th {
+    padding: 8px;
+    height: 32px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.09px;
+    text-transform: uppercase;
+    color: variables.$color-gray-text;
+  }
+
+  td {
+    display: flex;
+    align-items: center;
+    padding: 14px 8px;
+    height: 88px;
+  }
+}

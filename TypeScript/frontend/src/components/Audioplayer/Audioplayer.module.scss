@@ -1,0 +1,208 @@
+@use "/src/styles/global/variables" as variables;
+
+.audioplayer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid variables.$color-orange;
+  border-bottom: none;
+  box-shadow: 0px 0px 9px 10px rgba(170, 170, 170, 0.08);
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 85px;
+  }
+
+  &__inner {
+    padding: 14px 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 434px;
+  }
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__infoBlock {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__infoBlockTitle {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12px;
+    letter-spacing: 0.01px;
+    color: variables.$color-black-text;
+  }
+
+  &__infoBlockArtist {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.01px;
+    color: variables.$color-gray-icon;
+  }
+
+  &__infoBlockIcon {
+    width: 24px;
+    height: 24px;
+    color: transparent;
+  }
+
+  &__audio {
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  &__audioButtons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__audioButtonsBack,
+  &__audioButtonsShuffle,
+  &__audioButtonsForward,
+  &__audioButtonsRepeat,
+  &__audioVolumeIcon {
+    width: 16px;
+    height: 16px;
+    color: variables.$color-gray-icon;
+  }
+
+  &__audioButtonsPause,
+  &__audioButtonsPlay {
+    width: 12px;
+    color: variables.$color-white;
+  }
+
+  &__audioButtonsPause {
+    width: 25px;
+  }
+
+  &__audioButtonsCercle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: variables.$color-gray-icon;
+  }
+
+  &__audioDuration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  &__audioDurationTime {
+    display: block;
+    font-family: variables.$ff-main;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 100%;
+    letter-spacing: 0.015px;
+    color: variables.$color-gray-icon;
+  }
+
+  &__audioDurationInput {
+    height: 4px;
+    flex-grow: 1;
+    background: transparent;
+    border-radius: 2px;
+    outline: none;
+    appearance: none;
+
+    &::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(
+        to right,
+        variables.$color-orange 0%,
+        variables.$color-orange var(--progress, 0%),
+        variables.$color-gray-icon var(--progress, 0%),
+        variables.$color-gray-icon 100%
+      );
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      background: variables.$color-orange;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 0 2px rgba(0,0,0,0.1);
+      cursor: pointer;
+      margin-top: -4px;
+      opacity: 1;
+      transition: background 0.2s;
+    }
+  }
+
+  &__audioVolume {
+    padding: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__audioVolumeInput {
+    height: 4px;
+    flex-grow: 1;
+    background: transparent;
+    border-radius: 2px;
+    outline: none;
+    appearance: none;
+
+    &::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(
+        to right,
+        variables.$color-orange 0%,
+        variables.$color-orange var(--progress, 0%),
+        variables.$color-gray-icon var(--progress, 0%),
+        variables.$color-gray-icon 100%
+      );
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      background: variables.$color-orange;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 0 2px rgba(0,0,0,0.1);
+      cursor: pointer;
+      margin-top: -4px;
+      opacity: 1;
+      transition: background 0.2s;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@use "/src/styles/global/variables" as variables;
+
+.sideNav {
+  margin: 0 0 0 -30px;
+  padding: 46px 0 0;
+  list-style-type: none;
+  min-width: 290px;
+  background-color: variables.$color-gray-main;
+  grid-row: span 2;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__buttonSvg {
+    width: 32px;
+    height: 32px;
+    color: variables.$color-orange;
+  }
+
+  &__buttonText {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    color: variables.$color-black-text;
+  }
+}

@@ -1,0 +1,62 @@
+@use "/src/styles/global/variables" as variables;
+
+.account {
+  padding: 5px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 246px;
+  height: 100%;
+  background-color: variables.$color-gray-main;
+  border-radius: 30px;
+
+  &:focus-visible svg {
+    outline: none;
+    transform: scale(1.5);
+  }
+
+  &:hover svg {
+    transform: scale(1.5);
+  }
+
+  &:active svg {
+    transform: scale(1.3);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__innerAvatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: variables.$color-orange;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: variables.$color-white;
+  }
+
+  &__innerText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12px;
+    letter-spacing: 0.01px;
+    color: variables.$color-black-text;
+  }
+
+  &__svg {
+    width: 16px;
+    height: 16px;
+    color: variables.$color-orange;
+    transform: scale(1);
+    transition: transform variables.$transition-300;
+  }
+}

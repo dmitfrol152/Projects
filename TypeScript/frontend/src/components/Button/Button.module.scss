@@ -1,0 +1,148 @@
+@use "/src/styles/global/variables" as variables;
+
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &__element {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    font-family: variables.$ff-main;
+
+    &:disabled {
+      pointer-events: none;
+    }
+
+    &[data-variant="link"] {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 12px;
+      color: variables.$color-black-text;
+      transform: scale(1);
+      transition: transform variables.$transition-300;
+
+      &:focus-visible {
+        outline: none;
+        transform: scale(1.1);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(1.05);
+      }
+    }
+
+    &[data-size="none"] {
+      padding: 0;
+    }
+
+    &[data-variant="main"] {
+      align-items: start;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 100%;
+      color: variables.$color-black-text;
+      background-color: variables.$color-gray-main;
+      width: 100%;
+      transition: background-color variables.$transition-300;
+
+      &:focus-visible {
+        outline: none;
+        background-color: variables.$color-white;
+      }
+
+      &:hover {
+        background-color: variables.$color-white;
+      }
+
+      &:active {
+        background-color: variables.$color-white;
+      }
+    }
+
+    &[data-size="main"] {
+      padding: 9px 50px 9px 30px;
+    }
+
+    &[data-variant="login"] {
+      align-items: center;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 100%;
+      color: variables.$color-black-text;
+      background-color: variables.$color-gray-main;
+      border-radius: 10px;
+      width: 100%;
+      transition: background-color variables.$transition-300,
+        color variables.$transition-300;
+
+      &:focus-visible {
+        outline: none;
+        background-color: variables.$color-orange;
+        color: variables.$color-white;
+      }
+
+      &:hover {
+        background-color: variables.$color-orange;
+        color: variables.$color-white;
+      }
+
+      &:active {
+        background-color: variables.$color-orange;
+        color: variables.$color-white;
+      }
+    }
+
+    &[data-variant="secondary"] {
+      align-items: start;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 100%;
+      color: variables.$color-black-text;
+      background-color: variables.$color-gray-main;
+      width: 100%;
+      transition: background-color variables.$transition-300,
+        color variables.$transition-300;
+
+      &:focus-visible {
+        outline: none;
+        background-color: variables.$color-orange;
+        color: variables.$color-white;
+      }
+
+      &:hover {
+        background-color: variables.$color-orange;
+        color: variables.$color-white;
+      }
+
+      &:active {
+        background-color: variables.$color-orange;
+        color: variables.$color-white;
+      }
+    }
+
+    &[data-size="secondary"] {
+      padding: 9px;
+      align-items: center;
+    }
+  }
+}
+
+.active {
+  &[data-variant="main"] {
+    background-color: variables.$color-white;
+  }
+}

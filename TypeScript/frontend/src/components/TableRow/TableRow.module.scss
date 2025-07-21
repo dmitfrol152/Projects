@@ -1,0 +1,81 @@
+@use "/src/styles/global/variables" as variables;
+
+.tableRow {
+  &__index {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    color: variables.$color-black-text;
+  }
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__innerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__innerTitle,
+  &__title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12px;
+    letter-spacing: 0.01px;
+    color: variables.$color-black-text;
+  }
+
+  &__innerArtist {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.01px;
+    color: variables.$color-gray-icon;
+  }
+
+  &__data {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12px;
+    letter-spacing: 0.01px;
+    color: variables.$color-gray-icon;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__listFavorite {
+    width: 24px;
+    height: 24px;
+    color: transparent;
+  }
+
+  &__listTime {
+    color: variables.$color-gray-icon;
+  }
+
+  &__listDotes {
+    width: 23px;
+    height: 4px;
+    color: variables.$color-gray-text;
+  }
+}

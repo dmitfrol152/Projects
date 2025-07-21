@@ -1,0 +1,21 @@
+@use "/src/styles/global/variables" as variables;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100px;
+  background-color: variables.$color-white;
+
+  &__owner {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: variables.$color-orange;
+  }
+}
