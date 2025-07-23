@@ -4,8 +4,15 @@ import styles from "./Tracks.module.scss";
 import IconCalendar from "../../assets/images/svg/icon-calendar.svg?react";
 import IconClock from "../../assets/images/svg/icon-clock.svg?react";
 import { TableRow } from "../TableRow";
+import { useFavorites } from "../../hooks/useFavorites";
 
-export const Tracks: FC<DataProps> = ({ data }) => {
+export const Tracks: FC<DataProps> = ({
+  data,
+  openedModalId,
+  setOpenedModalId,
+}) => {
+  const { getFavoritesTracks } = useFavorites();
+
   return (
     <div className={styles.tracks}>
       <table className={styles.tracks__table}>
@@ -23,7 +30,19 @@ export const Tracks: FC<DataProps> = ({ data }) => {
         </thead>
         <tbody>
           {data?.map((track, index) => {
-            return <TableRow key={track.id} track={track} index={index} />;
+            const findedTrackInFavorite = getFavoritesTracks.data?.find(
+              (trackFavorite) => trackFavorite.id === track.id
+            );
+            return (
+              <TableRow
+                key={track.id}
+                track={track}
+                index={index}
+                inFavorite={findedTrackInFavorite ? true : false}
+                openedModalId={openedModalId}
+                setOpenedModalId={setOpenedModalId}
+              />
+            );
           })}
         </tbody>
       </table>

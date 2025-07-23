@@ -1,4 +1,5 @@
 @use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
 
 .registration {
   position: fixed;
@@ -21,6 +22,10 @@
     border: 1px solid variables.$color-orange;
     box-shadow: 0px 0px 9px 10px rgba(170, 170, 170, 0.08);
     border-radius: 20px;
+
+    @include mixins.vp-768 {
+      min-width: unset;
+    }
   }
 
   &__modalTitle {
@@ -61,6 +66,10 @@
     display: flex;
     align-items: center;
     gap: 5px;
+
+    @include mixins.vp-768 {
+      flex-direction: column;
+    }
   }
 
   &__modalButtonsLink {
@@ -76,6 +85,10 @@
     width: 100%;
     transition: background-color variables.$transition-300,
       color variables.$transition-300;
+
+    @include mixins.vp-768 {
+      justify-content: center;
+    }
 
     &:focus-visible {
       outline: none;

@@ -6,7 +6,9 @@ import { ProfileComponent } from "../../components/ProfileComponent";
 import { useDispatch, useSelector } from "react-redux";
 import type { AuthUserResultProps } from "./types";
 import { authUserAction } from "../../store/authUserSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import type { AudioPlayerNameProps } from "../../store/types";
+import { queryClient } from "../../api/queryClient";
 
 export const ProfilePage = () => {
   const { getFavoritesTracks } = useFavorites();
@@ -15,20 +17,39 @@ export const ProfilePage = () => {
     (state: AuthUserResultProps) => state.authUserName.authUserValue
   );
   const dispatch = useDispatch();
+  const isTrackPlaying = useSelector(
+    (state: AudioPlayerNameProps) => state.audioPlayerName.audioPlayerValue
+  );
+  const [isPlaying, setIsPlaying] = useState<boolean>(
+    isTrackPlaying && isTrackPlaying !== null ? true : false
+  );
+
+  useEffect(() => {
+    setIsPlaying(isTrackPlaying && isTrackPlaying !== null ? true : false);
+  }, [isTrackPlaying]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   if (getFavoritesTracks.isError) {
-    navigate("/login");
+    queryClient.invalidateQueries({ queryKey: ["favorites"] });
+    dispatch(authUserAction({ authUserValue: false }));
+    navigate("/");
+    navigate("/");
     return;
   }
 
   if (getFavoritesTracks.isSuccess) {
     dispatch(authUserAction({ authUserValue: true }));
     return (
-      <div className={styles.profilePage}>
+      <div
+        className={
+          isPlaying
+            ? styles.profilePage
+            : `${styles.profilePage} ${styles.footerNull}`
+        }
+      >
         <div className="container">
           <div className={styles.profilePage__wrapper}>
             <SideNav userIsAuth={authUserResult ? true : false} />

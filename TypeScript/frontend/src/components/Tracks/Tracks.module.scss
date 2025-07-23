@@ -1,8 +1,14 @@
 @use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
 
 .tracks {
   margin: 0 0 0 46px;
   padding: 35px 0 83px;
+
+  @include mixins.vp-1024 {
+    margin: 0;
+    padding: 20px 0 30px;
+  }
 
   &__table {
     display: flex;
@@ -16,12 +22,22 @@
     font-size: 30px;
     line-height: 100%;
     color: variables.$color-black-text;
+
+    @include mixins.vp-1024 {
+      display: none;
+    }
   }
 
   &__tableSvg {
     width: 16px;
     height: 16px;
     color: variables.$color-gray-text;
+  }
+
+  thead {
+    @include mixins.vp-1024 {
+      display: none;
+    }
   }
 
   tbody {
@@ -33,6 +49,11 @@
 
   tbody tr {
     border-top: 1px solid variables.$color-gray-logo;
+
+    @include mixins.vp-1280 {
+      background-color: variables.$color-white;
+      border-top: 20px solid variables.$color-gray-main;
+    }
 
     &:focus-visible {
       outline: none;
@@ -46,7 +67,15 @@
   }
 
   tbody tr:last-child {
-    border-bottom: 1px solid variables.$color-gray-logo;
+    border-bottom: 1px solid variables.$color-gray-main;
+  }
+
+  tbody tr:last-child,
+  tbody tr:first-child {
+    @include mixins.vp-1024 {
+      border-bottom: none;
+      border-top: none;
+    }
   }
 
   th,
@@ -63,6 +92,13 @@
     grid-template-columns:
       40px 1fr minmax(200px, 262px) minmax(150px, 195px)
       143px;
+
+    @include mixins.vp-1024 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
   }
 
   th {
@@ -81,5 +117,20 @@
     align-items: center;
     padding: 14px 8px;
     height: 88px;
+
+    @include mixins.vp-1024 {
+      padding: 0;
+      height: 70px;
+
+      &:first-child {
+        display: none;
+      }
+      &:nth-child(3) {
+        display: none;
+      }
+      &:nth-child(4) {
+        display: none;
+      }
+    }
   }
 }

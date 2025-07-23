@@ -1,4 +1,5 @@
 @use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
 
 .account {
   padding: 5px 12px;
@@ -9,6 +10,28 @@
   height: 100%;
   background-color: variables.$color-gray-main;
   border-radius: 30px;
+  transform: scale(1);
+  transition: transform variables.$transition-300;
+
+  @include mixins.vp-1280 {
+    padding: 0 0 15px 0;
+    gap: 8px;
+    min-width: unset;
+    background-color: transparent;
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.1);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1.05);
+    }
+  }
 
   &:focus-visible svg {
     outline: none;
@@ -27,6 +50,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    @include mixins.vp-1280 {
+      gap: 8px;
+    }
   }
 
   &__innerAvatar {
@@ -42,6 +69,13 @@
     font-size: 20px;
     line-height: 26px;
     color: variables.$color-white;
+
+    @include mixins.vp-1280 {
+      width: 25px;
+      height: 25px;
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 
   &__innerText {
@@ -50,6 +84,10 @@
     line-height: 12px;
     letter-spacing: 0.01px;
     color: variables.$color-black-text;
+
+    @include mixins.vp-1280 {
+      font-size: 12px;
+    }
   }
 
   &__svg {
@@ -58,5 +96,9 @@
     color: variables.$color-orange;
     transform: scale(1);
     transition: transform variables.$transition-300;
+
+    @include mixins.vp-1280 {
+      display: none;
+    }
   }
 }

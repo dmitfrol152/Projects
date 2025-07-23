@@ -17,6 +17,8 @@ export type DataTracksArrayProps = z.infer<typeof DataTracksArraySchema>;
 
 export const DataSchema = z.object({
   data: DataTracksArraySchema.optional(),
+  openedModalId: z.number().nullable(),
+  setOpenedModalId: z.any(),
 });
 
 export type DataProps = z.infer<typeof DataSchema>;

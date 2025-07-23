@@ -16,7 +16,7 @@ export const FavoritesGetArraySchema = z.array(FavoritesGetSchema);
 export type FavoritesGetArrayProps = z.infer<typeof FavoritesGetArraySchema>;
 
 export const FavoritesIdTracktSchema = z.object({
-  trackId: z.string(),
+  trackId: z.number(),
 });
 
 export type FavoritesIdTracktProps = z.infer<typeof FavoritesIdTracktSchema>;

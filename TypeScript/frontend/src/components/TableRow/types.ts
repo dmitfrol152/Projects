@@ -14,6 +14,15 @@ export type DataTracksProps = z.infer<typeof DataTracksSchema>;
 export const DataSchema = z.object({
   track: DataTracksSchema,
   index: z.number(),
+  inFavorite: z.boolean(),
+  openedModalId: z.number().nullable(),
+  setOpenedModalId: z.any(),
 });
 
 export type DataProps = z.infer<typeof DataSchema>;
+
+export const trackIdShema = z.object({
+  trackId: z.number(),
+});
+
+export type trackIdProps = z.infer<typeof trackIdShema>;

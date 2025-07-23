@@ -6,7 +6,7 @@ const tracks = [
     duration: 9.36,
     size_mb: 8.57,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRXRlcm5hbCBTdW5zZXQgYnkgU2t5bGluZSBTb3VuZHM=",
+      "https://od.lk/s/NzBfMjcwMjI1OTBf/Charlie%20Lewis%20-%20Constant.mp3",
   },
   {
     id: 2,
@@ -14,7 +14,8 @@ const tracks = [
     artist: "Urban Beats",
     duration: 4.24,
     size_mb: 3.88,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgQ2l0eSBOaWdodHMgYnkgVXJiYW4gQmVhdHM=",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI0NzBf/Charlie%20Lewis%20-%20But%20I%20Don%27t%20Know.mp3",
   },
   {
     id: 3,
@@ -22,7 +23,8 @@ const tracks = [
     artist: "Deep Wave",
     duration: 3.93,
     size_mb: 3.6,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgT2NlYW4gQnJlZXplIGJ5IERlZXAgV2F2ZQ==",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI1OTRf/Charlie%20Lewis%20-%20For%20Us.mp3",
   },
   {
     id: 4,
@@ -30,7 +32,8 @@ const tracks = [
     artist: "Fresh Air",
     duration: 8.47,
     size_mb: 7.75,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgTW9ybmluZyBEZXcgYnkgRnJlc2ggQWly",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI1OTZf/Charlie%20Lewis%20-%20Holdover.mp3",
   },
   {
     id: 5,
@@ -39,7 +42,7 @@ const tracks = [
     duration: 2.2,
     size_mb: 2.01,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgU3RhcmxpdCBSb2FkIGJ5IENvc21pYyBSaHl0aG1z",
+      "https://od.lk/s/NzBfMjcwMjI1NzZf/Charlie%20Lewis%20-%20Never%20Going%20Home.mp3",
   },
   {
     id: 6,
@@ -48,7 +51,7 @@ const tracks = [
     duration: 5.23,
     size_mb: 4.77,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgTWlkbmlnaHQgRXNjYXBlIGJ5IE5pZ2h0ZmFsbA==",
+      "https://od.lk/s/NzBfMjcwMjI1MzFf/Charlie%20Lewis%20-%20Penelope.mp3",
   },
   {
     id: 7,
@@ -57,7 +60,7 @@ const tracks = [
     duration: 6.85,
     size_mb: 6.33,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRWxlY3RyaWMgSGVhcnQgYnkgVm9sdCBTcGFya3M=",
+      "https://od.lk/s/NzBfMjcwMjI1NDlf/Charlie%20Lewis%20-%20Rhondoh.mp3",
   },
   {
     id: 8,
@@ -66,7 +69,7 @@ const tracks = [
     duration: 4.96,
     size_mb: 4.57,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgU3VucmlzZSBPdmVyIFRoZSBDaXR5IGJ5IERhd24gQXJjaGl0ZWN0cw==",
+      "https://od.lk/s/NzBfMjcwMjI1MTJf/Charlie%20Lewis%20-%20Soft%20Fanfare.mp3",
   },
   {
     id: 9,
@@ -75,7 +78,7 @@ const tracks = [
     duration: 7.56,
     size_mb: 6.98,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgTG9zdCBpbiB0aGUgRWNobyBieSBXYXZlIEZvcm0=",
+      "https://od.lk/s/NzBfMjcwMjI1MDNf/Charlie%20Lewis%20-%20Twelve%20Tones%20for%20Candace.mp3",
   },
   {
     id: 10,
@@ -83,7 +86,8 @@ const tracks = [
     artist: "Urban Vibes",
     duration: 3.87,
     size_mb: 3.54,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgTmVvbiBQdWxzZSBieSBVcmJhbiBWaWJlcyBv",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI1NTVf/Charlie%20Lewis%20-%20View%20from%20the%20Tower.mp3",
   },
   {
     id: 11,
@@ -92,7 +96,7 @@ const tracks = [
     duration: 6.62,
     size_mb: 6.09,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgVW5kZXJ3YXRlciBEcmVhbXMgYnkgQXF1YSBHcm92ZQ==",
+      "https://od.lk/s/NzBfMjcwMjI0OTZf/Circus%20Marcus%20-%20Pompas%20de%20Jab%C3%B3n.mp3",
   },
   {
     id: 12,
@@ -101,7 +105,7 @@ const tracks = [
     duration: 4.77,
     size_mb: 4.38,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRGVzZXJ0IE1pcmFnZSBieSBTYWhhcmEgQmVhdHM=",
+      "https://od.lk/s/NzBfMjcwMjI1NjNf/Fabian%20Measures%20-%20Did%20you%20know_%20%28Curiouser%20and%20curiouser%29.mp3",
   },
   {
     id: 13,
@@ -110,7 +114,7 @@ const tracks = [
     duration: 3.94,
     size_mb: 3.61,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgTmlnaHQgU2t5IGJ5IENlbGVzdGlhbCBTb3VuZHM=",
+      "https://od.lk/s/NzBfMjcwMjI1MDRf/Fabian%20Measures%20-%20LifeCycle.mp3",
   },
   {
     id: 14,
@@ -118,8 +122,7 @@ const tracks = [
     artist: "Future Horizons",
     duration: 7.33,
     size_mb: 6.74,
-    encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgSG9yaXpvbiBTaGlmdCBieSBGdXQgdXJlIEhvcml6b25z",
+    encoded_audio: "https://od.lk/s/NzBfMjcwMjI0MzJf/Hawkin%20-%20Woods.mp3",
   },
   {
     id: 15,
@@ -128,7 +131,7 @@ const tracks = [
     duration: 5.64,
     size_mb: 5.16,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRWNob2VzIG9mIHRoZSBQYXN0IGJ5IFRpbWVsaWVzcyBXYXZl",
+      "https://od.lk/s/NzBfMjcwMjI0Mjlf/Il%20Sogno%20Del%20Marinaio%20-%20Partisian%20Song.mp3",
   },
   {
     id: 16,
@@ -137,7 +140,7 @@ const tracks = [
     duration: 6.41,
     size_mb: 5.88,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgUmlzaW5nIFRpZGUgYnkgT2NlYW4gRmxvdyBGb3c=",
+      "https://od.lk/s/NzBfMjcwMjI0NzNf/Jahzzar%20-%20Breaking%20Bad.mp3",
   },
   {
     id: 17,
@@ -145,8 +148,7 @@ const tracks = [
     artist: "Sky Coast",
     duration: 8.15,
     size_mb: 7.47,
-    encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgQmx1ZSBIb3Jpem9uIHN0cnVjdHVyZWQgYnk9U2t5IENvYXN0",
+    encoded_audio: "https://od.lk/s/NzBfMjcwMjI0NjJf/Jahzzar%20-%20Change.mp3",
   },
   {
     id: 18,
@@ -154,8 +156,7 @@ const tracks = [
     artist: "Aurora Dream",
     duration: 6.94,
     size_mb: 6.39,
-    encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgTm9ydGhlcm4gTGlnaHRzIGJ5IEF1cm9yYSBEcmVhbQ==",
+    encoded_audio: "https://od.lk/s/NzBfMjcwMjI0NDVf/Jahzzar%20-%20T800.mp3",
   },
   {
     id: 19,
@@ -164,7 +165,7 @@ const tracks = [
     duration: 4.48,
     size_mb: 4.13,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgU2lsZW50IE5pZ2h0IGJ5IFNvbHV0aWRlIEJlYXRz",
+      "https://od.lk/s/NzBfMjcwMjI1MDBf/JBlanked%20-%20Always%20Something%20%28Instrumental%29%29.mp3",
   },
   {
     id: 20,
@@ -173,7 +174,7 @@ const tracks = [
     duration: 9.23,
     size_mb: 8.44,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgTW9vbmxpdCBKdXJuZXkgaW4gY29uY3VzdGFuY2UsIGJ5IEx1bmFyIFJ5dGhtcyBvYg==",
+      "https://od.lk/s/NzBfMjcwMjI0NThf/JBlanked%20-%20Boro%20%28ft.%20Debo%2C%20Mar%24haine%2C%20%26%20Seth%20Simmons%29.mp3",
   },
   {
     id: 21,
@@ -181,7 +182,8 @@ const tracks = [
     artist: "Ice Queen",
     duration: 4.03,
     size_mb: 3.71,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgRnJvemVuIE1vbWVudHMgYnkgSWNlIFF1ZWVu",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI0NDBf/JBlanked%20-%20Cobie%20Sample.mp3",
   },
   {
     id: 22,
@@ -190,7 +192,7 @@ const tracks = [
     duration: 7.29,
     size_mb: 6.73,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgVmlvbGV0IFNreSBieSBKdXNrIEVjaG8gU2Vhc29ucw==",
+      "https://od.lk/s/NzBfMjcwMjI1MTVf/JBlanked%20-%20Danny%20Boy%20%28Guitar%20Arrangement%20Instrumental%29.mp3",
   },
   {
     id: 23,
@@ -199,7 +201,7 @@ const tracks = [
     duration: 6.75,
     size_mb: 6.17,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgV2F2ZXMgb2YgQ2hhbmdlIGJ5IEZsdWlkIE1vdGlvbg==",
+      "https://od.lk/s/NzBfMjcwMjI1MTlf/JBlanked%20-%20Hardwork%20%28Instrumental%29.mp3",
   },
   {
     id: 24,
@@ -208,7 +210,7 @@ const tracks = [
     duration: 5.49,
     size_mb: 5.05,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgQ3lzdGFsIExha2UgYnkgTmF0dXJlIFNwaXJpdHM=",
+      "https://od.lk/s/NzBfMjcwMjI0OTlf/JBlanked%20-%20I%27m%20Down%20%28ft.%20Dolphie%2C%20Seth%20Simmons%2C%20%26%20Soul%20Frenzy%29.mp3",
   },
   {
     id: 25,
@@ -217,7 +219,7 @@ const tracks = [
     duration: 7.64,
     size_mb: 7.02,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgVGltZWxlc3MgTW9tZW50IGJ5IFZpbnRhZ2UgUnl0aG1z",
+      "https://od.lk/s/NzBfMjcwMjI0Nzdf/JBlanked%20-%20I%27m%20Down%20%28Instrumental%29.mp3",
   },
   {
     id: 26,
@@ -226,7 +228,7 @@ const tracks = [
     duration: 8.28,
     size_mb: 7.64,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgR2FsYWFyeSBFZGdlIGJ5IFN0ZWxsYXIgRnJlcXVlbmNpZXM=",
+      "https://od.lk/s/NzBfMjcwMjI0Nzdf/JBlanked%20-%20I%27m%20Down%20%28Instrumental%29.mp3",
   },
   {
     id: 27,
@@ -235,7 +237,7 @@ const tracks = [
     duration: 6.52,
     size_mb: 5.99,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgSW5maW5pdGUgRHJlYW1zIGJ5IEVuZGxlc3MgSnVybmV5",
+      "https://od.lk/s/NzBfMjcwMjI1NzFf/JBlanked%20-%20Tenderly.mp3",
   },
   {
     id: 28,
@@ -243,7 +245,8 @@ const tracks = [
     artist: "Heatwave",
     duration: 5.89,
     size_mb: 5.42,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgU29sYXIgRmxhcmUgYnkgSGVhdHdhdmU=",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI1MjZf/JBlanked%20-%20True%20Friends.mp3",
   },
   {
     id: 29,
@@ -252,7 +255,7 @@ const tracks = [
     duration: 4.21,
     size_mb: 3.88,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgSW50byB0aGUgV2lsZGVybmVzcyBieSBXaWxkIFJvb3Rz",
+      "https://od.lk/s/NzBfMjcwMjI1NDBf/JBlanked%20-%20Yet%20%28ft.%20OD%29.mp3",
   },
   {
     id: 30,
@@ -261,7 +264,7 @@ const tracks = [
     duration: 8.14,
     size_mb: 7.46,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRWNobyBpbiB0aGUgTW91bnRhaW5zIGJ5IEFscGluZSBWb2ljZQ==",
+      "https://od.lk/s/NzBfMjcwMjI0MjZf/Raul%20Diaz%20Palomar%20-%20Abdal%C3%A1%20%28demo%2C%20bonus%29.mp3",
   },
   {
     id: 31,
@@ -269,7 +272,8 @@ const tracks = [
     artist: "Cloudrise",
     duration: 6.47,
     size_mb: 5.95,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgTW9ybmluZyBNaXN0IGJ5IENsb3VkcmlzZQ==",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI0MjZf/Raul%20Diaz%20Palomar%20-%20Abdal%C3%A1%20%28demo%2C%20bonus%29.mp3",
   },
   {
     id: 32,
@@ -278,7 +282,7 @@ const tracks = [
     duration: 4.92,
     size_mb: 4.5,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgQ2hhc2luZyB0aGUgTW9vbiBieSBMdW5hciBSdW4=",
+      "https://od.lk/s/NzBfMjcwMjI0MTFf/SalmonLikeTheFish%20-%20Sequoia.mp3",
   },
   {
     id: 33,
@@ -287,7 +291,7 @@ const tracks = [
     duration: 7.02,
     size_mb: 6.44,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgV2hpcHNlcnMgb2YgdGhlIEZvcmVzdCBieSBHcmVlbiBFY2hvZXM=",
+      "https://od.lk/s/NzBfMjcwMjI0MjRf/SalmonLikeTheFish%20-%20Shenandoah.mp3",
   },
   {
     id: 34,
@@ -295,7 +299,8 @@ const tracks = [
     artist: "Red Sky",
     duration: 5.8,
     size_mb: 5.33,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgQ3JpbXNvbiBTdW5zZXQgYnkgUmVkIFNreQ==",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI0MTlf/SalmonLikeTheFish%20-%20Yellowstone.mp3",
   },
   {
     id: 35,
@@ -304,7 +309,7 @@ const tracks = [
     duration: 6.33,
     size_mb: 5.9,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRGlnaXRhbCBkcmVhbXMgYnkgVGVjaG5vIFB1bHNl",
+      "https://od.lk/s/NzBfMjcwMjI0MDdf/SalmonLikeTheFish%20-%20Zion.mp3",
   },
   {
     id: 36,
@@ -313,7 +318,7 @@ const tracks = [
     duration: 7.15,
     size_mb: 6.56,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgR3Jhdml0eSBXYXZlcyBieSBQbGFuZXRhcnkgU291bmQ=",
+      "https://od.lk/s/NzBfMjcwMjI0ODRf/Squire%20Tuck%20-%20A%20Journey%20In%20To%20The%20Great%20Unknown.mp3",
   },
   {
     id: 37,
@@ -322,7 +327,7 @@ const tracks = [
     duration: 5.91,
     size_mb: 5.46,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRWxlY3RyaWMgRHJlYW1zIGJ5IE5lb24gRmx1eA==",
+      "https://od.lk/s/NzBfMjcwMjI0ODhf/Squire%20Tuck%20-%20A%20Mexican%20Love%20Affair.mp3",
   },
   {
     id: 38,
@@ -331,7 +336,7 @@ const tracks = [
     duration: 7.67,
     size_mb: 7.05,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgV2luZCBpbiB0aGUgUGluZXMgYnkgV2hpc3BlcmluZyBXYWluZHM=",
+      "https://od.lk/s/NzBfMjcwMjI0Nzlf/Squire%20Tuck%20-%20Dancing%20%27til%20the%20Sun%20Goes%20Down.mp3",
   },
   {
     id: 39,
@@ -339,7 +344,8 @@ const tracks = [
     artist: "Blue Horizon",
     duration: 6.0,
     size_mb: 5.5,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgU2lsZW50IFNlYSBieSBQbHVlIEhvcnpvem9u",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI0NTVf/Squire%20Tuck%20-%20Dreams%20Like%20These.mp3",
   },
   {
     id: 40,
@@ -348,7 +354,7 @@ const tracks = [
     duration: 8.1,
     size_mb: 7.42,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgQXV0dW0gYnJlZXplIGJ5IEhhcnZlc3QgU29uZw==",
+      "https://od.lk/s/NzBfMjcwMjI0NTZf/Squire%20Tuck%20-%20Heavy%20Heart.mp3",
   },
   {
     id: 41,
@@ -357,7 +363,7 @@ const tracks = [
     duration: 6.25,
     size_mb: 5.75,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRmFsbGluZyBTdGFycyBieSBDb3NtYWMgVm95YWdlcnM=",
+      "https://od.lk/s/NzBfMjcwMjI1MDdf/Squire%20Tuck%20-%20Little%20Peace%20at%20Christmas.mp3",
   },
   {
     id: 42,
@@ -366,7 +372,7 @@ const tracks = [
     duration: 7.52,
     size_mb: 6.92,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgTmlnaHRmYWxsIGJ5IFRoZSBEYXJrIEtuaWdodHM=",
+      "https://od.lk/s/NzBfMjcwMjI0ODJf/Squire%20Tuck%20-%20Making%20Sense%20of%20the%20Senseless_.mp3",
   },
   {
     id: 43,
@@ -374,7 +380,8 @@ const tracks = [
     artist: "Aqua Beat",
     duration: 6.82,
     size_mb: 6.26,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgRGVlcCBCbHVlIGJ5IEFxdWEgQmVhdA==",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI0ODZf/Squire%20Tuck%20-%20Squire%20Tuck%20-%20Irrational%20Fear%20of%20Fearing%20Nothing%20at%20all.mp3",
   },
   {
     id: 44,
@@ -383,7 +390,7 @@ const tracks = [
     duration: 5.92,
     size_mb: 5.48,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgTWVsYW5jaG9seSBkcmVhbSBieSBkcmVhbSBzdGF0ZQ==",
+      "https://od.lk/s/NzBfMjcwMjI0OTRf/Squire%20Tuck%20-%20Squire%20Tuck%20-%20Lost%20in%20the%20Moment.mp3",
   },
   {
     id: 45,
@@ -392,7 +399,7 @@ const tracks = [
     duration: 7.35,
     size_mb: 6.76,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgR29sZGVuIEhvdXIgYnkgU3Vuc2V0IFNvdW5kcw==",
+      "https://od.lk/s/NzBfMjcwMjI0ODdf/Squire%20Tuck%20-%20Squire%20Tuck%20-%20Rockulele.mp3",
   },
   {
     id: 46,
@@ -401,7 +408,7 @@ const tracks = [
     duration: 6.51,
     size_mb: 5.99,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRGlzdGFudCBFY2hvZXMgb2YgRmFyd2F5IFJ5dGht",
+      "https://od.lk/s/NzBfMjcwMjI0OTFf/Squire%20Tuck%20-%20Squire%20Tuck%20-%20To%20Absent%20Friends.mp3",
   },
   {
     id: 47,
@@ -410,7 +417,7 @@ const tracks = [
     duration: 8.33,
     size_mb: 7.65,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgV2ludGVyIFNvbHN0aWNlIGJ5IENoaWxsd2F2ZQ==",
+      "https://od.lk/s/NzBfMjcwMjI0NTNf/Squire%20Tuck%20-%20Yearning%20for%20Better%20Days.mp3",
   },
   {
     id: 48,
@@ -419,7 +426,7 @@ const tracks = [
     duration: 7.88,
     size_mb: 7.23,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRWxlY3RyaWMgU2tpZXMgYnkgRnV0dXJlIEVsZWN0cm8=",
+      "https://od.lk/s/NzBfMjcwMjI0MzZf/The%20Sluts%20With%20Nuts%20-%20Instrumental%20Prelude.mp3",
   },
   {
     id: 49,
@@ -427,7 +434,8 @@ const tracks = [
     artist: "Retro Wave",
     duration: 6.12,
     size_mb: 5.64,
-    encoded_audio: "QXVkaW8gZGF0YSBmb3IgTG9zdCBUaW1lIGJ5IFJldHJvIFdhdmU=",
+    encoded_audio:
+      "https://od.lk/s/NzBfMjcwMjI0MzZf/The%20Sluts%20With%20Nuts%20-%20Instrumental%20Prelude.mp3",
   },
   {
     id: 50,
@@ -436,7 +444,7 @@ const tracks = [
     duration: 5.72,
     size_mb: 5.26,
     encoded_audio:
-      "QXVkaW8gZGF0YSBmb3IgRmlyZWZseSBMaWdodHMgYnkgTmlnaHQgRHJlYW1z",
+      "https://od.lk/s/NzBfMjcwMjI1ODFf/What%20Cheer_%20Brigade%20-%20CCMFC.mp3",
   },
 ];
 

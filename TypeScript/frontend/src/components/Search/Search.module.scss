@@ -1,4 +1,5 @@
 @use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
 
 .search {
   margin: 0 30px 0 0;
@@ -7,6 +8,14 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  @include mixins.vp-1280 {
+    margin: 0 30px 15px 0;
+  }
+
+  @include mixins.vp-1024 {
+    display: none;
+  }
 
   &__field {
     margin: 0;

@@ -1,4 +1,5 @@
 @use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
 
 .logo {
   margin: 0 46px 0 0;
@@ -7,6 +8,12 @@
   display: flex;
   align-items: center;
   min-width: 260.8px;
+
+  @include mixins.vp-1024 {
+    margin: 0 10px 0 0;
+    padding: 0 0px 15px 0;
+    min-width: 194.8px;
+  }
 
   &::before {
     content: "";
@@ -30,6 +37,10 @@
     right: 0.8px;
     opacity: 1;
     border-right: 1px solid variables.$color-gray-logo;
+
+    @include mixins.vp-1024 {
+      border-right: none;
+    }
   }
 
   &:focus-visible {
@@ -57,5 +68,11 @@
     width: 184px;
     height: 30px;
     z-index: 1;
+
+    @include mixins.vp-1024 {
+      padding: 0;
+      width: 178px;
+      height: 30px;
+    }
   }
 }

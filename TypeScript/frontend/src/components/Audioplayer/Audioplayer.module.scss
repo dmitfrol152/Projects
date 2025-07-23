@@ -1,4 +1,5 @@
 @use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
 
 .audioplayer {
   display: flex;
@@ -13,6 +14,14 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: 85px;
+
+    @include mixins.vp-1024 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 15px;
+      column-gap: 10px;
+      row-gap: 16px;
+    }
   }
 
   &__inner {
@@ -21,6 +30,14 @@
     align-items: center;
     gap: 10px;
     min-width: 434px;
+
+    @include mixins.vp-1280 {
+      min-width: unset;
+    }
+
+    @include mixins.vp-768 {
+      display: none;
+    }
   }
 
   &__image {
@@ -72,6 +89,10 @@
     align-items: center;
     flex-grow: 1;
     width: 100%;
+
+    @include mixins.vp-768 {
+      grid-column: span 2;
+    }
   }
 
   &__audioButtons {
@@ -156,11 +177,11 @@
       background: variables.$color-orange;
       border-radius: 50%;
       border: none;
-      box-shadow: 0 0 2px rgba(0,0,0,0.1);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
       cursor: pointer;
       margin-top: -4px;
       opacity: 1;
-      transition: background 0.2s;
+      transition: background-color 0.2s;
     }
   }
 
@@ -169,6 +190,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    @include mixins.vp-1280 {
+      grid-column: span 2;
+    }
   }
 
   &__audioVolumeInput {
@@ -198,11 +223,19 @@
       background: variables.$color-orange;
       border-radius: 50%;
       border: none;
-      box-shadow: 0 0 2px rgba(0,0,0,0.1);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
       cursor: pointer;
       margin-top: -4px;
       opacity: 1;
-      transition: background 0.2s;
+      transition: background-color 0.2s;
     }
   }
+}
+
+.isActive {
+  color: variables.$color-orange;
+}
+
+.isFavoriteTrack {
+  color: variables.$color-orange;
 }

@@ -27,8 +27,16 @@ export const MainPage = () => {
   const isTrackPlaying = useSelector(
     (state: AudioPlayerNameProps) => state.audioPlayerName.audioPlayerValue
   );
+  const [isPlaying, setIsPlaying] = useState<boolean>(
+    isTrackPlaying && isTrackPlaying !== null ? true : false
+  );
+  const [openedModalId, setOpenedModalId] = useState<number | null>(null);
 
   const LIMIT = 10;
+
+  useEffect(() => {
+    setIsPlaying(isTrackPlaying && isTrackPlaying !== null ? true : false);
+  }, [isTrackPlaying]);
 
   const filtredTracks =
     getTracks.data?.filter((track) => {
@@ -68,7 +76,7 @@ export const MainPage = () => {
     return (
       <div
         className={
-          isTrackPlaying !== null
+          isPlaying
             ? styles.mainPage
             : `${styles.mainPage} ${styles.footerNull}`
         }
@@ -76,7 +84,11 @@ export const MainPage = () => {
         <div className="container">
           <div className={styles.mainPage__wrapper}>
             <SideNav userIsAuth={authUserResult ? true : false} />
-            <Tracks data={tracks} />
+            <Tracks
+              data={tracks}
+              openedModalId={openedModalId}
+              setOpenedModalId={setOpenedModalId}
+            />
             {filtredTracks.length > tracks.length ? (
               <Button
                 title="Показать еще"
@@ -100,7 +112,7 @@ export const MainPage = () => {
         {searchParams.get("music") === "favorites" ? (
           <div
             className={
-              isTrackPlaying !== null
+              isPlaying
                 ? styles.mainPage
                 : `${styles.mainPage} ${styles.footerNull}`
             }
@@ -108,7 +120,11 @@ export const MainPage = () => {
             <div className="container">
               <div className={styles.mainPage__wrapper}>
                 <SideNav userIsAuth={authUserResult ? true : false} />
-                <TracksFavorite data={favoriteTracks} />
+                <TracksFavorite
+                  data={favoriteTracks}
+                  openedModalId={openedModalId}
+                  setOpenedModalId={setOpenedModalId}
+                />
                 {filtredFavoritesTracks.length > tracks.length ? (
                   <Button
                     title="Показать еще"
@@ -123,11 +139,21 @@ export const MainPage = () => {
             </div>
           </div>
         ) : (
-          <div className={styles.mainPage}>
+          <div
+            className={
+              isPlaying
+                ? styles.mainPage
+                : `${styles.mainPage} ${styles.footerNull}`
+            }
+          >
             <div className="container">
               <div className={styles.mainPage__wrapper}>
                 <SideNav userIsAuth={authUserResult ? true : false} />
-                <Tracks data={tracks} />
+                <Tracks
+                  data={tracks}
+                  openedModalId={openedModalId}
+                  setOpenedModalId={setOpenedModalId}
+                />
                 {filtredTracks.length > tracks.length ? (
                   <Button
                     title="Показать еще"

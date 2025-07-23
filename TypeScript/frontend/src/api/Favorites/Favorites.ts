@@ -2,7 +2,6 @@ import {
   FavoritesGetArraySchema,
   type FavoritesGetArrayProps,
   type FavoritesGetProps,
-  type FavoritesIdTracktProps,
 } from "./types";
 
 // favorites get
@@ -45,7 +44,7 @@ export function fetchGetFavoritesTracks(): Promise<FavoritesGetArrayProps> {
 
 // favorites post
 export function fetchPostFavoritesTracks(
-  data: FavoritesIdTracktProps
+  data: { trackId: number }
 ): Promise<FavoritesGetProps> {
   return fetch("/api/favorites", {
     method: "POST",
@@ -53,7 +52,7 @@ export function fetchPostFavoritesTracks(
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    body: data,
+    body: JSON.stringify(data),
   })
     .then((response) => {
       if (!response.ok) {
@@ -66,7 +65,7 @@ export function fetchPostFavoritesTracks(
 
 // favorites delete
 export function fetchDeleteFavoritesTracks(
-  data: FavoritesIdTracktProps
+  data: { trackId: number }
 ): Promise<FavoritesGetProps> {
   return fetch("/api/favorites", {
     method: "DELETE",
@@ -74,7 +73,7 @@ export function fetchDeleteFavoritesTracks(
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    body: data,
+    body: JSON.stringify(data),
   })
     .then((response) => {
       if (!response.ok) {

@@ -4,13 +4,15 @@ import audioGroupChoiceReduce from "./audioGroupChoiceSlice";
 import searchReduser from "./searchSlice";
 import audioPlayerReducer from "./audioPlayerSlice";
 import audioPlayerActiveImageReducer from "./audioPlayerActiveImage";
+import currentTrackIndexReducer from "./currentTrackIndexSlice";
 
 const rootReducer = combineSlices(
   authUserReduce,
   audioGroupChoiceReduce,
   searchReduser,
   audioPlayerReducer,
-  audioPlayerActiveImageReducer
+  audioPlayerActiveImageReducer,
+  currentTrackIndexReducer
 );
 
 export default configureStore({

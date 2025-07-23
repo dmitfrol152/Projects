@@ -5,7 +5,7 @@ import IconMusic from "/src/assets/images/svg/icon-music.svg?react";
 import type { audioGroupChoiceProps, SideNavProps } from "./types";
 import { useDispatch, useSelector } from "react-redux";
 import { audioGroupChoiceAction } from "../../store/audioGroupChoiceSlice";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 export const SideNav: FC<SideNavProps> = ({ userIsAuth }) => {
   const audioGroupChoice = useSelector(
@@ -14,6 +14,7 @@ export const SideNav: FC<SideNavProps> = ({ userIsAuth }) => {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   function handleChangeFavorites() {
     dispatch(audioGroupChoiceAction({ audioGroupChoiceValue: true }));
@@ -31,7 +32,7 @@ export const SideNav: FC<SideNavProps> = ({ userIsAuth }) => {
   return (
     <ul className={styles.sideNav}>
       {userIsAuth && (
-        <li>
+        <li className={styles.sideNav__item}>
           <Button
             title={
               <div className={styles.sideNav__button}>
@@ -43,11 +44,14 @@ export const SideNav: FC<SideNavProps> = ({ userIsAuth }) => {
             variant="main"
             size="main"
             onClick={handleChangeFavorites}
-            isActive={audioGroupChoice === true}
+            isActive={
+              audioGroupChoice === true ||
+              searchParams.get("music") === "favorites"
+            }
           />
         </li>
       )}
-      <li>
+      <li className={styles.sideNav__item}>
         <Button
           title={
             <div className={styles.sideNav__button}>
@@ -61,7 +65,7 @@ export const SideNav: FC<SideNavProps> = ({ userIsAuth }) => {
           variant="main"
           size="main"
           onClick={handleChangeAll}
-          isActive={audioGroupChoice === false}
+          isActive={audioGroupChoice === false && !searchParams.get("music")}
         />
       </li>
     </ul>

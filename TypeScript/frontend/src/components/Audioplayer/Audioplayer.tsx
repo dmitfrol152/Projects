@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, type FC } from "react";
-import type { TrackProps } from "./types";
+import type { trackIdProps, TrackProps } from "./types";
 import { useSelector } from "react-redux";
-import type { AudioPlayerNameActiveImageProps } from "../../store/types";
+import type {
+  audioGroupChoiceNameProps,
+  AudioPlayerNameActiveImageProps,
+} from "../../store/types";
 import styles from "./Audioplayer.module.scss";
 import IconFavorite from "/src/assets/images/svg/icon-favorite.svg?react";
 import IconShuffle from "/src/assets/images/svg/icon-shuffle.svg?react";
@@ -12,8 +15,21 @@ import IconForwardTrack from "/src/assets/images/svg/icon-skip-forward.svg?react
 import IconRepeat from "/src/assets/images/svg/icon-repeat.svg?react";
 import IconVolume from "/src/assets/images/svg/icon-volume.svg?react";
 import { Button } from "../Button";
+import { useMutation } from "@tanstack/react-query";
+import {
+  fetchDeleteFavoritesTracks,
+  fetchPostFavoritesTracks,
+} from "../../api/Favorites/Favorites";
+import { queryClient } from "../../api/queryClient";
+import { useNavigate } from "react-router";
 
-export const Audioplayer: FC<TrackProps> = ({ track }) => {
+export const Audioplayer: FC<TrackProps> = ({
+  track,
+  tracks,
+  favoritesTracks,
+  currentTrackIndex,
+  setCurrentTrackIndex,
+}) => {
   const isImagePlaying = useSelector(
     (state: AudioPlayerNameActiveImageProps) =>
       state.audioPlayerActiveImageName.audioPlayerActiveImageValue
@@ -25,6 +41,18 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
   const [duration, setDuration] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [volume, setVolume] = useState<number>(1);
+  const [shuffleMode, setShuffleMode] = useState<boolean>(false);
+  const [repeatMode, setRepeatMode] = useState<boolean>(false);
+  const audioGroupChoice = useSelector(
+    (state: audioGroupChoiceNameProps) =>
+      state.audioGroupChoiceName.audioGroupChoiceValue
+  );
+  const [image, setImage] = useState<string | undefined>(isImagePlaying);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setImage(isImagePlaying);
+  }, [isImagePlaying]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -44,7 +72,7 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
       audioRef.current.play();
       setIsPlaying(true);
     }
-  }, [track.encoded_audio]);
+  }, [track.encoded_audio, track.autoPlay]);
 
   const handlePlayPause = () => {
     if (!audioRef.current) return;
@@ -99,7 +127,203 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
     return `${min}:${sec}`;
   }
 
-  console.log(track.encoded_audio);
+  const handleEnded = () => {
+    setIsPlaying(false);
+    if (
+      tracks &&
+      typeof currentTrackIndex === "number" &&
+      setCurrentTrackIndex
+    ) {
+      if (shuffleMode) {
+        let random = currentTrackIndex;
+        while (tracks.length > 1 && random === currentTrackIndex) {
+          random = Math.floor(Math.random() * tracks.length);
+        }
+        setCurrentTrackIndex(random);
+      } else if (repeatMode) {
+        if (audioRef.current) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.play();
+          setIsPlaying(true);
+        }
+      } else if (
+        audioGroupChoice === true &&
+        tracks &&
+        favoritesTracks &&
+        favoritesTracks.length > 0
+      ) {
+        const currentTrackId = tracks[currentTrackIndex].id;
+        const favoritesIndex = favoritesTracks.findIndex(
+          (track) => track.id === currentTrackId
+        );
+        if (favoritesIndex < favoritesTracks.length - 1) {
+          const nextFavoritesTrackId = favoritesTracks[favoritesIndex + 1].id;
+          const nextTrackIndex = tracks.findIndex(
+            (track) => track.id === nextFavoritesTrackId
+          );
+          if (nextTrackIndex !== -1) {
+            setCurrentTrackIndex(nextTrackIndex);
+          }
+        }
+      } else if (currentTrackIndex < tracks.length - 1) {
+        setCurrentTrackIndex(currentTrackIndex + 1);
+      }
+    }
+  };
+
+  const handleNext = () => {
+    if (typeof currentTrackIndex === "number" && setCurrentTrackIndex) {
+      if (audioGroupChoice === false && tracks) {
+        if (shuffleMode) {
+          let random = currentTrackIndex;
+          while (tracks.length > 1 && random === currentTrackIndex) {
+            random = Math.floor(Math.random() * tracks.length);
+          }
+          setCurrentTrackIndex(random);
+        } else if (currentTrackIndex < tracks.length - 1) {
+          setCurrentTrackIndex(currentTrackIndex + 1);
+        }
+      } else if (audioGroupChoice === true && favoritesTracks) {
+        if (shuffleMode) {
+          let random = currentTrackIndex;
+          while (favoritesTracks.length > 1 && random === currentTrackIndex) {
+            random = Math.floor(Math.random() * favoritesTracks.length);
+          }
+          setCurrentTrackIndex(random);
+        } else if (tracks && favoritesTracks && favoritesTracks.length > 0) {
+          const currentTrackId = tracks[currentTrackIndex].id;
+          const favoritesIndex = favoritesTracks.findIndex(
+            (track) => track.id === currentTrackId
+          );
+
+          if (favoritesIndex < favoritesTracks.length - 1) {
+            const nextFavoritesTrackId = favoritesTracks[favoritesIndex + 1].id;
+            const nextTrackIndex = tracks.findIndex(
+              (track) => track.id === nextFavoritesTrackId
+            );
+
+            if (nextTrackIndex) {
+              setCurrentTrackIndex(nextTrackIndex);
+            }
+          }
+        }
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    if (
+      tracks &&
+      typeof currentTrackIndex === "number" &&
+      setCurrentTrackIndex &&
+      currentTrackIndex > 0 &&
+      audioGroupChoice === false
+    ) {
+      setCurrentTrackIndex(currentTrackIndex - 1);
+    } else if (
+      audioGroupChoice === true &&
+      tracks &&
+      favoritesTracks &&
+      favoritesTracks.length > 0 &&
+      currentTrackIndex
+    ) {
+      const currentTrackId = tracks[currentTrackIndex].id;
+      const favoritesIndex = favoritesTracks.findIndex(
+        (track) => track.id === currentTrackId
+      );
+      if (favoritesIndex > 0) {
+        const prevFavoritesTrackId = favoritesTracks[favoritesIndex - 1].id;
+        const prevTrackIndex = tracks.findIndex(
+          (track) => track.id === prevFavoritesTrackId
+        );
+        if (prevTrackIndex !== -1) {
+          setCurrentTrackIndex(prevTrackIndex);
+        }
+      }
+    }
+  };
+
+  const handleShuffle = () => {
+    setShuffleMode((prev) => !prev);
+    if (
+      tracks &&
+      typeof currentTrackIndex === "number" &&
+      setCurrentTrackIndex
+    ) {
+      if (
+        audioGroupChoice === true &&
+        favoritesTracks &&
+        favoritesTracks.length > 0 &&
+        tracks
+      ) {
+        const randomFavorites = favoritesTracks.findIndex(
+          (track) => track.id === tracks[currentTrackIndex].id
+        );
+        let newRandomFavorites = randomFavorites;
+        while (
+          favoritesTracks.length > 1 &&
+          newRandomFavorites === randomFavorites
+        ) {
+          newRandomFavorites = Math.floor(
+            Math.random() * favoritesTracks.length
+          );
+        }
+        const nextFavoritesTrackId = favoritesTracks[newRandomFavorites].id;
+        const nextTrackIndex = tracks.findIndex(
+          (track) => track.id === nextFavoritesTrackId
+        );
+        if (nextTrackIndex !== -1) {
+          setCurrentTrackIndex(nextTrackIndex);
+        }
+      } else if (tracks) {
+        let random = currentTrackIndex;
+        while (tracks.length > 1 && random === currentTrackIndex) {
+          random = Math.floor(Math.random() * tracks.length);
+        }
+        setCurrentTrackIndex(random);
+      }
+    }
+  };
+
+  const handleRepeat = () => {
+    setRepeatMode((prev) => !prev);
+    // setCurrentTrackIndex(currentTrackIndex);
+  };
+
+  const findedTrackInFavorite = favoritesTracks?.find(
+    (trackFavorite) => trackFavorite.id === track.id
+  );
+
+  const postFavoritesTracks = useMutation({
+    mutationFn: ({ trackId }: trackIdProps) =>
+      fetchPostFavoritesTracks({ trackId }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["favorites"] });
+    },
+    onError: () => {
+      navigate("/login");
+    },
+  });
+
+  const deleteFavoritesTracks = useMutation({
+    mutationFn: ({ trackId }: trackIdProps) =>
+      fetchDeleteFavoritesTracks({ trackId }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["favorites"] });
+    },
+    onError: () => {
+      navigate("/login");
+    },
+  });
+
+  const handleFavoriteAdd = () => {
+    const trackId = track.id;
+    if (findedTrackInFavorite) {
+      deleteFavoritesTracks.mutate({ trackId });
+    } else {
+      postFavoritesTracks.mutate({ trackId });
+    }
+  };
 
   return (
     <div className={styles.audioplayer}>
@@ -108,8 +332,8 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
           <div className={styles.audioplayer__inner}>
             <img
               className={styles.audioplayer__image}
-              src={isImagePlaying}
-              srcSet={isImagePlaying}
+              src={image}
+              srcSet={image}
               alt="Изображение альбома"
               onLoad={() => setIsImageLoading(false)}
               style={{
@@ -121,7 +345,21 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
                 <span className={styles.audioplayer__infoBlockTitle}>
                   {track.title}
                 </span>
-                <IconFavorite className={styles.audioplayer__infoBlockIcon} />
+                <Button
+                  title={
+                    <IconFavorite
+                      className={
+                        !findedTrackInFavorite
+                          ? styles.audioplayer__infoBlockIcon
+                          : `${styles.audioplayer__infoBlockIcon} ${styles.isFavoriteTrack}`
+                      }
+                    />
+                  }
+                  type="button"
+                  variant="link"
+                  size="none"
+                  onClick={handleFavoriteAdd}
+                />
               </div>
               <span className={styles.audioplayer__infoBlockArtist}>
                 {track.artist}
@@ -134,18 +372,23 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
               ref={audioRef}
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
-              onEnded={() => setIsPlaying(false)}
+              onEnded={handleEnded}
             />
             <div className={styles.audioplayer__audioButtons}>
               <Button
                 title={
                   <IconShuffle
-                    className={styles.audioplayer__audioButtonsShuffle}
+                    className={
+                      shuffleMode
+                        ? `${styles.audioplayer__audioButtonsShuffle} ${styles.isActive}`
+                        : styles.audioplayer__audioButtonsShuffle
+                    }
                   />
                 }
                 type="button"
                 variant="link"
                 size="none"
+                onClick={handleShuffle}
               />
               <Button
                 title={
@@ -156,6 +399,7 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
                 type="button"
                 variant="link"
                 size="none"
+                onClick={handlePrev}
               />
               <Button
                 title={
@@ -187,16 +431,22 @@ export const Audioplayer: FC<TrackProps> = ({ track }) => {
                 type="button"
                 variant="link"
                 size="none"
+                onClick={handleNext}
               />
               <Button
                 title={
                   <IconRepeat
-                    className={styles.audioplayer__audioButtonsRepeat}
+                    className={
+                      repeatMode
+                        ? `${styles.audioplayer__audioButtonsRepeat} ${styles.isActive}`
+                        : styles.audioplayer__audioButtonsRepeat
+                    }
                   />
                 }
                 type="button"
                 variant="link"
                 size="none"
+                onClick={handleRepeat}
               />
             </div>
             <div className={styles.audioplayer__audioDuration}>

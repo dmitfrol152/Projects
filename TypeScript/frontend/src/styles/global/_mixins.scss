@@ -5,3 +5,21 @@
     @content;
   }
 }
+
+@mixin vp-1280 {
+  @media (max-width: variables.$vp-lessBig) {
+    @content;
+  }
+}
+
+@mixin vp-1024 {
+  @media (max-width: variables.$vp-tablet) {
+    @content;
+  }
+}
+
+@mixin vp-768 {
+  @media (max-width: variables.$vp-mobile) {
+    @content;
+  }
+}

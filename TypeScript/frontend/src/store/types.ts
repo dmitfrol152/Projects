@@ -12,6 +12,14 @@ export const audioGroupChoiceSchema = z.object({
 
 export type audioGroupChoiceProps = z.infer<typeof audioGroupChoiceSchema>;
 
+export const audioGroupChoiceNameSchema = z.object({
+  audioGroupChoiceName: audioGroupChoiceSchema,
+});
+
+export type audioGroupChoiceNameProps = z.infer<
+  typeof audioGroupChoiceNameSchema
+>;
+
 export const SearchSchema = z.object({
   searchValue: z.string(),
 });
@@ -54,4 +62,17 @@ export const AudioPlayerNameActiveImageSchema = z.object({
 
 export type AudioPlayerNameActiveImageProps = z.infer<
   typeof AudioPlayerNameActiveImageSchema
+>;
+
+export const currentTrackIndexSchema = z.object({
+  currentTrackIndexValue: z.number().nullable(),
+});
+
+export const currentTrackIndexSelectorSchema = z.object({
+  currentTrackIndexName: currentTrackIndexSchema,
+});
+
+export type currentTrackIndexProps = z.infer<typeof currentTrackIndexSchema>;
+export type currentTrackIndexSelectorProps = z.infer<
+  typeof currentTrackIndexSelectorSchema
 >;

@@ -1,9 +1,18 @@
 @use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
 
 .button {
   position: relative;
   display: flex;
   justify-content: center;
+
+  @include mixins.vp-1280 {
+    height: 100%;
+  }
+
+  @include mixins.vp-768 {
+    width: 100%;
+  }
 
   &__element {
     margin: 0;
@@ -31,6 +40,10 @@
       transform: scale(1);
       transition: transform variables.$transition-300;
 
+      @include mixins.vp-1280 {
+        font-size: 12px;
+      }
+
       &:focus-visible {
         outline: none;
         transform: scale(1.1);
@@ -47,6 +60,10 @@
 
     &[data-size="none"] {
       padding: 0;
+
+      @include mixins.vp-1280 {
+        padding: 12px 0 12px 0;
+      }
     }
 
     &[data-variant="main"] {
@@ -59,22 +76,59 @@
       width: 100%;
       transition: background-color variables.$transition-300;
 
+      @include mixins.vp-1280 {
+        font-size: 14px;
+        background-color: variables.$color-white;
+        border-radius: 30px;
+      }
+
       &:focus-visible {
         outline: none;
         background-color: variables.$color-white;
+
+        @include mixins.vp-1280 {
+          background-color: variables.$color-orange;
+
+          span,
+          svg {
+            color: variables.$color-white;
+          }
+        }
       }
 
       &:hover {
         background-color: variables.$color-white;
+
+        @include mixins.vp-1280 {
+          background-color: variables.$color-orange;
+
+          span,
+          svg {
+            color: variables.$color-white;
+          }
+        }
       }
 
       &:active {
         background-color: variables.$color-white;
+
+        @include mixins.vp-1280 {
+          background-color: variables.$color-orange;
+
+          span,
+          svg {
+            color: variables.$color-white;
+          }
+        }
       }
     }
 
     &[data-size="main"] {
       padding: 9px 50px 9px 30px;
+
+      @include mixins.vp-1280 {
+        padding: 10px 16px;
+      }
     }
 
     &[data-variant="login"] {

@@ -1,5 +1,26 @@
+@use "/src/styles/global/mixins" as mixins;
+
 .profileComponent {
+  position: relative;
   padding: 20px 0;
+
+  @include mixins.vp-1280 {
+    padding: 60px 0;
+  }
+
+  &__btn {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @include mixins.vp-1280 {
+      bottom: auto;
+      top: 10px;
+      border-radius: 30px;
+      overflow: hidden;
+    }
+  }
 
   &__title {
     margin: 0 0 20px 0;
