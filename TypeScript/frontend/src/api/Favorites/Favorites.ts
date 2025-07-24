@@ -21,6 +21,7 @@ export function fetchGetFavoritesTracks(): Promise<FavoritesGetArrayProps> {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    credentials: "include",
   })
     .then((response) => {
       if (!response.ok) {
@@ -54,6 +55,7 @@ export function fetchPostFavoritesTracks(data: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify(data),
+    credentials: "include",
   })
     .then((response) => {
       if (!response.ok) {
@@ -75,6 +77,7 @@ export function fetchDeleteFavoritesTracks(data: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify(data),
+    credentials: "include",
   })
     .then((response) => {
       if (!response.ok) {

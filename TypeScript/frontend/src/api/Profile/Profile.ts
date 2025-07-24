@@ -9,6 +9,7 @@ export function loginUser(userData: LoginProps): Promise<void> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(userData),
+    credentials: "include",
   })
     .then(async (response) => {
       if (!response.ok) {
@@ -29,6 +30,7 @@ export function registerUser(userData: LoginProps): Promise<void> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(userData),
+    credentials: "include",
   })
     .then(async (response) => {
       if (!response.ok) {
