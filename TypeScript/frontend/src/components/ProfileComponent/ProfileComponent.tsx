@@ -5,6 +5,7 @@ import styles from "./ProfileComponent.module.scss";
 import { queryClient } from "../../api/queryClient";
 import { useDispatch } from "react-redux";
 import { authUserAction } from "../../store/authUserSlice";
+import { audioGroupChoiceAction } from "../../store/audioGroupChoiceSlice";
 
 export const ProfileComponent = () => {
   const username = localStorage.getItem("username");
@@ -16,6 +17,7 @@ export const ProfileComponent = () => {
     localStorage.removeItem("username");
     queryClient.invalidateQueries({ queryKey: ["favorites"] });
     dispatch(authUserAction({ authUserValue: false }));
+    dispatch(audioGroupChoiceAction({ audioGroupChoiceValue: false }));
     navigate("/");
   };
 

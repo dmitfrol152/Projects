@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import { useFavorites } from "../../hooks/useFavorites";
 import styles from "./ProfilePage.module.scss";
 import { SideNav } from "../../components/SideNav";
 import { ProfileComponent } from "../../components/ProfileComponent";
@@ -11,7 +10,6 @@ import type { AudioPlayerNameProps } from "../../store/types";
 import { queryClient } from "../../api/queryClient";
 
 export const ProfilePage = () => {
-  const { getFavoritesTracks } = useFavorites();
   const navigate = useNavigate();
   const authUserResult = useSelector(
     (state: AuthUserResultProps) => state.authUserName.authUserValue
@@ -32,7 +30,7 @@ export const ProfilePage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (getFavoritesTracks.isError) {
+  if (!authUserResult) {
     queryClient.invalidateQueries({ queryKey: ["favorites"] });
     dispatch(authUserAction({ authUserValue: false }));
     navigate("/");
@@ -40,7 +38,7 @@ export const ProfilePage = () => {
     return;
   }
 
-  if (getFavoritesTracks.isSuccess) {
+  if (authUserResult) {
     dispatch(authUserAction({ authUserValue: true }));
     return (
       <div
@@ -58,10 +56,6 @@ export const ProfilePage = () => {
         </div>
       </div>
     );
-  }
-
-  if (getFavoritesTracks.isLoading) {
-    return 123;
   }
 
   return (

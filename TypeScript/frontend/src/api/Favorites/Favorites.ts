@@ -43,9 +43,9 @@ export function fetchGetFavoritesTracks(): Promise<FavoritesGetArrayProps> {
 }
 
 // favorites post
-export function fetchPostFavoritesTracks(
-  data: { trackId: number }
-): Promise<FavoritesGetProps> {
+export function fetchPostFavoritesTracks(data: {
+  trackId: number;
+}): Promise<FavoritesGetProps> {
   return fetch("/api/favorites", {
     method: "POST",
     headers: {
@@ -64,9 +64,9 @@ export function fetchPostFavoritesTracks(
 }
 
 // favorites delete
-export function fetchDeleteFavoritesTracks(
-  data: { trackId: number }
-): Promise<FavoritesGetProps> {
+export function fetchDeleteFavoritesTracks(data: {
+  trackId: number;
+}): Promise<FavoritesGetProps> {
   return fetch("/api/favorites", {
     method: "DELETE",
     headers: {

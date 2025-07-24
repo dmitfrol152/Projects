@@ -1,15 +1,17 @@
 import { Link, useNavigate } from "react-router";
-import { useFavorites } from "../../hooks/useFavorites";
 import { Button } from "../Button";
 import IconProfile from "../../assets/images/svg/icon-profile.svg?react";
 import styles from "./Account.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { audioGroupChoiceAction } from "../../store/audioGroupChoiceSlice";
+import type { AuthUserResultProps } from "./types";
 
 export const Account = () => {
-  const { getFavoritesTracks } = useFavorites();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const authUserResult = useSelector(
+    (state: AuthUserResultProps) => state.authUserName.authUserValue
+  );
 
   function handleLogin() {
     navigate("/login");
@@ -19,7 +21,7 @@ export const Account = () => {
     dispatch(audioGroupChoiceAction({ audioGroupChoiceValue: null }));
   }
 
-  if (getFavoritesTracks.isSuccess) {
+  if (authUserResult) {
     return (
       <Link to="/profile" onClick={handleGroupChoice}>
         <div className={styles.account}>
@@ -37,7 +39,7 @@ export const Account = () => {
     );
   }
 
-  if (getFavoritesTracks.isError) {
+  if (!authUserResult) {
     return (
       <Button
         title="Войти"
@@ -45,7 +47,6 @@ export const Account = () => {
         variant="link"
         size="none"
         onClick={handleLogin}
-        isLoading={getFavoritesTracks.isLoading}
       />
     );
   }

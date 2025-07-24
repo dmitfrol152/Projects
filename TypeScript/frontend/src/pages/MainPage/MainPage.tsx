@@ -13,11 +13,11 @@ import { TracksFavorite } from "../../components/TracksFavorite";
 import type { AudioPlayerNameProps } from "../../store/types";
 
 export const MainPage = () => {
-  const { getFavoritesTracks, getTracks } = useFavorites();
-  const [page, setPage] = useState<number>(1);
   const authUserResult = useSelector(
     (state: AuthUserResultProps) => state.authUserName.authUserValue
   );
+  const { getFavoritesTracks, getTracks } = useFavorites(authUserResult);
+  const [page, setPage] = useState<number>(1);
   const value = useSelector(
     (state: ValueSearchProps) => state.searchName.searchValue
   );
@@ -31,6 +31,27 @@ export const MainPage = () => {
     isTrackPlaying && isTrackPlaying !== null ? true : false
   );
   const [openedModalId, setOpenedModalId] = useState<number | null>(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handlerResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handlerResize);
+    return () => window.removeEventListener("resize", handlerResize);
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth > 768) return;
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 100
+      ) {
+        setPage((prev) => prev + 1);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [windowWidth]);
 
   const LIMIT = 10;
 
@@ -72,7 +93,7 @@ export const MainPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (getFavoritesTracks.isError) {
+  if (getFavoritesTracks.isError || !authUserResult) {
     return (
       <div
         className={
@@ -89,7 +110,7 @@ export const MainPage = () => {
               openedModalId={openedModalId}
               setOpenedModalId={setOpenedModalId}
             />
-            {filtredTracks.length > tracks.length ? (
+            {windowWidth > 768 && filtredTracks.length > tracks.length ? (
               <Button
                 title="Показать еще"
                 type="button"
@@ -125,7 +146,8 @@ export const MainPage = () => {
                   openedModalId={openedModalId}
                   setOpenedModalId={setOpenedModalId}
                 />
-                {filtredFavoritesTracks.length > tracks.length ? (
+                {windowWidth > 768 &&
+                filtredFavoritesTracks.length > tracks.length ? (
                   <Button
                     title="Показать еще"
                     type="button"
@@ -154,7 +176,7 @@ export const MainPage = () => {
                   openedModalId={openedModalId}
                   setOpenedModalId={setOpenedModalId}
                 />
-                {filtredTracks.length > tracks.length ? (
+                {windowWidth > 768 && filtredTracks.length > tracks.length ? (
                   <Button
                     title="Показать еще"
                     type="button"
@@ -171,9 +193,6 @@ export const MainPage = () => {
       </>
     );
   }
-
-  // if (getFavoritesTracks.isLoading) {
-  // }
 
   // Other
   return (
