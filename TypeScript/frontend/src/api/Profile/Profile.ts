@@ -1,8 +1,9 @@
+import { BASE_URL } from "../../constants/api";
 import type { LoginProps } from "./types";
 
 // login
 export function loginUser(userData: LoginProps): Promise<void> {
-  return fetch("/api/login", {
+  return fetch(`${BASE_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,7 +23,7 @@ export function loginUser(userData: LoginProps): Promise<void> {
 
 // register
 export function registerUser(userData: LoginProps): Promise<void> {
-  return fetch("/api/register", {
+  return fetch(`${BASE_URL}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
