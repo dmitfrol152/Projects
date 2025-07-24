@@ -1,9 +1,8 @@
-import { BASE_URL } from "../../constants/api";
 import type { LoginProps } from "./types";
 
 // login
 export function loginUser(userData: LoginProps): Promise<void> {
-  return fetch(`${BASE_URL}/login`, {
+  return fetch(`https://audioplayer-ov4g.onrender.com/api/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +22,7 @@ export function loginUser(userData: LoginProps): Promise<void> {
 
 // register
 export function registerUser(userData: LoginProps): Promise<void> {
-  return fetch(`${BASE_URL}/register`, {
+  return fetch(`https://audioplayer-ov4g.onrender.com/api/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

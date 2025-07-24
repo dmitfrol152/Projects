@@ -1,4 +1,3 @@
-import { BASE_URL } from "../../constants/api";
 import {
   FavoritesGetArraySchema,
   type FavoritesGetArrayProps,
@@ -16,7 +15,7 @@ export function fetchGetFavoritesTracks(): Promise<FavoritesGetArrayProps> {
   } catch (error) {
     console.error("Ошибка:", error);
   }
-  return fetch(`${BASE_URL}/favorites`, {
+  return fetch(`https://audioplayer-ov4g.onrender.com/api/favorites`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -47,7 +46,7 @@ export function fetchGetFavoritesTracks(): Promise<FavoritesGetArrayProps> {
 export function fetchPostFavoritesTracks(data: {
   trackId: number;
 }): Promise<FavoritesGetProps> {
-  return fetch(`${BASE_URL}/favorites`, {
+  return fetch(`https://audioplayer-ov4g.onrender.com/api/favorites`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -68,7 +67,7 @@ export function fetchPostFavoritesTracks(data: {
 export function fetchDeleteFavoritesTracks(data: {
   trackId: number;
 }): Promise<FavoritesGetProps> {
-  return fetch(`${BASE_URL}/favorites`, {
+  return fetch(`https://audioplayer-ov4g.onrender.com/api/favorites`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

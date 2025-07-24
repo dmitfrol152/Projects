@@ -1,9 +1,8 @@
-import { BASE_URL } from "../../constants/api";
 import { TracksGetArraySchema, type TracksGetArrayProps } from "./types";
 
 // tracks get
 export function fetchGetTracks(): Promise<TracksGetArrayProps> {
-  return fetch(`${BASE_URL}/tracks`, {
+  return fetch(`https://audioplayer-ov4g.onrender.com/api/tracks`, {
     method: "GET",
   })
     .then((response) => {
