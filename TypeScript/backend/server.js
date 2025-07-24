@@ -7,7 +7,7 @@ const app = express();
 const PORT = 8000;
 
 app.use(cors({
-  origin: "https://audioplayer-self.netlify.app/",
+  origin: "https://audioplayer-self.netlify.app",
   credentials: true,
 }))
 app.use(bodyParser.json());
