@@ -63,8 +63,10 @@ export const MainPage = () => {
     getTracks.data?.filter((track) => {
       if (debouncedSearchValue !== "") {
         return (
-          track.artist.toLowerCase().includes(debouncedSearchValue) ||
-          track.title.toLowerCase().includes(debouncedSearchValue)
+          track.artist
+            .toLowerCase()
+            .includes(debouncedSearchValue.toLowerCase()) ||
+          track.title.toLowerCase().includes(debouncedSearchValue.toLowerCase())
         );
       }
       return true;
@@ -74,8 +76,10 @@ export const MainPage = () => {
     getFavoritesTracks.data?.filter((track) => {
       if (debouncedSearchValue !== "") {
         return (
-          track.artist.toLowerCase().includes(debouncedSearchValue) ||
-          track.title.toLowerCase().includes(debouncedSearchValue)
+          track.artist
+            .toLowerCase()
+            .includes(debouncedSearchValue.toLowerCase()) ||
+          track.title.toLowerCase().includes(debouncedSearchValue.toLowerCase())
         );
       }
       return true;
