@@ -20,8 +20,16 @@
       </label>
       <button class="login__btn" type="submit">Login</button>
       <button class="login__btn-close" type="button" @click="handleClose">
-        <svg width="24" height="24" aria-hidden="true">
-          <use xlink:href="../assets/svg/sprite.svg#icon-close"></use>
+        <svg
+          fill="currentColor"
+          width="24px"
+          height="24px"
+          viewBox="-3.5 0 19 19"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11.383 13.644A1.03 1.03 0 0 1 9.928 15.1L6 11.172 2.072 15.1a1.03 1.03 0 1 1-1.455-1.456l3.928-3.928L.617 5.79a1.03 1.03 0 1 1 1.455-1.456L6 8.261l3.928-3.928a1.03 1.03 0 0 1 1.455 1.456L7.455 9.716z"
+          />
         </svg>
       </button>
     </form>
