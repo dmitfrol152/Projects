@@ -1,0 +1,31 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-black: #181818;
+  --vt-c-blue: #3f51b5;
+  --vt-c-blue-dark: #1c32ae;
+  --vt-c-gray: #bebebe;
+  --vt-c-gray-dark: #7e7e7e;
+  --vt-c-green: #00c94a;
+  --vt-c-orange: #ff9500;
+  --vt-c-yellow: #f6ff00;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-black);
+  background: var(--color-white);
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 15px;
+}
