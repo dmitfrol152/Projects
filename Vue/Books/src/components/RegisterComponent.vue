@@ -63,13 +63,14 @@ const handleRegistration = () => {
   );
 
   if (
-    findedUser &&
+    !findedUser &&
     checkUser.value.username !== "" &&
     checkUser.value.password !== ""
   ) {
     isUserFined.value = false;
     user.isAuthrorize = true;
     localStorage.setItem("user", checkUser.value.username);
+    user.addUser(checkUser.value.username, checkUser.value.password);
     router.push({ name: "home" });
   } else {
     isUserFined.value = true;
