@@ -1,19 +1,17 @@
+"use client";
+
 import { Header } from "../components/header";
-// import { UiTextField } from "../ui/fields/UiTextField";
 import { Game } from "../components/game-new";
+import { GameProvider } from "../context/GameContext";
 
 export default function HomePage() {
   return (
-    <HomePageLayout header={<Header />}>
-      <Game />
-      {/* <UiTextField
-        label="Label"
-        placeholder="placeholder"
-        requared
-        helperText="helperText"
-        errorText="errorText"
-      /> */}
-    </HomePageLayout>
+    <GameProvider>
+      <HomePageLayout header={<Header />}>
+        <Game />
+      </HomePageLayout>
+    </GameProvider>
+
   );
 }
 

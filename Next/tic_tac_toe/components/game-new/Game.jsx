@@ -1,7 +1,6 @@
 "use client";
 
 import { GameLayout } from "./components/GameLayout";
-import { GameBackLinks } from "./components/GameBackLinks";
 import { GameTitle } from "./components/GameTitle";
 import { GameInfo } from "./components/GameInfo";
 import { PlayerInfo } from "./components/PlayerInfo";
@@ -11,28 +10,36 @@ import { GameCells } from "./components/GameCells";
 import { GameOverModal } from "./GameOverModal";
 import { getNextMove } from "../../model/getNextMove";
 import { computeWinner } from "../../model/computeWinner";
-import { useReducer, useMemo, useCallback } from "react";
-import {
-  initGameState,
-  gameStateReducer,
-  GAME_CELL_ACTION,
-} from "../../model/gameStateReducer";
+import { useMemo, useCallback } from "react";
+import { GAME_CELL_ACTION } from "../../model/gameStateReducer";
 import { computeWinnerSymbol } from "../../model/computeWinnerSymbol";
 import { computePlayerTimer } from "../../model/computePlayerTimer";
-import { useInterval } from "../../lib/timers";
+import { useInterval } from "../../hooks/timers";
+import { UiTextField } from "../../ui/fields/UiTextField";
+import { useGame } from "../../context/GameContext";
 
-const PLAYERS_COUNT = 2;
+/**
+ *
+ * @param {
+ *  gameIsStarted: boolean,
+ * } param0
+ * @returns
+ */
 
 export function Game() {
-  const [gameState, dispatch] = useReducer(
-    gameStateReducer,
-    {
-      playerCount: PLAYERS_COUNT,
-      defaultTimer: 60000,
-      currentMoveStart: Date.now(),
-    },
-    initGameState,
-  );
+  const {
+    gameState,
+    dispatch,
+    players,
+    setPlayers,
+    timers,
+    setTimers,
+    selectPlayers,
+    selectTimers,
+    isErrorP,
+    isErrorT,
+    startGame,
+  } = useGame();
 
   useInterval(
     1000,
@@ -42,7 +49,7 @@ export function Game() {
         type: GAME_CELL_ACTION.TICK,
         now: Date.now(),
       });
-    }),
+    }, [dispatch]),
   );
 
   const winnerSiquence = useMemo(() => computeWinner(gameState), [gameState]);
@@ -54,29 +61,79 @@ export function Game() {
 
   const winnerPlayer = PLAYERS.find((symbol) => symbol.symbol === winnerSymbol);
 
-  const handleCellClick = useCallback((i) => {
+  const handleCellClick = useCallback(
+    (i) => {
+      if (!gameState.currentMoveStart) {
+        startGame();
+      }
+      dispatch({
+        type: GAME_CELL_ACTION.CELL_CLICK,
+        i,
+        now: Date.now(),
+      });
+    },
+    [dispatch, gameState.currentMoveStart],
+  );
+
+  const handleClickGameStart = () => {
     dispatch({
-      type: GAME_CELL_ACTION.CELL_CLICK,
-      i,
-      now: Date.now(),
+      type: GAME_CELL_ACTION.START_NEW_GAME,
+      playerCount: players,
+      defaultTimer: timers,
+      currentMoveStart: Date.now(),
     });
-  }, []);
+  };
+
+  const handleClickInHome = () => {
+    dispatch({
+      type: GAME_CELL_ACTION.START_NEW_GAME,
+      playerCount: players,
+      defaultTimer: timers,
+      currentMoveStart: false,
+    });
+  };
 
   const { cells, currentMove } = gameState;
 
   return (
     <>
       <GameLayout
-        backLinks={<GameBackLinks />}
+        playerSelect={
+          <UiTextField
+            label="Количество играков:"
+            requared
+            helperText="Выберите один из вариантов"
+            errorText={isErrorP && "Не выбран ни один вариант!"}
+            value={players}
+            handleChange={(eventTargetValue) => {
+              setPlayers(Number(eventTargetValue));
+            }}
+            selectArray={selectPlayers}
+          />
+        }
+        timerSelect={
+          <UiTextField
+            label="Время игры:"
+            requared
+            helperText="Выберите один из вариантов"
+            errorText={isErrorT && "Не выбран ни один вариант!"}
+            value={timers}
+            handleChange={(eventTargetValue) => {
+              setTimers(Number(eventTargetValue));
+            }}
+            selectArray={selectTimers}
+          />
+        }
+        // backLinks={<GameBackLinks />}
         title={<GameTitle />}
         gameInfo={
           <GameInfo
-            playerCount={PLAYERS_COUNT}
+            playerCount={players}
             isRatingGame
             timeMode="1 мин на ход"
           />
         }
-        plyerInfo={PLAYERS.slice(0, PLAYERS_COUNT).map((player, index) => {
+        plyerInfo={PLAYERS.slice(0, players).map((player, index) => {
           const { timer, timerStartAt } = computePlayerTimer(
             gameState,
             player.symbol,
@@ -110,7 +167,7 @@ export function Game() {
         ))}
       />
       <GameOverModal
-        players={PLAYERS.slice(0, PLAYERS_COUNT).map((player, index) => (
+        players={PLAYERS.slice(0, players).map((player, index) => (
           <PlayerInfo
             key={player.id}
             name={player.name}
@@ -122,6 +179,9 @@ export function Game() {
           />
         ))}
         winnerName={winnerPlayer?.name}
+        handleClickGameStart={handleClickGameStart}
+        handleClickInHome={handleClickInHome}
+        handleClickOnClose={handleClickInHome}
       />
     </>
   );

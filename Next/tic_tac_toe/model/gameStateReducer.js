@@ -4,6 +4,9 @@ import { getNextMove } from "./getNextMove";
 export const GAME_CELL_ACTION = {
   CELL_CLICK: "cell-click",
   TICK: "tick",
+  START_GAME: "start-game",
+  UPDATE_SETTINGS: "update-settings",
+  START_NEW_GAME: "start-new-game",
 };
 
 export const initGameState = ({
@@ -53,6 +56,41 @@ export const gameStateReducer = (state, action) => {
         timers: updateTimers(state, now),
         currentMove: getNextMove(state),
         currentMoveStart: now,
+      };
+    }
+    case GAME_CELL_ACTION.START_GAME: {
+      return {
+        ...state,
+        currentMoveStart: action.now,
+      };
+    }
+    case GAME_CELL_ACTION.UPDATE_SETTINGS: {
+      const { playerCount, defaultTimer } = action.payload;
+      return initGameState({
+        playerCount,
+        defaultTimer,
+        currentMoveStart: false,
+      });
+    }
+    case GAME_CELL_ACTION.START_NEW_GAME: {
+      const { playerCount, defaultTimer, currentMoveStart } = action;
+
+      return {
+        ...state,
+        playerCount,
+        defaultTimer,
+        currentMoveStart,
+        cells: new Array(19 * 19).fill(null),
+        currentMove: GAME_SYMBOLS.CROSS,
+        currentMoveStart,
+        playerCount,
+        timers: MOVE_ORDER.reduce((timers, symbol, index) => {
+          if (index < playerCount) {
+            timers[symbol] = defaultTimer;
+          }
+
+          return timers;
+        }, {}),
       };
     }
     default: {

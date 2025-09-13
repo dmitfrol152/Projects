@@ -6,9 +6,15 @@ export function GameLayout({
   gameMovieInfo,
   actions,
   gameCells,
+  playerSelect,
+  timerSelect,
 }) {
   return (
     <div>
+      <div className="flex flex-col gap-2 mb-2">
+        {playerSelect}
+        {timerSelect}
+      </div>
       <div className="pl-2 mb-4">
         {backLinks}
         {title}

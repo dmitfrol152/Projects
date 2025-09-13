@@ -2,7 +2,7 @@ import { GameSymbol } from "./GameSymbol";
 import Image from "next/image";
 import avatarSrc from "../../../app/assets/images/avatar.png";
 import { clsx } from "clsx";
-import { useNow } from "../../../lib/timers";
+import { useNow } from "../../../hooks/timers";
 import { memo } from "react";
 
 export const PlayerInfo = memo(function PlayerInfo({

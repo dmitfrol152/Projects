@@ -5,7 +5,9 @@
  *  helperText: string,
  *  errorText: string,
  *  className: string,
- *  placeholder: string
+ *  players: number,
+ *  handleChange: function,
+ *  selectArray: array
  *
  * } & import('react').HTMLAttributes<HTMLInputElement>} props
  *
@@ -21,20 +23,20 @@ export function UiTextField({
   helperText,
   errorText,
   className,
-  placeholder,
-  ...inputProps
+  players,
+  handleChange,
+  selectArray,
 }) {
   return (
     <div className={className}>
-      <div className="mx-auto max-w-xs">
-        <UiFieldLabel label={label} requared />
-        <UiFieldInput
-          placeholder={placeholder}
-          errorText={errorText}
-          {...inputProps}
-        />
-        <UiFieldMessage helperText={helperText} errorText={errorText} />
-      </div>
+      <UiFieldLabel label={label} requared={requared} />
+      <UiFieldInput
+        value={players}
+        handleChange={handleChange}
+        errorText={errorText}
+        selectArray={selectArray}
+      />
+      <UiFieldMessage helperText={helperText} errorText={errorText} />
     </div>
   );
 }

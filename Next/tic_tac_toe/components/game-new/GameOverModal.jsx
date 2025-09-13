@@ -1,13 +1,15 @@
 import { UiButton } from "../../ui/UiButton";
 import { UiModal } from "../../ui/UiModal";
 
-export function GameOverModal({ winnerName, players }) {
+export function GameOverModal({
+  winnerName,
+  players,
+  handleClickGameStart,
+  handleClickInHome,
+  handleClickOnClose,
+}) {
   return (
-    <UiModal
-      width="md"
-      isOpen={winnerName}
-      onClose={() => console.log("Close")}
-    >
+    <UiModal width="md" isOpen={winnerName} onClose={handleClickOnClose}>
       <UiModal.Header>Игра завершена</UiModal.Header>
       <UiModal.Body>
         <div className="text-sm mb-4">
@@ -16,10 +18,14 @@ export function GameOverModal({ winnerName, players }) {
         <div className="grid grid-cols-2 gap-3 justify-between">{players}</div>
       </UiModal.Body>
       <UiModal.Footer>
-        <UiButton size="md" variant="secondary">
+        <UiButton size="md" variant="secondary" handleClick={handleClickInHome}>
           Вернуться
         </UiButton>
-        <UiButton size="md" variant="primary">
+        <UiButton
+          size="md"
+          variant="primary"
+          handleClick={handleClickGameStart}
+        >
           Играть снова
         </UiButton>
       </UiModal.Footer>
