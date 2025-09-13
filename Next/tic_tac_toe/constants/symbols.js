@@ -20,21 +20,21 @@ export const MOVE_ORDER = [
 export const PLAYERS = [
   {
     id: 1,
-    name: "Paromovevg",
+    name: "Admin",
     rating: "1230",
     avatar: avatarSrc1,
     symbol: GAME_SYMBOLS.CROSS,
   },
   {
     id: 2,
-    name: "Lera",
+    name: "Petya",
     rating: "100",
     avatar: avatarSrc2,
     symbol: GAME_SYMBOLS.ZERO,
   },
   {
     id: 3,
-    name: "Petya",
+    name: "Lera",
     rating: "850",
     avatar: avatarSrc3,
     symbol: GAME_SYMBOLS.TRIANGLE,
