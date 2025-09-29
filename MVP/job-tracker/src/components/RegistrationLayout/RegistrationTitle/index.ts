@@ -1,0 +1,1 @@
+export { RegistrationTitle } from "./RegistrationTitle";
