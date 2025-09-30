@@ -9,9 +9,9 @@ export function Form({
   buttonsSecondary,
   error,
 }: FormProps) {
-  const formClasses = clsx("relative gap-3 flex flex-col");
+  const formClasses = clsx("relative gap-3 flex flex-col grow justify-between");
   const buttonsClasses = "flex items-center gap-3";
-  const buttonsOAuthClasses = "flex items-center justify-between min-h-10";
+  const buttonsOAuthClasses = "flex items-end justify-between min-h-10";
   const errorClasses =
     "absolute -top-6 left-[50%] translate-x-[-50%] text-[var(--color-danger)]";
 

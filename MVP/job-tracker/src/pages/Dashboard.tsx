@@ -57,6 +57,8 @@ export default function Dashboard() {
     setValueSort,
     visibleButtonMore,
     setPage,
+    popularTags,
+    handleChangeStatusTags,
   } = useJobManager();
   const {
     columns,
@@ -111,6 +113,8 @@ export default function Dashboard() {
           register={register}
           valueSort={valueSort}
           setValueSort={setValueSort}
+          popularTags={popularTags}
+          handleChangeStatusTags={handleChangeStatusTags}
         />
       }
       kanban={

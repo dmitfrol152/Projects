@@ -11,30 +11,57 @@ export function DashboardFilterColumns({
   handleOpenFilters,
   valueSort,
   setValueSort,
+  popularTags,
+  handleChangeStatusTags,
 }: DashboardFilterColumnsProps) {
   return (
-    <>
+    <div className="flex items-end gap-3">
       {isOpenFilters && (
-        <SelectUi
-          options={OPTIONS_SORTED}
-          value={valueSort}
-          setValue={setValueSort}
-        />
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <SelectUi
+              options={OPTIONS_SORTED}
+              value={valueSort}
+              setValue={setValueSort}
+            />
+            {columns.map((column, index) => {
+              return (
+                <ButtonUi
+                  key={index}
+                  size="md"
+                  variant={column.active ? "secondary" : "primary"}
+                  type="button"
+                  handleClickButton={() => handleChangeStatusColumns(column)}
+                >
+                  {column.title}
+                </ButtonUi>
+              );
+            })}
+          </div>
+          {popularTags.length > 0 && (
+            <div className="flex items-center gap-3">
+              <span>Sorted by popular tags: </span>
+              {popularTags.map((tag, index) => {
+                if (index > 2) return null;
+
+                return (
+                  <ButtonUi
+                    key={index}
+                    size="md"
+                    variant={tag.active ? "primary" : "secondary"}
+                    type="button"
+                    handleClickButton={() =>
+                      handleChangeStatusTags({ ...tag, active: !tag.active })
+                    }
+                  >
+                    {tag.tagName}
+                  </ButtonUi>
+                );
+              })}
+            </div>
+          )}
+        </div>
       )}
-      {isOpenFilters &&
-        columns.map((column, index) => {
-          return (
-            <ButtonUi
-              key={index}
-              size="md"
-              variant={column.active ? "secondary" : "primary"}
-              type="button"
-              handleClickButton={() => handleChangeStatusColumns(column)}
-            >
-              {column.title}
-            </ButtonUi>
-          );
-        })}
       <ButtonUi
         size="icon"
         variant="icon"
@@ -44,6 +71,6 @@ export function DashboardFilterColumns({
       >
         <IconFilter className="w-5 h-5" />
       </ButtonUi>
-    </>
+    </div>
   );
 }

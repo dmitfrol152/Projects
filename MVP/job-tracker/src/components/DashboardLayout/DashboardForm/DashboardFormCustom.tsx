@@ -18,6 +18,8 @@ export function DashboardFormCustom({
   register,
   valueSort,
   setValueSort,
+  popularTags,
+  handleChangeStatusTags,
 }: DashboardFormCustomProps) {
   const formClassName = "gap-3 grid grid-cols-3";
 
@@ -38,6 +40,8 @@ export function DashboardFormCustom({
           handleChangeStatusColumns={handleChangeStatusColumns}
           valueSort={valueSort}
           setValueSort={setValueSort}
+          popularTags={popularTags}
+          handleChangeStatusTags={handleChangeStatusTags}
         />
       }
       error={errorDataBase}

@@ -25,3 +25,10 @@ export const JobsManagerEditSchema = z.object({
 });
 
 export type JobsManagerEditProps = z.infer<typeof JobsManagerEditSchema>;
+
+export const TagFiltersSchema = z.object({
+  tagName: z.string(),
+  active: z.boolean(),
+});
+
+export type TagFiltersProps = z.infer<typeof TagFiltersSchema>;

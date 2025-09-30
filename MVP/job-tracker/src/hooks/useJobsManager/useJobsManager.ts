@@ -3,7 +3,11 @@ import { useSearch } from "../useContext";
 import { getUniqueId } from "@/utils/getUniqueId";
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import { supabase } from "@/api/AppSupabaseClient";
-import type { JobsManagerAddProps, JobsManagerEditProps } from "./types";
+import type {
+  JobsManagerAddProps,
+  JobsManagerEditProps,
+  TagFiltersProps,
+} from "./types";
 import { useEffect, useMemo, useState } from "react";
 import { useInitialJobs } from "../useInitialJobs";
 
@@ -18,6 +22,7 @@ export function useJobManager() {
   const [visibleButtonMore, setVisibleButtonMore] = useState<boolean | null>(
     null
   );
+  const [tagsFilter, setTagsFilter] = useState<TagFiltersProps[]>([]);
 
   async function handleSubmitNewFormDashboardHook(
     dataProps: DashboardFormResolverProps,
@@ -132,6 +137,28 @@ export function useJobManager() {
     }
   }
 
+  function handleChangeStatusTags(obj: TagFiltersProps) {
+    setTagsFilter((prev) =>
+      prev.map((item) => (item.tagName === obj.tagName ? obj : item))
+    );
+  }
+
+  useEffect(() => {
+    const tags = new Set<string>();
+    jobs.forEach((job) => {
+      if (job.tags) {
+        job.tags.forEach((tag) => {
+          tags.add(tag);
+        });
+      }
+    });
+    const arrayTags = Array.from(tags);
+    const arrayTagsInObj = arrayTags.map((tag) => {
+      return { tagName: tag, active: false };
+    });
+    setTagsFilter(arrayTagsInObj);
+  }, [jobs]);
+
   const filtredSearchJobs = useMemo(() => {
     return jobs.filter((job) => {
       return (
@@ -141,27 +168,39 @@ export function useJobManager() {
     });
   }, [debounceValue, jobs]);
 
+  const filtredByTagsJobs = useMemo(() => {
+    const tagsFilterForStatus = tagsFilter
+      .filter((tag) => tag.active)
+      .map((tag) => tag.tagName);
+
+    if (tagsFilterForStatus.length === 0) return filtredSearchJobs;
+
+    return filtredSearchJobs.filter((job) =>
+      job.tags?.some((tag) => tagsFilterForStatus.includes(tag))
+    );
+  }, [filtredSearchJobs, tagsFilter]);
+
   const sortedJobs = useMemo(() => {
     switch (valueSort) {
       case "company":
-        return [...filtredSearchJobs].sort((a, b) =>
+        return [...filtredByTagsJobs].sort((a, b) =>
           a.company.localeCompare(b.company)
         );
       case "position":
-        return [...filtredSearchJobs].sort((a, b) =>
+        return [...filtredByTagsJobs].sort((a, b) =>
           a.position.localeCompare(b.position)
         );
       case "date":
-        return [...filtredSearchJobs].sort(
+        return [...filtredByTagsJobs].sort(
           (a, b) =>
             new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
         );
       case "default":
-        return filtredSearchJobs;
+        return filtredByTagsJobs;
       default:
-        return filtredSearchJobs;
+        return filtredByTagsJobs;
     }
-  }, [filtredSearchJobs, valueSort]);
+  }, [filtredByTagsJobs, valueSort]);
 
   const groupedJobs = useMemo(() => {
     const mapGroupedJobs = new Map<string, KanbanProps[]>();
@@ -207,5 +246,7 @@ export function useJobManager() {
     setValueSort,
     visibleButtonMore,
     setPage,
+    popularTags: tagsFilter,
+    handleChangeStatusTags,
   };
 }

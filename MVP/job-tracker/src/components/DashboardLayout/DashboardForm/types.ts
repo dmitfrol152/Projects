@@ -8,6 +8,7 @@ import type {
 } from "react-hook-form";
 import z from "zod";
 import type { Dispatch, SetStateAction } from "react";
+import { TagFiltersSchema } from "@/hooks/useJobsManager/types";
 
 export const DashboardFormCustomSchema = z.object({
   columns: z.array(ColumnsSchema),
@@ -28,6 +29,11 @@ export const DashboardFormCustomSchema = z.object({
     z.custom<
       Dispatch<SetStateAction<"" | "company" | "position" | "date" | "default">>
     >(),
+  popularTags: z.array(TagFiltersSchema),
+  handleChangeStatusTags: z.function({
+    input: [TagFiltersSchema],
+    output: z.void(),
+  }),
 });
 
 export type DashboardFormCustomProps = z.infer<

@@ -16,7 +16,7 @@ export function DashboardLayout({
       <div className="container flex flex-col grow py-6">
         {title}
         {paragraph}
-        <div className="flex flex-col gap-3 bg-white p-8 rounded-lg shadow-md w-full">
+        <div className="flex flex-col gap-3 bg-white p-8 rounded-lg shadow-md w-full min-h-60">
           {formKanban}
         </div>
         {kanban}
