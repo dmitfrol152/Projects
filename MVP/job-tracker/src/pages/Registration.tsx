@@ -3,8 +3,8 @@ import {
   RegistrationFormResolverSchema,
   type RegistrationFormResolverProps,
 } from "@/components/Form/types";
-import { Button } from "@/ui/Button";
-import { Input } from "@/ui/Input";
+import { ButtonUi } from "@/ui/ButtonUi";
+import { InputUi } from "@/ui/InputUi";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/hooks/useContext";
@@ -109,22 +109,22 @@ export default function Registration() {
           onSubmit={handleSubmit(handleCustomSubmit)}
           buttons={
             <>
-              <Button size="md" variant="primary" type="submit">
+              <ButtonUi size="md" variant="primary" type="submit">
                 Registration
-              </Button>
-              <Button
+              </ButtonUi>
+              <ButtonUi
                 size="md"
                 variant="secondary"
                 type="button"
                 handleClickButton={handleGoToLogin}
               >
                 Login
-              </Button>
+              </ButtonUi>
             </>
           }
           buttonsSecondary={
             <>
-              <Button
+              <ButtonUi
                 className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
                 type="button"
                 size="icon"
@@ -132,8 +132,8 @@ export default function Registration() {
                 handleClickButton={handleOAuthGitHub}
               >
                 <IconGitHub className="w-6 h-6" />
-              </Button>
-              <Button
+              </ButtonUi>
+              <ButtonUi
                 className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
                 type="button"
                 size="icon"
@@ -141,25 +141,25 @@ export default function Registration() {
                 handleClickButton={handleOAuthGoogleMail}
               >
                 <IconGoogleMail className="w-6 h-6" />
-              </Button>
+              </ButtonUi>
             </>
           }
         >
-          <Input
+          <InputUi
             label="Email"
             type="text"
             placeholder="Enter your email"
             error={errors.email?.message}
             {...register("email")}
           />
-          <Input
+          <InputUi
             label="Password"
             type="text"
             placeholder="Enter your password"
             error={errors.password?.message}
             {...register("password")}
           />
-          <Input
+          <InputUi
             label="Confirm password"
             type="text"
             placeholder="Confirm your password"

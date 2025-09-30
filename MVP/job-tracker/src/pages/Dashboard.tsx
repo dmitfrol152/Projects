@@ -29,6 +29,7 @@ export default function Dashboard() {
       position: "",
       company: "",
       status: "",
+      notes: "",
     },
   });
   const {
@@ -37,6 +38,12 @@ export default function Dashboard() {
     handleCloseModal,
     modalRef,
     handleEditJob,
+    handleAddTag,
+    handleDeleteTag,
+    newTagValue,
+    setNewTagValue,
+    arrayTagValue,
+    isErrorAddTag,
   } = useModalManager({ reset, setValue });
   const {
     handleDeleteJobHook,
@@ -74,6 +81,7 @@ export default function Dashboard() {
       reset,
       isOpenModal,
       setIsOpenModal,
+      arrayTagValue,
     });
   }
 
@@ -127,6 +135,12 @@ export default function Dashboard() {
           errors={errors}
           register={register}
           handleCloseModal={handleCloseModal}
+          newTagValue={newTagValue}
+          setNewTagValue={setNewTagValue}
+          arrayTagValue={arrayTagValue}
+          handleAddTag={handleAddTag}
+          handleDeleteTag={handleDeleteTag}
+          isErrorAddTag={isErrorAddTag}
         />
       }
     />

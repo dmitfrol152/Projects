@@ -7,6 +7,8 @@ export const KanbanSchema = z.object({
   position: z.string(),
   status: z.enum(["", "applied", "interview", "offer", "rejected"]),
   created_at: z.date(),
+  notes: z.string().nullable(),
+  tags: z.array(z.string()),
 });
 
 export type KanbanProps = z.infer<typeof KanbanSchema>;

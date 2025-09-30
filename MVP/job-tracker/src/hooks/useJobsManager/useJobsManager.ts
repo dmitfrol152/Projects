@@ -32,7 +32,15 @@ export function useJobManager() {
     const newDate = new Date();
     setJobs((prev): KanbanProps[] => [
       ...prev,
-      { id: newId, position, company, status, created_at: newDate },
+      {
+        id: newId,
+        position,
+        company,
+        status,
+        created_at: newDate,
+        notes: "",
+        tags: [],
+      },
     ]);
 
     try {
@@ -65,8 +73,9 @@ export function useJobManager() {
     dataProps: DashboardFormResolverProps,
     jobsManagerProps: JobsManagerEditProps
   ) {
-    const { position, company, status } = dataProps;
-    const { isOpenModal, setIsOpenModal, reset } = jobsManagerProps;
+    const { position, company, status, notes } = dataProps;
+    const { isOpenModal, setIsOpenModal, reset, arrayTagValue } =
+      jobsManagerProps;
 
     const backup = isOpenModal;
 
@@ -74,14 +83,16 @@ export function useJobManager() {
 
     setJobs((prev): KanbanProps[] => {
       return [...prev].map((job) =>
-        job.id === isOpenModal?.id ? { ...job, position, company, status } : job
+        job.id === isOpenModal?.id
+          ? { ...job, position, company, status, notes, tags: arrayTagValue }
+          : job
       );
     });
 
     try {
       const { data, error } = await supabase
         .from("jobs")
-        .update({ position, company, status })
+        .update({ position, company, status, notes, tags: arrayTagValue })
         .eq("id", isOpenModal?.id)
         .select()
         .single();

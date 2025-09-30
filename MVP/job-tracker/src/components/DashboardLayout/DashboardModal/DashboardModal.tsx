@@ -1,10 +1,11 @@
 import { Modal } from "@/components/Modal";
-import { Button } from "@/ui/Button";
+import { ButtonUi } from "@/ui/ButtonUi";
 import IconClose from "@assets/svg/icon-close.svg?react";
 import type { DashboardModalProps } from "./types";
 import { DashboardFormModal } from "./DashboardFormModal";
+import { memo } from "react";
 
-export function DashboardModal({
+export const DashboardModal = memo(function DashboardModal({
   isOpenModal,
   modalRef,
   handleSubmit,
@@ -13,6 +14,12 @@ export function DashboardModal({
   errors,
   register,
   handleCloseModal,
+  newTagValue,
+  setNewTagValue,
+  arrayTagValue,
+  handleAddTag,
+  handleDeleteTag,
+  isErrorAddTag,
 }: DashboardModalProps) {
   return (
     <Modal isOpen={!!isOpenModal} modalRef={modalRef}>
@@ -22,8 +29,15 @@ export function DashboardModal({
         errorDataBase={errorDataBase}
         errors={errors}
         register={register}
+        isOpenModal={isOpenModal}
+        newTagValue={newTagValue}
+        setNewTagValue={setNewTagValue}
+        arrayTagValue={arrayTagValue}
+        handleAddTag={handleAddTag}
+        handleDeleteTag={handleDeleteTag}
+        isErrorAddTag={isErrorAddTag}
       />
-      <Button
+      <ButtonUi
         size="icon"
         variant="icon"
         type="button"
@@ -31,7 +45,7 @@ export function DashboardModal({
         handleClickButton={handleCloseModal}
       >
         <IconClose className="w-5 h-5" />
-      </Button>
+      </ButtonUi>
     </Modal>
   );
-}
+});

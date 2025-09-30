@@ -1,14 +1,14 @@
 import clsx from "clsx";
-import type { InputProps } from "./types";
+import type { TextareaProps } from "./types";
 
-export function Input({
+export function TextareaUi({
   label,
-  type,
-  placeholder,
   error,
+  rows,
+  placeholder,
   ...props
-}: InputProps) {
-  const classInputName = clsx(
+}: TextareaProps) {
+  const classTextareaName = clsx(
     "transition-colors border rounded-lg px-4 py-2 focus:outline-none",
     error
       ? "border-[var(--color-danger)] focus:border-[var(--color-danger)] hover:border-[var(--color-danger)]"
@@ -17,12 +17,11 @@ export function Input({
 
   return (
     <div className="flex flex-col gap-3">
-      <label htmlFor={label}>{label}</label>
-      <input
-        id={label}
-        type={type}
+      {label && <label htmlFor={label}>{label}</label>}
+      <textarea
+        className={classTextareaName}
+        rows={rows}
         placeholder={placeholder}
-        className={classInputName}
         {...props}
       />
       {error && <span className="text-[var(--color-danger)]">{error}</span>}

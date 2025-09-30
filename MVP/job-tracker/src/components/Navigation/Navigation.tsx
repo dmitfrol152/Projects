@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Link, useLocation } from "react-router-dom";
 import type { NavigationProps } from "./types";
 import { useAuth } from "@/hooks/useContext";
-import { Button } from "@/ui/Button";
+import { ButtonUi } from "@/ui/ButtonUi";
 import IconSearch from "@assets/svg/icon-search.svg?react";
 
 export function Navigation({
@@ -35,7 +35,7 @@ export function Navigation({
         );
       })}
       {user && isVisibleSearchButton && (
-        <Button
+        <ButtonUi
           className="text-[var(--color-secondary)] hover:text-[var(--color-secondary-hover)] mr-2"
           type="button"
           size="icon"
@@ -43,17 +43,17 @@ export function Navigation({
           handleClickButton={handleClickSearch}
         >
           <IconSearch className="w-5 h-5" />
-        </Button>
+        </ButtonUi>
       )}
       {user && isVisibleExitButton && (
-        <Button
+        <ButtonUi
           type="button"
           size="md"
           variant="exit"
           handleClickButton={signOut}
         >
           Logout
-        </Button>
+        </ButtonUi>
       )}
     </nav>
   );

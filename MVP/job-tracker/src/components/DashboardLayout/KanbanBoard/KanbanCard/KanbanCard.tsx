@@ -1,8 +1,8 @@
-import { Button } from "@/ui/Button";
+import { ButtonUi } from "@/ui/ButtonUi";
 import type { KanbanCardProps } from "./types";
 import IconEdit from "@assets/svg/icon-edit.svg?react";
 import IconDelete from "@assets/svg/icon-delete.svg?react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatedContainer } from "@/shared/AnimatedContainer";
 
 export function KanbanCard({
   job,
@@ -10,41 +10,45 @@ export function KanbanCard({
   handleDeleteJob,
 }: KanbanCardProps) {
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{
-          opacity: 0,
-          y: -20,
-        }}
-        transition={{
-          duration: 0.3,
-          ease: "easeInOut",
-        }}
-        className="bg-white rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative"
+    <AnimatedContainer className="bg-white rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative">
+      <h3 className="font-semibold">{job.position}</h3>
+      <p
+        className={`text-sm text-gray-600 ${
+          job?.tags?.length > 0 ? "mb-3" : null
+        }`}
       >
-        <h3 className="font-semibold">{job.position}</h3>
-        <p className="text-sm text-gray-600">{job.company}</p>
-        <Button
-          className="absolute top-1 right-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
-          type="button"
-          size="icon"
-          variant="icon"
-          handleClickButton={() => handleEditJob(job)}
-        >
-          <IconEdit className="w-5 h-5" />
-        </Button>
-        <Button
-          className="absolute bottom-1 right-1 text-[var(--color-danger)] hover:text-[var(--color-danger-hover)]"
-          type="button"
-          size="icon"
-          variant="icon"
-          handleClickButton={() => handleDeleteJob(job)}
-        >
-          <IconDelete className="w-5 h-5" />
-        </Button>
-      </motion.div>
-    </AnimatePresence>
+        {job.company}
+      </p>
+      <div className="flex gap-1">
+        {job.tags &&
+          job.tags.length > 0 &&
+          job.tags.map((tag, index) => (
+            <span
+              key={index}
+              className="px-2 py-1 text-xs rounded bg-blue-100 text-blue-700"
+            >
+              {tag}
+            </span>
+          ))}
+      </div>
+      <ButtonUi
+        className="absolute top-1 right-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+        type="button"
+        size="icon"
+        variant="icon"
+        handleClickButton={() => handleEditJob(job)}
+      >
+        <IconEdit className="w-5 h-5" />
+      </ButtonUi>
+      <ButtonUi
+        className="absolute bottom-1 right-1 text-[var(--color-danger)] hover:text-[var(--color-danger-hover)]"
+        type="button"
+        size="icon"
+        variant="icon"
+        handleClickButton={() => handleDeleteJob(job)}
+      >
+        <IconDelete className="w-5 h-5" />
+      </ButtonUi>
+    </AnimatedContainer>
   );
 }

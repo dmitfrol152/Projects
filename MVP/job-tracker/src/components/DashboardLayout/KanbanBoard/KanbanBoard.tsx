@@ -2,7 +2,7 @@ import { KanbanColumn } from "./KanbanColumn";
 import type { KanbanBoardProps, KanbanProps } from "./types";
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd";
 import { supabase } from "@/api/AppSupabaseClient";
-import { Button } from "@/ui/Button";
+import { ButtonUi } from "@/ui/ButtonUi";
 
 export function KanbanBoard({
   jobs,
@@ -95,14 +95,14 @@ export function KanbanBoard({
         </div>
         {visibleButtonMore && (
           <div className="flex flex-col items-center">
-            <Button
+            <ButtonUi
               type="button"
               size="md"
               variant="primary"
               handleClickButton={handleMoreJobs}
             >
               Load more
-            </Button>
+            </ButtonUi>
           </div>
         )}
       </div>

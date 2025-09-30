@@ -21,6 +21,7 @@ export const JobsManagerEditSchema = z.object({
     input: [],
     output: z.void(),
   }),
+  arrayTagValue: z.array(z.string()),
 });
 
 export type JobsManagerEditProps = z.infer<typeof JobsManagerEditSchema>;

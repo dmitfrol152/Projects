@@ -1,4 +1,4 @@
-import { Button } from "@/ui/Button";
+import { ButtonUi } from "@/ui/ButtonUi";
 import IconFilter from "@assets/svg/icon-filter.svg?react";
 import type { DashboardFilterColumnsProps } from "./types";
 import { SelectUi } from "@/ui/SelectUi/SelectUi";
@@ -24,7 +24,7 @@ export function DashboardFilterColumns({
       {isOpenFilters &&
         columns.map((column, index) => {
           return (
-            <Button
+            <ButtonUi
               key={index}
               size="md"
               variant={column.active ? "secondary" : "primary"}
@@ -32,10 +32,10 @@ export function DashboardFilterColumns({
               handleClickButton={() => handleChangeStatusColumns(column)}
             >
               {column.title}
-            </Button>
+            </ButtonUi>
           );
         })}
-      <Button
+      <ButtonUi
         size="icon"
         variant="icon"
         type="button"
@@ -43,7 +43,7 @@ export function DashboardFilterColumns({
         handleClickButton={handleOpenFilters}
       >
         <IconFilter className="w-5 h-5" />
-      </Button>
+      </ButtonUi>
     </>
   );
 }

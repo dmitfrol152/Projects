@@ -1,8 +1,8 @@
 import { Form } from "@/components/Form";
-import { Button } from "@/ui/Button";
+import { ButtonUi } from "@/ui/ButtonUi";
 import { DashboardFilterColumns } from "./DashboardFilterColumns";
 import type { DashboardFormCustomProps } from "./types";
-import { Input } from "@/ui/Input";
+import { InputUi } from "@/ui/InputUi";
 import { SelectUi } from "@/ui/SelectUi/SelectUi";
 import { OPTIONS } from "@/constants/options";
 
@@ -26,9 +26,9 @@ export function DashboardFormCustom({
       onSubmit={handleSubmit(handleSubmitNewFormDashboard)}
       className={formClassName}
       buttons={
-        <Button size="md" variant="primary" type="submit">
+        <ButtonUi size="md" variant="primary" type="submit">
           Add
-        </Button>
+        </ButtonUi>
       }
       buttonsSecondary={
         <DashboardFilterColumns
@@ -42,14 +42,14 @@ export function DashboardFormCustom({
       }
       error={errorDataBase}
     >
-      <Input
+      <InputUi
         label="Position"
         type="text"
         placeholder="Enter your position"
         error={errors.position?.message}
         {...register("position")}
       />
-      <Input
+      <InputUi
         label="Company"
         type="text"
         placeholder="Enter your company"

@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { ButtonProps } from "./types";
 import { memo } from "react";
 
-export const Button = memo(function Button({
+export const ButtonUi = memo(function Button({
   className,
   type,
   handleClickButton,

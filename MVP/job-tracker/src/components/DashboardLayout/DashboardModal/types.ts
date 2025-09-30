@@ -7,7 +7,7 @@ import {
 } from "react-hook-form";
 import z from "zod";
 import { KanbanSchema } from "../KanbanBoard/types";
-import { type Ref } from "react";
+import { type Dispatch, type Ref, type SetStateAction } from "react";
 
 export const DashboardModalSchema = z.object({
   isOpenModal: KanbanSchema.nullable(),
@@ -22,6 +22,18 @@ export const DashboardModalSchema = z.object({
     input: [],
     output: z.void(),
   }),
+  newTagValue: z.string(),
+  setNewTagValue: z.custom<Dispatch<SetStateAction<string>>>(),
+  arrayTagValue: z.array(z.string()),
+  handleAddTag: z.function({
+    input: [],
+    output: z.void(),
+  }),
+  handleDeleteTag: z.function({
+    input: [z.string()],
+    output: z.void(),
+  }),
+  isErrorAddTag: z.boolean(),
 });
 
 export type DashboardModalProps = z.infer<typeof DashboardModalSchema>;
