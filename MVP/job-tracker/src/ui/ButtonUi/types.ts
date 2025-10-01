@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import z from "zod";
 
 export const ButtonSchema = z.object({
   className: z.string().optional(),
   type: z.enum(["submit", "button", "reset"]),
-  children: z.any(),
-  handleClickButton: z.any().optional(),
+  children: z.custom<ReactNode>(),
+  handleClickButton: z.function().optional(),
   size: z.string(),
   variant: z.string(),
 });

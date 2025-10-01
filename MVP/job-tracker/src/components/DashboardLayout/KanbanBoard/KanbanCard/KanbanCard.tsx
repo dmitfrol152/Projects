@@ -3,14 +3,20 @@ import type { KanbanCardProps } from "./types";
 import IconEdit from "@assets/svg/icon-edit.svg?react";
 import IconDelete from "@assets/svg/icon-delete.svg?react";
 import { AnimatedContainer } from "@/shared/AnimatedContainer";
+import { useState } from "react";
 
 export function KanbanCard({
   job,
   handleEditJob,
   handleDeleteJob,
 }: KanbanCardProps) {
+  const [hover, setHover] = useState(false);
+
   return (
-    <AnimatedContainer className="bg-white rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative">
+    <AnimatedContainer
+      setHover={setHover}
+      className="bg-white rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative"
+    >
       <h3 className="font-semibold">{job.position}</h3>
       <p
         className={`text-sm text-gray-600 ${
@@ -31,24 +37,28 @@ export function KanbanCard({
             </span>
           ))}
       </div>
-      <ButtonUi
-        className="absolute top-1 right-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
-        type="button"
-        size="icon"
-        variant="icon"
-        handleClickButton={() => handleEditJob(job)}
-      >
-        <IconEdit className="w-5 h-5" />
-      </ButtonUi>
-      <ButtonUi
-        className="absolute bottom-1 right-1 text-[var(--color-danger)] hover:text-[var(--color-danger-hover)]"
-        type="button"
-        size="icon"
-        variant="icon"
-        handleClickButton={() => handleDeleteJob(job)}
-      >
-        <IconDelete className="w-5 h-5" />
-      </ButtonUi>
+      {hover && (
+        <>
+          <ButtonUi
+            className="absolute top-1 right-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+            type="button"
+            size="icon"
+            variant="icon"
+            handleClickButton={() => handleEditJob(job)}
+          >
+            <IconEdit className="w-5 h-5" />
+          </ButtonUi>
+          <ButtonUi
+            className="absolute bottom-1 right-1 text-[var(--color-danger)] hover:text-[var(--color-danger-hover)]"
+            type="button"
+            size="icon"
+            variant="icon"
+            handleClickButton={() => handleDeleteJob(job)}
+          >
+            <IconDelete className="w-5 h-5" />
+          </ButtonUi>
+        </>
+      )}
     </AnimatedContainer>
   );
 }

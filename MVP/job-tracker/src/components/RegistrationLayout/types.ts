@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import z from "zod";
 
 export const RegistrationLayoutSchema = z.object({
-  title: z.any(),
-  form: z.any(),
+  title: z.custom<ReactNode>(),
+  form: z.custom<ReactNode>(),
   error: z.string().nullable(),
 });
 

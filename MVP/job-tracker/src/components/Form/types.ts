@@ -1,11 +1,12 @@
+import type { ReactNode } from "react";
 import z from "zod";
 
 export const FormSchema = z.object({
-  children: z.any(),
-  onSubmit: z.any(),
+  children: z.custom<ReactNode>(),
+  onSubmit: z.function(),
   className: z.string().optional(),
-  buttons: z.any(),
-  buttonsSecondary: z.any().optional(),
+  buttons: z.custom<ReactNode>(),
+  buttonsSecondary: z.custom<ReactNode>().optional(),
   error: z.boolean().optional(),
 });
 

@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { DashboardModal } from "@/components/DashboardLayout/DashboardModal";
 import { useJobManager } from "@/hooks/useJobsManager/useJobsManager";
 import { useModalManager } from "@/hooks/useModalManager/useModalManager";
-import { useFiltersManager } from "@/hooks/useFiltersManager/useFiltersManager";
+import { useFiltersColumns } from "@/hooks/useFiltersColumns/useFiltersColumns";
 
 export default function Dashboard() {
   const {
@@ -66,7 +66,7 @@ export default function Dashboard() {
     handleOpenFilters,
     handleChangeStatusColumns,
     filtredColumnsJobs,
-  } = useFiltersManager();
+  } = useFiltersColumns();
 
   const navigationClassName = "flex flex-col gap-2";
 

@@ -1,12 +1,13 @@
+import type { ReactNode } from "react";
 import z from "zod";
 
 export const DashboardLayoutSchema = z.object({
-  title: z.any(),
-  paragraph: z.any(),
-  aside: z.any(),
-  kanban: z.any(),
-  formKanban: z.any(),
-  modal: z.any(),
+  title: z.custom<ReactNode>(),
+  paragraph: z.custom<ReactNode>(),
+  aside: z.custom<ReactNode>(),
+  kanban: z.custom<ReactNode>(),
+  formKanban: z.custom<ReactNode>(),
+  modal: z.custom<ReactNode>(),
 });
 
 export type DashboardLayoutProps = z.infer<typeof DashboardLayoutSchema>;

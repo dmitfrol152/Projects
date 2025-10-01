@@ -2,7 +2,7 @@ import { COLUMNS } from "@/constants/columns";
 import type { ColumnsProps } from "@/constants/types";
 import { useMemo, useState } from "react";
 
-export function useFiltersManager() {
+export function useFiltersColumns() {
   const [columns, setColumns] = useState<ColumnsProps[]>(COLUMNS);
   const [isOpenFilters, setIsOpenFilters] = useState<boolean>(false);
 

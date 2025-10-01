@@ -1,4 +1,5 @@
 import { ColumnsSchema } from "@/constants/types";
+import type { Dispatch, SetStateAction } from "react";
 import z from "zod";
 
 export const KanbanSchema = z.object({
@@ -21,7 +22,7 @@ export type KanbanMapProps = z.infer<typeof KanbanMapSchema>;
 
 export const KanbanBoardSchema = z.object({
   jobs: KanbanMapSchema,
-  setJobs: z.any(),
+  setJobs: z.custom<Dispatch<SetStateAction<KanbanProps[] | []>>>(),
   handleEditJob: z.function({
     input: [KanbanSchema],
     output: z.void(),

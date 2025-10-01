@@ -5,7 +5,7 @@ export function AnimatedContainer({
   children,
   className,
   transformAnimation = 20,
-  ...props
+  setHover,
 }: AnimatedContainerProps) {
   return (
     <AnimatePresence>
@@ -21,7 +21,8 @@ export function AnimatedContainer({
           ease: "easeInOut",
         }}
         className={className}
-        {...props}
+        onMouseEnter={() => setHover?.(true)}
+        onMouseLeave={() => setHover?.(false)}
       >
         {children}
       </motion.div>
