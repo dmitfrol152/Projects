@@ -4,7 +4,6 @@ import z from "zod";
 export const DashboardLayoutSchema = z.object({
   title: z.custom<ReactNode>(),
   paragraph: z.custom<ReactNode>(),
-  aside: z.custom<ReactNode>(),
   kanban: z.custom<ReactNode>(),
   formKanban: z.custom<ReactNode>(),
   modal: z.custom<ReactNode>(),

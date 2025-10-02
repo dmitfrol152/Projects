@@ -1,8 +1,8 @@
+import { Navigation } from "@/components/Navigation";
 import { useAuth } from "@/hooks/useContext";
-import { Navigate } from "react-router-dom";
-import type { PrivateRouterProps } from "./types";
+import { Navigate, Outlet } from "react-router-dom";
 
-export function PrivateRouter({ children }: PrivateRouterProps) {
+export function PrivateRouter() {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -17,5 +17,14 @@ export function PrivateRouter({ children }: PrivateRouterProps) {
     return <Navigate to={"/login"} replace />;
   }
 
-  return children;
+  return (
+    <div className="flex grow gap-3 bg-[var(--color-gray-light)]">
+      <aside className="w-64 bg-gray-800 text-white flex flex-col p-4">
+        <Navigation className="flex flex-col gap-2" />
+      </aside>
+      <div className="container flex flex-col grow py-6">
+        <Outlet />
+      </div>
+    </div>
+  );
 }

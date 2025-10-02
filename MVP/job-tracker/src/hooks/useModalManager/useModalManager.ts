@@ -1,7 +1,7 @@
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ModalManagerProps } from "./types";
-import { useDebounce } from "../useDebounce";
+import { useDebounce } from "@hooks/useDebounce";
 
 export function useModalManager({ reset, setValue }: ModalManagerProps) {
   const [isOpenModal, setIsOpenModal] = useState<KanbanProps | null>(null);

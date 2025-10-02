@@ -5,7 +5,7 @@ import { InputUi } from "@/ui/InputUi";
 import { SelectUi } from "@/ui/SelectUi/SelectUi";
 import type { DashboardFormModalProps } from "./types";
 import { TextareaUi } from "@/ui/TextareaUi/TextareaUi";
-import { DashboardTags } from "../DashboardTags";
+import { DashboardTags } from "@components/DashboardLayout/DashboardModal/DashboardTags";
 
 export function DashboardFormModal({
   handleSubmit,

@@ -1,5 +1,5 @@
 import { Navigation } from "@components/Navigation";
-import { Logo } from "../Logo";
+import { Logo } from "@components/Logo";
 import { useSearch } from "@/hooks/useContext";
 import { SearchUi } from "@/ui/SearchUi/SearchUi";
 

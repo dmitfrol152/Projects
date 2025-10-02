@@ -13,11 +13,11 @@ export const AuthContextSchema = z.object({
   session: z.custom<Session>().nullable(),
   signUp: z.function({
     input: [z.string(), z.string()],
-    output: z.void(),
+    output: z.any(),
   }),
   signIn: z.function({
     input: [z.string(), z.string()],
-    output: z.void(),
+    output: z.any(),
   }),
   signOut: z.function({
     output: z.void(),

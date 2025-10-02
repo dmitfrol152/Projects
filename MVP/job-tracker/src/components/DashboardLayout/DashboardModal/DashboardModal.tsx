@@ -2,7 +2,7 @@ import { Modal } from "@/components/Modal";
 import { ButtonUi } from "@/ui/ButtonUi";
 import IconClose from "@assets/svg/icon-close.svg?react";
 import type { DashboardModalProps } from "./types";
-import { DashboardFormModal } from "./DashboardFormModal";
+import { DashboardFormModal } from "@components/DashboardLayout/DashboardModal/DashboardFormModal";
 import { memo } from "react";
 
 export const DashboardModal = memo(function DashboardModal({

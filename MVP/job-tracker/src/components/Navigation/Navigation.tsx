@@ -18,9 +18,8 @@ export function Navigation({
   return (
     <nav className={className}>
       {LINKS.map((link) => {
-        if (link.title === "Login" && user) {
-          return;
-        }
+        if (link.title === "Login" && user) return;
+        if (!user && link.title !== "Login") return;
         return (
           <Link
             className={clsx(

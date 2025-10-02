@@ -2,12 +2,12 @@ import { supabase } from "@/api/AppSupabaseClient";
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import type { DashboardFormResolverProps } from "@/components/Form/types";
 import { getUniqueId } from "@/utils/getUniqueId";
-import type { newJobAddProps } from "./types";
+import type { JobAddProps } from "./types";
 
 export function useHandleNewJob() {
   async function handleSubmitNewFormDashboardHook(
     dataProps: DashboardFormResolverProps,
-    jobAddProps: newJobAddProps
+    jobAddProps: JobAddProps
   ) {
     const { position, company, status } = dataProps;
     const { user, setJobs, setErrorDataBase, reset } = jobAddProps;

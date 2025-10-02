@@ -1,7 +1,7 @@
 import { supabase } from "@/api/AppSupabaseClient";
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import { useEffect, useState } from "react";
-import { useAuth } from "./useContext";
+import { useAuth } from "@hooks/useContext";
 
 export function useInitialJobs() {
   const [jobs, setJobs] = useState<KanbanProps[]>([]);

@@ -11,10 +11,10 @@ import { useHandleNewJob } from "@hooks/useJobsManager/useHandleNewJob/useHandle
 import { useHandleEditJob } from "@hooks/useJobsManager/useHandleEditJob/useHandleEditJob";
 import { useHandleDeleteJob } from "@hooks/useJobsManager/useHandleDeleteJob/useHandleDeleteJob";
 import { useFiltersTagsStatus } from "@/hooks/useJobsManager/useFiltersTagsStatus/useFiltersTagsStatus";
-import { useFiltersSearch } from "./useFiltersSearch/useFiltersSearch";
-import { useFiltersTags } from "./useFiltersTags/useFiltersTags";
-import { useFiltersSorted } from "./useFiltersSorted/useFiltersSorted";
-import { useFiltersGroupedByPage } from "./useFiltersGroupedByPage/useFiltersGroupedByPage";
+import { useFiltersSearch } from "@/hooks/useJobsManager/useFiltersSearch/useFiltersSearch";
+import { useFiltersTags } from "@/hooks/useJobsManager/useFiltersTags/useFiltersTags";
+import { useFiltersSorted } from "@/hooks/useJobsManager/useFiltersSorted/useFiltersSorted";
+import { useFiltersGroupedByPage } from "@/hooks/useJobsManager/useFiltersGroupedByPage/useFiltersGroupedByPage";
 
 export function useJobManager() {
   const { jobs, setJobs, loading, user } = useInitialJobs();

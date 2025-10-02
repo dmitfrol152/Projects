@@ -1,5 +1,5 @@
 import { Draggable } from "@hello-pangea/dnd";
-import { KanbanCard } from "../KanbanCard";
+import { KanbanCard } from "@components/DashboardLayout/KanbanBoard/KanbanCard";
 import type { KanbanColumnProps } from "./types";
 import { SceletonsJobs } from "@/components/Sceletons";
 

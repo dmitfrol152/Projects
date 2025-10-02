@@ -1,6 +1,6 @@
 import { Form } from "@/components/Form";
 import { ButtonUi } from "@/ui/ButtonUi";
-import { DashboardFilterColumns } from "./DashboardFilterColumns";
+import { DashboardFilterColumns } from "@components/DashboardLayout/DashboardForm/DashboardFilterColumns";
 import type { DashboardFormCustomProps } from "./types";
 import { InputUi } from "@/ui/InputUi";
 import { SelectUi } from "@/ui/SelectUi/SelectUi";

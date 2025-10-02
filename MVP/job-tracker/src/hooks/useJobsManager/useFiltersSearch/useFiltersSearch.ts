@@ -1,6 +1,6 @@
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import { useMemo } from "react";
-import { useSearch } from "../../useContext";
+import { useSearch } from "@hooks/useContext";
 
 export function useFiltersSearch(jobs: KanbanProps[]) {
   const { debounceValue } = useSearch();

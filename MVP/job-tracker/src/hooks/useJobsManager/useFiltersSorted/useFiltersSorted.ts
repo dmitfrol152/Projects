@@ -2,9 +2,7 @@ import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types
 import { useMemo, useState } from "react";
 
 export function useFiltersSorted(filtredByTagsJobs: KanbanProps[]) {
-  const [valueSort, setValueSort] = useState<
-    "" | "date" | "position" | "company" | "default"
-  >("");
+  const [valueSort, setValueSort] = useState<string>("");
 
   const sortedJobs = useMemo(() => {
     switch (valueSort) {

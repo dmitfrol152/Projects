@@ -1,4 +1,4 @@
-import { KanbanColumn } from "./KanbanColumn";
+import { KanbanColumn } from "@components/DashboardLayout/KanbanBoard/KanbanColumn";
 import type { KanbanBoardProps, KanbanProps } from "./types";
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd";
 import { supabase } from "@/api/AppSupabaseClient";

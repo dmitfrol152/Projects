@@ -6,7 +6,6 @@ import {
   type DashboardFormResolverProps,
 } from "@/components/Form/types";
 import { KanbanBoard } from "@/components/DashboardLayout/KanbanBoard";
-import { Navigation } from "@/components/Navigation";
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import { DashboardFormCustom } from "@/components/DashboardLayout/DashboardForm";
 import { useForm } from "react-hook-form";
@@ -68,8 +67,6 @@ export default function Dashboard() {
     filtredColumnsJobs,
   } = useFiltersColumns();
 
-  const navigationClassName = "flex flex-col gap-2";
-
   async function handleSubmitNewFormDashboard(
     data: DashboardFormResolverProps
   ) {
@@ -99,7 +96,6 @@ export default function Dashboard() {
     <DashboardLayout
       title={<DashboardTitle />}
       paragraph={<DashboardParagraph />}
-      aside={<Navigation className={navigationClassName} />}
       formKanban={
         <DashboardFormCustom
           columns={columns}

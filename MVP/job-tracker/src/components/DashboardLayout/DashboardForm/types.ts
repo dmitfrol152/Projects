@@ -24,11 +24,8 @@ export const DashboardFormCustomSchema = z.object({
   errorDataBase: z.boolean(),
   errors: z.custom<FieldErrors<DashboardFormResolverProps>>(),
   register: z.custom<UseFormRegister<DashboardFormResolverProps>>(),
-  valueSort: z.enum(["", "date", "position", "company", "default"]),
-  setValueSort:
-    z.custom<
-      Dispatch<SetStateAction<"" | "company" | "position" | "date" | "default">>
-    >(),
+  valueSort: z.string(),
+  setValueSort: z.custom<Dispatch<SetStateAction<string>>>(),
   popularTags: z.array(TagFiltersSchema),
   handleChangeStatusTags: z.function({
     input: [TagFiltersSchema],
