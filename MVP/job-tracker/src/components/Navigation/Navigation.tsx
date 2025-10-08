@@ -2,7 +2,6 @@ import { LINKS } from "@/constants/links";
 import clsx from "clsx";
 import { Link, useLocation } from "react-router-dom";
 import type { NavigationProps } from "./types";
-import { useAuth } from "@/hooks/useContext";
 import { ButtonUi } from "@/ui/ButtonUi";
 import IconSearch from "@assets/svg/icon-search.svg?react";
 
@@ -11,9 +10,10 @@ export function Navigation({
   isVisibleSearchButton = false,
   isVisibleExitButton = false,
   handleClickSearch,
+  user,
+  signOut,
 }: NavigationProps) {
   const location = useLocation();
-  const { user, signOut } = useAuth();
 
   return (
     <nav className={className}>

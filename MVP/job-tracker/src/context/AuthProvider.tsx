@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { AuthProviderProps } from "./types";
 import { supabase } from "@/api/AppSupabaseClient";
 import type { Session, User } from "@supabase/supabase-js";
@@ -94,11 +94,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
     await supabase.auth.signOut();
   };
 
+  const memoValues = useMemo(
+    () => ({
+      user,
+      session,
+      signIn,
+      signOut,
+      signUp,
+      loading,
+    }),
+    [user, session, loading]
+  );
+
   return (
-    <AuthContext.Provider
-      value={{ user, session, signIn, signOut, signUp, loading }}
-    >
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={memoValues}>{children}</AuthContext.Provider>
   );
 }

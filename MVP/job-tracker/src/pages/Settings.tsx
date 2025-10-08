@@ -15,8 +15,9 @@ import IconDark from "@assets/svg/icon-dark.svg?react";
 import IconClose from "@assets/svg/icon-close.svg?react";
 import IconDelete from "@assets/svg/icon-delete.svg?react";
 import { Modal } from "@/components/Modal";
+import React from "react";
 
-export default function Settings() {
+export default React.memo(function Settings() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
@@ -36,7 +37,7 @@ export default function Settings() {
   const [loadingProfile, setLoadingProfile] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!user) {
+    if (!user?.id) {
       navigate("/login");
       return;
     }
@@ -61,7 +62,7 @@ export default function Settings() {
     };
 
     init();
-  }, [user]);
+  }, [user?.id]);
 
   function handleAddAvatar(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -280,4 +281,4 @@ export default function Settings() {
       }
     />
   );
-}
+});

@@ -1,10 +1,11 @@
 import { Navigation } from "@components/Navigation";
 import { Logo } from "@components/Logo";
-import { useSearch } from "@/hooks/useContext";
+import { useAuth, useSearch } from "@/hooks/useContext";
 import { SearchUi } from "@/ui/SearchUi/SearchUi";
 
 export function Header() {
   const { isOpenSearch, setIsOpenSearch, query, setQuery } = useSearch();
+  const { user, signOut } = useAuth();
 
   function handleClickSearch() {
     setIsOpenSearch((prev: boolean) => {
@@ -35,6 +36,8 @@ export function Header() {
           isVisibleSearchButton
           isVisibleExitButton
           handleClickSearch={handleClickSearch}
+          user={user}
+          signOut={signOut}
         />
       </div>
     </header>

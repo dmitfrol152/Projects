@@ -20,7 +20,7 @@ export function PrivateRouter() {
   return (
     <div className="flex grow gap-3 bg-[var(--color-gray-light)] min-h-screen">
       <aside className="w-64 shrink-0 bg-gray-800 text-white flex flex-col p-4">
-        <Navigation className="flex flex-col gap-2" />
+        <Navigation className="flex flex-col gap-2" user={user} />
       </aside>
       <div className="containers flex flex-col grow py-6">
         <Outlet />
