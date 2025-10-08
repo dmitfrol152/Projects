@@ -19,10 +19,10 @@ import React from "react";
 import { getStatusModalSetting } from "@/utils/getStatusModalSetting";
 
 export default React.memo(function Settings() {
-  const { user } = useAuth();
+  const { user, profile, refreshProfile, loadingProfile } = useAuth();
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
-  const { getProfile, uploadAvatar, editProfile, deleteAvatar, deleteProfile } =
+  const { uploadAvatar, editProfile, deleteAvatar, deleteProfile } =
     useProfileManager();
   const { isOpen, modalRef, openModal, closeModal } = useModal();
   const [modalAppeareName, setModalAppeareName] = useState<
@@ -40,7 +40,6 @@ export default React.memo(function Settings() {
   const [memoryUrl, setMemoryUrl] = useState<string | null>(null);
   const [errorAddAvatar, setErrorAddAvatar] = useState<boolean>(false);
   const [loadingSave, setLoadingSave] = useState<boolean>(false);
-  const [loadingProfile, setLoadingProfile] = useState<boolean>(true);
 
   useEffect(() => {
     if (!user?.id) {
@@ -49,25 +48,12 @@ export default React.memo(function Settings() {
     }
 
     const init = async () => {
-      setLoadingProfile(true);
-      try {
-        const { data, error } = await getProfile(user.id);
-
-        if (error) {
-          throw error;
-        }
-
-        setFullName(data.full_name ?? "");
-        setAvatarUrl(data.avatar_url ?? AvatarEmpty);
-        setLoadingProfile(false);
-      } catch (error) {
-        setLoadingProfile(false);
-        console.error(error);
-      }
+      setFullName(profile?.full_name ?? "");
+      setAvatarUrl(profile?.avatar_url || null);
     };
 
     init();
-  }, [user?.id]);
+  }, [profile?.id, profile?.avatar_url, profile?.full_name, user?.id, navigate]);
 
   function handleAddAvatar(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -115,6 +101,7 @@ export default React.memo(function Settings() {
       setLoadingSave(false);
       setAvatarFile(null);
       setAvatarUrl(null);
+      refreshProfile();
     } catch (error) {
       setModalAppeareName("errorDeleteProfile");
       openModal();
@@ -160,6 +147,7 @@ export default React.memo(function Settings() {
       setModalAppeareName("successEdit");
       setLoadingSave(false);
       openModal();
+      refreshProfile();
     } catch (error) {
       console.error(error);
       setModalAppeareName("errorEdit");

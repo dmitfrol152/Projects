@@ -8,6 +8,15 @@ export const AuthProviderSchema = z.object({
 
 export type AuthProviderProps = z.infer<typeof AuthProviderSchema>;
 
+export const ProfileSchema = z.object({
+  avatar_url: z.string(),
+  full_name: z.string(),
+  id: z.string(),
+  update_at: z.string(),
+});
+
+export type ProfileProps = z.infer<typeof ProfileSchema>;
+
 export const AuthContextSchema = z.object({
   user: z.custom<User>().nullable(),
   session: z.custom<Session>().nullable(),
@@ -23,6 +32,9 @@ export const AuthContextSchema = z.object({
     output: z.void(),
   }),
   loading: z.boolean(),
+  profile: ProfileSchema.nullable(),
+  loadingProfile: z.boolean(),
+  refreshProfile: z.function(),
 });
 
 export type AuthContextProps = z.infer<typeof AuthContextSchema>;
@@ -61,12 +73,3 @@ export const ThemeContextSchema = z.object({
 });
 
 export type ThemeContextProps = z.infer<typeof ThemeContextSchema>;
-
-export const ProfileSchema = z.object({
-  avatar_url: z.string(),
-  full_name: z.string(),
-  id: z.string(),
-  update_at: z.string(),
-});
-
-export type ProfileProps = z.infer<typeof ProfileSchema>;

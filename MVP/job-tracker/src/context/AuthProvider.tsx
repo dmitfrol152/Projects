@@ -1,13 +1,33 @@
-import { useEffect, useMemo, useState } from "react";
-import type { AuthProviderProps } from "./types";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { AuthProviderProps, ProfileProps } from "./types";
 import { supabase } from "@/api/AppSupabaseClient";
-import type { Session, User } from "@supabase/supabase-js";
+import type { AuthSession, Session, User } from "@supabase/supabase-js";
 import { AuthContext } from "@/hooks/useContext";
+import { useProfileManager } from "@/hooks/useProfileManager/useProfileManager";
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [profile, setProfile] = useState<ProfileProps | null>(null);
+  const [loadingProfile, setLoadingProfile] = useState<boolean>(true);
+  const { getProfile } = useProfileManager();
+
+  const getInitialProfile = useCallback(
+    async (session: AuthSession) => {
+      const id = session.user.id;
+      const profileFetching = await getProfile(id);
+      setProfile(profileFetching);
+      setLoadingProfile(false);
+    },
+    [getProfile]
+  );
+
+  function setFunctionsIsActivate(session: AuthSession | null) {
+    setSession(session ?? null);
+    setUser(session?.user ?? null);
+    setLoading(false);
+  }
 
   useEffect(() => {
     const init = async () => {
@@ -15,62 +35,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
         data: { session },
       } = await supabase.auth.getSession();
 
-      setSession(session ?? null);
-      setUser(session?.user ?? null);
-      setLoading(false);
-
-      if (session?.user) {
-        try {
-          const { data: dataProfile, error } = await supabase
-            .from("profiles")
-            .select("*")
-            .eq("id", session.user.id)
-            .maybeSingle();
-
-          if (error) {
-            console.error(error);
-            return;
-          }
-
-          if (!dataProfile) {
-            await supabase
-              .from("profiles")
-              .insert([{ id: session.user.id, full_name: "", avatar_url: "" }]);
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      }
+      setFunctionsIsActivate(session);
 
       const { data: listener } = supabase.auth.onAuthStateChange(
         async (_event, session) => {
-          setSession(session ?? null);
-          setUser(session?.user ?? null);
-
-          if (session?.user) {
-            try {
-              const { data: dataProfile, error } = await supabase
-                .from("profiles")
-                .select("*")
-                .eq("id", session.user.id)
-                .maybeSingle();
-
-              if (error) {
-                console.error(error);
-                return;
-              }
-
-              if (!dataProfile) {
-                await supabase
-                  .from("profiles")
-                  .insert([
-                    { id: session.user.id, full_name: "", avatar_url: "" },
-                  ]);
-              }
-            } catch (error) {
-              console.error(error);
-            }
-          }
+          setFunctionsIsActivate(session);
         }
       );
 
@@ -81,6 +50,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     init();
   }, []);
+
+  useEffect(() => {
+    const initialProfile = async () => {
+      if (session?.user) {
+        await getInitialProfile(session);
+      }
+    };
+
+    initialProfile();
+  }, [getInitialProfile, session]);
+
+  const refreshProfile = useCallback(async () => {
+    if (session?.user) {
+      await getInitialProfile(session);
+    }
+  }, [getInitialProfile, session]);
 
   const signUp = (email: string, password: string) => {
     return supabase.auth.signUp({ email, password });
@@ -102,8 +87,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
       signOut,
       signUp,
       loading,
+      profile,
+      loadingProfile,
+      refreshProfile,
     }),
-    [user, session, loading]
+    [user, session, loading, profile, loadingProfile, refreshProfile]
   );
 
   return (
