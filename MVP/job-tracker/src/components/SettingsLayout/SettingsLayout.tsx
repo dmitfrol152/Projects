@@ -18,11 +18,10 @@ export function SettingsLayout({
   buttonDark,
   buttonSave,
   buttonDeleteProfile,
-  buttonDeleteAccount,
   modal,
 }: SettingsLayoutProps) {
   const loadingContainer = (
-    <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-1 bg-black/50">
+    <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-2 bg-black/50">
       Loading...
     </div>
   );
@@ -79,10 +78,7 @@ export function SettingsLayout({
           </div>
           <div className="flex items-center gap-3 justify-between">
             {buttonSave}
-            <div className="flex items-center gap-3">
-              {buttonDeleteProfile}
-              {buttonDeleteAccount}
-            </div>
+            <div className="flex items-center gap-3">{buttonDeleteProfile}</div>
           </div>
         </div>
       </div>

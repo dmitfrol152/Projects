@@ -21,7 +21,6 @@ export const SettingsLayoutSchema = z.object({
   buttonDark: z.custom<ReactNode>(),
   buttonSave: z.custom<ReactNode>(),
   buttonDeleteProfile: z.custom<ReactNode>(),
-  buttonDeleteAccount: z.custom<ReactNode>(),
   modal: z.custom<ReactNode>(),
 });
 

@@ -16,16 +16,22 @@ import IconClose from "@assets/svg/icon-close.svg?react";
 import IconDelete from "@assets/svg/icon-delete.svg?react";
 import { Modal } from "@/components/Modal";
 import React from "react";
+import { getStatusModalSetting } from "@/utils/getStatusModalSetting";
 
 export default React.memo(function Settings() {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const { getProfile, uploadAvatar, editProfile, deleteAvatar, deleteProfile } =
     useProfileManager();
   const { isOpen, modalRef, openModal, closeModal } = useModal();
   const [modalAppeareName, setModalAppeareName] = useState<
-    "errorEdit" | "successEdit" | "errorDeleteProfile" | null
+    | "errorEdit"
+    | "successEdit"
+    | "errorDeleteProfile"
+    | "successDeleteProfile"
+    | "confirmDeleteProfile"
+    | null
   >(null);
 
   const [fullName, setFullName] = useState<string>("");
@@ -41,7 +47,6 @@ export default React.memo(function Settings() {
       navigate("/login");
       return;
     }
-    if (fullName || avatarUrl) return;
 
     const init = async () => {
       setLoadingProfile(true);
@@ -87,18 +92,34 @@ export default React.memo(function Settings() {
     setAvatarFile(null);
   }
 
+  function handleConfirmDeleteProfile() {
+    openModal();
+    setModalAppeareName("confirmDeleteProfile");
+  }
+
   async function handleDeleteProfile() {
-    if (!user) return;
+    if (!user?.id) return;
 
-    const { data, error } = await deleteProfile(user.id);
+    setLoadingSave(true);
+    setModalAppeareName(null);
+    closeModal();
+    try {
+      const { error } = await deleteProfile(user.id);
 
-    if (data) {
-      signOut();
-      navigate("/login");
-    }
+      if (error) {
+        throw new Error("Error delete profile");
+      }
 
-    if (error) {
+      setModalAppeareName("successDeleteProfile");
+      openModal();
+      setLoadingSave(false);
+      setAvatarFile(null);
+      setAvatarUrl(null);
+    } catch (error) {
       setModalAppeareName("errorDeleteProfile");
+      openModal();
+      setLoadingSave(false);
+      console.error(error);
     }
   }
 
@@ -241,30 +262,26 @@ export default React.memo(function Settings() {
           type="button"
           size="md"
           variant="exit"
-          handleClickButton={handleDeleteProfile}
+          handleClickButton={handleConfirmDeleteProfile}
         >
           Delete profile
         </ButtonUi>
       }
-      buttonDeleteAccount={
-        <ButtonUi
-          type="button"
-          size="md"
-          variant="exit"
-          handleClickButton={handleDeleteProfile}
-        >
-          Delete account
-        </ButtonUi>
-      }
       modal={
         <Modal isOpen={isOpen} modalRef={modalRef}>
-          {modalAppeareName === "errorEdit" ? (
-            <span>Error save profile</span>
-          ) : modalAppeareName === "successEdit" ? (
-            <span>Edit profile is success!</span>
-          ) : modalAppeareName === "errorDeleteProfile" ? (
-            <span>Error delete profile</span>
-          ) : null}
+          <div className="flex flex-col gap-3">
+            {getStatusModalSetting(modalAppeareName)}
+            {modalAppeareName === "confirmDeleteProfile" && (
+              <ButtonUi
+                type="button"
+                size="md"
+                variant="exit"
+                handleClickButton={handleDeleteProfile}
+              >
+                Delete profile
+              </ButtonUi>
+            )}
+          </div>
           <ButtonUi
             size="icon"
             variant="icon"
