@@ -21,11 +21,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       if (session?.user) {
         try {
-          await supabase
+          const { data: dataProfile, error } = await supabase
             .from("profiles")
-            .upsert([{ id: session.user.id, full_name: "", avatar_url: "" }], {
-              onConflict: "id",
-            });
+            .select("*")
+            .eq("id", session.user.id)
+            .maybeSingle();
+
+          if (error) {
+            console.error(error);
+            return;
+          }
+
+          if (!dataProfile) {
+            await supabase
+              .from("profiles")
+              .insert([{ id: session.user.id, full_name: "", avatar_url: "" }]);
+          }
         } catch (error) {
           console.error(error);
         }
@@ -38,14 +49,24 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
           if (session?.user) {
             try {
-              await supabase
+              const { data: dataProfile, error } = await supabase
                 .from("profiles")
-                .upsert(
-                  [{ id: session.user.id, full_name: "", avatar_url: "" }],
-                  {
-                    onConflict: "id",
-                  }
-                );
+                .select("*")
+                .eq("id", session.user.id)
+                .maybeSingle();
+
+              if (error) {
+                console.error(error);
+                return;
+              }
+
+              if (!dataProfile) {
+                await supabase
+                  .from("profiles")
+                  .insert([
+                    { id: session.user.id, full_name: "", avatar_url: "" },
+                  ]);
+              }
             } catch (error) {
               console.error(error);
             }
