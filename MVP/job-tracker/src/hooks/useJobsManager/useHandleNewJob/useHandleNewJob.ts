@@ -15,6 +15,7 @@ export function useHandleNewJob() {
     if (!user) return;
 
     const newId = getUniqueId();
+    const newProfileId = getUniqueId();
     const newDate = new Date();
     setJobs((prev): KanbanProps[] => [
       ...prev,
@@ -26,29 +27,48 @@ export function useHandleNewJob() {
         created_at: newDate,
         notes: "",
         tags: [],
+        profile_id: newProfileId,
       },
     ]);
 
     try {
-      const { data, error } = await supabase
-        .from("jobs")
-        .insert([{ position, company, status, user_id: user.id }])
-        .select()
+      const { data: profileData, error: profileError } = await supabase
+        .from("profiles")
+        .select("id")
+        .eq("id", user.id)
         .single();
 
-      if (error) {
-        setErrorDataBase(true);
-        setJobs((prev): KanbanProps[] =>
-          prev.filter((job) => job.id !== newId)
+      if (profileError) {
+        throw new Error(
+          "Error to add in DataBase new Job. Cannot find profile."
         );
-        throw new Error("Error to add in DataBase new Job");
-      } else if (data) {
-        setErrorDataBase(false);
-        setJobs((prev: KanbanProps[]): KanbanProps[] => {
-          return prev.map((job) => (job.id === newId ? data : job));
-        });
+      } else if (profileData) {
+        const { data, error } = await supabase
+          .from("jobs")
+          .insert([
+            {
+              position,
+              company,
+              status,
+              user_id: user.id,
+              profile_id: profileData.id,
+            },
+          ])
+          .select()
+          .single();
+
+        if (error) {
+          throw new Error("Error to add in DataBase new Job");
+        } else if (data) {
+          setErrorDataBase(false);
+          setJobs((prev: KanbanProps[]): KanbanProps[] => {
+            return prev.map((job) => (job.id === newId ? data : job));
+          });
+        }
       }
     } catch (err) {
+      setErrorDataBase(true);
+      setJobs((prev): KanbanProps[] => prev.filter((job) => job.id !== newId));
       console.log(err);
     } finally {
       reset();

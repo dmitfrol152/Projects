@@ -13,6 +13,8 @@ export function DashboardFilterColumns({
   setValueSort,
   popularTags,
   handleChangeStatusTags,
+  handleDownloadXlsx,
+  handleDownloadCsv,
 }: DashboardFilterColumnsProps) {
   return (
     <div className="flex items-end gap-3">
@@ -70,6 +72,24 @@ export function DashboardFilterColumns({
         handleClickButton={handleOpenFilters}
       >
         <IconFilter className="w-5 h-5" />
+      </ButtonUi>
+      <ButtonUi
+        size="icon"
+        variant="icon"
+        type="button"
+        className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+        handleClickButton={handleDownloadXlsx}
+      >
+        xlsx
+      </ButtonUi>
+      <ButtonUi
+        size="icon"
+        variant="icon"
+        type="button"
+        className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+        handleClickButton={handleDownloadCsv}
+      >
+        csv
       </ButtonUi>
     </div>
   );

@@ -1,0 +1,1 @@
+export { StatsParagraph } from "./StatsParagraph";

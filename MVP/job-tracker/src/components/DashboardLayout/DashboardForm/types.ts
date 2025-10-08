@@ -9,6 +9,7 @@ import type {
 import z from "zod";
 import type { Dispatch, SetStateAction } from "react";
 import { TagFiltersSchema } from "@/hooks/useJobsManager/types";
+import { KanbanArraySchema } from "@components/DashboardLayout/KanbanBoard/types";
 
 export const DashboardFormCustomSchema = z.object({
   columns: z.array(ColumnsSchema),
@@ -29,6 +30,14 @@ export const DashboardFormCustomSchema = z.object({
   popularTags: z.array(TagFiltersSchema),
   handleChangeStatusTags: z.function({
     input: [TagFiltersSchema],
+    output: z.void(),
+  }),
+  handleDownloadXlsx: z.function({
+    input: [KanbanArraySchema],
+    output: z.void(),
+  }),
+  handleDownloadCsv: z.function({
+    input: [KanbanArraySchema],
     output: z.void(),
   }),
 });

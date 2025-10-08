@@ -79,6 +79,7 @@ export function useJobManager() {
     setJobs,
     loading,
     groupedJobsByPage,
+    groupedJobsWithoutPage: sortedJobs,
     valueSort,
     setValueSort,
     visibleButtonMore,

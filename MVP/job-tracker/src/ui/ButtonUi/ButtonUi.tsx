@@ -9,6 +9,7 @@ export const ButtonUi = memo(function Button({
   children,
   size,
   variant,
+  disabled = false,
 }: ButtonProps) {
   const classButton = clsx(
     "font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed w-max",
@@ -22,14 +23,19 @@ export const ButtonUi = memo(function Button({
         "bg-[var(--color-primary)] text-[var(--color-white)] hover:bg-[var(--color-primary-hover)]",
       secondary:
         "bg-[var(--color-secondary)] text-[--color-gray-dark] hover:bg-[var(--color-secondary-hover)]",
-      exit: "bg-[var(--color-danger)] text-[--color-gray-dark] hover:bg-[var(--color-danger-hover)]",
+      exit: "bg-[var(--color-danger)] text-white hover:bg-[var(--color-danger-hover)]",
       icon: "",
     }[variant],
     className
   );
 
   return (
-    <button className={classButton} type={type} onClick={handleClickButton}>
+    <button
+      className={classButton}
+      type={type}
+      onClick={handleClickButton}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

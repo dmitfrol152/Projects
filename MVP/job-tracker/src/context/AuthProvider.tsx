@@ -19,10 +19,37 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setUser(session?.user ?? null);
       setLoading(false);
 
+      if (session?.user) {
+        try {
+          await supabase
+            .from("profiles")
+            .upsert([{ id: session.user.id, full_name: "", avatar_url: "" }], {
+              onConflict: "id",
+            });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
       const { data: listener } = supabase.auth.onAuthStateChange(
-        (_event, session) => {
+        async (_event, session) => {
           setSession(session ?? null);
           setUser(session?.user ?? null);
+
+          if (session?.user) {
+            try {
+              await supabase
+                .from("profiles")
+                .upsert(
+                  [{ id: session.user.id, full_name: "", avatar_url: "" }],
+                  {
+                    onConflict: "id",
+                  }
+                );
+            } catch (error) {
+              console.error(error);
+            }
+          }
         }
       );
 

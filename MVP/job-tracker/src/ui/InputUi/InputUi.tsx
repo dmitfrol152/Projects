@@ -8,18 +8,25 @@ export function InputUi({
   error,
   value,
   setValue,
+  accept,
+  className,
+  classNameLabel,
+  onChange,
   ...props
 }: InputProps) {
   const classInputName = clsx(
     "transition-colors border rounded-lg px-4 py-2 focus:outline-none",
     error
       ? "border-[var(--color-danger)] focus:border-[var(--color-danger)] hover:border-[var(--color-danger)]"
-      : "border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)]"
+      : "border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)]",
+    className
   );
 
   return (
     <div className="flex flex-col gap-3">
-      <label htmlFor={label}>{label}</label>
+      <label className={classNameLabel} htmlFor={label}>
+        {label}
+      </label>
       <input
         id={label}
         type={type}
@@ -27,8 +34,13 @@ export function InputUi({
         className={classInputName}
         value={value}
         onChange={
-          setValue ? (event) => setValue(event.target.value) : undefined
+          setValue
+            ? (event) => setValue(event.target.value)
+            : onChange
+            ? onChange
+            : undefined
         }
+        accept={accept}
         {...props}
       />
       {error && <span className="text-[var(--color-danger)]">{error}</span>}

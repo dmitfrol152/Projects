@@ -2,6 +2,7 @@ import { ColumnsSchema } from "@/constants/types";
 import { TagFiltersSchema } from "@/hooks/useJobsManager/types";
 import type { Dispatch, SetStateAction } from "react";
 import z from "zod";
+import { KanbanArraySchema } from "@components/DashboardLayout/KanbanBoard/types";
 
 export const DashboardFilterColumnsSchema = z.object({
   isOpenFilters: z.boolean(),
@@ -19,6 +20,14 @@ export const DashboardFilterColumnsSchema = z.object({
   popularTags: z.array(TagFiltersSchema),
   handleChangeStatusTags: z.function({
     input: [TagFiltersSchema],
+    output: z.void(),
+  }),
+  handleDownloadXlsx: z.function({
+    input: [KanbanArraySchema],
+    output: z.void(),
+  }),
+  handleDownloadCsv: z.function({
+    input: [KanbanArraySchema],
     output: z.void(),
   }),
 });

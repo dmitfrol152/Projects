@@ -14,6 +14,7 @@ import { DashboardModal } from "@/components/DashboardLayout/DashboardModal";
 import { useJobManager } from "@/hooks/useJobsManager/useJobsManager";
 import { useModalManager } from "@/hooks/useModalManager/useModalManager";
 import { useFiltersColumns } from "@/hooks/useFiltersColumns/useFiltersColumns";
+import { useFormatedJobsForExport } from "@/hooks/useFormatedJobsForExport";
 
 export default function Dashboard() {
   const {
@@ -58,6 +59,7 @@ export default function Dashboard() {
     setPage,
     popularTags,
     handleChangeStatusTags,
+    groupedJobsWithoutPage,
   } = useJobManager();
   const {
     columns,
@@ -66,6 +68,9 @@ export default function Dashboard() {
     handleChangeStatusColumns,
     filtredColumnsJobs,
   } = useFiltersColumns();
+  const { handleDownloadXlsx, handleDownloadCsv } = useFormatedJobsForExport(
+    groupedJobsWithoutPage
+  );
 
   async function handleSubmitNewFormDashboard(
     data: DashboardFormResolverProps
@@ -111,6 +116,8 @@ export default function Dashboard() {
           setValueSort={setValueSort}
           popularTags={popularTags}
           handleChangeStatusTags={handleChangeStatusTags}
+          handleDownloadXlsx={handleDownloadXlsx}
+          handleDownloadCsv={handleDownloadCsv}
         />
       }
       kanban={

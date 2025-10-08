@@ -7,7 +7,7 @@ export function PrivateRouter() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-1 bg-black/50">
         Loading...
       </div>
     );
@@ -18,11 +18,11 @@ export function PrivateRouter() {
   }
 
   return (
-    <div className="flex grow gap-3 bg-[var(--color-gray-light)]">
-      <aside className="w-64 bg-gray-800 text-white flex flex-col p-4">
+    <div className="flex grow gap-3 bg-[var(--color-gray-light)] min-h-screen">
+      <aside className="w-64 shrink-0 bg-gray-800 text-white flex flex-col p-4">
         <Navigation className="flex flex-col gap-2" />
       </aside>
-      <div className="container flex flex-col grow py-6">
+      <div className="containers flex flex-col grow py-6">
         <Outlet />
       </div>
     </div>

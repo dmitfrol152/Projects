@@ -1,11 +1,12 @@
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { ModalManagerProps } from "./types";
 import { useDebounce } from "@hooks/useDebounce";
+import { useModal } from "@/hooks/useModalManager/useModal/useModal";
 
 export function useModalManager({ reset, setValue }: ModalManagerProps) {
   const [isOpenModal, setIsOpenModal] = useState<KanbanProps | null>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const { modalRef, openModal, closeModal } = useModal();
 
   const [newTagValue, setNewTagValue] = useState<string>("");
   const [arrayTagValue, setArrayTagValue] = useState<string[]>([]);
@@ -47,6 +48,7 @@ export function useModalManager({ reset, setValue }: ModalManagerProps) {
     setValue("company", job.company);
     setValue("status", job.status);
     setValue("notes", job.notes);
+    openModal();
 
     return job;
   }
@@ -55,26 +57,8 @@ export function useModalManager({ reset, setValue }: ModalManagerProps) {
     setNewTagValue("");
     setIsOpenModal(null);
     reset();
-  }, [reset]);
-
-  useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as HTMLElement)
-      ) {
-        handleCloseModal();
-      }
-    };
-
-    if (isOpenModal) {
-      document.addEventListener("mousedown", handleOutsideClick);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [handleCloseModal, isOpenModal]);
+    closeModal();
+  }, [closeModal, reset]);
 
   return {
     handleCloseModal,

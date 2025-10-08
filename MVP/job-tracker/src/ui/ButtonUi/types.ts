@@ -8,6 +8,7 @@ export const ButtonSchema = z.object({
   handleClickButton: z.function().optional(),
   size: z.string(),
   variant: z.string(),
+  disabled: z.boolean().optional(),
 });
 
 export type ButtonProps = z.infer<typeof ButtonSchema>;

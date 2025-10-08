@@ -10,6 +10,7 @@ export const KanbanSchema = z.object({
   created_at: z.date(),
   notes: z.string().nullable(),
   tags: z.array(z.string()),
+  profile_id: z.string(),
 });
 
 export type KanbanProps = z.infer<typeof KanbanSchema>;

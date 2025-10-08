@@ -45,3 +45,28 @@ export const SearchContextSchema = z.object({
 });
 
 export type SearchContextProps = z.infer<typeof SearchContextSchema>;
+
+export const ThemeProviderSchema = z.object({
+  children: z.custom<ReactNode>(),
+});
+
+export type ThemeProviderProps = z.infer<typeof ThemeProviderSchema>;
+
+export const ThemeContextSchema = z.object({
+  theme: z.enum(["light", "dark"]),
+  setTheme: z.function({
+    input: [],
+    output: z.void(),
+  }),
+});
+
+export type ThemeContextProps = z.infer<typeof ThemeContextSchema>;
+
+export const ProfileSchema = z.object({
+  avatar_url: z.string(),
+  full_name: z.string(),
+  id: z.string(),
+  update_at: z.string(),
+});
+
+export type ProfileProps = z.infer<typeof ProfileSchema>;
