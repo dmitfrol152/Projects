@@ -1,0 +1,1 @@
+export { SettingInputFullNameInfo } from "./SettingInputFullNameInfo";

@@ -1,0 +1,1 @@
+export { SettingButtonAvatarDelete } from "./SettingButtonAvatarDelete";

@@ -5,7 +5,7 @@ import { SearchUi } from "@/ui/SearchUi/SearchUi";
 
 export function Header() {
   const { isOpenSearch, setIsOpenSearch, query, setQuery } = useSearch();
-  const { user, signOut } = useAuth();
+  const { user, signOut, profile } = useAuth();
 
   function handleClickSearch() {
     setIsOpenSearch((prev: boolean) => {
@@ -19,10 +19,8 @@ export function Header() {
   }
 
   return (
-    <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
-      <div className="flex items-center gap-3">
-        <Logo />
-      </div>
+    <header className="bg-gray-800 text-white p-4 flex justify-between items-center max-h-18">
+      <Logo profileSrc={profile?.avatar_url} />
       <div className="flex items-center gap-1">
         {isOpenSearch && (
           <SearchUi

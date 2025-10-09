@@ -65,6 +65,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (session?.user) {
       await getInitialProfile(session);
     }
+    setProfile(null);
   }, [getInitialProfile, session]);
 
   const signUp = (email: string, password: string) => {
@@ -75,9 +76,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return supabase.auth.signInWithPassword({ email, password });
   };
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     await supabase.auth.signOut();
-  };
+    refreshProfile();
+  }, [refreshProfile]);
 
   const memoValues = useMemo(
     () => ({
@@ -91,7 +93,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       loadingProfile,
       refreshProfile,
     }),
-    [user, session, loading, profile, loadingProfile, refreshProfile]
+    [user, session, signOut, loading, profile, loadingProfile, refreshProfile]
   );
 
   return (

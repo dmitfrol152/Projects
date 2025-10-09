@@ -1,0 +1,1 @@
+export { SettingButtonDeleteProfile } from "./SettingButtonDeleteProfile";

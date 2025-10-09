@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { SettingsLayoutProps } from "./types.ts";
+import AvatarEmpty from "@assets/png/avatar-empty.png";
 
 export function SettingsLayout({
   loadingSave,
@@ -36,7 +37,7 @@ export function SettingsLayout({
             {loadingProfile ? (
               "Loading..."
             ) : (
-              <img src={srcImage} alt="Avatar" />
+              <img src={srcImage ? srcImage : AvatarEmpty} alt="Avatar" />
             )}
           </div>
           <div className="flex items-center gap-3">
@@ -44,8 +45,17 @@ export function SettingsLayout({
             {avatarDelete}
           </div>
           <div className="flex flex-col gap items-center">
-            <span className="text-sm text-gray-500">{avatarName}</span>
-            <span className={avatarAddError}>Maximum size is 2MB</span>
+            <span className="text-sm text-gray-500">
+              {avatarName ?? "Файл не выбран"}
+            </span>
+            <span
+              className={clsx(
+                "text-sm",
+                `${avatarAddError ? "text-red-500" : "text-gray-500"}`
+              )}
+            >
+              Maximum size is 2MB
+            </span>
           </div>
         </div>
         <div className="flex flex-col gap-3 bg-white rounded p-4 justify-between">

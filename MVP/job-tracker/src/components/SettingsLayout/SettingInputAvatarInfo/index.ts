@@ -1,0 +1,1 @@
+export { SettingInputAvatarInfo } from "./SettingInputAvatarInfo";
