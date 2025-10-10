@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import type { SelectProps } from "./types";
 
 export function SelectUi({
@@ -12,7 +13,12 @@ export function SelectUi({
     <div className="flex flex-col gap-3">
       {label && <label htmlFor={label}>{label}</label>}
       <select
-        className="border p-2 rounded text-[var(--color-black)] border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)] min-h-10.5"
+        className={clsx(
+          "border p-2 rounded text-[var(--color-black)] min-h-10.5",
+          error
+            ? "border-[var(--color-danger)] focus:border-[var(--color-danger)] hover:border-[var(--color-danger)]"
+            : "border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)]"
+        )}
         value={value}
         onChange={(event) => {
           if (setValue) {

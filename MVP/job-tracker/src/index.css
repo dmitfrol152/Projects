@@ -2,12 +2,12 @@
 @import "tailwindcss";
 
 :root {
-  /* не меняются */
+  /* dont change */
   --color-white-pernamently: #ffffff;
   --color-bg-pernamently: #1e2939;
   --color-black-05: rgba(0, 0, 0, 0.5);
 
-  /* общие */
+  /* main */
   --color-white: #ffffff;
   --color-white-card: #ffffff;
   --color-black: #111827;
@@ -30,14 +30,14 @@
   --color-success: #16a34a;
   --color-warning: #f59e0b;
 
-  /* особенные */
+  /* special */
   --color-white-modify: #ffffff;
 
   --ff-main: "Inter", Arial, sans-serif;
 }
 
 [data-theme="dark"] {
-  /* общие */
+  /* main */
   --color-white: #3c4757;
   --color-white-card: #455161;
   --color-black: #ffffff;
@@ -60,7 +60,7 @@
   --color-success: #10b981;
   --color-warning: #f59e0b;
 
-  /* особенные */
+  /* special */
   --color-white-modify: #455161;
 }
 
