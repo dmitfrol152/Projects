@@ -1,7 +1,8 @@
 import { supabase } from "@/api/AppSupabaseClient";
+import { useCallback } from "react";
 
 export function useGetProfile() {
-  async function getProfile(id: string) {
+  const getProfile = useCallback(async function getProfile(id: string) {
     try {
       const { data, error } = await supabase
         .from("profiles")
@@ -23,7 +24,7 @@ export function useGetProfile() {
       console.error(error);
       return null;
     }
-  }
+  }, []);
 
   return getProfile;
 }

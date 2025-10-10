@@ -6,7 +6,7 @@ import { useModal } from "@/hooks/useModalManager/useModal/useModal";
 
 export function useModalManager({ reset, setValue }: ModalManagerProps) {
   const [isOpenModal, setIsOpenModal] = useState<KanbanProps | null>(null);
-  const { modalRef, openModal, closeModal } = useModal();
+  const { modalRef, openModal, closeModal, isOpen } = useModal();
 
   const [newTagValue, setNewTagValue] = useState<string>("");
   const [arrayTagValue, setArrayTagValue] = useState<string[]>([]);
@@ -53,6 +53,12 @@ export function useModalManager({ reset, setValue }: ModalManagerProps) {
     return job;
   }
 
+  useEffect(() => {
+    if (!isOpen) {
+      setIsOpenModal(null);
+    }
+  }, [isOpen]);
+
   const handleCloseModal = useCallback(() => {
     setNewTagValue("");
     setIsOpenModal(null);
@@ -65,6 +71,7 @@ export function useModalManager({ reset, setValue }: ModalManagerProps) {
     isOpenModal,
     setIsOpenModal,
     modalRef,
+    isOpen,
     handleEditJob,
     newTagValue,
     setNewTagValue,
