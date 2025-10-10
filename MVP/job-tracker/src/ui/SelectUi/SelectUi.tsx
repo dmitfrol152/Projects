@@ -8,13 +8,11 @@ export function SelectUi({
   setValue,
   ...props
 }: SelectProps) {
-  const classInputName = "border p-2 rounded";
-
   return (
     <div className="flex flex-col gap-3">
       {label && <label htmlFor={label}>{label}</label>}
       <select
-        className={classInputName}
+        className="border p-2 rounded text-[var(--color-black)] border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)] min-h-10.5"
         value={value}
         onChange={(event) => {
           if (setValue) {
@@ -26,6 +24,7 @@ export function SelectUi({
         {options.map((option, index) => {
           return (
             <option
+              className="text-[var(--color-bg-pernamently)]"
               key={index}
               value={option.optionValue}
               disabled={index === 0}

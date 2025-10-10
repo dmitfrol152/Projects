@@ -15,7 +15,7 @@ export function InputUi({
   ...props
 }: InputProps) {
   const classInputName = clsx(
-    "transition-colors border rounded-lg px-4 py-2 focus:outline-none",
+    "transition-colors border rounded px-4 py-2 focus:outline-none min-h-10.5",
     error
       ? "border-[var(--color-danger)] focus:border-[var(--color-danger)] hover:border-[var(--color-danger)]"
       : "border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)]",

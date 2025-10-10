@@ -1,6 +1,6 @@
 export function DashboardParagraph() {
   return (
-    <p className="text-gray-600 mb-4">
+    <p className="text-[var(--color-gray-600)] mb-4">
       Job Tracker is a fast and intuitive tool for finding vacancies and
       managing the hiring process. Collect all open positions in one place,
       filter by role and company, track progress and save time on communication.

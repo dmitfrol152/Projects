@@ -2,10 +2,25 @@
 @import "tailwindcss";
 
 :root {
+  /* не меняются */
+  --color-white-pernamently: #ffffff;
+  --color-bg-pernamently: #1e2939;
+  --color-black-05: rgba(0, 0, 0, 0.5);
+
+  /* общие */
   --color-white: #ffffff;
+  --color-white-card: #ffffff;
   --color-black: #111827;
-  --color-gray-light: #f3f4f6;
-  --color-gray-dark: #374151;
+  --color-gray-50: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-400-02: rgba(153, 161, 175, 0.2);
+  --color-gray-500: #6a7282;
+  --color-gray-700: #364153;
+  --color-gray-800: #1e2939;
+  --color-gray-600: #4a5565;
+  --color-blue-light: #dbeafe;
+  --color-blue-dark: #1447e6;
+  --color-green-600: #42b2af;
   --color-secondary: #bdc6d9;
   --color-secondary-hover: #677893;
   --color-primary: #2563eb;
@@ -15,7 +30,38 @@
   --color-success: #16a34a;
   --color-warning: #f59e0b;
 
+  /* особенные */
+  --color-white-modify: #ffffff;
+
   --ff-main: "Inter", Arial, sans-serif;
+}
+
+[data-theme="dark"] {
+  /* общие */
+  --color-white: #3c4757;
+  --color-white-card: #455161;
+  --color-black: #ffffff;
+  --color-gray-50: #3c4757;
+  --color-gray-200: #404040;
+  --color-gray-400-02: rgba(107, 114, 128, 0.2);
+  --color-gray-500: #9ca3af;
+  --color-gray-700: #364153;
+  --color-gray-800: #f3f4f6;
+  --color-gray-600: #e5e7eb;
+  --color-blue-light: #1e3a8a;
+  --color-blue-dark: #3b82f6;
+  --color-green-600: #42b2af;
+  --color-secondary: #6b7280;
+  --color-secondary-hover: #9ca3af;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+
+  /* особенные */
+  --color-white-modify: #455161;
 }
 
 *,
@@ -29,6 +75,7 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--color-white);
+  color: var(--color-black);
 }
 
 html {

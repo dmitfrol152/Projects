@@ -12,8 +12,8 @@ export function SettingButtonThemeDark({
       className={clsx(
         "rounded",
         theme === "dark"
-          ? "bg-[var(--color-primary)] text-white"
-          : "bg-gray-400/20 text-(var(--color-primary)) hover:bg-[var(--color-primary-hover)] hover:text-white"
+          ? "bg-[var(--color-primary)] text-[var(--color-white)]"
+          : "bg-[var(--color-gray-400-02)] text-(var(--color-primary)) hover:bg-[var(--color-primary-hover)] hover:text-[var(--color-white)]"
       )}
       type="button"
       size="icon"

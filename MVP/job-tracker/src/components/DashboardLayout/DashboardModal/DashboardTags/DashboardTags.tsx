@@ -45,7 +45,7 @@ export function DashboardTags({
             arrayTagValue.map((tag, index) => (
               <span
                 key={index}
-                className="flex items-center gap-2 px-2 py-1 pr-0 text-xs rounded bg-blue-100 text-blue-700"
+                className="flex items-center gap-2 px-2 py-1 pr-0 text-xs rounded bg-[var(--color-blue-light)] text-[var(--color-blue-dark)]"
               >
                 {tag}
                 <ButtonUi

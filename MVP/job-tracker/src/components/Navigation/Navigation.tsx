@@ -23,8 +23,10 @@ export function Navigation({
         return (
           <Link
             className={clsx(
-              "px-4 py-2 hover:bg-gray-700 rounded transition",
-              location.pathname === link.path ? "bg-gray-700" : ""
+              "px-4 py-2 hover:bg-[var(--color-gray-700)] rounded transition",
+              location.pathname === link.path
+                ? "bg-[var(--color-gray-700)]"
+                : ""
             )}
             key={link.path}
             to={link.path}

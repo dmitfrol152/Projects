@@ -11,7 +11,7 @@ export function KanbanColumn({
   loading,
 }: KanbanColumnProps) {
   return (
-    <div className="bg-gray-100 rounded-lg p-4 flex flex-col grow">
+    <div className="bg-[var(--color-gray-50)] rounded-lg p-4 flex flex-col grow">
       <h2 className="font-bold mb-4">{title}</h2>
       <ul className="list-none flex flex-col gap-3 grow">
         {loading &&

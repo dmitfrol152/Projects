@@ -20,10 +20,10 @@ export const ButtonUi = memo(function Button({
     }[size],
     {
       primary:
-        "bg-[var(--color-primary)] text-[var(--color-white)] hover:bg-[var(--color-primary-hover)]",
+        "bg-[var(--color-primary)] text-[var(--color-white-pernamently)] hover:bg-[var(--color-primary-hover)]",
       secondary:
-        "bg-[var(--color-secondary)] text-[--color-gray-dark] hover:bg-[var(--color-secondary-hover)]",
-      exit: "bg-[var(--color-danger)] text-white hover:bg-[var(--color-danger-hover)]",
+        "bg-[var(--color-secondary)] text-[--color-gray-700] hover:bg-[var(--color-secondary-hover)]",
+      exit: "bg-[var(--color-danger)] text-[var(--color-white-pernamently)] hover:bg-[var(--color-danger-hover)]",
       icon: "",
     }[variant],
     className

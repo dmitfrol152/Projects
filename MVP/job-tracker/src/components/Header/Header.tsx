@@ -19,7 +19,7 @@ export function Header() {
   }
 
   return (
-    <header className="bg-gray-800 text-white p-4 flex justify-between items-center max-h-18">
+    <header className="bg-[var(--color-bg-pernamently)] text-[var(--color-white-pernamently)] p-4 flex justify-between items-center max-h-18">
       <Logo profileSrc={profile?.avatar_url} />
       <div className="flex items-center gap-1">
         {isOpenSearch && (

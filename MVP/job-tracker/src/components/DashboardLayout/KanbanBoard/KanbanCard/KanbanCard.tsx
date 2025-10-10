@@ -15,11 +15,11 @@ export function KanbanCard({
   return (
     <AnimatedContainer
       setHover={setHover}
-      className="bg-white rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative"
+      className="bg-[var(--color-white-modify)] rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative"
     >
       <h3 className="font-semibold">{job.position}</h3>
       <p
-        className={`text-sm text-gray-600 ${
+        className={`text-sm text-[var(--color-gray-600)] ${
           job?.tags?.length > 0 ? "mb-3" : null
         }`}
       >
@@ -31,7 +31,7 @@ export function KanbanCard({
           job.tags.map((tag, index) => (
             <span
               key={index}
-              className="px-2 py-1 text-xs rounded bg-blue-100 text-blue-700"
+              className="px-2 py-1 text-xs rounded bg-[var(--color-blue-light)] text-[var(--color-blue-dark)]"
             >
               {tag}
             </span>
