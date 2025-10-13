@@ -2,8 +2,10 @@ import { ButtonUi } from "@/ui/ButtonUi";
 import type { KanbanCardProps } from "./types";
 import IconEdit from "@assets/svg/icon-edit.svg?react";
 import IconDelete from "@assets/svg/icon-delete.svg?react";
+import IconNote from "@assets/svg/icon-note.svg?react";
 import { AnimatedContainer } from "@/shared/AnimatedContainer";
 import { useState } from "react";
+import clsx from "clsx";
 
 export function KanbanCard({
   job,
@@ -15,7 +17,10 @@ export function KanbanCard({
   return (
     <AnimatedContainer
       setHover={setHover}
-      className="bg-[var(--color-white-modify)] rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative"
+      className={clsx(
+        "border bg-[var(--color-white-modify)] rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative",
+        job.notes ? "border-[var(--color-warning)]" : "border-transparent"
+      )}
     >
       <h3 className="font-semibold">{job.position}</h3>
       <p
@@ -39,6 +44,7 @@ export function KanbanCard({
       </div>
       {hover && (
         <>
+          {job.notes && <IconNote className="absolute top-2 right-8 w-5 h-5" />}
           <ButtonUi
             className="absolute top-1 right-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
             type="button"
@@ -49,7 +55,7 @@ export function KanbanCard({
             <IconEdit className="w-5 h-5" />
           </ButtonUi>
           <ButtonUi
-            className="absolute bottom-1 right-1 text-[var(--color-danger)] hover:text-[var(--color-danger-hover)]"
+            className="absolute top-8 right-1 text-[var(--color-danger)] hover:text-[var(--color-danger-hover)]"
             type="button"
             size="icon"
             variant="icon"

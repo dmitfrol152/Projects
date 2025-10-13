@@ -6,6 +6,7 @@ export const DashboardLayoutSchema = z.object({
   paragraph: z.custom<ReactNode>(),
   kanban: z.custom<ReactNode>(),
   formKanban: z.custom<ReactNode>(),
+  description: z.custom<ReactNode>(),
   modal: z.custom<ReactNode>(),
 });
 

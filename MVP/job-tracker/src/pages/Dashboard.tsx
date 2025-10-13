@@ -15,6 +15,7 @@ import { useJobManager } from "@/hooks/useJobsManager/useJobsManager";
 import { useModalManager } from "@/hooks/useModalManager/useModalManager";
 import { useFiltersColumns } from "@/hooks/useFiltersColumns/useFiltersColumns";
 import { useFormatedJobsForExport } from "@/hooks/useFormatedJobsForExport";
+import { DashboardDescription } from "@/components/DashboardLayout/DashboardDescription";
 
 export default function Dashboard() {
   const {
@@ -120,6 +121,7 @@ export default function Dashboard() {
           handleDownloadCsv={handleDownloadCsv}
         />
       }
+      description={<DashboardDescription />}
       kanban={
         <KanbanBoard
           jobs={groupedJobsByPage}

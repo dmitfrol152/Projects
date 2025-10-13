@@ -49,3 +49,17 @@ export const DashboardFormResolverSchema = z
 export type DashboardFormResolverProps = z.infer<
   typeof DashboardFormResolverSchema
 >;
+
+export const NotificationFormResolverSchema = z
+  .object({
+    message: z.string().min(3, "Enter at least 3 characters"),
+    date: z.string().nonempty("Dont empty field"),
+  })
+  .refine((date) => new Date(date.date) >= new Date(), {
+    message: "The reminder date must not be less than the current date",
+    path: ["date"],
+  });
+
+export type NotificationFormResolverProps = z.infer<
+  typeof NotificationFormResolverSchema
+>;

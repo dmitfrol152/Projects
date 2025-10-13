@@ -1,0 +1,1 @@
+export { NotificationParagraph } from "./NotificationParagraph";

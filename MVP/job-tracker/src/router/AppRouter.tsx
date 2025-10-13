@@ -7,6 +7,7 @@ const Registration = lazy(() => import("@pages/Registration"));
 const Dashboard = lazy(() => import("@pages/Dashboard"));
 const Settings = lazy(() => import("@pages/Settings"));
 const Stats = lazy(() => import("@/pages/Stats"));
+const Notification = lazy(() => import("@/pages/Notification"));
 
 export default function AppRouter() {
   return (
@@ -15,6 +16,7 @@ export default function AppRouter() {
         <Route index element={<Dashboard />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/statistics" element={<Stats />} />
+        <Route path="/notification" element={<Notification />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/registration" element={<Registration />} />
