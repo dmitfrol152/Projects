@@ -27,6 +27,10 @@ export default function Vacancies() {
     refetch();
   }
 
+  function handleClearSearchField() {
+    setQuery("");
+  }
+
   function handleBackPage() {
     setPage((prev) => Math.max(prev - 1, 0));
   }
@@ -39,7 +43,13 @@ export default function Vacancies() {
     <VacanciesLayout
       title={<VacanciesTitle />}
       paragraph={<VacanciesParagraph />}
-      input={<VacanciesInput query={query} setQuery={setQuery} />}
+      input={
+        <VacanciesInput
+          query={query}
+          setQuery={setQuery}
+          handleClearSearchField={handleClearSearchField}
+        />
+      }
       loadingVacancies={isLoading}
       isError={!!isError}
       errorFecthVacancies={

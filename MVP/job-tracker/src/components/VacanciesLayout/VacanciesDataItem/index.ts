@@ -1,0 +1,1 @@
+export { VacanciesDataItem } from "./VacanciesDataItem";

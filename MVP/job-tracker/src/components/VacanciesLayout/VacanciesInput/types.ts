@@ -4,6 +4,10 @@ import z from "zod";
 export const VacanciesInputSchema = z.object({
   query: z.string(),
   setQuery: z.custom<Dispatch<SetStateAction<string>>>(),
+  handleClearSearchField: z.function({
+    input: [],
+    output: z.void(),
+  }),
 });
 
 export type VacanciesInputProps = z.infer<typeof VacanciesInputSchema>;
