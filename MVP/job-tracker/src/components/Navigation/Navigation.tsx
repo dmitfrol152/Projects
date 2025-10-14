@@ -9,6 +9,7 @@ export function Navigation({
   className,
   isVisibleSearchButton = false,
   isVisibleExitButton = false,
+  isVisibleSettingsLink = false,
   handleClickSearch,
   user,
   signOut,
@@ -20,10 +21,12 @@ export function Navigation({
       {LINKS.map((link) => {
         if (link.title === "Login" && user) return;
         if (!user && link.title !== "Login") return;
+        if (user && link.title === "Settings" && !isVisibleSettingsLink) return;
         return (
           <Link
             className={clsx(
               "px-4 py-2 hover:bg-[var(--color-gray-700)] rounded transition",
+              link.title === "Settings" && "mt-auto",
               location.pathname === link.path
                 ? "bg-[var(--color-gray-700)]"
                 : ""

@@ -1,0 +1,1 @@
+export { VacanciesLayout } from "./VacanciesLayout";

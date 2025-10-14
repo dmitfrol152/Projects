@@ -8,6 +8,7 @@ const Dashboard = lazy(() => import("@pages/Dashboard"));
 const Settings = lazy(() => import("@pages/Settings"));
 const Stats = lazy(() => import("@/pages/Stats"));
 const Notification = lazy(() => import("@/pages/Notification"));
+const Vacancies = lazy(() => import("@/pages/Vacancies"));
 
 export default function AppRouter() {
   return (
@@ -17,6 +18,7 @@ export default function AppRouter() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/statistics" element={<Stats />} />
         <Route path="/notification" element={<Notification />} />
+        <Route path="/vacancies" element={<Vacancies />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/registration" element={<Registration />} />

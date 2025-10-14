@@ -4,6 +4,7 @@ export const LINKS: LinksProps[] = [
   { title: "Login", path: "/login" },
   { title: "Dashboard", path: "/" },
   { title: "Statistics", path: "/statistics" },
-  { title: "Notification", path: "/notification" },
+  { title: "Reminders", path: "/notification" },
+  { title: "hh.ru", path: "/vacancies" },
   { title: "Settings", path: "/settings" },
 ];

@@ -5,6 +5,7 @@ export const NavigationSchema = z.object({
   className: z.string(),
   isVisibleSearchButton: z.boolean().optional(),
   isVisibleExitButton: z.boolean().optional(),
+  isVisibleSettingsLink: z.boolean().optional(),
   handleClickSearch: z.function().optional(),
   user: z.custom<User | null>(),
   signOut: z

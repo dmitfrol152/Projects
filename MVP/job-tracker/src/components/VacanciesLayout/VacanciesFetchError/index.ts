@@ -1,0 +1,1 @@
+export { VacanciesFetchError } from "./VacanciesFetchError";

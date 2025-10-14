@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@supabase/supabase-js": "2.47.12",
     "@tailwindcss/vite": "^4.1.13",
+    "@tanstack/react-query": "^5.90.2",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.22",

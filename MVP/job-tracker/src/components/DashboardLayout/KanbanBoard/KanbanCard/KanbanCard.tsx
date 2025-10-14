@@ -18,7 +18,7 @@ export function KanbanCard({
     <AnimatedContainer
       setHover={setHover}
       className={clsx(
-        "border bg-[var(--color-white-modify)] rounded-lg shadow pt-4 pl-4 pb-4 pr-9 relative",
+        "border bg-[var(--color-white-modify)] rounded shadow pt-4 pl-4 pb-4 pr-9 relative",
         job.notes ? "border-[var(--color-warning)]" : "border-transparent"
       )}
     >

@@ -1,0 +1,1 @@
+export { VacanciesTitle } from "./VacanciesTitle";

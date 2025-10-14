@@ -1,0 +1,1 @@
+export { VacanciesParagraph } from "./VacanciesParagraph";
