@@ -1,4 +1,5 @@
 import { VacanciesLayout } from "@/components/VacanciesLayout";
+import type { DataScrollProps } from "@/components/VacanciesLayout/VacanciesDataItem/types";
 import { VacanciesDataList } from "@/components/VacanciesLayout/VacanciesDataList";
 import { VacanciesEmpty } from "@/components/VacanciesLayout/VacanciesEmpty";
 import { VacanciesFetchError } from "@/components/VacanciesLayout/VacanciesFetchError";
@@ -14,14 +15,27 @@ export default function Vacancies() {
   const [pages, setPages] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
   const debounceQuery = useDebounce(query, 1000);
-  const { data, isLoading, refetch, isError, isSuccess } =
-    useApiGetHeadHunterVacancies(debounceQuery, page);
+  const {
+    data,
+    isLoading,
+    refetch,
+    isError,
+    isSuccess,
+    paginationModel,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useApiGetHeadHunterVacancies(debounceQuery, page);
 
   useEffect(() => {
     if (data) {
       setPages(data.pages);
     }
   }, [data]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [debounceQuery]);
 
   function handleRefetch() {
     refetch();
@@ -37,6 +51,16 @@ export default function Vacancies() {
 
   function handleNextPage() {
     setPage((prev) => prev + 1);
+  }
+
+  function getCurrentData() {
+    return (
+      (paginationModel === "buttons"
+        ? data?.items
+        : (data?.pages || []).flatMap(
+            (p: DataScrollProps) => p?.items || []
+          )) || []
+    );
   }
 
   return (
@@ -58,11 +82,15 @@ export default function Vacancies() {
       isSuccess={!!isSuccess}
       data={
         <VacanciesDataList
-          dataList={data?.items || []}
+          dataList={getCurrentData()}
           page={page}
           pages={pages}
           handleBackPage={handleBackPage}
           handleNextPage={handleNextPage}
+          paginationModel={paginationModel}
+          isFetchingNextPage={isFetchingNextPage}
+          hasNextPage={hasNextPage}
+          fetchNextPage={fetchNextPage}
         />
       }
       isEmpty={!query}

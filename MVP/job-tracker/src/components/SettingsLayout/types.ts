@@ -5,7 +5,12 @@ export const SettingsLayoutSchema = z.object({
   loadingSave: z.boolean(),
   loadingProfile: z.boolean(),
   theme: z.enum(["light", "dark"]),
+  pagination: z.string(),
   toggleTheme: z.function({
+    input: [],
+    output: z.void(),
+  }),
+  togglePagination: z.function({
     input: [],
     output: z.void(),
   }),
@@ -22,6 +27,23 @@ export const SettingsLayoutSchema = z.object({
   buttonSave: z.custom<ReactNode>(),
   buttonDeleteProfile: z.custom<ReactNode>(),
   modal: z.custom<ReactNode>(),
+  buttonPaginationScroll: z.custom<ReactNode>(),
+  buttonPaginationButtons: z.custom<ReactNode>(),
 });
 
 export type SettingsLayoutProps = z.infer<typeof SettingsLayoutSchema>;
+
+export const SettingsButtonsContainerSchema = z.object({
+  buttonOne: z.custom<ReactNode>(),
+  buttonTwo: z.custom<ReactNode>(),
+  toggleAction: z.function({
+    input: [],
+    output: z.void(),
+  }),
+  toggleState: z.string(),
+  description: z.string(),
+});
+
+export type SettingsButtonsContainerProps = z.infer<
+  typeof SettingsButtonsContainerSchema
+>;

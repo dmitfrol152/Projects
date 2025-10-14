@@ -1,0 +1,1 @@
+export { SettingButtonPaginationScroll } from "./SettingButtonPaginationScroll";

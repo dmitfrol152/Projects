@@ -18,20 +18,20 @@ export function VacanciesDataItem({ vacancy }: DataItemProps) {
     >
       <div className="flex flex-col gap">
         <h2 className="font-semibold">{vacancy.name}</h2>
-        <span className="text-[var(--color-gray-700)]">
-          City:{" "}
+        <span className="flex gap-3">
+          <span className="text-[var(--color-gray-800)]">City:</span>
           <span className="text-[var(--color-gray-500)]">
             {vacancy.area.name}
           </span>
         </span>
-        <span className="text-[var(--color-gray-700)]">
-          Employer:{" "}
+        <span className="flex gap-3">
+          <span className="text-[var(--color-gray-800)]">Employer:</span>
           <span className="text-[var(--color-gray-500)]">
             {vacancy.employer.name}
           </span>
         </span>
-        <span className="text-[var(--color-gray-700)]">
-          Published:{" "}
+        <span className="flex gap-3">
+          <span className="text-[var(--color-gray-800)]">Published:</span>
           <span className="text-[var(--color-gray-500)]">
             {new Date(vacancy.published_at).toLocaleString()}
           </span>

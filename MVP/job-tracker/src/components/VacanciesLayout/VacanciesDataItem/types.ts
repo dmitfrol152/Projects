@@ -24,3 +24,9 @@ export const DataItemSchema = z.object({
 });
 
 export type DataItemProps = z.infer<typeof DataItemSchema>;
+
+export const DataScrollSchema = z.object({
+  items: z.array(DataSchema),
+});
+
+export type DataScrollProps = z.infer<typeof DataScrollSchema>;

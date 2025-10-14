@@ -17,6 +17,9 @@ import { SettingButtonThemeDark } from "@/components/SettingsLayout/SettingButto
 import { SettingButtonSave } from "@/components/SettingsLayout/SettingButtonSave";
 import { SettingButtonDeleteProfile } from "@/components/SettingsLayout/SettingButtonDeleteProfile";
 import { SettingModal } from "@/components/SettingsLayout/SettingModal";
+import { SettingButtonPaginationScroll } from "@/components/SettingsLayout/SettingButtonPaginationScroll";
+import { usePaginationSetting } from "@/hooks/useProfileManager/usePaginationSetting/usePaginationSetting";
+import { SettingButtonPaginationButtons } from "@/components/SettingsLayout/SettingButtonPaginationButtons";
 
 export default React.memo(function Settings() {
   const { user, profile, refreshProfile, loadingProfile } = useAuth();
@@ -33,6 +36,7 @@ export default React.memo(function Settings() {
   >(null);
   const handleSaveWrapper = useHandleSave();
   const handleDeleteProfileWrapper = useHandleDeleteProfile();
+  const { paginationModel, togglePaginationModel } = usePaginationSetting();
 
   const [fullName, setFullName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -117,6 +121,8 @@ export default React.memo(function Settings() {
       loadingProfile={loadingProfile}
       theme={theme}
       toggleTheme={setTheme}
+      pagination={paginationModel}
+      togglePagination={togglePaginationModel}
       title={<SettingsTitle />}
       paragraph={<SettingsParagraph />}
       fullnameInput={
@@ -139,6 +145,18 @@ export default React.memo(function Settings() {
         <SettingButtonThemeLight theme={theme} setTheme={setTheme} />
       }
       buttonDark={<SettingButtonThemeDark theme={theme} setTheme={setTheme} />}
+      buttonPaginationScroll={
+        <SettingButtonPaginationScroll
+          pagination={paginationModel}
+          setPagination={togglePaginationModel}
+        />
+      }
+      buttonPaginationButtons={
+        <SettingButtonPaginationButtons
+          pagination={paginationModel}
+          setPagination={togglePaginationModel}
+        />
+      }
       buttonSave={<SettingButtonSave handleSave={handleSave} />}
       buttonDeleteProfile={
         <SettingButtonDeleteProfile

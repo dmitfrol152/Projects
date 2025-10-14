@@ -1,0 +1,1 @@
+export { SettingButtonPaginationButtons } from "./SettingButtonPaginationButtons";
