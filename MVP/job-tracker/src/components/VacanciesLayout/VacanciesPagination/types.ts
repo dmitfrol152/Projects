@@ -18,6 +18,14 @@ export const VacanciesPaginationSchema = z.object({
     input: [],
     output: z.void(),
   }),
+  handleToStartPage: z.function({
+    input: [],
+    output: z.void(),
+  }),
+  handleToEndPage: z.function({
+    input: [],
+    output: z.void(),
+  }),
 });
 
 export type VacanciesPaginationProps = z.infer<

@@ -77,6 +77,16 @@ export default function Vacancies() {
     getWindowScrollTo();
   }
 
+  function handleToStartPage() {
+    getWindowScrollTo();
+    setPage(0);
+  }
+
+  function handleToEndPage() {
+    getWindowScrollTo();
+    setPage(pages - 1);
+  }
+
   function getCurrentData() {
     return (
       (paginationModel === "buttons"
@@ -115,6 +125,8 @@ export default function Vacancies() {
           isFetchingNextPage={isFetchingNextPage}
           hasNextPage={hasNextPage}
           fetchNextPage={fetchNextPage}
+          handleToStartPage={handleToStartPage}
+          handleToEndPage={handleToEndPage}
         />
       }
       isEmpty={!query}

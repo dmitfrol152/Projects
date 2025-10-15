@@ -10,6 +10,8 @@ export function VacanciesPagination({
   isFetchingNextPage,
   hasNextPage,
   fetchNextPage,
+  handleToStartPage,
+  handleToEndPage,
 }: VacanciesPaginationProps) {
   if (paginationModel === "buttons") {
     return (
@@ -23,6 +25,27 @@ export function VacanciesPagination({
         >
           Back
         </ButtonUi>
+        <div className="flex items-center gap-3">
+          <ButtonUi
+            type="button"
+            variant="primary"
+            size="md"
+            disabled={page === 0}
+            handleClickButton={handleToStartPage}
+          >
+            1
+          </ButtonUi>
+          <span className="text-[var(--color-gray-600)]">{page + 1}</span>
+          <ButtonUi
+            type="button"
+            variant="primary"
+            size="md"
+            disabled={page + 1 === pages}
+            handleClickButton={handleToEndPage}
+          >
+            {pages}
+          </ButtonUi>
+        </div>
         <ButtonUi
           type="button"
           variant="primary"
@@ -55,4 +78,6 @@ export function VacanciesPagination({
       </div>
     );
   }
+
+  return null;
 }
