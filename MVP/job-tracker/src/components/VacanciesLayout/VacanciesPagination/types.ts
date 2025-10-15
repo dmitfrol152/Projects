@@ -1,8 +1,23 @@
 import z from "zod";
-import { VacanciesDataListSchema } from "../VacanciesDataList/types";
 
-export const VacanciesPaginationSchema = VacanciesDataListSchema.omit({
-  dataList: true,
+export const VacanciesPaginationSchema = z.object({
+  pages: z.number(),
+  page: z.number(),
+  handleBackPage: z.function({
+    input: [],
+    output: z.void(),
+  }),
+  handleNextPage: z.function({
+    input: [],
+    output: z.void(),
+  }),
+  paginationModel: z.string(),
+  isFetchingNextPage: z.boolean().optional(),
+  hasNextPage: z.boolean(),
+  fetchNextPage: z.function({
+    input: [],
+    output: z.void(),
+  }),
 });
 
 export type VacanciesPaginationProps = z.infer<

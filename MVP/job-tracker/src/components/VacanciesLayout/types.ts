@@ -10,8 +10,11 @@ export const VacanciesLayoutSchema = z.object({
   errorFecthVacancies: z.custom<ReactNode>(),
   isSuccess: z.boolean(),
   data: z.custom<ReactNode>(),
+  pagination: z.custom<ReactNode>(),
   isEmpty: z.boolean(),
   emptyVacancies: z.custom<ReactNode>(),
+  buttonTop: z.custom<ReactNode>(),
+  isVisibleButtonTop: z.boolean(),
 });
 
 export type VacanciesLayoutProps = z.infer<typeof VacanciesLayoutSchema>;

@@ -1,19 +1,23 @@
 import { VacanciesLayout } from "@/components/VacanciesLayout";
+import { VacanciesButtonTop } from "@/components/VacanciesLayout/VacanciesButtonTop/VacanciesButtonTop";
 import type { DataScrollProps } from "@/components/VacanciesLayout/VacanciesDataItem/types";
 import { VacanciesDataList } from "@/components/VacanciesLayout/VacanciesDataList";
 import { VacanciesEmpty } from "@/components/VacanciesLayout/VacanciesEmpty";
 import { VacanciesFetchError } from "@/components/VacanciesLayout/VacanciesFetchError";
 import { VacanciesInput } from "@/components/VacanciesLayout/VacanciesInput";
+import { VacanciesPagination } from "@/components/VacanciesLayout/VacanciesPagination";
 import { VacanciesParagraph } from "@/components/VacanciesLayout/VacanciesParagraph";
 import { VacanciesTitle } from "@/components/VacanciesLayout/VacanciesTitle";
 import { useApiGetHeadHunterVacancies } from "@/hooks/useApi/useApiGetHeadHunterVacancies";
 import { useDebounce } from "@/hooks/useDebounce";
+import { getWindowScrollTo } from "@/utils/getWindowScrollTo";
 import { useEffect, useState } from "react";
 
 export default function Vacancies() {
   const [page, setPage] = useState<number>(0);
   const [pages, setPages] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
+  const [isVisibleButtonTop, setIsVisibleButtonTop] = useState<boolean>(false);
   const debounceQuery = useDebounce(query, 1000);
   const {
     data,
@@ -34,8 +38,22 @@ export default function Vacancies() {
   }, [data]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    getWindowScrollTo();
   }, [debounceQuery]);
+
+  useEffect(() => {
+    if (paginationModel === "buttons" || !hasNextPage) return;
+
+    function onScroll() {
+      const heightWindow = window.innerHeight;
+      const scrollYwindow = window.scrollY > heightWindow;
+
+      setIsVisibleButtonTop(scrollYwindow);
+    }
+
+    document.addEventListener("scroll", onScroll);
+    return () => document.removeEventListener("scroll", onScroll);
+  }, [hasNextPage, paginationModel]);
 
   function handleRefetch() {
     refetch();
@@ -46,13 +64,17 @@ export default function Vacancies() {
   }
 
   function handleBackPage() {
-    window.scrollTo(0, 0);
+    getWindowScrollTo();
     setPage((prev) => Math.max(prev - 1, 0));
   }
 
   function handleNextPage() {
-    window.scrollTo(0, 0);
+    getWindowScrollTo();
     setPage((prev) => prev + 1);
+  }
+
+  function handleClickTop() {
+    getWindowScrollTo();
   }
 
   function getCurrentData() {
@@ -82,9 +104,9 @@ export default function Vacancies() {
         <VacanciesFetchError handleRefetch={handleRefetch} />
       }
       isSuccess={!!isSuccess}
-      data={
-        <VacanciesDataList
-          dataList={getCurrentData()}
+      data={<VacanciesDataList dataList={getCurrentData()} />}
+      pagination={
+        <VacanciesPagination
           page={page}
           pages={pages}
           handleBackPage={handleBackPage}
@@ -97,6 +119,8 @@ export default function Vacancies() {
       }
       isEmpty={!query}
       emptyVacancies={<VacanciesEmpty />}
+      buttonTop={<VacanciesButtonTop handleClickTop={handleClickTop} />}
+      isVisibleButtonTop={isVisibleButtonTop}
     />
   );
 }

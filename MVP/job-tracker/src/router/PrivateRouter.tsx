@@ -19,7 +19,7 @@ export function PrivateRouter() {
 
   return (
     <div className="flex grow gap-3 bg-[var(--color-gray-50)] pb-15 pt-18">
-      <aside className="fixed top-18 left-0 bottom-15 w-64 shrink-0 bg-[var(--color-bg-pernamently)] text-[var(--color-white-pernamently)] flex flex-col p-4">
+      <aside className="fixed top-18 left-0 bottom-15 w-64 shrink-0 bg-[var(--color-bg-pernamently)] text-[var(--color-white-pernamently)] flex flex-col p-4 z-10">
         <Navigation
           className="flex flex-col gap-2 grow"
           user={user}
