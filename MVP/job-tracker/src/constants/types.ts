@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import z from "zod";
 
 export const LinksSchema = z.object({
@@ -21,3 +22,13 @@ export const ColumnsSchema = z.object({
 });
 
 export type ColumnsProps = z.infer<typeof ColumnsSchema>;
+
+export const SocialSchema = z.object({
+  to: z.string(),
+  icon: z.custom<ReactNode>(),
+  classLink: z.string(),
+  target: z.string(),
+  rel: z.string(),
+});
+
+export type SocialProps = z.infer<typeof SocialSchema>;

@@ -1,7 +1,7 @@
-import { ButtonUi } from "@/ui/ButtonUi";
 import type { VacanciesDataListProps } from "./types";
-import { VacanciesDataItem } from "../VacanciesDataItem";
-import type { DataProps } from "../VacanciesDataItem/types";
+import { VacanciesDataItem } from "@components/VacanciesLayout/VacanciesDataItem";
+import type { DataProps } from "@components/VacanciesLayout/VacanciesDataItem/types";
+import { VacanciesPagination } from "@components/VacanciesLayout/VacanciesPagination";
 
 export function VacanciesDataList({
   dataList,
@@ -22,48 +22,16 @@ export function VacanciesDataList({
         })}
       </ul>
 
-      {paginationModel === "buttons" && (
-        <div className="flex justify-between min-h-9">
-          <ButtonUi
-            type="button"
-            variant="primary"
-            size="md"
-            disabled={page === 0}
-            handleClickButton={handleBackPage}
-          >
-            Back
-          </ButtonUi>
-          <ButtonUi
-            type="button"
-            variant="primary"
-            size="md"
-            disabled={page === pages}
-            handleClickButton={handleNextPage}
-          >
-            Next
-          </ButtonUi>
-        </div>
-      )}
-
-      {paginationModel === "scroll" && (
-        <div className="flex justify-center min-h-9">
-          {isFetchingNextPage ? (
-            <p className="text-center text-[var(--color-gray-700)]">
-              Loading...
-            </p>
-          ) : (
-            <ButtonUi
-              type="button"
-              variant="primary"
-              size="md"
-              disabled={!hasNextPage}
-              handleClickButton={fetchNextPage}
-            >
-              Load more
-            </ButtonUi>
-          )}
-        </div>
-      )}
+      <VacanciesPagination
+        page={page}
+        pages={pages}
+        handleBackPage={handleBackPage}
+        handleNextPage={handleNextPage}
+        paginationModel={paginationModel}
+        isFetchingNextPage={isFetchingNextPage}
+        hasNextPage={hasNextPage}
+        fetchNextPage={fetchNextPage}
+      />
     </div>
   );
 }

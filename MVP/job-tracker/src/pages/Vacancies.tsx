@@ -46,10 +46,12 @@ export default function Vacancies() {
   }
 
   function handleBackPage() {
+    window.scrollTo(0, 0);
     setPage((prev) => Math.max(prev - 1, 0));
   }
 
   function handleNextPage() {
+    window.scrollTo(0, 0);
     setPage((prev) => prev + 1);
   }
 
