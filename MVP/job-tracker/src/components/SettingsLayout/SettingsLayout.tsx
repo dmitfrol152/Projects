@@ -29,7 +29,7 @@ export function SettingsLayout({
   buttonPaginationButtons,
 }: SettingsLayoutProps) {
   const loadingContainer = (
-    <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-2 bg-[var(--color-black-05)]">
+    <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-100 bg-[var(--color-black-05)]">
       Loading...
     </div>
   );

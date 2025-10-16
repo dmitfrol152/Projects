@@ -1,3 +1,4 @@
+import { DashboardFormResolverSchema } from "@/components/Form/types";
 import z from "zod";
 
 export const AreaSchema = z.object({
@@ -21,6 +22,10 @@ export type DataProps = z.infer<typeof DataSchema>;
 
 export const DataItemSchema = z.object({
   vacancy: DataSchema,
+  handleSubmitNewFormDashboard: z.function({
+    input: [DashboardFormResolverSchema],
+    output: z.void(),
+  }),
 });
 
 export type DataItemProps = z.infer<typeof DataItemSchema>;

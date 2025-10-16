@@ -38,7 +38,14 @@ export const DashboardFormResolverSchema = z
   .object({
     position: z.string().min(3, "Enter at least 3 characters"),
     company: z.string().min(3, "Enter at least 3 characters"),
-    status: z.enum(["", "applied", "interview", "offer", "rejected"]),
+    status: z.enum([
+      "",
+      "applied",
+      "interview",
+      "offer",
+      "rejected",
+      "washlist",
+    ]),
     notes: z.string().nullable(),
   })
   .refine((checkFieldSelect) => checkFieldSelect.status !== "", {

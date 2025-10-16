@@ -6,6 +6,7 @@ export const OPTIONS: OptionsProps[] = [
   { optionValue: "interview", optionName: "Interview" },
   { optionValue: "offer", optionName: "Offer" },
   { optionValue: "rejected", optionName: "Rejected" },
+  { optionValue: "washlist", optionName: "Washlist" },
 ];
 
 export const OPTIONS_SORTED = [

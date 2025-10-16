@@ -10,7 +10,8 @@ export function useHandleNewJob() {
     jobAddProps: JobAddProps
   ) {
     const { position, company, status } = dataProps;
-    const { user, setJobs, setErrorDataBase, reset } = jobAddProps;
+    const { user, setJobs, setErrorDataBase, reset, setSuccessAddInKanban } =
+      jobAddProps;
 
     if (!user) return;
 
@@ -60,6 +61,7 @@ export function useHandleNewJob() {
         if (error) {
           throw new Error("Error to add in DataBase new Job");
         } else if (data) {
+          setSuccessAddInKanban(true);
           setErrorDataBase(false);
           setJobs((prev: KanbanProps[]): KanbanProps[] => {
             return prev.map((job) => (job.id === newId ? data : job));
@@ -67,11 +69,14 @@ export function useHandleNewJob() {
         }
       }
     } catch (err) {
+      setSuccessAddInKanban(false);
       setErrorDataBase(true);
       setJobs((prev): KanbanProps[] => prev.filter((job) => job.id !== newId));
       console.log(err);
     } finally {
-      reset();
+      if (reset) {
+        reset();
+      }
     }
   }
 

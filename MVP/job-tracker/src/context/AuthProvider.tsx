@@ -64,6 +64,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const refreshProfile = useCallback(async () => {
     if (session?.user) {
       await getInitialProfile(session);
+      return;
     }
     setProfile(null);
   }, [getInitialProfile, session]);

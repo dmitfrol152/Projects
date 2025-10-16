@@ -15,6 +15,7 @@ export const VacanciesLayoutSchema = z.object({
   emptyVacancies: z.custom<ReactNode>(),
   buttonTop: z.custom<ReactNode>(),
   isVisibleButtonTop: z.boolean(),
+  modal: z.custom<ReactNode>(),
 });
 
 export type VacanciesLayoutProps = z.infer<typeof VacanciesLayoutSchema>;

@@ -6,7 +6,7 @@ export const KanbanSchema = z.object({
   id: z.string(),
   company: z.string(),
   position: z.string(),
-  status: z.enum(["", "applied", "interview", "offer", "rejected"]),
+  status: z.enum(["", "applied", "interview", "offer", "rejected", "washlist"]),
   created_at: z.date(),
   notes: z.string().nullable(),
   tags: z.array(z.string()),

@@ -7,10 +7,13 @@ export const JobAddSchema = z.object({
   user: z.custom<User | null>(),
   setJobs: z.custom<Dispatch<SetStateAction<KanbanProps[] | []>>>(),
   setErrorDataBase: z.custom<Dispatch<SetStateAction<boolean>>>(),
-  reset: z.function({
-    input: [],
-    output: z.void(),
-  }),
+  setSuccessAddInKanban: z.custom<Dispatch<SetStateAction<boolean>>>(),
+  reset: z
+    .function({
+      input: [],
+      output: z.void(),
+    })
+    .optional(),
 });
 
 export type JobAddProps = z.infer<typeof JobAddSchema>;

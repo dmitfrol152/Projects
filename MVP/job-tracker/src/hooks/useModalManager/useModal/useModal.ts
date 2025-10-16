@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { ModalProps } from "./types";
 
-export function useModal() {
+export function useModal({ callbackErr, callbackSuccess }: ModalProps = {}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +24,8 @@ export function useModal() {
         !modalRef.current.contains(event.target as HTMLElement)
       ) {
         closeModal();
+        callbackErr?.(false);
+        callbackSuccess?.(false);
       }
     };
 
@@ -33,7 +36,7 @@ export function useModal() {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [isOpen, closeModal]);
+  }, [isOpen, closeModal, callbackErr, callbackSuccess]);
 
   return {
     isOpen,

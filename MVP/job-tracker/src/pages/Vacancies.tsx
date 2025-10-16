@@ -1,3 +1,4 @@
+import type { DashboardFormResolverProps } from "@/components/Form/types";
 import { VacanciesLayout } from "@/components/VacanciesLayout";
 import { VacanciesButtonTop } from "@/components/VacanciesLayout/VacanciesButtonTop/VacanciesButtonTop";
 import type { DataScrollProps } from "@/components/VacanciesLayout/VacanciesDataItem/types";
@@ -5,11 +6,14 @@ import { VacanciesDataList } from "@/components/VacanciesLayout/VacanciesDataLis
 import { VacanciesEmpty } from "@/components/VacanciesLayout/VacanciesEmpty";
 import { VacanciesFetchError } from "@/components/VacanciesLayout/VacanciesFetchError";
 import { VacanciesInput } from "@/components/VacanciesLayout/VacanciesInput";
+import { VacanciesModal } from "@/components/VacanciesLayout/VacanciesModal";
 import { VacanciesPagination } from "@/components/VacanciesLayout/VacanciesPagination";
 import { VacanciesParagraph } from "@/components/VacanciesLayout/VacanciesParagraph";
 import { VacanciesTitle } from "@/components/VacanciesLayout/VacanciesTitle";
 import { useApiGetHeadHunterVacancies } from "@/hooks/useApi/useApiGetHeadHunterVacancies";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useJobManager } from "@/hooks/useJobsManager/useJobsManager";
+import { useModal } from "@/hooks/useModalManager/useModal";
 import { getWindowScrollTo } from "@/utils/getWindowScrollTo";
 import { useEffect, useState } from "react";
 
@@ -30,6 +34,23 @@ export default function Vacancies() {
     hasNextPage,
     isFetchingNextPage,
   } = useApiGetHeadHunterVacancies(debounceQuery, page);
+  const {
+    handleSubmitNewFormDashboardHook,
+    errorDataBase,
+    setErrorDataBase,
+    successAddInKanban,
+    setSuccessAddInKanban,
+  } = useJobManager();
+  const { closeModal, isOpen, modalRef, openModal } = useModal({
+    callbackErr: setErrorDataBase,
+    callbackSuccess: setSuccessAddInKanban,
+  });
+
+  useEffect(() => {
+    if (errorDataBase || successAddInKanban) {
+      openModal();
+    }
+  }, [errorDataBase, openModal, successAddInKanban]);
 
   useEffect(() => {
     if (data) {
@@ -97,6 +118,12 @@ export default function Vacancies() {
     );
   }
 
+  async function handleSubmitNewFormDashboard(
+    data: DashboardFormResolverProps
+  ) {
+    return await handleSubmitNewFormDashboardHook(data);
+  }
+
   return (
     <VacanciesLayout
       title={<VacanciesTitle />}
@@ -114,7 +141,12 @@ export default function Vacancies() {
         <VacanciesFetchError handleRefetch={handleRefetch} />
       }
       isSuccess={!!isSuccess}
-      data={<VacanciesDataList dataList={getCurrentData()} />}
+      data={
+        <VacanciesDataList
+          dataList={getCurrentData()}
+          handleSubmitNewFormDashboard={handleSubmitNewFormDashboard}
+        />
+      }
       pagination={
         <VacanciesPagination
           page={page}
@@ -133,6 +165,17 @@ export default function Vacancies() {
       emptyVacancies={<VacanciesEmpty />}
       buttonTop={<VacanciesButtonTop handleClickTop={handleClickTop} />}
       isVisibleButtonTop={isVisibleButtonTop}
+      modal={
+        <VacanciesModal
+          isOpen={isOpen}
+          modalRef={modalRef}
+          closeModal={closeModal}
+          setErrorDataBase={setErrorDataBase}
+          errorDataBase={errorDataBase}
+          setSuccessAddInKanban={setSuccessAddInKanban}
+          successAddInKanban={successAddInKanban}
+        />
+      }
     />
   );
 }

@@ -13,7 +13,18 @@ export function SettingModal({
   setModalAppeareName,
 }: SettingModalProps) {
   return (
-    <Modal isOpen={isOpen} modalRef={modalRef}>
+    <Modal
+      isOpen={isOpen}
+      modalRef={modalRef}
+      errorDataBase={
+        modalAppeareName === "errorDeleteProfile" ||
+        modalAppeareName === "errorEdit"
+      }
+      successOperation={
+        modalAppeareName === "successDeleteProfile" ||
+        modalAppeareName === "successEdit"
+      }
+    >
       <div className="flex flex-col gap-3">
         {getStatusModalSetting(modalAppeareName)}
         {modalAppeareName === "confirmDeleteProfile" && (

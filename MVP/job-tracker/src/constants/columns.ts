@@ -5,4 +5,5 @@ export const COLUMNS: ColumnsProps[] = [
   { title: "Interview", key: "interview", active: true },
   { title: "Offer", key: "offer", active: true },
   { title: "Rejected", key: "rejected", active: true },
+  { title: "Washlist", key: "washlist", active: true },
 ];

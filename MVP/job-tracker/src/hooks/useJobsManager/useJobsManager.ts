@@ -19,6 +19,7 @@ import { useFiltersGroupedByPage } from "@/hooks/useJobsManager/useFiltersGroupe
 export function useJobManager() {
   const { jobs, setJobs, loading, user } = useInitialJobs();
   const [errorDataBase, setErrorDataBase] = useState<boolean>(false);
+  const [successAddInKanban, setSuccessAddInKanban] = useState<boolean>(false);
   const submitNewJob = useHandleNewJob();
   const submitEditJob = useHandleEditJob();
   const submitDeleteJob = useHandleDeleteJob();
@@ -32,14 +33,15 @@ export function useJobManager() {
 
   async function handleSubmitNewFormDashboardHook(
     dataProps: DashboardFormResolverProps,
-    jobsManagerProps: JobsManagerAddProps
+    jobsManagerProps?: JobsManagerAddProps
   ) {
-    const { reset } = jobsManagerProps;
+    const reset = jobsManagerProps?.reset;
 
-    submitNewJob(dataProps, {
+    await submitNewJob(dataProps, {
       user,
       setJobs,
       setErrorDataBase,
+      setSuccessAddInKanban,
       reset,
     });
   }
@@ -51,7 +53,7 @@ export function useJobManager() {
     const { isOpenModal, setIsOpenModal, reset, arrayTagValue } =
       jobsManagerProps;
 
-    submitEditJob(dataProps, {
+    await submitEditJob(dataProps, {
       setErrorDataBase,
       setJobs,
       isOpenModal,
@@ -62,7 +64,7 @@ export function useJobManager() {
   }
 
   async function handleDeleteJobHook(job: KanbanProps) {
-    submitDeleteJob(job, { setErrorDataBase, setJobs });
+    await submitDeleteJob(job, { setErrorDataBase, setJobs });
   }
 
   function handleChangeStatusTags(obj: TagFiltersProps) {
@@ -75,6 +77,8 @@ export function useJobManager() {
     handleDeleteJobHook,
     errorDataBase,
     setErrorDataBase,
+    successAddInKanban,
+    setSuccessAddInKanban,
     jobs,
     setJobs,
     loading,

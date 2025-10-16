@@ -76,7 +76,7 @@ export function KanbanBoard({
                     <div
                       ref={provided.innerRef}
                       {...provided.droppableProps}
-                      className="p-4 flex flex-col grow"
+                      className="flex flex-col grow"
                     >
                       <KanbanColumn
                         title={column.title}

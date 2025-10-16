@@ -76,13 +76,13 @@ export default function Dashboard() {
   async function handleSubmitNewFormDashboard(
     data: DashboardFormResolverProps
   ) {
-    return handleSubmitNewFormDashboardHook(data, { reset });
+    return await handleSubmitNewFormDashboardHook(data, { reset });
   }
 
   async function handleSubmitEditFormDashboard(
     data: DashboardFormResolverProps
   ) {
-    return handleSubmitEditFormDashboardHook(data, {
+    return await handleSubmitEditFormDashboardHook(data, {
       reset,
       isOpenModal,
       setIsOpenModal,
@@ -91,7 +91,7 @@ export default function Dashboard() {
   }
 
   async function handleDeleteJob(data: KanbanProps) {
-    return handleDeleteJobHook(data);
+    return await handleDeleteJobHook(data);
   }
 
   function handleMoreJobs() {
