@@ -31,27 +31,17 @@ export function useHandleEditJob() {
     });
 
     try {
-      const { data: checkData, error: checkError } = await supabase
+      const { data, error } = await supabase
         .from("jobs")
-        .select("id")
-        .eq("position", position)
+        .update({ position, company, status, notes, tags: arrayTagValue })
+        .eq("id", isOpenModal?.id)
+        .select()
         .single();
 
-      if (checkData) {
-        throw new Error("The job already exists");
-      } else if (checkError) {
-        const { data, error } = await supabase
-          .from("jobs")
-          .update({ position, company, status, notes, tags: arrayTagValue })
-          .eq("id", isOpenModal?.id)
-          .select()
-          .single();
-
-        if (error) {
-          throw new Error("Error to edit in DataBase the Job");
-        } else if (data) {
-          setErrorDataBase("");
-        }
+      if (error) {
+        throw new Error("Error to edit in DataBase the Job");
+      } else if (data) {
+        setErrorDataBase("");
       }
     } catch (err) {
       setJobs((prev): KanbanProps[] =>
