@@ -18,7 +18,7 @@ import { useFiltersGroupedByPage } from "@/hooks/useJobsManager/useFiltersGroupe
 
 export function useJobManager() {
   const { jobs, setJobs, loading, user } = useInitialJobs();
-  const [errorDataBase, setErrorDataBase] = useState<boolean>(false);
+  const [errorDataBase, setErrorDataBase] = useState<string>("");
   const [successAddInKanban, setSuccessAddInKanban] = useState<boolean>(false);
   const submitNewJob = useHandleNewJob();
   const submitEditJob = useHandleEditJob();

@@ -22,7 +22,7 @@ export const DashboardFormCustomSchema = z.object({
   handleSubmit: z.custom<UseFormHandleSubmit<DashboardFormResolverProps>>(),
   handleSubmitNewFormDashboard:
     z.custom<SubmitHandler<DashboardFormResolverProps>>(),
-  errorDataBase: z.boolean(),
+  errorDataBase: z.string(),
   errors: z.custom<FieldErrors<DashboardFormResolverProps>>(),
   register: z.custom<UseFormRegister<DashboardFormResolverProps>>(),
   valueSort: z.string(),

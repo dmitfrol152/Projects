@@ -18,9 +18,7 @@ export function Form({
   return (
     <form onSubmit={onSubmit} className={formClasses}>
       <div className={className ? className : "gap-3 flex flex-col"}>
-        {error && (
-          <div className={errorClasses}>Error to change the DataBase</div>
-        )}
+        {error && <div className={errorClasses}>{error}</div>}
         {children}
       </div>
       <div className={buttonsOAuthClasses}>

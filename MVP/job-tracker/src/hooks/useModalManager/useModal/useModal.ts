@@ -24,7 +24,7 @@ export function useModal({ callbackErr, callbackSuccess }: ModalProps = {}) {
         !modalRef.current.contains(event.target as HTMLElement)
       ) {
         closeModal();
-        callbackErr?.(false);
+        callbackErr?.("");
         callbackSuccess?.(false);
       }
     };

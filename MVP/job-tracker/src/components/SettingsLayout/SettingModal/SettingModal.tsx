@@ -19,6 +19,8 @@ export function SettingModal({
       errorDataBase={
         modalAppeareName === "errorDeleteProfile" ||
         modalAppeareName === "errorEdit"
+          ? "error"
+          : ""
       }
       successOperation={
         modalAppeareName === "successDeleteProfile" ||

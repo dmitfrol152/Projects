@@ -10,7 +10,6 @@ export const DashboardModal = memo(function DashboardModal({
   modalRef,
   handleSubmit,
   handleSubmitEditFormDashboard,
-  errorDataBase,
   errors,
   register,
   handleCloseModal,
@@ -26,7 +25,6 @@ export const DashboardModal = memo(function DashboardModal({
       <DashboardFormModal
         handleSubmit={handleSubmit}
         handleSubmitEditFormDashboard={handleSubmitEditFormDashboard}
-        errorDataBase={errorDataBase}
         errors={errors}
         register={register}
         isOpenModal={isOpenModal}

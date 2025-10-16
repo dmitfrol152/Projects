@@ -6,7 +6,7 @@ import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types
 export const JobAddSchema = z.object({
   user: z.custom<User | null>(),
   setJobs: z.custom<Dispatch<SetStateAction<KanbanProps[] | []>>>(),
-  setErrorDataBase: z.custom<Dispatch<SetStateAction<boolean>>>(),
+  setErrorDataBase: z.custom<Dispatch<SetStateAction<string>>>(),
   setSuccessAddInKanban: z.custom<Dispatch<SetStateAction<boolean>>>(),
   reset: z
     .function({

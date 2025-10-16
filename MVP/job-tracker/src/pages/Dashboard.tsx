@@ -140,7 +140,6 @@ export default function Dashboard() {
           modalRef={modalRef}
           handleSubmit={handleSubmit}
           handleSubmitEditFormDashboard={handleSubmitEditFormDashboard}
-          errorDataBase={errorDataBase}
           errors={errors}
           register={register}
           handleCloseModal={handleCloseModal}

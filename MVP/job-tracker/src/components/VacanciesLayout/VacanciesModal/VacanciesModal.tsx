@@ -21,9 +21,7 @@ export function VacanciesModal({
     >
       <div className="flex flex-col gap-3">
         {errorDataBase && (
-          <span className="text-[var(--color-danger)]">
-            Error to add vacancy in Kanban board
-          </span>
+          <span className="text-[var(--color-danger)]">{errorDataBase}</span>
         )}
         {successAddInKanban && (
           <span className="text-[var(--color-success)]">
@@ -38,7 +36,7 @@ export function VacanciesModal({
         className="absolute top-1 right-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
         handleClickButton={() => {
           closeModal();
-          setErrorDataBase(false);
+          setErrorDataBase("");
           setSuccessAddInKanban(false);
         }}
       >

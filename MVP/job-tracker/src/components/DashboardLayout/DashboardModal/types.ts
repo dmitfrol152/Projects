@@ -15,7 +15,6 @@ export const DashboardModalSchema = z.object({
   handleSubmit: z.custom<UseFormHandleSubmit<DashboardFormResolverProps>>(),
   handleSubmitEditFormDashboard:
     z.custom<SubmitHandler<DashboardFormResolverProps>>(),
-  errorDataBase: z.boolean(),
   errors: z.custom<FieldErrors<DashboardFormResolverProps>>(),
   register: z.custom<UseFormRegister<DashboardFormResolverProps>>(),
   handleCloseModal: z.function({

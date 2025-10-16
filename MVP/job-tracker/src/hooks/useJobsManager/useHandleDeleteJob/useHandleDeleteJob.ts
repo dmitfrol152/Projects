@@ -13,15 +13,19 @@ export function useHandleDeleteJob() {
       const { error } = await supabase.from("jobs").delete().eq("id", job?.id);
 
       if (error) {
-        setErrorDataBase(true);
-        throw new Error("Error edit Job in DataBase");
+        throw new Error("Error delete the Job in DataBase");
       }
 
-      setErrorDataBase(false);
+      setErrorDataBase("");
       setJobs((prev): KanbanProps[] => {
         return [...prev].filter((jobPrev) => jobPrev.id !== job.id);
       });
     } catch (err) {
+      if (err instanceof Error) {
+        setErrorDataBase(`${err.message}`);
+      } else {
+        throw err;
+      }
       console.log(err);
     }
   }

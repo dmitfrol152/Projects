@@ -4,7 +4,7 @@ import { type KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types
 
 export const JobDeleteSchema = z.object({
   setJobs: z.custom<Dispatch<SetStateAction<KanbanProps[] | []>>>(),
-  setErrorDataBase: z.custom<Dispatch<SetStateAction<boolean>>>(),
+  setErrorDataBase: z.custom<Dispatch<SetStateAction<string>>>(),
 });
 
 export type JobDeleteProps = z.infer<typeof JobDeleteSchema>;

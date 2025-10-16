@@ -7,7 +7,7 @@ import {
 
 export const JobEditSchema = z.object({
   setJobs: z.custom<Dispatch<SetStateAction<KanbanProps[] | []>>>(),
-  setErrorDataBase: z.custom<Dispatch<SetStateAction<boolean>>>(),
+  setErrorDataBase: z.custom<Dispatch<SetStateAction<string>>>(),
   isOpenModal: KanbanSchema.nullable(),
   setIsOpenModal: z.custom<Dispatch<SetStateAction<KanbanProps | null>>>(),
   reset: z.function({

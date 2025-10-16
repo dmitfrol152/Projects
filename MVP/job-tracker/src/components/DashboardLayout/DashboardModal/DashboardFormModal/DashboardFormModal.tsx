@@ -10,7 +10,6 @@ import { DashboardTags } from "@components/DashboardLayout/DashboardModal/Dashbo
 export function DashboardFormModal({
   handleSubmit,
   handleSubmitEditFormDashboard,
-  errorDataBase,
   errors,
   register,
   isOpenModal,
@@ -29,7 +28,6 @@ export function DashboardFormModal({
           Edit
         </ButtonUi>
       }
-      error={errorDataBase}
     >
       <InputUi
         label="Position"

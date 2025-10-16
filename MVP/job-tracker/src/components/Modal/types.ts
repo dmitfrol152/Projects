@@ -5,7 +5,7 @@ export const ModalSchema = z.object({
   isOpen: z.boolean(),
   children: z.custom<ReactNode>(),
   modalRef: z.custom<Ref<HTMLDivElement>>(),
-  errorDataBase: z.boolean().optional(),
+  errorDataBase: z.string().optional(),
   successOperation: z.boolean().optional(),
 });
 

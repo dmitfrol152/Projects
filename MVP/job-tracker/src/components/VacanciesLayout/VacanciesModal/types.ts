@@ -8,8 +8,8 @@ export const VacanciesModalSchema = z.object({
     input: [],
     output: z.void(),
   }),
-  setErrorDataBase: z.custom<Dispatch<SetStateAction<boolean>>>(),
-  errorDataBase: z.boolean(),
+  setErrorDataBase: z.custom<Dispatch<SetStateAction<string>>>(),
+  errorDataBase: z.string(),
   setSuccessAddInKanban: z.custom<Dispatch<SetStateAction<boolean>>>(),
   successAddInKanban: z.boolean(),
 });

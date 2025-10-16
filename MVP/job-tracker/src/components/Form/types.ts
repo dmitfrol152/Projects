@@ -7,7 +7,7 @@ export const FormSchema = z.object({
   className: z.string().optional(),
   buttons: z.custom<ReactNode>(),
   buttonsSecondary: z.custom<ReactNode>().optional(),
-  error: z.boolean().optional(),
+  error: z.string().optional(),
 });
 
 export type FormProps = z.infer<typeof FormSchema>;
