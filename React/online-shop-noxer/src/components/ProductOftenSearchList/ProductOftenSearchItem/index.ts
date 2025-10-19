@@ -1,0 +1,1 @@
+export { ProductOftenSearchItem } from "./ProductOftenSearchItem";

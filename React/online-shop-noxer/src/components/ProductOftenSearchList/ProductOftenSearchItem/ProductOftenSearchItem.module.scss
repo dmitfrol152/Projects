@@ -1,0 +1,38 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.oftenSearchItem {
+  margin: 0;
+  padding: 2px 0 1px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  cursor: pointer;
+
+  @include mixins.vp-426 {
+    padding: 2px 0 0;
+  }
+
+  &__block {
+    padding: 10px 0;
+
+    width: 100%;
+    border-bottom: 1px solid variables.$color-gray-search-b5;
+  }
+
+  &__icon {
+    width: 10px;
+    height: 10px;
+    color: variables.$color-gray-search-b5;
+  }
+
+  &__text {
+    font-family: variables.$ff-main;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: variables.$color-gray-dark;
+  }
+}

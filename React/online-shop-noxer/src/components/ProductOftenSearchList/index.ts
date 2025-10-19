@@ -1,0 +1,1 @@
+export { ProductOftenSearchList } from "./ProductOftenSearchList";

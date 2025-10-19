@@ -1,0 +1,101 @@
+@use "/src/styles/global/mixins" as mixins;
+@use "/src/styles/global/variables" as variables;
+
+.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start;
+
+  transition: background-color variables.$transition-300;
+
+  &[data-variant="primary"] {
+    font-family: variables.$ff-main;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+
+    text-align: center;
+    background-color: variables.$color-bg-main;
+    color: variables.$color-gray-dark;
+    border-radius: 20px;
+  }
+
+  &[data-size="primary"] {
+    padding: 10px;
+    width: 100%;
+  }
+
+  &[data-variant="primaryBig"] {
+    font-family: variables.$ff-main;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+
+    text-align: center;
+    background-color: variables.$color-bg-main;
+    color: variables.$color-gray-dark;
+    border-radius: 20px;
+
+    @include mixins.vp-426 {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+
+  &[data-size="primaryBig"] {
+    padding: 10px 30px;
+    width: 100%;
+
+    @include mixins.vp-426 {
+      padding: 8px 26px;
+    }
+  }
+
+  &[data-variant="secondary"] {
+    font-family: variables.$ff-main;
+    font-weight: 500;
+    font-size: 11px;
+
+    color: variables.$color-gray-666;
+
+    text-align: center;
+    background-color: variables.$color-gray-other-03;
+    color: variables.$color-gray-666;
+    border-radius: 20px;
+  }
+
+  &[data-size="secondary"] {
+    padding: 11px 14px;
+    width: max-content;
+
+    @include mixins.vp-375 {
+      padding: 11px 12px;
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    background-color: variables.$color-gray-light;
+  }
+
+  &:hover {
+    background-color: variables.$color-gray-light;
+  }
+
+  &:active {
+    background-color: variables.$color-gray-middle;
+  }
+
+  &:disabled {
+    cursor: none;
+    pointer-events: none;
+    color: variables.$color-gray-light;
+  }
+}

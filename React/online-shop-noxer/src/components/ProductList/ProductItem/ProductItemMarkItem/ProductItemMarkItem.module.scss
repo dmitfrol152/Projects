@@ -1,0 +1,28 @@
+@use "/src/styles/global/variables" as variables;
+
+.productItemMarkItem {
+  padding: 4px 8px;
+
+  width: max-content;
+
+  border-radius: 15px;
+  background-color: variables.$color-black;
+
+  font-family: variables.$ff-secondary;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: variables.$color-white;
+}
+
+.orange {
+  background-color: variables.$color-orange;
+}
+
+.yellow {
+  background-color: variables.$color-yellow;
+}
+
+.green {
+  background-color: variables.$color-green;
+}

@@ -1,0 +1,19 @@
+@use "/src/styles/global/mixins" as mixins;
+
+.swiperContainer {
+  margin: 0 0 10px;
+
+  display: flex;
+
+  height: 243px;
+
+  @include mixins.vp-426 {
+    height: 166px;
+  }
+
+  @include mixins.vp-375 {
+    margin: 0 0 3px;
+
+    height: 140px;
+  }
+}

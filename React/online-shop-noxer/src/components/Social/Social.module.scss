@@ -1,0 +1,22 @@
+@use "/src/styles/global/variables" as variables;
+
+.social {
+  margin: 0;
+  padding: 16px 33px;
+  list-style-type: none;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+
+  background-color: variables.$color-white-03;
+  border: 1px solid variables.$color-black-01;
+  border-radius: 30px;
+
+  &__linkIcon {
+    width: 21px;
+    height: 21px;
+  }
+}

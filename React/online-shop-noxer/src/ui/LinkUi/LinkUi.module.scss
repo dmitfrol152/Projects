@@ -1,0 +1,149 @@
+@use "/src/styles/global/mixins" as mixins;
+@use "/src/styles/global/variables" as variables;
+
+.link {
+  display: flex;
+  align-items: center;
+
+  font-family: variables.$ff-main;
+  font-weight: 500;
+  color: variables.$color-gray-dark;
+
+  background-color: variables.$color-white;
+  border-radius: 40px;
+
+  transition: background-color variables.$transition-300,
+    color variables.$transition-300;
+}
+
+.primary {
+  padding: 3px 7px 3px 3px;
+  margin-right: 22px;
+
+  gap: 6px;
+
+  font-size: 13px;
+  line-height: 1.05px;
+
+  min-width: 126px;
+
+  @include mixins.vp-375 {
+    margin-right: 17px;
+  }
+
+  &:focus-visible {
+    outline: none;
+    background-color: variables.$color-gray-light;
+  }
+
+  &:hover {
+    background-color: variables.$color-gray-light;
+  }
+
+  &:active {
+    background-color: variables.$color-gray-middle;
+  }
+}
+
+.search {
+  padding: 11px 14px;
+
+  font-weight: 500;
+  font-size: 13px;
+
+  min-width: 84px;
+  background-color: variables.$color-gray-dark;
+  color: variables.$color-white;
+
+  &:focus-visible {
+    outline: none;
+    background-color: variables.$color-gray-666;
+  }
+
+  &:hover {
+    background-color: variables.$color-gray-666;
+  }
+
+  &:active {
+    background-color: variables.$color-gray-666;
+  }
+}
+
+.social {
+  justify-content: center;
+
+  color: variables.$color-gray-noactive;
+
+  &:focus-visible {
+    outline: none;
+    color: variables.$color-gray-light;
+  }
+
+  &:hover {
+    color: variables.$color-gray-light;
+  }
+
+  &:active {
+    color: variables.$color-gray-middle;
+  }
+}
+
+.small {
+  padding: 4px 7px 4px 5px;
+
+  gap: 6px;
+
+  font-size: 11px;
+  line-height: 1.05px;
+
+  border-radius: 20px;
+  min-width: 90px;
+  width: max-content;
+  background-color: variables.$color-gray-01;
+  color: variables.$color-gray-1;
+
+  &:focus-visible {
+    outline: none;
+    background-color: variables.$color-gray-light;
+  }
+
+  &:hover {
+    background-color: variables.$color-gray-light;
+  }
+
+  &:active {
+    background-color: variables.$color-gray-middle;
+  }
+}
+
+.card {
+  color: variables.$color-gray-dark;
+  background-color: transparent;
+  width: 114px;
+
+  @include mixins.vp-426 {
+    width: 79px;
+    border-radius: 15px;
+  }
+
+  @include mixins.vp-375 {
+    width: 66px;
+  }
+
+  &:focus-visible {
+    outline: none;
+    color: variables.$color-gray-light;
+  }
+
+  &:hover {
+    color: variables.$color-gray-light;
+  }
+
+  &:active {
+    color: variables.$color-gray-middle;
+  }
+}
+
+.isActive {
+  color: variables.$color-gray-dark;
+}

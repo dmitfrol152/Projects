@@ -1,0 +1,97 @@
+@use "/src/styles/global/variables" as variables;
+
+.productSearchItem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  min-height: 52px;
+  width: 100%;
+
+  &__image {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 57px;
+    width: 57px;
+
+    background-color: variables.$color-white;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &__imageLoader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__info {
+    padding: 0 110px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    min-height: 100%;
+    width: 100%;
+  }
+
+  &__infoTitle {
+    margin: 0;
+    padding: 0;
+
+    font-family: variables.$ff-main;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    color: variables.$color-gray-dark;
+  }
+
+  &__infoPrices {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__infoPricesCurrent {
+    font-family: variables.$ff-main;
+    font-weight: 700;
+    font-size: 17px;
+    color: variables.$color-gray-dark;
+  }
+
+  &__infoPricesOld {
+    font-family: variables.$ff-main;
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: line-through;
+    color: variables.$color-gray-03;
+  }
+
+  &__infoPricesScale {
+    font-family: variables.$ff-main;
+    font-weight: 600;
+    font-size: 12px;
+    color: variables.$color-red;
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+  }
+}

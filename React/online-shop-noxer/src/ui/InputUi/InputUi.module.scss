@@ -1,0 +1,59 @@
+@use "/src/styles/global/variables" as variables;
+@use "/src/styles/global/mixins" as mixins;
+
+.input {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+
+  &__field {
+    padding: 11px 20px 11px 47px;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: variables.$ff-main;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+
+    color: variables.$color-gray-dark;
+    background-color: variables.$color-white;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 0px variables.$color-shadow-main;
+    width: 100%;
+    max-height: 39px;
+    border: none;
+    z-index: 10;
+
+    @include mixins.vp-375 {
+      max-height: 36px;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-family: variables.$ff-main;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 17px;
+      color: variables.$color-gray-search-b5;
+    }
+  }
+
+  &__icon {
+    width: 17px;
+    height: 17px;
+    color: variables.$color-gray-search-b5;
+
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+}

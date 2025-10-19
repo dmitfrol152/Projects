@@ -1,0 +1,33 @@
+// Colors
+$color-white: #ffffff;
+$color-white-03: rgba(255, 255, 255, 0.3);
+$color-black: #000000;
+$color-black-01: rgba(108, 108, 108, 0.1);
+$color-gray-01: rgba(139, 139, 139, 0.1);
+$color-gray-1: rgba(139, 139, 139, 1);
+$color-gray-light: #c7c7c7;
+$color-gray-middle: #7f7f7f;
+$color-gray-dark: #292928;
+$color-gray-666: #666666;
+$color-gray-search-b5: #b5b5b5;
+$color-gray-8B: #8b8b8b;
+$color-gray-03: rgba(41, 41, 40, 0.3);
+$color-gray-noactive: #85858b;
+$color-gray-other-03: rgba(198, 198, 198, 0.3);
+$color-bg-main: #f1f1f1;
+$color-orange: #ff6723;
+$color-yellow: #ffca28;
+$color-green: #45b649;
+$color-red: #f24131;
+$color-shadow-main: rgba(48, 48, 48, 0.05);
+
+// Typography
+$ff-main: "Inter", "Arial", sans-serif;
+$ff-secondary: "Mulish", "Arial", sans-serif;
+
+// Viewport
+$vp-mobile-small: 375px;
+$vp-mobile: 426px;
+
+// Animation
+$transition-300: ease-in 0.3s;

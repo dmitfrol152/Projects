@@ -1,0 +1,46 @@
+@use "/src/styles/global/variables" as variables;
+
+.header {
+  max-height: 30px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    max-height: 8px;
+  }
+
+  &__closeIcon {
+    width: 9px;
+    height: 9px;
+  }
+
+  &__linkIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    max-height: 8px;
+  }
+
+  &__rightArrow {
+    width: 13px;
+    height: 7px;
+  }
+
+  &__rightMore {
+    width: 13px;
+    height: 8px;
+  }
+}
