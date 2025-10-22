@@ -14,6 +14,7 @@ export function VacanciesLayout({
   emptyVacancies,
   buttonTop,
   isVisibleButtonTop,
+  loadingAddJob,
   modal,
 }: VacanciesLayoutProps) {
   const loadingContainer = (
@@ -27,7 +28,7 @@ export function VacanciesLayout({
       {title}
       {paragraph}
       {input}
-      {loadingVacancies && loadingContainer}
+      {(loadingVacancies || loadingAddJob) && loadingContainer}
       {isError && errorFecthVacancies}
       {isSuccess && (
         <div className="flex flex-col gap-3 grow justify-between">

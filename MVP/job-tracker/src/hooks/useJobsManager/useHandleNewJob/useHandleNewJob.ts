@@ -1,7 +1,6 @@
 import { supabase } from "@/api/AppSupabaseClient";
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import type { DashboardFormResolverProps } from "@/components/Form/types";
-import { getUniqueId } from "@/utils/getUniqueId";
 import type { JobAddProps } from "./types";
 
 export function useHandleNewJob() {
@@ -15,22 +14,23 @@ export function useHandleNewJob() {
 
     if (!user) return;
 
-    const newId = getUniqueId();
-    const newProfileId = getUniqueId();
-    const newDate = new Date();
-    setJobs((prev): KanbanProps[] => [
-      ...prev,
-      {
-        id: newId,
-        position,
-        company,
-        status,
-        created_at: newDate,
-        notes: "",
-        tags: [],
-        profile_id: newProfileId,
-      },
-    ]);
+    // const newId = getUniqueId();
+    // const newProfileId = getUniqueId();
+    // const newDate = new Date();
+    // setJobs((prev): KanbanProps[] => [
+    //   ...prev,
+    //   {
+    //     id: newId,
+    //     position,
+    //     company,
+    //     status,
+    //     created_at: newDate,
+    //     notes: "",
+    //     tags: [],
+    //     profile_id: newProfileId,
+    //     user_id: user.id,
+    //   },
+    // ]);
 
     try {
       const { data: profileData, error: profileError } = await supabase
@@ -49,11 +49,11 @@ export function useHandleNewJob() {
           .select("id")
           .eq("user_id", user.id)
           .eq("position", position)
-          .single();
+          .maybeSingle();
 
         if (checkData) {
           throw new Error("The job already exists");
-        } else if (checkError) {
+        } else if (!checkError) {
           const { data, error } = await supabase
             .from("jobs")
             .insert([
@@ -74,14 +74,15 @@ export function useHandleNewJob() {
             setSuccessAddInKanban(true);
             setErrorDataBase("");
             setJobs((prev: KanbanProps[]): KanbanProps[] => {
-              return prev.map((job) => (job.id === newId ? data : job));
+              // return prev.map((job) => (job.id === newId ? data : job));
+              return [...prev, data];
             });
           }
         }
       }
     } catch (err) {
       setSuccessAddInKanban(false);
-      setJobs((prev): KanbanProps[] => prev.filter((job) => job.id !== newId));
+      // setJobs((prev): KanbanProps[] => prev.filter((job) => job.id !== newId));
       if (err instanceof Error) {
         setErrorDataBase(`${err.message}`);
       } else {

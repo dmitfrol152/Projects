@@ -6,7 +6,7 @@ import { useModal } from "@/hooks/useModalManager/useModal/useModal";
 
 export function useModalManager({ reset, setValue }: ModalManagerProps) {
   const [isOpenModal, setIsOpenModal] = useState<KanbanProps | null>(null);
-  const { modalRef, openModal, closeModal, isOpen } = useModal();
+  const { modalRef, openModal, closeModal, isOpen } = useModal({ reset });
 
   const [newTagValue, setNewTagValue] = useState<string>("");
   const [arrayTagValue, setArrayTagValue] = useState<string[]>([]);

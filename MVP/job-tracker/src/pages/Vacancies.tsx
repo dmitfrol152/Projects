@@ -23,6 +23,7 @@ export default function Vacancies() {
   const [query, setQuery] = useState<string>("");
   const [isVisibleButtonTop, setIsVisibleButtonTop] = useState<boolean>(false);
   const debounceQuery = useDebounce(query, 1000);
+  const [loadingAddJob, setLoadingAddJob] = useState<boolean>(false);
   const {
     data,
     isLoading,
@@ -121,7 +122,13 @@ export default function Vacancies() {
   async function handleSubmitNewFormDashboard(
     data: DashboardFormResolverProps
   ) {
-    return await handleSubmitNewFormDashboardHook(data);
+    try {
+      setLoadingAddJob(true);
+      const result = await handleSubmitNewFormDashboardHook(data);
+      return result;
+    } finally {
+      setLoadingAddJob(false);
+    }
   }
 
   return (
@@ -165,6 +172,7 @@ export default function Vacancies() {
       emptyVacancies={<VacanciesEmpty />}
       buttonTop={<VacanciesButtonTop handleClickTop={handleClickTop} />}
       isVisibleButtonTop={isVisibleButtonTop}
+      loadingAddJob={loadingAddJob}
       modal={
         <VacanciesModal
           isOpen={isOpen}

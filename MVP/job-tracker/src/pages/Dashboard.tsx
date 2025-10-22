@@ -16,8 +16,11 @@ import { useModalManager } from "@/hooks/useModalManager/useModalManager";
 import { useFiltersColumns } from "@/hooks/useFiltersColumns/useFiltersColumns";
 import { useFormatedJobsForExport } from "@/hooks/useFormatedJobsForExport";
 import { DashboardDescription } from "@/components/DashboardLayout/DashboardDescription";
+import { useState } from "react";
 
 export default function Dashboard() {
+  const [loadingAddOrEditJob, setLoadingAddOrEditJob] =
+    useState<boolean>(false);
   const {
     register,
     formState: { errors },
@@ -76,18 +79,30 @@ export default function Dashboard() {
   async function handleSubmitNewFormDashboard(
     data: DashboardFormResolverProps
   ) {
-    return await handleSubmitNewFormDashboardHook(data, { reset });
+    try {
+      setLoadingAddOrEditJob(true);
+      const result = await handleSubmitNewFormDashboardHook(data, { reset });
+      return result;
+    } finally {
+      setLoadingAddOrEditJob(false);
+    }
   }
 
   async function handleSubmitEditFormDashboard(
     data: DashboardFormResolverProps
   ) {
-    return await handleSubmitEditFormDashboardHook(data, {
-      reset,
-      isOpenModal,
-      setIsOpenModal,
-      arrayTagValue,
-    });
+    try {
+      setLoadingAddOrEditJob(true);
+      const result = await handleSubmitEditFormDashboardHook(data, {
+        reset,
+        isOpenModal,
+        setIsOpenModal,
+        arrayTagValue,
+      });
+      return result;
+    } finally {
+      setLoadingAddOrEditJob(false);
+    }
   }
 
   async function handleDeleteJob(data: KanbanProps) {
@@ -134,6 +149,7 @@ export default function Dashboard() {
           visibleButtonMore={visibleButtonMore}
         />
       }
+      loadingAddOrEditJob={loadingAddOrEditJob}
       modal={
         <DashboardModal
           isOpenModal={isOpenModal}

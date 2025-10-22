@@ -11,6 +11,7 @@ export const KanbanSchema = z.object({
   notes: z.string().nullable(),
   tags: z.array(z.string()),
   profile_id: z.string(),
+  user_id: z.string(),
 });
 
 export type KanbanProps = z.infer<typeof KanbanSchema>;

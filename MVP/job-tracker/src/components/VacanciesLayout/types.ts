@@ -15,6 +15,7 @@ export const VacanciesLayoutSchema = z.object({
   emptyVacancies: z.custom<ReactNode>(),
   buttonTop: z.custom<ReactNode>(),
   isVisibleButtonTop: z.boolean(),
+  loadingAddJob: z.boolean(),
   modal: z.custom<ReactNode>(),
 });
 

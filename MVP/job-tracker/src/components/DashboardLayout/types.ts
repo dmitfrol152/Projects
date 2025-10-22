@@ -7,6 +7,7 @@ export const DashboardLayoutSchema = z.object({
   kanban: z.custom<ReactNode>(),
   formKanban: z.custom<ReactNode>(),
   description: z.custom<ReactNode>(),
+  loadingAddOrEditJob: z.boolean(),
   modal: z.custom<ReactNode>(),
 });
 
