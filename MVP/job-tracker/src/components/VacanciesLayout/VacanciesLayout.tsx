@@ -4,6 +4,7 @@ export function VacanciesLayout({
   title,
   paragraph,
   input,
+  formFilters,
   loadingVacancies,
   isError,
   errorFecthVacancies,
@@ -28,6 +29,9 @@ export function VacanciesLayout({
       {title}
       {paragraph}
       {input}
+      <div className="flex flex-col gap-3 bg-[var(--color-white-modify)] p-8 rounded-lg shadow-md w-full">
+        {formFilters}
+      </div>
       {(loadingVacancies || loadingAddJob) && loadingContainer}
       {isError && errorFecthVacancies}
       {isSuccess && (

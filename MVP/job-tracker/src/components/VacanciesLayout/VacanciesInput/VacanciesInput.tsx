@@ -15,7 +15,7 @@ export function VacanciesInput({
         type="text"
         value={query}
         setValue={setQuery}
-        placeholder="Enter your query (company or profession)..."
+        placeholder="Enter your query (position or company)..."
       />
       {query && (
         <ButtonUi

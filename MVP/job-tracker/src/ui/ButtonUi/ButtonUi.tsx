@@ -14,8 +14,8 @@ export const ButtonUi = memo(function Button({
   const classButton = clsx(
     "font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed w-max",
     {
-      md: "px-4 py-2 rounded text-base leading-[1.2]",
-      lg: "px-4 py-2 rounded text-lg leading-[1.2]",
+      md: "px-4 py-2 rounded text-base leading-[1.2] min-h-10.5",
+      lg: "px-4 py-2 rounded text-lg leading-[1.2] min-h-10.5",
       icon: "px-1 py-1",
     }[size],
     {

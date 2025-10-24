@@ -70,3 +70,14 @@ export const NotificationFormResolverSchema = z
 export type NotificationFormResolverProps = z.infer<
   typeof NotificationFormResolverSchema
 >;
+
+export const VacanciesFormResolverSchema = z.object({
+  salary: z.string().nullable().optional(),
+  experience: z.string().optional(),
+  orderBy: z.string().optional(),
+  city: z.string().optional(),
+});
+
+export type VacanciesFormResolverProps = z.infer<
+  typeof VacanciesFormResolverSchema
+>;

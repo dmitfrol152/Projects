@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 export function useApiGetHeadHunterVacancies(
   query: string,
   page: number,
-  perpage: number = 10
+  perpage: number,
+  salary?: number | null,
+  experience?: string,
+  orderBy?: string,
+  city?: string
 ) {
   const { paginationModel } = usePaginationSetting();
   const [paginationModelLocal, setPaginationModelLocal] =
@@ -17,18 +21,42 @@ export function useApiGetHeadHunterVacancies(
   }, [paginationModel]);
 
   const getVacanciesButtons = useQuery({
-    queryFn: () => fetchHeadHunterVacancies(query, page, perpage),
-    queryKey: ["hh_vacancies", query, page],
+    queryFn: () =>
+      fetchHeadHunterVacancies(
+        query,
+        page,
+        perpage,
+        salary,
+        experience,
+        orderBy,
+        city
+      ),
+    queryKey: ["hh_vacancies", query, page, salary, experience, orderBy, city],
     enabled: !!query,
-    staleTime: 1000 * 0 * 5,
+    staleTime: 1000 * 60 * 5,
   });
 
   const getVacanciesScroll = useInfiniteQuery({
-    queryKey: ["hh_vacancies_infinity", query],
+    queryKey: [
+      "hh_vacancies_infinity",
+      query,
+      salary,
+      experience,
+      orderBy,
+      city,
+    ],
     queryFn: ({ pageParam = 1 }) =>
-      fetchHeadHunterVacancies(query, pageParam, perpage),
+      fetchHeadHunterVacancies(
+        query,
+        pageParam,
+        perpage,
+        salary,
+        experience,
+        orderBy,
+        city
+      ),
     enabled: !!query,
-    staleTime: 1000 * 0 * 5,
+    staleTime: 1000 * 60 * 5,
     initialPageParam: 0,
     getPreviousPageParam: (firstPage) => {
       const currentPage = firstPage?.page ?? 0;

@@ -9,6 +9,15 @@ export const EmployerSchema = z.object({
   name: z.string(),
 });
 
+export const SalarySchema = z.object({
+  from: z.number().nullable(),
+  to: z.number().nullable(),
+});
+
+export const ExperienceSchema = z.object({
+  id: z.string(),
+});
+
 export const DataSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -16,6 +25,8 @@ export const DataSchema = z.object({
   employer: EmployerSchema,
   published_at: z.string(),
   alternate_url: z.string(),
+  salary: SalarySchema.nullable(),
+  experience: ExperienceSchema,
 });
 
 export type DataProps = z.infer<typeof DataSchema>;

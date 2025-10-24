@@ -1,6 +1,6 @@
 import type { VacanciesDataListProps } from "./types";
-import { VacanciesDataItem } from "@components/VacanciesLayout/VacanciesDataItem";
-import type { DataProps } from "@components/VacanciesLayout/VacanciesDataItem/types";
+import { VacanciesDataItem } from "@/components/VacanciesLayout/VacanciesDataList/VacanciesDataItem";
+import type { DataProps } from "@/components/VacanciesLayout/VacanciesDataList/VacanciesDataItem/types";
 
 export function VacanciesDataList({
   dataList,

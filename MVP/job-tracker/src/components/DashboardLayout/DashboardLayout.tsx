@@ -19,7 +19,7 @@ export function DashboardLayout({
     <div className="flex flex-col gap-3">
       {title}
       {paragraph}
-      <div className="flex flex-col gap-3 bg-[var(--color-white-modify)] p-8 rounded-lg shadow-md w-full min-h-62">
+      <div className="flex flex-col gap-3 bg-[var(--color-white-modify)] p-8 rounded-lg shadow-md w-full">
         {formKanban}
       </div>
       {description}

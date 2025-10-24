@@ -1,10 +1,15 @@
-import type { DashboardFormResolverProps } from "@/components/Form/types";
+import {
+  VacanciesFormResolverSchema,
+  type DashboardFormResolverProps,
+  type VacanciesFormResolverProps,
+} from "@/components/Form/types";
 import { VacanciesLayout } from "@/components/VacanciesLayout";
 import { VacanciesButtonTop } from "@/components/VacanciesLayout/VacanciesButtonTop/VacanciesButtonTop";
-import type { DataScrollProps } from "@/components/VacanciesLayout/VacanciesDataItem/types";
+import type { DataScrollProps } from "@/components/VacanciesLayout/VacanciesDataList/VacanciesDataItem/types";
 import { VacanciesDataList } from "@/components/VacanciesLayout/VacanciesDataList";
-import { VacanciesEmpty } from "@/components/VacanciesLayout/VacanciesEmpty";
+import { VacanciesEmpty } from "@/components/VacanciesLayout/VacanciesDataList/VacanciesEmpty";
 import { VacanciesFetchError } from "@/components/VacanciesLayout/VacanciesFetchError";
+import { VacanciesFormFilters } from "@/components/VacanciesLayout/VacanciesFormFilters";
 import { VacanciesInput } from "@/components/VacanciesLayout/VacanciesInput";
 import { VacanciesModal } from "@/components/VacanciesLayout/VacanciesModal";
 import { VacanciesPagination } from "@/components/VacanciesLayout/VacanciesPagination";
@@ -15,15 +20,41 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { useJobManager } from "@/hooks/useJobsManager/useJobsManager";
 import { useModal } from "@/hooks/useModalManager/useModal";
 import { getWindowScrollTo } from "@/utils/getWindowScrollTo";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function Vacancies() {
   const [page, setPage] = useState<number>(0);
   const [pages, setPages] = useState<number>(0);
+  const [perPages] = useState<number>(10);
   const [query, setQuery] = useState<string>("");
-  const [isVisibleButtonTop, setIsVisibleButtonTop] = useState<boolean>(false);
   const debounceQuery = useDebounce(query, 1000);
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+    watch,
+  } = useForm<VacanciesFormResolverProps>({
+    resolver: zodResolver(VacanciesFormResolverSchema),
+    defaultValues: {
+      salary: null,
+      experience: "",
+      orderBy: "",
+      city: "",
+    },
+  });
+
+  const [salary, setSalary] = useState<number | null>(null);
+  const [experience, setExperience] = useState<string>("");
+  const [orderBy, setOrderBy] = useState<string | "">("");
+  const [city, setCity] = useState<string | "">("");
+
+  const [isVisibleButtonTop, setIsVisibleButtonTop] = useState<boolean>(false);
   const [loadingAddJob, setLoadingAddJob] = useState<boolean>(false);
+
   const {
     data,
     isLoading,
@@ -34,7 +65,16 @@ export default function Vacancies() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useApiGetHeadHunterVacancies(debounceQuery, page);
+  } = useApiGetHeadHunterVacancies(
+    debounceQuery,
+    page,
+    perPages,
+    salary,
+    experience,
+    orderBy,
+    city
+  );
+
   const {
     handleSubmitNewFormDashboardHook,
     errorDataBase,
@@ -42,6 +82,7 @@ export default function Vacancies() {
     successAddInKanban,
     setSuccessAddInKanban,
   } = useJobManager();
+
   const { closeModal, isOpen, modalRef, openModal } = useModal({
     callbackErr: setErrorDataBase,
     callbackSuccess: setSuccessAddInKanban,
@@ -131,6 +172,31 @@ export default function Vacancies() {
     }
   }
 
+  function handleSubmitFilters(data: VacanciesFormResolverProps) {
+    setSalary(data.salary ? Number(data.salary) : null);
+    setExperience(data.experience || "");
+    setOrderBy(data.orderBy || "");
+    setCity(data.city || "");
+    setPage(0);
+  }
+
+  function handleClearFilter() {
+    setSalary(null);
+    setExperience("");
+    setOrderBy("");
+    setCity("");
+    reset();
+  }
+
+  const salaryEmpty = watch("salary");
+  const experienceEmpty = watch("experience");
+  const orderByEmpty = watch("orderBy");
+  const cityEmpty = watch("city");
+  const emptyValuesFilter =
+    !salaryEmpty && !experienceEmpty && !orderByEmpty && !cityEmpty;
+
+  console.log(data);
+
   return (
     <VacanciesLayout
       title={<VacanciesTitle />}
@@ -140,6 +206,16 @@ export default function Vacancies() {
           query={query}
           setQuery={setQuery}
           handleClearSearchField={handleClearSearchField}
+        />
+      }
+      formFilters={
+        <VacanciesFormFilters
+          handleSubmit={handleSubmit}
+          handleSubmitFilters={handleSubmitFilters}
+          handleClearFilter={handleClearFilter}
+          errors={errors}
+          register={register}
+          emptyValuesFilter={emptyValuesFilter}
         />
       }
       loadingVacancies={isLoading}

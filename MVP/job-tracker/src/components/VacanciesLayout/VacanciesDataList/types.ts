@@ -1,5 +1,5 @@
 import z from "zod";
-import { DataSchema } from "../VacanciesDataItem/types";
+import { DataSchema } from "./VacanciesDataItem/types";
 import { DashboardFormResolverSchema } from "@/components/Form/types";
 
 export const VacanciesDataListSchema = z.object({
