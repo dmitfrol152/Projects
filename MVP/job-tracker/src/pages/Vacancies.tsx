@@ -208,6 +208,8 @@ export default function Vacancies() {
 
   console.log(data);
 
+  const dataFound = data?.found || data?.pages[0].found || null;
+
   return (
     <VacanciesLayout
       title={<VacanciesTitle />}
@@ -235,6 +237,7 @@ export default function Vacancies() {
         <VacanciesFetchError handleRefetch={handleRefetch} />
       }
       isSuccess={!!isSuccess}
+      dataFound={dataFound}
       data={
         <VacanciesDataList
           dataList={getCurrentData()}

@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import type { UseFormSetValue } from "react-hook-form";
 import type { VacanciesFormResolverProps } from "@/components/Form/types";
 
-export function useVacanciesLocalStorageFilters(setValue?: UseFormSetValue<VacanciesFormResolverProps>) {
+export function useVacanciesLocalStorageFilters(
+  setValue?: UseFormSetValue<VacanciesFormResolverProps>
+) {
   const [page, setPage] = useState<number>(0);
   const [pages, setPages] = useState<number>(0);
   const [perPages] = useState<number>(10);
@@ -52,9 +54,8 @@ export function useVacanciesLocalStorageFilters(setValue?: UseFormSetValue<Vacan
   }, [salary, experience, orderBy, city, setValue, isInitialized]);
 
   useEffect(() => {
-
     if (!isInitialized) return;
-    
+
     const dataToSave = {
       query: debounceQuery,
       salary,
@@ -63,8 +64,7 @@ export function useVacanciesLocalStorageFilters(setValue?: UseFormSetValue<Vacan
       city,
       page,
     };
-    
-    console.log("Сохранение в localStorage:", dataToSave);
+
     localStorage.setItem("jobtracker:hh_filters", JSON.stringify(dataToSave));
   }, [city, debounceQuery, experience, orderBy, page, salary, isInitialized]);
 

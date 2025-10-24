@@ -9,6 +9,7 @@ export function VacanciesLayout({
   isError,
   errorFecthVacancies,
   isSuccess,
+  dataFound,
   data,
   pagination,
   isEmpty,
@@ -36,6 +37,10 @@ export function VacanciesLayout({
       {isError && errorFecthVacancies}
       {isSuccess && (
         <div className="flex flex-col gap-3 grow justify-between">
+          <span className="flex justify-center gap-1">
+            <span className="font-semibold">Founded:</span>
+            <span className="text-[var(--color-gray-800)]">{dataFound}</span>
+          </span>
           {data}
           {pagination}
         </div>
