@@ -16,27 +16,22 @@ import { VacanciesPagination } from "@/components/VacanciesLayout/VacanciesPagin
 import { VacanciesParagraph } from "@/components/VacanciesLayout/VacanciesParagraph";
 import { VacanciesTitle } from "@/components/VacanciesLayout/VacanciesTitle";
 import { useApiGetHeadHunterVacancies } from "@/hooks/useApi/useApiGetHeadHunterVacancies";
-import { useDebounce } from "@/hooks/useDebounce";
 import { useJobManager } from "@/hooks/useJobsManager/useJobsManager";
 import { useModal } from "@/hooks/useModalManager/useModal";
 import { getWindowScrollTo } from "@/utils/getWindowScrollTo";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useVacanciesLocalStorageFilters } from "@/hooks/useVacanciesManager/useVacanciesLocalStorageFilters/useVacanciesLocalStorageFilters";
 
 export default function Vacancies() {
-  const [page, setPage] = useState<number>(0);
-  const [pages, setPages] = useState<number>(0);
-  const [perPages] = useState<number>(10);
-  const [query, setQuery] = useState<string>("");
-  const debounceQuery = useDebounce(query, 1000);
-
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
     watch,
+    setValue,
   } = useForm<VacanciesFormResolverProps>({
     resolver: zodResolver(VacanciesFormResolverSchema),
     defaultValues: {
@@ -47,10 +42,24 @@ export default function Vacancies() {
     },
   });
 
-  const [salary, setSalary] = useState<number | null>(null);
-  const [experience, setExperience] = useState<string>("");
-  const [orderBy, setOrderBy] = useState<string | "">("");
-  const [city, setCity] = useState<string | "">("");
+  const {
+    page,
+    setPage,
+    pages,
+    setPages,
+    perPages,
+    query,
+    setQuery,
+    debounceQuery,
+    salary,
+    setSalary,
+    experience,
+    setExperience,
+    city,
+    setCity,
+    orderBy,
+    setOrderBy,
+  } = useVacanciesLocalStorageFilters(setValue);
 
   const [isVisibleButtonTop, setIsVisibleButtonTop] = useState<boolean>(false);
   const [loadingAddJob, setLoadingAddJob] = useState<boolean>(false);
@@ -98,7 +107,7 @@ export default function Vacancies() {
     if (data) {
       setPages(data.pages);
     }
-  }, [data]);
+  }, [data, setPages]);
 
   useEffect(() => {
     getWindowScrollTo();
@@ -185,7 +194,9 @@ export default function Vacancies() {
     setExperience("");
     setOrderBy("");
     setCity("");
+    setPage(0);
     reset();
+    localStorage.removeItem("jobtracker:hh_filters");
   }
 
   const salaryEmpty = watch("salary");
