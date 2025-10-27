@@ -206,8 +206,6 @@ export default function Vacancies() {
   const emptyValuesFilter =
     !salaryEmpty && !experienceEmpty && !orderByEmpty && !cityEmpty;
 
-  console.log(data);
-
   const dataFound = data?.found || data?.pages[0].found || null;
 
   return (
