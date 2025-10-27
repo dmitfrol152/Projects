@@ -1,3 +1,10 @@
+*.local
+
+# Editor directories and files
+.vscode/*
+.idea
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -10,4 +17,3 @@ dist
 
 # npm 
 .env.production
-.env
