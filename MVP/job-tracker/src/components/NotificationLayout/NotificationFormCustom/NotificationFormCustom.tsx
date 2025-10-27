@@ -8,6 +8,8 @@ export function NotificationFormCustom({
   errors,
   register,
   handleSubmitNewNotification,
+  handleClearPassed,
+  handleClearAll,
 }: NotificationFormCustomProps) {
   const formClassName = "gap-3 grid grid-cols-2";
 
@@ -19,6 +21,26 @@ export function NotificationFormCustom({
         <ButtonUi size="md" variant="primary" type="submit">
           Add
         </ButtonUi>
+      }
+      buttonsSecondary={
+        <>
+          <ButtonUi
+            size="md"
+            variant="secondary"
+            type="button"
+            handleClickButton={handleClearPassed}
+          >
+            Clear passed
+          </ButtonUi>
+          <ButtonUi
+            size="md"
+            variant="exit"
+            type="button"
+            handleClickButton={handleClearAll}
+          >
+            Clear all
+          </ButtonUi>
+        </>
       }
     >
       <InputUi

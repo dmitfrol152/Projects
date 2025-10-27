@@ -13,6 +13,14 @@ export const NotificationFormCustomSchema = z.object({
   register: z.custom<UseFormRegister<NotificationFormResolverProps>>(),
   handleSubmitNewNotification:
     z.custom<SubmitHandler<NotificationFormResolverProps>>(),
+  handleClearPassed: z.function({
+    input: [],
+    output: z.void(),
+  }),
+  handleClearAll: z.function({
+    input: [],
+    output: z.void(),
+  }),
 });
 
 export type NotificationFormCustomProps = z.infer<

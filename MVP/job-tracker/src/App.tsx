@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/context/ThemeProvider";
 import { ThemeWrapper } from "@/components/ThemeWrapper";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@api/queryClient";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -19,6 +20,15 @@ export default function App() {
           <ThemeProvider>
             <ThemeWrapper>
               <SearchProvider>
+                <ToastContainer
+                  position="top-right"
+                  hideProgressBar={false}
+                  closeOnClick={true}
+                  pauseOnHover={true}
+                  draggable={false}
+                  theme="colored"
+                  icon={false}
+                />
                 <Suspense
                   fallback={
                     <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-100 bg-[var(--color-black-05)]">

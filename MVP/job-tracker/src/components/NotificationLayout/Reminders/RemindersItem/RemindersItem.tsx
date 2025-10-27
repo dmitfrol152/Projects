@@ -1,17 +1,39 @@
 import { ButtonUi } from "@/ui/ButtonUi";
 import type { ReminderProps } from "../types";
 import IconDelete from "@assets/svg/icon-delete.svg?react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 export function RemindersItem({
   reminder,
   handleDeleteReminder,
 }: ReminderProps) {
   const [hover, setHover] = useState<boolean | null>(null);
+  const [passetNote, setPassetNote] = useState<boolean>(false);
+
+  const currentTime = new Date(reminder.time).getTime() - Date.now();
+
+  useEffect(() => {
+    if (currentTime <= 0) {
+      setPassetNote(true);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setPassetNote(true);
+    }, currentTime);
+
+    return () => clearTimeout(timer);
+  }, [currentTime]);
 
   return (
     <div
-      className="flex justify-between border border-[var(--color-primary)] p-2 rounded"
+      className={clsx(
+        "flex justify-between border p-2 rounded",
+        !passetNote
+          ? "border-[var(--color-primary)]"
+          : "border-[var(--color-danger)]"
+      )}
       onMouseOver={() => setHover(true)}
       onMouseOut={() => setHover(false)}
     >
@@ -21,6 +43,15 @@ export function RemindersItem({
           {new Date(reminder.time).toLocaleString()}
         </span>
       </div>
+      {passetNote ? (
+        <span className="flex items-center font-bold text-[var(--color-danger)]">
+          PASSED
+        </span>
+      ) : (
+        <span className="flex items-center font-bold text-[var(--color-primary)]">
+          SOON
+        </span>
+      )}
       {hover && (
         <ButtonUi
           className="text-[var(--color-danger)] hover:text-[var(--color-danger-hover)]"

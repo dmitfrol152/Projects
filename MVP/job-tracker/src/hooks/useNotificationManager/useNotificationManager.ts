@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import type { NotificationFormResolverProps } from "@/components/Form/types";
 import { getUniqueId } from "@/utils/getUniqueId";
 import type { RemindersProps } from "@/components/NotificationLayout/Reminders/types";
+import { toastNotifiactionView } from "@/utils/getToastNotifiactionView";
 
 export function useNotificationManager() {
   const [reminders, setReminders] = useState<RemindersProps[]>(() => {
@@ -26,7 +27,7 @@ export function useNotificationManager() {
       const timeMs = new Date(reminderParam.time).getTime() - Date.now();
       if (timeMs > 0) {
         timerRef.current[reminderParam.id] = setTimeout(
-          () => notifyMe(reminderParam),
+          () => showToast(reminderParam),
           timeMs
         );
       }
@@ -37,18 +38,8 @@ export function useNotificationManager() {
     };
   }, [reminders]);
 
-  function notifyMe(reminderParam: RemindersProps) {
-    if ("Notification" in window) {
-      if (Notification.permission === "granted") {
-        new Notification("Notification", { body: reminderParam.note });
-      } else if (Notification.permission !== "denied") {
-        Notification.requestPermission(function (permission) {
-          if (permission === "granted") {
-            new Notification("Notification", { body: reminderParam.note });
-          }
-        });
-      }
-    }
+  function showToast(reminderParam: RemindersProps) {
+    toastNotifiactionView.info(reminderParam.note);
   }
 
   const addReminers = (data: NotificationFormResolverProps) => {
@@ -60,13 +51,31 @@ export function useNotificationManager() {
       created_at: new Date().toISOString(),
     };
     setReminders((prev) => [...prev, newReminers]);
+    toastNotifiactionView.success("Notification added successfully");
   };
 
   function deleteReminders(remindersId: string) {
     setReminders((prev) =>
       prev.filter((reminder) => reminder.id !== remindersId)
     );
+    toastNotifiactionView.success("Notification deleted successfully");
   }
 
-  return { reminders, addReminers, deleteReminders };
+  function deletePassedReminders() {
+    setReminders((prev) =>
+      prev.filter((reminder) => new Date(reminder.time).getTime() > Date.now())
+    );
+  }
+
+  function deleteAllReminders() {
+    setReminders([]);
+  }
+
+  return {
+    reminders,
+    addReminers,
+    deleteReminders,
+    deletePassedReminders,
+    deleteAllReminders,
+  };
 }

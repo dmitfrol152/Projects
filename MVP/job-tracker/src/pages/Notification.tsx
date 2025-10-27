@@ -12,7 +12,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 export default function Notification() {
-  const { reminders, addReminers, deleteReminders } = useNotificationManager();
+  const {
+    reminders,
+    addReminers,
+    deleteReminders,
+    deleteAllReminders,
+    deletePassedReminders,
+  } = useNotificationManager();
   const {
     register,
     formState: { errors },
@@ -31,6 +37,14 @@ export default function Notification() {
     deleteReminders(reminderId);
   }
 
+  function handleClearPassed() {
+    deletePassedReminders();
+  }
+
+  function handleClearAll() {
+    deleteAllReminders();
+  }
+
   return (
     <NotificationLayout
       title={<NotificationTitle />}
@@ -41,6 +55,8 @@ export default function Notification() {
           handleSubmit={handleSubmit}
           errors={errors}
           handleSubmitNewNotification={handleAddNewNotification}
+          handleClearPassed={handleClearPassed}
+          handleClearAll={handleClearAll}
         />
       }
       reminders={
