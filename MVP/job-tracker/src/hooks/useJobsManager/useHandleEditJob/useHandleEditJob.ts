@@ -2,6 +2,7 @@ import { supabase } from "@/api/AppSupabaseClient";
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import type { DashboardFormResolverProps } from "@/components/Form/types";
 import type { JobEditProps } from "./types";
+import { fetchTelegramApi } from "@/api/telegramApi/telegramApi";
 
 export function useHandleEditJob() {
   async function handleSubmitEditFormDashboardHook(
@@ -16,6 +17,7 @@ export function useHandleEditJob() {
       setIsOpenModal,
       reset,
       arrayTagValue,
+      user,
     } = jobEditProps;
 
     const backup = isOpenModal;
@@ -42,6 +44,13 @@ export function useHandleEditJob() {
         throw new Error("Error to edit in DataBase the Job");
       } else if (data) {
         setErrorDataBase("");
+
+        if (user) {
+          fetchTelegramApi(
+            user.id,
+            `✅ Notification:\nThe vacancy was successfully updated\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
+          );
+        }
       }
     } catch (err) {
       setJobs((prev): KanbanProps[] =>

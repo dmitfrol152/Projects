@@ -3,6 +3,7 @@ import type { KanbanBoardProps, KanbanProps } from "./types";
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd";
 import { supabase } from "@/api/AppSupabaseClient";
 import { ButtonUi } from "@/ui/ButtonUi";
+import { fetchTelegramApi } from "@/api/telegramApi/telegramApi";
 
 export function KanbanBoard({
   jobs,
@@ -13,6 +14,7 @@ export function KanbanBoard({
   columns,
   handleMoreJobs,
   visibleButtonMore,
+  user,
 }: KanbanBoardProps) {
   const onDragEnd = async (result: DropResult) => {
     const { draggableId, destination } = result;
@@ -47,6 +49,13 @@ export function KanbanBoard({
 
       if (error) {
         throw new Error("Error edit Job in DataBase");
+      }
+
+      if (user) {
+        fetchTelegramApi(
+          user.id,
+          `✅ Notification:\nThe vacancy was successfully update\nPosition: ${originalJob.position}\nCompany: ${originalJob.company}\nStatus: ${destination.droppableId}`
+        );
       }
     } catch (err) {
       console.log(err);

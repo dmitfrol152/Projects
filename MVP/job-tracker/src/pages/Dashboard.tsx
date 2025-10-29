@@ -64,6 +64,7 @@ export default function Dashboard() {
     popularTags,
     handleChangeStatusTags,
     groupedJobsWithoutPage,
+    user,
   } = useJobManager();
   const {
     columns,
@@ -147,6 +148,7 @@ export default function Dashboard() {
           loading={loading}
           handleMoreJobs={handleMoreJobs}
           visibleButtonMore={visibleButtonMore}
+          user={user}
         />
       }
       loadingAddOrEditJob={loadingAddOrEditJob}

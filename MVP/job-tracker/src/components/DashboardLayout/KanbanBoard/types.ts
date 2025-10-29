@@ -1,4 +1,5 @@
 import { ColumnsSchema } from "@/constants/types";
+import type { User } from "@supabase/supabase-js";
 import type { Dispatch, SetStateAction } from "react";
 import z from "zod";
 
@@ -40,6 +41,7 @@ export const KanbanBoardSchema = z.object({
     output: z.void(),
   }),
   visibleButtonMore: z.boolean().nullable(),
+  user: z.custom<User | null>(),
 });
 
 export type KanbanBoardProps = z.infer<typeof KanbanBoardSchema>;

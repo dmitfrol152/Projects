@@ -60,11 +60,12 @@ export function useJobManager() {
       setIsOpenModal,
       reset,
       arrayTagValue,
+      user,
     });
   }
 
   async function handleDeleteJobHook(job: KanbanProps) {
-    await submitDeleteJob(job, { setErrorDataBase, setJobs });
+    await submitDeleteJob(job, { setErrorDataBase, setJobs, user });
   }
 
   function handleChangeStatusTags(obj: TagFiltersProps) {
@@ -90,5 +91,6 @@ export function useJobManager() {
     setPage,
     popularTags: tagsFilter,
     handleChangeStatusTags,
+    user,
   };
 }

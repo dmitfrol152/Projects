@@ -2,6 +2,7 @@ import { supabase } from "@/api/AppSupabaseClient";
 import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types";
 import type { DashboardFormResolverProps } from "@/components/Form/types";
 import type { JobAddProps } from "./types";
+import { fetchTelegramApi } from "@/api/telegramApi/telegramApi";
 
 export function useHandleNewJob() {
   async function handleSubmitNewFormDashboardHook(
@@ -77,6 +78,11 @@ export function useHandleNewJob() {
               // return prev.map((job) => (job.id === newId ? data : job));
               return [...prev, data];
             });
+
+            fetchTelegramApi(
+              user.id,
+              `✅ Notification:\nThe vacancy was successfully added\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
+            );
           }
         }
       }

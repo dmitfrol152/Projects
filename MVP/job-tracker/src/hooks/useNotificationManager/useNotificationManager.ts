@@ -3,6 +3,8 @@ import type { NotificationFormResolverProps } from "@/components/Form/types";
 import { getUniqueId } from "@/utils/getUniqueId";
 import type { RemindersProps } from "@/components/NotificationLayout/Reminders/types";
 import { toastNotifiactionView } from "@/utils/getToastNotifiactionView";
+import { fetchTelegramApi } from "@/api/telegramApi/telegramApi";
+import { useUserDB } from "@/supabase/hooks/useUserDB";
 
 export function useNotificationManager() {
   const [reminders, setReminders] = useState<RemindersProps[]>(() => {
@@ -14,6 +16,7 @@ export function useNotificationManager() {
     }
   });
   const timerRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+  const { user } = useUserDB();
 
   useEffect(() => {
     localStorage.setItem("jobtracker:reminders", JSON.stringify(reminders));
@@ -27,7 +30,7 @@ export function useNotificationManager() {
       const timeMs = new Date(reminderParam.time).getTime() - Date.now();
       if (timeMs > 0) {
         timerRef.current[reminderParam.id] = setTimeout(
-          () => showToast(reminderParam),
+          () => showToast(reminderParam, user?.id),
           timeMs
         );
       }
@@ -36,10 +39,19 @@ export function useNotificationManager() {
     return () => {
       Object.values(timerRef.current).forEach(clearTimeout);
     };
-  }, [reminders]);
+  }, [reminders, user?.id]);
 
-  function showToast(reminderParam: RemindersProps) {
+  function showToast(reminderParam: RemindersProps, userId?: string) {
     toastNotifiactionView.info(reminderParam.note);
+
+    if (userId) {
+      fetchTelegramApi(
+        userId,
+        `🔔 Notification:\nText: ${reminderParam.note}\nTime: ${new Date(
+          reminderParam.time
+        ).toLocaleString()}`
+      );
+    }
   }
 
   const addReminers = (data: NotificationFormResolverProps) => {
@@ -51,23 +63,63 @@ export function useNotificationManager() {
       created_at: new Date().toISOString(),
     };
     setReminders((prev) => [...prev, newReminers]);
-    toastNotifiactionView.success("Notification added successfully");
+
+    toastNotifiactionView.success("The reminder has been successfully added");
+
+    if (user) {
+      fetchTelegramApi(
+        user.id,
+        `✅ Notification:\nThe reminder has been successfully added\nText: ${
+          data.message
+        }\nTime: ${new Date(data.date).toLocaleString()}`
+      );
+    }
   };
 
   function deleteReminders(remindersId: string) {
     setReminders((prev) =>
       prev.filter((reminder) => reminder.id !== remindersId)
     );
-    toastNotifiactionView.success("Notification deleted successfully");
+
+    toastNotifiactionView.success("The reminder has been successfully removed");
+
+    if (user) {
+      fetchTelegramApi(
+        user.id,
+        `✅ Notification:\nThe reminder has been successfully removed`
+      );
+    }
   }
 
   function deletePassedReminders() {
+    const result = reminders.find(
+      (reminder) => new Date(reminder.time).getTime() < Date.now()
+    );
+
+    if (!result) return;
+
+    if (user) {
+      fetchTelegramApi(
+        user.id,
+        `✅ Notification:\nPast reminders have been successfully deleted`
+      );
+    }
+
     setReminders((prev) =>
       prev.filter((reminder) => new Date(reminder.time).getTime() > Date.now())
     );
   }
 
   function deleteAllReminders() {
+    if (!reminders.length) return;
+
+    if (user) {
+      fetchTelegramApi(
+        user.id,
+        `✅ Notification:\nAll reminders have been successfully deleted`
+      );
+    }
+
     setReminders([]);
   }
 
