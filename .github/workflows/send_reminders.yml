@@ -1,0 +1,15 @@
+name: Send reminders
+on:
+  shedule:
+    - cron '*/1 * * * *'
+  workflow_dispatch:
+jobs:
+  run_send_reminders:
+    runs-on: ubuntu-latest
+  steps:
+    - name: start supabase function
+      run: |
+        curl -X POST "https://kdyzfdrknpuhvyzcsovf.functions.supabase.co/reminder-notify" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{"triggered_by":"github_actions"}'
