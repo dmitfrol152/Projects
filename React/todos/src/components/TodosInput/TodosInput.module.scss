@@ -1,0 +1,10 @@
+@use "/src/styles/global/variables" as variables;
+
+.todosInput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  color: variables.$color-black;
+  font-weight: 700;
+}

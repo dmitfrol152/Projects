@@ -1,0 +1,27 @@
+@use "/src/styles/global/variables" as variables;
+
+.todosList {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style-type: none;
+  background-color: variables.$color-white;
+
+  &__item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid variables.$color-black;
+  }
+
+  &__text {
+    color: variables.$color-black;
+    font-weight: 700;
+  }
+
+  &__textDone {
+    color: variables.$color-black;
+    font-weight: 700;
+    text-decoration: line-through;
+  }
+}
