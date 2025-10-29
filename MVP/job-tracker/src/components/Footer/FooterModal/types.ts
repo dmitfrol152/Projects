@@ -9,6 +9,7 @@ export const FooterModalSchema = z.object({
     output: z.void(),
   }),
   code: z.string().nullable(),
+  loading: z.boolean(),
 });
 
 export type FooterModalProps = z.infer<typeof FooterModalSchema>;

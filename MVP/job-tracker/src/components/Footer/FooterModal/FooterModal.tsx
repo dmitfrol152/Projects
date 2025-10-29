@@ -9,6 +9,7 @@ export function FooterModal({
   modalRef,
   closeModal,
   code,
+  loading,
 }: FooterModalProps) {
   return (
     <Modal isOpen={isOpen} modalRef={modalRef}>
@@ -36,7 +37,11 @@ export function FooterModal({
                 Send the code:
               </span>
             </span>
-            <span className="text-[var(--color-primary)]">{code}</span>
+            {loading ? (
+              <span className="text-[var(--color-gray-600)]">Loading...</span>
+            ) : (
+              <span className="text-[var(--color-primary)]">{code}</span>
+            )}
           </span>
         </div>
       </div>

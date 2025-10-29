@@ -4,14 +4,26 @@ import { Social } from "@components/Social";
 import { useTelegramCodeBotDB } from "@/supabase/hooks/useTelegramCodeBotDB";
 import { FooterModal } from "@components/Footer/FooterModal";
 import { useUserDB } from "@/supabase/hooks/useUserDB";
+import { useState } from "react";
 
 export function Footer() {
   const { closeModal, isOpen, modalRef, openModal } = useModal();
+  const [getKeyStatus, setGetKeyStatus] = useState<boolean>(false);
   const { user } = useUserDB();
-  const { code } = useTelegramCodeBotDB(user);
+  const { code, clearCode, loading } = useTelegramCodeBotDB(
+    user,
+    getKeyStatus,
+    setGetKeyStatus
+  );
 
   function handleOpenModal() {
+    setGetKeyStatus(true);
     openModal();
+  }
+
+  function handleCloseModal() {
+    clearCode();
+    closeModal();
   }
 
   return (
@@ -31,8 +43,9 @@ export function Footer() {
       <FooterModal
         isOpen={isOpen}
         modalRef={modalRef}
-        closeModal={closeModal}
+        closeModal={handleCloseModal}
         code={code}
+        loading={loading}
       />
     </footer>
   );
