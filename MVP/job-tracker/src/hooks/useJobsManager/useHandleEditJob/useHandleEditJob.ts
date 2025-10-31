@@ -3,6 +3,7 @@ import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types
 import type { DashboardFormResolverProps } from "@/components/Form/types";
 import type { JobEditProps } from "./types";
 import { fetchTelegramApi } from "@/api/telegramApi/telegramApi";
+import { toastNotifiactionView } from "@/utils/getToastNotifiactionView";
 
 export function useHandleEditJob() {
   async function handleSubmitEditFormDashboardHook(
@@ -46,6 +47,8 @@ export function useHandleEditJob() {
         setErrorDataBase("");
 
         if (user) {
+          toastNotifiactionView.success("The vacancy was successfully updated");
+
           fetchTelegramApi(
             user.id,
             `✅ Notification:\nThe vacancy was successfully updated\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
@@ -53,6 +56,7 @@ export function useHandleEditJob() {
         }
       }
     } catch (err) {
+      toastNotifiactionView.error("Error edit vacancy");
       setJobs((prev): KanbanProps[] =>
         prev.map((job): KanbanProps => (job.id === backup.id ? backup : job))
       );

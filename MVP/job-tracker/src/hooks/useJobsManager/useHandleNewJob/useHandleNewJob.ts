@@ -3,6 +3,7 @@ import type { KanbanProps } from "@/components/DashboardLayout/KanbanBoard/types
 import type { DashboardFormResolverProps } from "@/components/Form/types";
 import type { JobAddProps } from "./types";
 import { fetchTelegramApi } from "@/api/telegramApi/telegramApi";
+import { toastNotifiactionView } from "@/utils/getToastNotifiactionView";
 
 export function useHandleNewJob() {
   async function handleSubmitNewFormDashboardHook(
@@ -79,6 +80,8 @@ export function useHandleNewJob() {
               return [...prev, data];
             });
 
+            toastNotifiactionView.success("The vacancy was successfully added");
+
             fetchTelegramApi(
               user.id,
               `✅ Notification:\nThe vacancy was successfully added\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
@@ -88,6 +91,7 @@ export function useHandleNewJob() {
       }
     } catch (err) {
       setSuccessAddInKanban(false);
+      toastNotifiactionView.error("Error add vacancy");
       // setJobs((prev): KanbanProps[] => prev.filter((job) => job.id !== newId));
       if (err instanceof Error) {
         setErrorDataBase(`${err.message}`);
