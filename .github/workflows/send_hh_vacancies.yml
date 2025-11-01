@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   run_send_hh_vacancies:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Start hh notify function in db
         run: |
