@@ -1,0 +1,15 @@
+name: Send hh vacancies
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+jobs:
+  run_send_hh_vacancies:
+    runs_on: ubuntu-latest
+    steps:
+      - name: Start hh notify function in db
+        run: |
+          curl -X POST "https://kdyzfdrknpuhvyzcsovf.functions.supabase.co/hh-notify" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"triggered_by":"github_actions"}'
