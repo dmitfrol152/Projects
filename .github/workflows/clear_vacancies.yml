@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Call Supabase Edge Function
         run: |
-          curl -s -X POST \
+          curl -X POST "https://kdyzfdrknpuhvyzcsovf.supabase.co/functions/v1/clear-hh-vacancies" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
             -H "Content-Type: application/json" \
-            "${{ secrets.SUPABASE_FUNCTION_URL }}/cleanup_vacancies_sent"
+            -d '{"triggered_by":"github_actions"}'
