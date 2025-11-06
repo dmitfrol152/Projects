@@ -18,6 +18,7 @@ export default function Notification() {
     deleteReminders,
     deleteAllReminders,
     deletePassedReminders,
+    loadingReminders,
   } = useNotificationManager();
   const {
     register,
@@ -63,6 +64,7 @@ export default function Notification() {
         <RemindersList
           reminders={reminders}
           handleDeleteReminder={handleDeleteReminder}
+          loadingReminders={loadingReminders}
         />
       }
     />

@@ -29,6 +29,8 @@ export function VacanciesDataItemButtons({
             company: vacancy.employer.name,
             status: "washlist",
             notes: "",
+            id: vacancy.id,
+            url: vacancy.alternate_url,
           })
         }
       >

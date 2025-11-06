@@ -15,6 +15,7 @@ export const RemindersArraySchema = z.object({
     input: [z.string()],
     output: z.void(),
   }),
+  loadingReminders: z.boolean(),
 });
 
 export type RemindersArrayProps = z.infer<typeof RemindersArraySchema>;

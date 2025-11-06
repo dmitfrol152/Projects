@@ -3,13 +3,13 @@ import { ButtonUi } from "@/ui/ButtonUi";
 import { Social } from "@components/Social";
 import { useTelegramCodeBotDB } from "@/supabase/hooks/useTelegramCodeBotDB";
 import { FooterModal } from "@components/Footer/FooterModal";
-import { useUserDB } from "@/supabase/hooks/useUserDB";
+import { useAuth } from "@/hooks/useContext";
 import { useState } from "react";
 
 export function Footer() {
   const { closeModal, isOpen, modalRef, openModal } = useModal();
   const [getKeyStatus, setGetKeyStatus] = useState<boolean>(false);
-  const { user } = useUserDB();
+  const { user } = useAuth();
   const { code, clearCode, loading } = useTelegramCodeBotDB(
     user,
     getKeyStatus,
@@ -31,14 +31,16 @@ export function Footer() {
       <span className="text-[var(--color-gray-600)]">
         ©2025 Dmitry Frolkov. All rights reserved.
       </span>
-      <ButtonUi
-        type="button"
-        variant="tg"
-        size="tg"
-        handleClickButton={handleOpenModal}
-      >
-        @JobsTrackers_bot
-      </ButtonUi>
+      {user && (
+        <ButtonUi
+          type="button"
+          variant="tg"
+          size="tg"
+          handleClickButton={handleOpenModal}
+        >
+          @JobsTrackers_bot
+        </ButtonUi>
+      )}
       <Social />
       <FooterModal
         isOpen={isOpen}

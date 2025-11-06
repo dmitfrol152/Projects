@@ -10,7 +10,7 @@ export function useHandleNewJob() {
     dataProps: DashboardFormResolverProps,
     jobAddProps: JobAddProps
   ) {
-    const { position, company, status } = dataProps;
+    const { position, company, status, id, url } = dataProps;
     const { user, setJobs, setErrorDataBase, reset, setSuccessAddInKanban } =
       jobAddProps;
 
@@ -65,6 +65,8 @@ export function useHandleNewJob() {
                 status,
                 user_id: user.id,
                 profile_id: profileData.id,
+                vacancy_id: id,
+                vacancy_url: url,
               },
             ])
             .select()

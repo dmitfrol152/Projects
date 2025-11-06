@@ -2,6 +2,8 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { useState, useEffect } from "react";
 import type { UseFormSetValue } from "react-hook-form";
 import type { VacanciesFormResolverProps } from "@/components/Form/types";
+import { getUserDB } from "@/supabase/utils/getUserDB";
+import { updateJobsFiltersDB } from "@/supabase/utils/updateJobsFiltersDB";
 
 export function useVacanciesLocalStorageFilters(
   setValue?: UseFormSetValue<VacanciesFormResolverProps>
@@ -67,6 +69,24 @@ export function useVacanciesLocalStorageFilters(
 
     localStorage.setItem("jobtracker:hh_filters", JSON.stringify(dataToSave));
   }, [city, debounceQuery, experience, orderBy, page, salary, isInitialized]);
+
+  useEffect(() => {
+    async function initJobsFiltersDB() {
+      const user = await getUserDB();
+      if (!user) return;
+
+      await updateJobsFiltersDB(
+        user.id,
+        query,
+        salary,
+        experience,
+        orderBy,
+        city
+      );
+    }
+
+    initJobsFiltersDB();
+  }, [city, experience, orderBy, query, salary]);
 
   return {
     page,

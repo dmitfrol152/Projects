@@ -24,6 +24,7 @@ export function useNotificationManager() {
   // const timerRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
   const [userTelegramId, setUserTelegramId] = useState<string | null>(null);
   const { user } = useUserDB();
+  const [loadingReminders, setLoadingReminders] = useState<boolean>(true);
   // const userTelegramId = getTelegramUserIdDB(user?.id ?? "");
 
   // useEffect(() => {
@@ -32,7 +33,9 @@ export function useNotificationManager() {
 
   const fetchReminders = useCallback(async () => {
     if (!user) return;
+
     const data = await getRemindersDB(user);
+    setLoadingReminders(false);
 
     setReminders(data ?? []);
   }, [user]);
@@ -192,5 +195,6 @@ export function useNotificationManager() {
     deleteReminders,
     deletePassedReminders,
     deleteAllReminders,
+    loadingReminders,
   };
 }

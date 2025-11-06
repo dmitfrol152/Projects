@@ -4,7 +4,9 @@ import type { RemindersArrayProps } from "../types";
 export function RemindersList({
   reminders,
   handleDeleteReminder,
+  loadingReminders,
 }: RemindersArrayProps) {
+  if (loadingReminders) return <p>Loading...</p>;
   if (!reminders.length) return <p>It's empty here for now</p>;
 
   return (

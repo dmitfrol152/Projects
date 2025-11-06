@@ -47,6 +47,8 @@ export const DashboardFormResolverSchema = z
       "washlist",
     ]),
     notes: z.string().nullable(),
+    id: z.string().optional(),
+    url: z.string().optional(),
   })
   .refine((checkFieldSelect) => checkFieldSelect.status !== "", {
     message: "Choose one of the options",
