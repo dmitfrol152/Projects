@@ -2,8 +2,11 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { useState, useEffect } from "react";
 import type { UseFormSetValue } from "react-hook-form";
 import type { VacanciesFormResolverProps } from "@/components/Form/types";
-import { getUserDB } from "@/supabase/utils/getUserDB";
+// import { getUserDB } from "@/supabase/utils/getUserDB";
 import { updateJobsFiltersDB } from "@/supabase/utils/updateJobsFiltersDB";
+// import { supabase } from "@/api/AppSupabaseClient";
+import { getJobsFiltersDB } from "@/supabase/utils/getJobsFiltersDB";
+import { useUserDB } from "@/supabase/hooks/useUserDB";
 
 export function useVacanciesLocalStorageFilters(
   setValue?: UseFormSetValue<VacanciesFormResolverProps>
@@ -18,33 +21,61 @@ export function useVacanciesLocalStorageFilters(
   const [orderBy, setOrderBy] = useState<string | "">("");
   const [city, setCity] = useState<string | "">("");
   const [isInitialized, setIsInitialized] = useState<boolean>(false);
+  const { user } = useUserDB();
 
   useEffect(() => {
-    const filtersInLocalStorage = localStorage.getItem("jobtracker:hh_filters");
-    if (filtersInLocalStorage) {
+    // const filtersInLocalStorage = localStorage.getItem("jobtracker:hh_filters");
+    // if (filtersInLocalStorage) {
+    //   try {
+    //     const filtersParse = JSON.parse(filtersInLocalStorage);
+
+    //     if (!filtersParse) {
+    //       throw new Error("Error parse from LS");
+    //     }
+
+    //     if (filtersParse.query !== undefined) setQuery(filtersParse.query);
+    //     if (filtersParse.salary !== undefined) setSalary(filtersParse.salary);
+    //     if (filtersParse.experience !== undefined)
+    //       setExperience(filtersParse.experience);
+    //     if (filtersParse.orderBy !== undefined)
+    //       setOrderBy(filtersParse.orderBy);
+    //     if (filtersParse.city !== undefined) setCity(filtersParse.city);
+    //     if (filtersParse.page !== undefined) setPage(filtersParse.page);
+    //   } catch (error) {
+    //     console.error(error);
+    //     throw error;
+    //   }
+    // }
+
+    // setIsInitialized(true);
+
+    async function init() {
+      if (!user) {
+        setIsInitialized(true);
+        return;
+      }
+
       try {
-        const filtersParse = JSON.parse(filtersInLocalStorage);
+        const filtersInit = await getJobsFiltersDB(user);
 
-        if (!filtersParse) {
-          throw new Error("Error parse from LS");
-        }
+        if (!filtersInit) throw new Error("Error get jobs_filters");
 
-        if (filtersParse.query !== undefined) setQuery(filtersParse.query);
-        if (filtersParse.salary !== undefined) setSalary(filtersParse.salary);
-        if (filtersParse.experience !== undefined)
-          setExperience(filtersParse.experience);
-        if (filtersParse.orderBy !== undefined)
-          setOrderBy(filtersParse.orderBy);
-        if (filtersParse.city !== undefined) setCity(filtersParse.city);
-        if (filtersParse.page !== undefined) setPage(filtersParse.page);
+        console.log(filtersInit);
+
+        if (filtersInit.query) setQuery(filtersInit.query);
+        if (filtersInit.salary) setSalary(filtersInit.salary);
+        if (filtersInit.experience) setExperience(filtersInit.experience);
+        if (filtersInit.orderby) setOrderBy(filtersInit.orderby);
+        if (filtersInit.city) setCity(filtersInit.city);
       } catch (error) {
         console.error(error);
         throw error;
+      } finally {
+        setIsInitialized(true);
       }
     }
-
-    setIsInitialized(true);
-  }, []);
+    init();
+  }, [user]);
 
   useEffect(() => {
     if (setValue && isInitialized) {
@@ -55,24 +86,24 @@ export function useVacanciesLocalStorageFilters(
     }
   }, [salary, experience, orderBy, city, setValue, isInitialized]);
 
-  useEffect(() => {
-    if (!isInitialized) return;
+  // useEffect(() => {
+  //   if (!isInitialized) return;
 
-    const dataToSave = {
-      query: debounceQuery,
-      salary,
-      experience,
-      orderBy,
-      city,
-      page,
-    };
+  //   const dataToSave = {
+  //     query: debounceQuery,
+  //     salary,
+  //     experience,
+  //     orderBy,
+  //     city,
+  //     page,
+  //   };
 
-    localStorage.setItem("jobtracker:hh_filters", JSON.stringify(dataToSave));
-  }, [city, debounceQuery, experience, orderBy, page, salary, isInitialized]);
+  //   localStorage.setItem("jobtracker:hh_filters", JSON.stringify(dataToSave));
+  // }, [city, debounceQuery, experience, orderBy, page, salary, isInitialized]);
 
   useEffect(() => {
     async function initJobsFiltersDB() {
-      const user = await getUserDB();
+      // const user = await getUserDB();
       if (!user) return;
 
       await updateJobsFiltersDB(
@@ -86,7 +117,7 @@ export function useVacanciesLocalStorageFilters(
     }
 
     initJobsFiltersDB();
-  }, [city, experience, orderBy, query, salary]);
+  }, [city, experience, orderBy, query, salary, user]);
 
   return {
     page,
