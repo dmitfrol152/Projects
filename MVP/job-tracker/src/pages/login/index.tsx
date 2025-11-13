@@ -28,6 +28,8 @@ export default function Login() {
   const navigation = useNavigate();
   const [isErrorText, setIsErrorText] = useState<string | null>(null);
 
+  const redirectUrl = import.meta.env.VITE_URL_APP || window.location.origin;
+
   async function handleCustomSubmit({
     email,
     password,
@@ -57,7 +59,7 @@ export default function Login() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-          redirectTo: `${window.location.origin}`,
+          redirectTo: `${redirectUrl}`,
         },
       });
 
@@ -75,7 +77,7 @@ export default function Login() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}`,
+          redirectTo: `${redirectUrl}`,
         },
       });
 
