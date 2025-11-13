@@ -30,7 +30,6 @@ export function useVacanciesLocalStorageFilters(
 
       try {
         const filtersInit = await getJobsFiltersDB(user);
-
         if (!filtersInit) throw new Error("Error get jobs_filters");
 
         if (filtersInit.query) setQuery(filtersInit.query);
@@ -60,10 +59,11 @@ export function useVacanciesLocalStorageFilters(
   useEffect(() => {
     async function initJobsFiltersDB() {
       if (!user) return;
+      if (!isInitialized) return;
 
       await updateJobsFiltersDB(
         user.id,
-        query,
+        debounceQuery,
         salary,
         experience,
         orderBy,
@@ -72,7 +72,7 @@ export function useVacanciesLocalStorageFilters(
     }
 
     initJobsFiltersDB();
-  }, [city, experience, orderBy, query, salary, user]);
+  }, [city, debounceQuery, experience, isInitialized, orderBy, salary, user]);
 
   return {
     page,
