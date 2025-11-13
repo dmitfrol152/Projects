@@ -1,1 +1,1 @@
-export { SettingsLayout } from "../../../features/setting/SettingsLayout/SettingsLayout";
+export { SettingsLayout } from "@pages/settings/ui/SettingsLayout";

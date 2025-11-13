@@ -1,6 +1,6 @@
 import { fetchHeadHunterVacancies } from "@shared/api/hhApi";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { usePaginationSetting } from "../../../features/profile/model/hooks/usePaginationSetting";
+import { usePaginationSetting } from "@features/profile/model/hooks/usePaginationSetting";
 import { useEffect, useState } from "react";
 
 export function useApiGetHeadHunterVacancies(

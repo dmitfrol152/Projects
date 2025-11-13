@@ -6,7 +6,7 @@ import {
   type SubmitHandler,
 } from "react-hook-form";
 import z from "zod";
-import { KanbanSchema } from "../../../../kanban/KanbanBoard/types";
+import { KanbanSchema } from "@features/kanban/KanbanBoard/types";
 import type { Dispatch, SetStateAction } from "react";
 
 export const DashboardFormModalSchema = z.object({

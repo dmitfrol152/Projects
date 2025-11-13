@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { SearchContext } from "@/shared/lib/context/contexts";
 import { useDebounce } from "@shared/lib/hooks/useDebounce";
-import type { SearchProviderProps } from "../../../shared/lib/context/types";
+import type { SearchProviderProps } from "@shared/lib/context/types";
 
 export function SearchProvider({ children }: SearchProviderProps) {
   const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false);

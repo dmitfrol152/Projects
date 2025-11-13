@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { ThemeProviderProps } from "../../../shared/lib/context/types";
+import type { ThemeProviderProps } from "@shared/lib/context/types";
 import { ThemeContext } from "@/shared/lib/context/contexts";
 
 export function ThemeProvider({ children }: ThemeProviderProps) {

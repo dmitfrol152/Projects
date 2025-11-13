@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
   AuthProviderProps,
   ProfileProps,
-} from "../../../shared/lib/context/types";
+} from "@shared/lib/context/types";
 import { supabase } from "@/shared/api/supabase/supabaseClient";
 import type { AuthSession, Session, User } from "@supabase/supabase-js";
 import { AuthContext } from "@/shared/lib/context/contexts";
