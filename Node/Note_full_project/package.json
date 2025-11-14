@@ -10,7 +10,7 @@
     "db:migrate": "NODE_ENV=production knex migrate:latest",
     "start": "cross-env NODE_ENV=production npm run db:migrate && node index.js",
     "dev": "cross-env npm run db:migrate && nodemon index.js -e js,njk",
-    "build": "rimraf public/bundle.* && rollup --config"
+    "build": "npx rimraf public/bundle.* && rollup --config"
   },
   "engines": {
     "node": ">=18.x"
