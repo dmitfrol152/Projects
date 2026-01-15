@@ -10,7 +10,7 @@ import type { StatsChartDatsProps } from "./types";
 
 export function StatsChart({ data }: StatsChartDatsProps) {
   return (
-    <div className="w-full h-full bg-[var(--color-white-card)] pl-4 pt-4 pr-4 pb-10 rounded shadow">
+    <div className="w-full min-h-[292px] bg-[var(--color-white-card)] rounded shadow pl pt pr-2 pb-10 sm:pl-4 sm:pt-4 sm:pr-4 sm:h-full">
       <h2 className="flex justify-center text-lg font-semibold">
         Stats by weeks
       </h2>
