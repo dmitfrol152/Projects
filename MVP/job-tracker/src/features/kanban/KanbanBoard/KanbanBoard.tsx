@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd";
 import { supabase } from "@shared/api/supabase/supabaseClient";
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import { fetchTelegramApi } from "@/shared/api/telegram/tgApi";
+import clsx from "clsx";
 
 export function KanbanBoard({
   jobs,
@@ -15,6 +16,7 @@ export function KanbanBoard({
   handleMoreJobs,
   visibleButtonMore,
   user,
+  widthWindow,
 }: KanbanBoardProps) {
   const onDragEnd = async (result: DropResult) => {
     const { draggableId, destination } = result;
@@ -67,11 +69,14 @@ export function KanbanBoard({
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex flex-col grow justify-between">
+      <div className="flex flex-col grow justify-between gap-4">
         <div
-          className={`grid gap-3`}
+          className={clsx("grid gap-3")}
           style={{
-            gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+            gridTemplateColumns:
+              widthWindow > 768
+                ? `repeat(${columns.length}, minmax(0, 1fr))`
+                : "repeat(1, minmax(0, 1fr))",
           }}
         >
           {columns.map((column) => {

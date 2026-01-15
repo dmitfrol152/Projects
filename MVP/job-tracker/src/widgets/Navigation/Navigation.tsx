@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import type { NavigationProps } from "./types";
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import IconSearch from "@shared/assets/svg/icon-search.svg?react";
+import { useWindowResize } from "@/shared/lib/hooks/useWindowResize";
 
 export function Navigation({
   className,
@@ -13,8 +14,10 @@ export function Navigation({
   handleClickSearch,
   user,
   signOut,
+  closeModal,
 }: NavigationProps) {
   const location = useLocation();
+  const { width } = useWindowResize();
 
   return (
     <nav className={className}>
@@ -26,13 +29,21 @@ export function Navigation({
           <Link
             className={clsx(
               "px-4 py-2 hover:bg-[var(--color-gray-700)] rounded transition",
+              width < 1024
+                ? "text-[var(--color-black-05)]"
+                : "text-[var(--color-white-pernamently)]",
               link.title === "Settings" && "mt-auto",
               location.pathname === link.path
-                ? "bg-[var(--color-gray-700)]"
+                ? "bg-[var(--color-gray-700)] text-[var(--color-white-pernamently)]"
                 : ""
             )}
             key={link.path}
             to={link.path}
+            onClick={() => {
+              if (closeModal) {
+                closeModal();
+              }
+            }}
           >
             {link.title}
           </Link>

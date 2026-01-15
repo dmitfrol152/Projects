@@ -14,6 +14,12 @@ export const NavigationSchema = z.object({
       output: z.void(),
     })
     .optional(),
+  closeModal: z
+    .function({
+      input: [],
+      output: z.void(),
+    })
+    .optional(),
 });
 
 export type NavigationProps = z.infer<typeof NavigationSchema>;

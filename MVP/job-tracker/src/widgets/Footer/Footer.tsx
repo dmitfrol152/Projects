@@ -27,8 +27,8 @@ export function Footer() {
   }
 
   return (
-    <footer className="fixed bottom-0 left-0 w-full bg-[var(--color-gray-50)] p-4 flex justify-between gap items-center max-h-18 z-10">
-      <span className="text-[var(--color-gray-600)]">
+    <footer className="fixed bottom-0 left-0 w-full bg-[var(--color-gray-50)] p-4 flex justify-between items-center z-10 flex-col-reverse gap-2 md:flex-row md:gap md:max-h-18">
+      <span className="text-[var(--color-gray-600)] text-center">
         ©{new Date().getFullYear()} Dmitry Frolkov. All rights reserved.
       </span>
       {user && (

@@ -17,31 +17,35 @@ export function DashboardFilterColumns({
   handleDownloadCsv,
 }: DashboardFilterColumnsProps) {
   return (
-    <div className="flex items-end gap-3">
+    <div className="flex flex-col items-end gap-3 w-full sm:flex-row sm:w-auto">
       {isOpenFilters && (
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3">
-            <SelectUi
-              options={OPTIONS_SORTED}
-              value={valueSort}
-              setValue={setValueSort}
-            />
-            {columns.map((column, index) => {
-              return (
-                <ButtonUi
-                  key={index}
-                  size="md"
-                  variant={column.active ? "secondary" : "primary"}
-                  type="button"
-                  handleClickButton={() => handleChangeStatusColumns(column)}
-                >
-                  {column.title}
-                </ButtonUi>
-              );
-            })}
+        <div className="flex flex-col gap-3 w-full sm:w-auto">
+          <div className="flex flex-col items-center gap-3 xl:flex-row">
+            <div className="w-full xl:w-auto">
+              <SelectUi
+                options={OPTIONS_SORTED}
+                value={valueSort}
+                setValue={setValueSort}
+              />
+            </div>
+            <div className="flex items-center gap-3 flex-wrap">
+              {columns.map((column, index) => {
+                return (
+                  <ButtonUi
+                    key={index}
+                    size="md"
+                    variant={column.active ? "secondary" : "primary"}
+                    type="button"
+                    handleClickButton={() => handleChangeStatusColumns(column)}
+                  >
+                    {column.title}
+                  </ButtonUi>
+                );
+              })}
+            </div>
           </div>
           {popularTags.length > 0 && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               <span>Sorted by popular tags: </span>
               {popularTags.map((tag, index) => {
                 if (index > 2) return null;
@@ -64,33 +68,35 @@ export function DashboardFilterColumns({
           )}
         </div>
       )}
-      <ButtonUi
-        size="icon"
-        variant="icon"
-        type="button"
-        className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
-        handleClickButton={handleOpenFilters}
-      >
-        <IconFilter className="w-5 h-5" />
-      </ButtonUi>
-      <ButtonUi
-        size="icon"
-        variant="icon"
-        type="button"
-        className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
-        handleClickButton={handleDownloadXlsx}
-      >
-        xlsx
-      </ButtonUi>
-      <ButtonUi
-        size="icon"
-        variant="icon"
-        type="button"
-        className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
-        handleClickButton={handleDownloadCsv}
-      >
-        csv
-      </ButtonUi>
+      <div className="flex items-end gap-3">
+        <ButtonUi
+          size="icon"
+          variant="icon"
+          type="button"
+          className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+          handleClickButton={handleOpenFilters}
+        >
+          <IconFilter className="w-5 h-5" />
+        </ButtonUi>
+        <ButtonUi
+          size="icon"
+          variant="icon"
+          type="button"
+          className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+          handleClickButton={handleDownloadXlsx}
+        >
+          xlsx
+        </ButtonUi>
+        <ButtonUi
+          size="icon"
+          variant="icon"
+          type="button"
+          className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+          handleClickButton={handleDownloadCsv}
+        >
+          csv
+        </ButtonUi>
+      </div>
     </div>
   );
 }

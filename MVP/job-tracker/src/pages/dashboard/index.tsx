@@ -17,8 +17,10 @@ import { useFiltersColumns } from "@shared/lib/hooks/useFiltersColumns";
 import { useFormatedJobsForExport } from "@features/jobs/model/hooks/useFormatedJobsForExport";
 import { DashboardDescription } from "@features/dashboard/ui/DashboardDescription";
 import { useState } from "react";
+import { useWindowResize } from "@/shared/lib/hooks/useWindowResize";
 
 export default function Dashboard() {
+  const { width } = useWindowResize();
   const [loadingAddOrEditJob, setLoadingAddOrEditJob] =
     useState<boolean>(false);
   const {
@@ -149,6 +151,7 @@ export default function Dashboard() {
           handleMoreJobs={handleMoreJobs}
           visibleButtonMore={visibleButtonMore}
           user={user}
+          widthWindow={width}
         />
       }
       loadingAddOrEditJob={loadingAddOrEditJob}

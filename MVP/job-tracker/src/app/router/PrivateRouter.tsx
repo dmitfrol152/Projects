@@ -18,15 +18,15 @@ export function PrivateRouter() {
   }
 
   return (
-    <div className="flex grow gap-3 bg-[var(--color-gray-50)] pb-15 pt-18">
-      <aside className="fixed top-18 left-0 bottom-15 w-64 shrink-0 bg-[var(--color-bg-pernamently)] text-[var(--color-white-pernamently)] flex flex-col p-4 z-10">
+    <div className="flex grow gap-3 bg-[var(--color-gray-50)] pb-27 pt-30 lg:pb-15 lg:pt-18">
+      <aside className="fixed top-18 left-0 bottom-15 w-64 shrink-0 bg-[var(--color-bg-pernamently)] text-[var(--color-white-pernamently)] flex-col p-4 z-10 hidden lg:flex">
         <Navigation
           className="flex flex-col gap-2 grow"
           user={user}
           isVisibleSettingsLink
         />
       </aside>
-      <div className="containers flex flex-col grow pl-68 pr-6 py-6 bg-[var(--color-gray-50)]">
+      <div className="containers flex flex-col grow pr-6 py-6 bg-[var(--color-gray-50)] pl-4 lg:pl-68">
         <Outlet />
       </div>
     </div>

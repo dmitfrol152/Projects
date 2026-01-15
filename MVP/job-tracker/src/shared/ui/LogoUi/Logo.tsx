@@ -14,7 +14,7 @@ export function Logo({ profileSrc, user }: LogoProps) {
           <img src={emptyAvatar} alt="Avatar" />
         </div>
       ) : (
-        <LogoIcon className="w-10" />
+        <LogoIcon className="w-10 h-10" />
       )}
       <p className="text-xl font-bold">Job Tracker</p>
     </div>

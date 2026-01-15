@@ -10,8 +10,10 @@ export function Form({
   error,
 }: FormProps) {
   const formClasses = clsx("relative gap-3 flex flex-col grow justify-between");
-  const buttonsClasses = "flex items-center gap-3";
-  const buttonsOAuthClasses = "flex items-end justify-between min-h-10";
+  const buttonsClasses = "flex items-center gap-3 w-full sm:w-auto";
+  const buttonsClassesBtn = "flex items-center gap-3";
+  const buttonsOAuthClasses =
+    "flex flex-col-reverse items-end justify-between min-h-10 gap-4 w-full sm:flex-row sm:w-auto";
   const errorClasses =
     "absolute -top-6 left-[50%] translate-x-[-50%] text-[var(--color-danger)]";
 
@@ -22,7 +24,7 @@ export function Form({
         {children}
       </div>
       <div className={buttonsOAuthClasses}>
-        <div className={buttonsClasses}>{buttons}</div>
+        <div className={buttonsClassesBtn}>{buttons}</div>
         <div className={buttonsClasses}>{buttonsSecondary}</div>
       </div>
     </form>

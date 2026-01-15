@@ -42,6 +42,7 @@ export const KanbanBoardSchema = z.object({
   }),
   visibleButtonMore: z.boolean().nullable(),
   user: z.custom<User | null>(),
+  widthWindow: z.number(),
 });
 
 export type KanbanBoardProps = z.infer<typeof KanbanBoardSchema>;

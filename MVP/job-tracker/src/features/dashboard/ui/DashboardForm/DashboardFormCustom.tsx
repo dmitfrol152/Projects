@@ -23,7 +23,7 @@ export function DashboardFormCustom({
   handleDownloadXlsx,
   handleDownloadCsv,
 }: DashboardFormCustomProps) {
-  const formClassName = "gap-3 grid grid-cols-3";
+  const formClassName = "gap-3 grid grid-cols-1 xl:grid-cols-3";
 
   return (
     <Form
