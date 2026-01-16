@@ -17,7 +17,7 @@ export function VacanciesFormFilters({
   register,
   emptyValuesFilter,
 }: VacanciesFormFiltersProps) {
-  const formClassName = "gap-3 grid grid-cols-4";
+  const formClassName = "gap-3 grid grid-cols-1 md:grid-cols-4";
 
   return (
     <Form

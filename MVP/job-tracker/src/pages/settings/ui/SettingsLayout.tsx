@@ -38,7 +38,7 @@ export function SettingsLayout({
     <div className="flex flex-col gap-3 grow">
       {title}
       {paragraph}
-      <div className="grid grid-cols-[300px_1fr] gap-3">
+      <div className="grid gap-3 grid-coles-1 md:grid-cols-[300px_1fr]">
         <div className="flex flex-col gap-3 items-center">
           <div className="flex flex-col h-75 w-75 overflow-hidden justify-center items-center rounded border border-[var(--color-primary)]">
             {loadingProfile ? (

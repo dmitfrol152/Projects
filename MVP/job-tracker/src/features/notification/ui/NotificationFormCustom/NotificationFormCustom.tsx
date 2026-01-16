@@ -11,7 +11,7 @@ export function NotificationFormCustom({
   handleClearPassed,
   handleClearAll,
 }: NotificationFormCustomProps) {
-  const formClassName = "gap-3 grid grid-cols-2";
+  const formClassName = "gap-3 grid grid-cols-1 md:grid-cols-2";
 
   return (
     <Form
