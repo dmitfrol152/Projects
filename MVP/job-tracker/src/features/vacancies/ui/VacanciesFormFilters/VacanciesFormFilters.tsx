@@ -8,6 +8,7 @@ import {
   OPTIONS_EXPERIENSE,
   OPTIONS_SORTED_HH,
 } from "@shared/lib/constants/options";
+import { useTranslation } from "react-i18next";
 
 export function VacanciesFormFilters({
   handleSubmit,
@@ -17,6 +18,8 @@ export function VacanciesFormFilters({
   register,
   emptyValuesFilter,
 }: VacanciesFormFiltersProps) {
+  const { t } = useTranslation("hh");
+
   const formClassName = "gap-3 grid grid-cols-1 md:grid-cols-4";
 
   return (
@@ -31,7 +34,7 @@ export function VacanciesFormFilters({
             type="submit"
             disabled={emptyValuesFilter}
           >
-            Save
+            {t("hhFormButtonSave")}
           </ButtonUi>
           <ButtonUi
             size="md"
@@ -40,34 +43,37 @@ export function VacanciesFormFilters({
             handleClickButton={handleClearFilter}
             disabled={emptyValuesFilter}
           >
-            Clear
+            {t("hhFormButtonClear")}
           </ButtonUi>
         </>
       }
     >
       <InputUi
-        label="Salery from:"
+        label={t("hhFormLabelSalary")}
         type="number"
         error={errors.salary?.message}
         {...register("salary")}
-        placeholder="Enter salery from..."
+        placeholder={t("hhFormPlaceholderSalary")}
       />
       <SelectUi
-        label="Experience is:"
+        label={t("hhFormLabelExperience")}
         options={OPTIONS_EXPERIENSE}
         error={errors.experience?.message}
+        translation="hh"
         {...register("experience")}
       />
       <SelectUi
-        label="Location is:"
+        label={t("hhFormLabelLocation")}
         options={OPTIONS_CITIES_HH}
         error={errors.city?.message}
+        translation="hh"
         {...register("city")}
       />
       <SelectUi
-        label="Sorted by:"
+        label={t("hhFormLabelSorted")}
         options={OPTIONS_SORTED_HH}
         error={errors.orderBy?.message}
+        translation="hh"
         {...register("orderBy")}
       />
     </Form>

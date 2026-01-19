@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type { DashboardLayoutProps } from "./types";
 
 export function DashboardLayout({
@@ -9,9 +10,11 @@ export function DashboardLayout({
   loadingAddOrEditJob,
   modal,
 }: DashboardLayoutProps) {
+  const { t } = useTranslation("common");
+
   const loadingContainer = (
     <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-100 bg-[var(--color-black-05)]">
-      Loading...
+      {t("loading")}
     </div>
   );
 

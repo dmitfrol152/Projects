@@ -12,6 +12,7 @@ export const SelectSchema = z.object({
       output: z.void(),
     })
     .optional(),
+  translation: z.string().optional(),
 });
 
 export type SelectProps = z.infer<typeof SelectSchema>;

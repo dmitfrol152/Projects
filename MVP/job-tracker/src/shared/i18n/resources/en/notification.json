@@ -1,0 +1,16 @@
+{
+  "notificationSuccessDeleted": "The vacancy was successfully deleted",
+  "notificationErrorDeleted": "Error delete vacancy",
+  "notificationSuccessEdit": "The vacancy was successfully updated",
+  "notificationErrorEdit": "Error edit vacancy",
+  "notificationSuccessAdd": "The vacancy was successfully added",
+  "notificationErrorAdd": "Error add vacancy",
+  "notificationSuccessAddReminder": "The reminder has been successfully added",
+  "notificationErrorAddReminder": "Error saving reminder",
+  "notificationSuccessDeleteReminder": "The reminder has been successfully removed",
+  "notificationErrorDeleteReminder": "Error deleting reminder",
+  "notificationSuccessDeleteComplitedReminder": "The passed reminder has been successfully removed",
+  "notificationErrorDeleteComplitedReminder": "Error deleting completed reminders",
+  "notificationSuccessDeleteAllReminder": "All reminders have been successfully deleted",
+  "notificationErrorDeleteAllReminder": "Error deleting all reminders"
+}

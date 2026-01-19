@@ -9,12 +9,14 @@ import { ButtonUi } from "@/shared/ui/ButtonUi";
 import { Modal } from "@/shared/ui/Modal";
 import { useModal } from "@/shared/lib/hooks/useModal";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 export function Header() {
   const { isOpenSearch, setIsOpenSearch, query, setQuery } = useSearch();
   const { user, signOut, profile } = useAuth();
   const { width } = useWindowResize();
   const { isOpen, modalRef, openModal, closeModal } = useModal();
+  const { t } = useTranslation("header");
 
   const isVisibleSettingsLink = width < 1024;
 
@@ -47,7 +49,7 @@ export function Header() {
             <div className="flex items-center gap-1">
               {isOpenSearch && width > 1024 && (
                 <SearchUi
-                  placeholder="Search by position or company..."
+                  placeholder={t("searchPlaceholder")}
                   value={query}
                   setQuery={setQuery}
                 />

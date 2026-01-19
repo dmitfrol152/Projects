@@ -10,12 +10,16 @@ import { deleteRemindersDB } from "@shared/api/supabase/reminders/deleteReminder
 import { deletePassedRemindersDB } from "@shared/api/supabase/reminders/deletePassedRemindersDB";
 import { deleteAllRemindersDB } from "@shared/api/supabase/reminders/deleteAllRemindersDB";
 import { getTelegramUserIdDB } from "@shared/api/supabase/telegram/getTelegramUserIdDB";
+import { useTranslation } from "react-i18next";
 
 export function useNotificationManager() {
   const [reminders, setReminders] = useState<RemindersProps[]>([]);
   const [userTelegramId, setUserTelegramId] = useState<string | null>(null);
   const { user } = useUserDB();
   const [loadingReminders, setLoadingReminders] = useState<boolean>(true);
+  const { t } = useTranslation("notification");
+
+  const langCurrent = localStorage.getItem("i18nextLng");
 
   const fetchReminders = useCallback(async () => {
     if (!user) return;
@@ -45,18 +49,22 @@ export function useNotificationManager() {
   async function addReminers(data: NotificationFormResolverProps) {
     const response = await addRemindersDB(data, user, userTelegramId);
     if (!response.ok) {
-      toastNotifiactionView.error("Error saving reminder");
+      toastNotifiactionView.error(t("notificationErrorAddReminder"));
       return;
     }
 
-    toastNotifiactionView.success("The reminder has been successfully added");
+    toastNotifiactionView.success(t("notificationSuccessAddReminder"));
 
     if (user) {
       fetchTelegramApi(
         user.id,
-        `✅ Notification:\nThe reminder has been successfully added\nText: ${
-          data.message
-        }\nTime: ${new Date(data.date).toLocaleString()}`
+        langCurrent === "en"
+          ? `✅ Notification:\nThe reminder has been successfully added\nText: ${
+              data.message
+            }\nTime: ${new Date(data.date).toLocaleString()}`
+          : `✅ Уведомление:\nНапоминание было успешно добавлено\nText: ${
+              data.message
+            }\nTime: ${new Date(data.date).toLocaleString()}`
       );
     }
 
@@ -66,16 +74,18 @@ export function useNotificationManager() {
   async function deleteReminders(remindersId: string) {
     const response = await deleteRemindersDB(remindersId);
     if (!response.ok) {
-      toastNotifiactionView.error("Error deleting reminder");
+      toastNotifiactionView.error(t("notificationErrorDeleteReminder"));
       return;
     }
 
-    toastNotifiactionView.success("The reminder has been successfully removed");
+    toastNotifiactionView.success(t("notificationSuccessDeleteReminder"));
 
     if (user) {
       fetchTelegramApi(
         user.id,
-        `✅ Notification:\nThe reminder has been successfully removed`
+        langCurrent === "en"
+          ? `✅ Notification:\nThe reminder has been successfully removed`
+          : `✅ Уведомление:\nНапоминание было успешно удалено`
       );
     }
 
@@ -85,18 +95,22 @@ export function useNotificationManager() {
   async function deletePassedReminders() {
     const response = await deletePassedRemindersDB();
     if (!response.ok) {
-      toastNotifiactionView.error("Error deleting completed reminders");
+      toastNotifiactionView.error(
+        t("notificationErrorDeleteComplitedReminder")
+      );
       return;
     }
 
     toastNotifiactionView.success(
-      "The passed reminder has been successfully removed"
+      t("notificationSuccessDeleteComplitedReminder")
     );
 
     if (user) {
       fetchTelegramApi(
         user.id,
-        `✅ Notification:\nPast reminders have been successfully deleted`
+        langCurrent === "en"
+          ? `✅ Notification:\nPast reminders have been successfully deleted`
+          : `✅ Уведомление:\nПрошедшие напоминания были успешно удалены`
       );
     }
 
@@ -106,14 +120,18 @@ export function useNotificationManager() {
   async function deleteAllReminders() {
     const response = await deleteAllRemindersDB(user);
     if (!response.ok) {
-      toastNotifiactionView.error("Error deleting all reminders");
+      toastNotifiactionView.error(t("notificationErrorDeleteAllReminder"));
       return;
     }
+
+    toastNotifiactionView.success(t("notificationSuccessDeleteAllReminder"));
 
     if (user) {
       fetchTelegramApi(
         user.id,
-        `✅ Notification:\nAll reminders have been successfully deleted`
+        langCurrent === "en"
+          ? `✅ Notification:\nAll reminders have been successfully deleted`
+          : `✅ Уведомление:\nВсе напоминания были успешно удалены`
       );
     }
 

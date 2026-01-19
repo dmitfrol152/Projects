@@ -1,0 +1,15 @@
+{
+  "remindersTitle": "Напоминания",
+  "remindersDescription": "Важные напоминания о событиях. Настраивается с помощью API веб-уведомлений.",
+  "remindersFormLabelMessage": "Сообщение",
+  "remindersFormLabelDate": "Дата",
+  "remindersFormPlaceholderMessage": "Введите сообщение напоминания",
+  "remindersFormPlaceholderDate": "Введите дату для получения уведомления",
+  "remindersButtonAdd": "Добавить",
+  "remindersButtonClearPassed": "Очистить прошедшие",
+  "remindersButtonClearAll": "Очистить все",
+  "remindersInfoSoon": "Скоро",
+  "remindersInfoPassed": "Прошло",
+  "remindersLoading": "Загрузка...",
+  "remindersEmpty": "It's empty here for now"
+}

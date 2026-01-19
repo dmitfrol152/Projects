@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { SelectProps } from "./types";
+import { useTranslation } from "react-i18next";
 
 export function SelectUi({
   label,
@@ -7,8 +8,12 @@ export function SelectUi({
   error,
   value,
   setValue,
+  translation,
   ...props
 }: SelectProps) {
+  const { t: tDashboard } = useTranslation("dashboard");
+  const { t: tHh } = useTranslation("hh");
+
   return (
     <div className="flex flex-col gap-3">
       {label && <label htmlFor={label}>{label}</label>}
@@ -35,7 +40,11 @@ export function SelectUi({
               value={option.optionValue}
               disabled={index === 0}
             >
-              {option.optionName}
+              {translation === "dashboard"
+                ? tDashboard(option.optionName)
+                : translation === "hh"
+                ? tHh(option.optionName)
+                : option.optionName}
             </option>
           );
         })}

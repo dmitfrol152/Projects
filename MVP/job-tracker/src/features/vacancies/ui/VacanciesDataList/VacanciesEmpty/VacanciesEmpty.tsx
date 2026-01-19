@@ -1,10 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 export function VacanciesEmpty() {
+  const { t } = useTranslation("hh");
+
   return (
     <div className="flex flex-col gap-3 items-center">
-      <p>
-        This is currently empty. Start typing your desired job posting in the
-        field above.
-      </p>
+      <p>{t("hhEmpty")}</p>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import type { VacanciesPaginationProps } from "./types";
+import { useTranslation } from "react-i18next";
 
 export function VacanciesPagination({
   paginationModel,
@@ -13,6 +14,8 @@ export function VacanciesPagination({
   handleToStartPage,
   handleToEndPage,
 }: VacanciesPaginationProps) {
+  const { t } = useTranslation("pagination");
+
   if (paginationModel === "buttons") {
     return (
       <div className="flex justify-between min-h-9">
@@ -23,7 +26,7 @@ export function VacanciesPagination({
           disabled={page === 0}
           handleClickButton={handleBackPage}
         >
-          Back
+          {t("buttonBack")}
         </ButtonUi>
         <div className="flex items-center gap-3">
           <ButtonUi
@@ -53,7 +56,7 @@ export function VacanciesPagination({
           disabled={page + 1 === pages}
           handleClickButton={handleNextPage}
         >
-          Next
+          {t("buttonNext")}
         </ButtonUi>
       </div>
     );
@@ -72,7 +75,7 @@ export function VacanciesPagination({
             disabled={!hasNextPage}
             handleClickButton={fetchNextPage}
           >
-            Load more
+            {t("loadMore")}
           </ButtonUi>
         )}
       </div>

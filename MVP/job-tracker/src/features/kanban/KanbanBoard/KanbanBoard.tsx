@@ -5,6 +5,7 @@ import { supabase } from "@shared/api/supabase/supabaseClient";
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import { fetchTelegramApi } from "@/shared/api/telegram/tgApi";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 export function KanbanBoard({
   jobs,
@@ -18,6 +19,10 @@ export function KanbanBoard({
   user,
   widthWindow,
 }: KanbanBoardProps) {
+  const { t } = useTranslation("dashboard");
+
+  const langCurrent = localStorage.getItem("i18nextLng");
+
   const onDragEnd = async (result: DropResult) => {
     const { draggableId, destination } = result;
     if (!destination) return;
@@ -55,7 +60,9 @@ export function KanbanBoard({
       if (user) {
         fetchTelegramApi(
           user.id,
-          `✅ Notification:\nThe vacancy was successfully update\nPosition: ${originalJob.position}\nCompany: ${originalJob.company}\nStatus: ${destination.droppableId}`
+          langCurrent === "en"
+            ? `✅ Notification:\nThe vacancy was successfully update\nPosition: ${originalJob.position}\nCompany: ${originalJob.company}\nStatus: ${destination.droppableId}`
+            : `✅ Уведомление:\nВакансия была успешно обновлена\nПозиция: ${originalJob.position}\nКомпания: ${originalJob.company}\nСтатус: ${destination.droppableId}`
         );
       }
     } catch (err) {
@@ -91,7 +98,7 @@ export function KanbanBoard({
                       className="flex flex-col grow"
                     >
                       <KanbanColumn
-                        title={column.title}
+                        title={t(column.title)}
                         jobs={jobsFiltred || []}
                         handleEditJob={handleEditJob}
                         handleDeleteJob={handleDeleteJob}
@@ -113,7 +120,7 @@ export function KanbanBoard({
               variant="primary"
               handleClickButton={handleMoreJobs}
             >
-              Load more
+              {t("dashboardLoadMoreButton")}
             </ButtonUi>
           </div>
         )}

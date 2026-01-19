@@ -5,6 +5,7 @@ import type { NavigationProps } from "./types";
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import IconSearch from "@shared/assets/svg/icon-search.svg?react";
 import { useWindowResize } from "@/shared/lib/hooks/useWindowResize";
+import { useTranslation } from "react-i18next";
 
 export function Navigation({
   className,
@@ -18,13 +19,20 @@ export function Navigation({
 }: NavigationProps) {
   const location = useLocation();
   const { width } = useWindowResize();
+  const { t: tNavigation } = useTranslation("navigation");
+  const { t: tHeader } = useTranslation("header");
 
   return (
     <nav className={className}>
       {LINKS.map((link) => {
-        if (link.title === "Login" && user) return;
-        if (!user && link.title !== "Login") return;
-        if (user && link.title === "Settings" && !isVisibleSettingsLink) return;
+        if (link.title === "login" && user) return;
+        if (!user && link.title !== "login") return;
+        if (
+          user &&
+          link.title === "navigationSettings" &&
+          !isVisibleSettingsLink
+        )
+          return;
         return (
           <Link
             className={clsx(
@@ -32,7 +40,7 @@ export function Navigation({
               width < 1024
                 ? "text-[var(--color-black-05)]"
                 : "text-[var(--color-white-pernamently)]",
-              link.title === "Settings" && "mt-auto",
+              link.title === "navigationSettings" && "mt-auto",
               location.pathname === link.path
                 ? "bg-[var(--color-gray-700)] text-[var(--color-white-pernamently)]"
                 : ""
@@ -45,7 +53,7 @@ export function Navigation({
               }
             }}
           >
-            {link.title}
+            {user ? tNavigation(link.title) : tHeader(link.title)}
           </Link>
         );
       })}
@@ -67,7 +75,7 @@ export function Navigation({
           variant="exit"
           handleClickButton={signOut}
         >
-          Logout
+          {tNavigation("navigationLogout")}
         </ButtonUi>
       )}
     </nav>

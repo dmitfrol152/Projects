@@ -2,6 +2,8 @@ import { Modal } from "@shared/ui/Modal";
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import IconClose from "@shared/assets/svg/icon-close.svg?react";
 import type { SettingModalProps } from "./types";
+import { useTranslation } from "react-i18next";
+import clsx from "clsx";
 
 export function SettingModal({
   isOpen,
@@ -12,6 +14,8 @@ export function SettingModal({
   closeModal,
   setModalAppeareName,
 }: SettingModalProps) {
+  const { t } = useTranslation("settings");
+
   return (
     <Modal
       isOpen={isOpen}
@@ -28,7 +32,20 @@ export function SettingModal({
       }
     >
       <div className="flex flex-col gap-3">
-        {getStatusModalSetting(modalAppeareName)}
+        <span
+          className={clsx(
+            modalAppeareName === "errorEdit" ||
+              modalAppeareName === "errorDeleteProfile"
+              ? "text-[var(--color-danger)]"
+              : modalAppeareName === "successEdit" ||
+                modalAppeareName === "successDeleteProfile"
+              ? "text-[var(--color-success)]"
+              : ""
+          )}
+        >
+          {t(String(getStatusModalSetting(modalAppeareName)))}
+        </span>
+
         {modalAppeareName === "confirmDeleteProfile" && (
           <ButtonUi
             type="button"
@@ -36,7 +53,7 @@ export function SettingModal({
             variant="exit"
             handleClickButton={handleDeleteProfile}
           >
-            Delete profile
+            {t("settingsButtonDeleteProfile")}
           </ButtonUi>
         )}
       </div>

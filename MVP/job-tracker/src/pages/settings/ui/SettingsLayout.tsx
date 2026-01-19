@@ -4,6 +4,7 @@ import type {
   SettingsLayoutProps,
 } from "./types.ts";
 import AvatarEmpty from "@shared/assets/png/avatar-empty.png";
+import { useTranslation } from "react-i18next";
 
 export function SettingsLayout({
   loadingSave,
@@ -28,9 +29,12 @@ export function SettingsLayout({
   buttonPaginationScroll,
   buttonPaginationButtons,
 }: SettingsLayoutProps) {
+  const { t: tCommon } = useTranslation("common");
+  const { t: tSettings } = useTranslation("settings");
+
   const loadingContainer = (
     <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-100 bg-[var(--color-black-05)]">
-      Loading...
+      {tCommon("loading")}
     </div>
   );
 
@@ -42,7 +46,7 @@ export function SettingsLayout({
         <div className="flex flex-col gap-3 items-center">
           <div className="flex flex-col h-75 w-75 overflow-hidden justify-center items-center rounded border border-[var(--color-primary)]">
             {loadingProfile ? (
-              "Loading..."
+              tCommon("loading")
             ) : (
               <img src={srcImage ? srcImage : AvatarEmpty} alt="Avatar" />
             )}
@@ -53,7 +57,7 @@ export function SettingsLayout({
           </div>
           <div className="flex flex-col gap items-center">
             <span className="text-sm text-[var(--color-gray-500)]">
-              {avatarName ?? "Файл не выбран"}
+              {avatarName ?? tSettings("settingsImageNoFile")}
             </span>
             <span
               className={clsx(
@@ -65,7 +69,7 @@ export function SettingsLayout({
                 }`
               )}
             >
-              Maximum size is 2MB
+              {tSettings("settingsImageMaxSize")}
             </span>
           </div>
         </div>
@@ -73,21 +77,21 @@ export function SettingsLayout({
           <div className="flex flex-col gap-3">
             {fullnameInput}
             <div className="flex flex-col gap-3">
-              <span>Your theme is:</span>
+              <span>{tSettings("settingsLabelTheme")}</span>
               <ButtonsContainer
                 buttonOne={buttonLight}
                 buttonTwo={buttonDark}
                 toggleAction={toggleTheme}
                 toggleState={theme}
-                description="Toggle theme:"
+                description={tSettings("settingsButtonTheme")}
               />
-              <span>Your pagination is:</span>
+              <span>{tSettings("settingsLabelPagination")}</span>
               <ButtonsContainer
                 buttonOne={buttonPaginationButtons}
                 buttonTwo={buttonPaginationScroll}
                 toggleAction={togglePagination}
                 toggleState={pagination}
-                description="Toggle pagination model:"
+                description={tSettings("settingsButtonPagination")}
               />
             </div>
           </div>

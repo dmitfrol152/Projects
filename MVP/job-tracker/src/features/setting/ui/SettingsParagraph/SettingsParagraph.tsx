@@ -1,3 +1,9 @@
+import { useTranslation } from "react-i18next";
+
 export function SettingsParagraph() {
-  return <p className="text-[var(--color-gray-600)]">Manage your profile.</p>;
+  const { t } = useTranslation("settings");
+
+  return (
+    <p className="text-[var(--color-gray-600)]">{t("settingsDescription")}</p>
+  );
 }

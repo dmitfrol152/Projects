@@ -1,0 +1,11 @@
+{
+  "statisticsTitle": "Statistics",
+  "statisticsDescription": "Dynamic weekly statistics. Keep track of your activity.",
+  "statisticsColumnTotal": "Total",
+  "statisticsColumnApplied": "Applied",
+  "statisticsColumnInterview": "Interview",
+  "statisticsColumnOffer": "Offer",
+  "statisticsColumnRejected": "Rejected",
+  "statisticsChartTitle": "Stats by weeks",
+  "statisticsChartCount": "count"
+}

@@ -1,0 +1,16 @@
+{
+  "notificationSuccessDeleted": "Вакансия была успешно удалена",
+  "notificationErrorDeleted": "Ошибка удаления вакансии",
+  "notificationSuccessEdit": "Вакансия была успешно обновлена",
+  "notificationErrorEdit": "Ошибка обновления вакансии",
+  "notificationSuccessAdd": "Вакансия была успешно добавлена",
+  "notificationErrorAdd": "Ошибка добавления вакансии",
+  "notificationSuccessAddReminder": "Напоминание было успешно добавлено",
+  "notificationErrorAddReminder": "Ошибка сохранения напоминания",
+  "notificationSuccessDeleteReminder": "Напоминание было успешно удалено",
+  "notificationErrorDeleteReminder": "Ошибка удаления напоминания",
+  "notificationSuccessDeleteComplitedReminder": "Прошедшие напоминания были успешно удалены",
+  "notificationErrorDeleteComplitedReminder": "Ошибка удаления прошедних напоминаний",
+  "notificationSuccessDeleteAllReminder": "Все напоминания были успешно удалены",
+  "notificationErrorDeleteAllReminder": "Ошибка удаления всех напоминаний"
+}

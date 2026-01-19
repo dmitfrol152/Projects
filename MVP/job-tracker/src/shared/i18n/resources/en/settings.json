@@ -1,0 +1,20 @@
+{
+  "settingsTitle": "Settings",
+  "settingsDescription": "Manage your profile.",
+  "settingsLabelName": "Your full name is:",
+  "settingsLabelTheme": "Your theme is:",
+  "settingsButtonTheme": "Toggle theme:",
+  "settingsLabelPagination": "Your pagination is:",
+  "settingsButtonPagination": "Toggle pagination model:",
+  "settingsImageSelect": "Select file",
+  "settingsImageNoFile": "File not selected",
+  "settingsImageMaxSize": "Maximum size is 2MB",
+  "settingsButtonSave": "Save",
+  "settingsButtonDeleteProfile": "Delete profile",
+  "settingsNameEmpty": "Type your fullname",
+  "settingsModalErrorSave": "Error save profile",
+  "settingsModalSuccessSave": "Save profile is success!",
+  "settingsModalErrorDelete": "Error delete profile",
+  "settingsModalSuccessDelete": "Delete profile is success!",
+  "settingsModalConfirmDelete": "Are your sure confirm delete profile?"
+}

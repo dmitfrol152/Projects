@@ -5,6 +5,7 @@ import type { DashboardFormCustomProps } from "./types";
 import { InputUi } from "@shared/ui/InputUi";
 import { SelectUi } from "@shared/ui/SelectUi";
 import { OPTIONS } from "@shared/lib/constants/options";
+import { useTranslation } from "react-i18next";
 
 export function DashboardFormCustom({
   columns,
@@ -23,6 +24,8 @@ export function DashboardFormCustom({
   handleDownloadXlsx,
   handleDownloadCsv,
 }: DashboardFormCustomProps) {
+  const { t } = useTranslation("dashboard");
+
   const formClassName = "gap-3 grid grid-cols-1 xl:grid-cols-3";
 
   return (
@@ -31,7 +34,7 @@ export function DashboardFormCustom({
       className={formClassName}
       buttons={
         <ButtonUi size="md" variant="primary" type="submit">
-          Add
+          {t("dashboardFormButtonAdd")}
         </ButtonUi>
       }
       buttonsSecondary={
@@ -51,23 +54,24 @@ export function DashboardFormCustom({
       error={errorDataBase}
     >
       <InputUi
-        label="Position"
+        label={t("dashboardFormLabelPosition")}
         type="text"
-        placeholder="Enter your position"
+        placeholder={t("dashboardFormPlaceholderPosition")}
         error={errors.position?.message}
         {...register("position")}
       />
       <InputUi
-        label="Company"
+        label={t("dashboardFormLabelCompany")}
         type="text"
-        placeholder="Enter your company"
+        placeholder={t("dashboardFormPlaceholderCompany")}
         error={errors.company?.message}
         {...register("company")}
       />
       <SelectUi
-        label="Status"
+        label={t("dashboardFormLabelStatus")}
         options={OPTIONS}
         error={errors.status?.message}
+        translation="dashboard"
         {...register("status")}
       />
     </Form>

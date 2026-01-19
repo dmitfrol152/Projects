@@ -2,6 +2,7 @@ import { Form } from "@shared/ui/Form";
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import type { NotificationFormCustomProps } from "./types";
 import { InputUi } from "@shared/ui/InputUi";
+import { useTranslation } from "react-i18next";
 
 export function NotificationFormCustom({
   handleSubmit,
@@ -11,6 +12,8 @@ export function NotificationFormCustom({
   handleClearPassed,
   handleClearAll,
 }: NotificationFormCustomProps) {
+  const { t } = useTranslation("reminders");
+
   const formClassName = "gap-3 grid grid-cols-1 md:grid-cols-2";
 
   return (
@@ -19,7 +22,7 @@ export function NotificationFormCustom({
       className={formClassName}
       buttons={
         <ButtonUi size="md" variant="primary" type="submit">
-          Add
+          {t("remindersButtonAdd")}
         </ButtonUi>
       }
       buttonsSecondary={
@@ -30,7 +33,7 @@ export function NotificationFormCustom({
             type="button"
             handleClickButton={handleClearPassed}
           >
-            Clear passed
+            {t("remindersButtonClearPassed")}
           </ButtonUi>
           <ButtonUi
             size="md"
@@ -38,22 +41,22 @@ export function NotificationFormCustom({
             type="button"
             handleClickButton={handleClearAll}
           >
-            Clear all
+            {t("remindersButtonClearAll")}
           </ButtonUi>
         </>
       }
     >
       <InputUi
-        label="Message"
+        label={t("remindersFormLabelMessage")}
         type="text"
-        placeholder="Enter your notification message"
+        placeholder={t("remindersFormPlaceholderMessage")}
         error={errors.message?.message}
         {...register("message")}
       />
       <InputUi
-        label="Date"
+        label={t("remindersFormLabelDate")}
         type="datetime-local"
-        placeholder="Enter your date for notification you"
+        placeholder={t("remindersFormPlaceholderDate")}
         error={errors.date?.message}
         {...register("date")}
       />

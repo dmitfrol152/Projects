@@ -4,6 +4,7 @@ import { ButtonUi } from "@shared/ui/ButtonUi";
 import IconAdd from "@shared/assets/svg/icon-add.svg?react";
 import IconCloseX from "@shared/assets/svg/icon-close-x.svg?react";
 import { AnimatedContainer } from "@shared/ui/AnimatedContainer";
+import { useTranslation } from "react-i18next";
 
 export function DashboardTags({
   job,
@@ -14,6 +15,8 @@ export function DashboardTags({
   handleDeleteTag,
   isErrorAddTag,
 }: DashboardTagsProps) {
+  const { t } = useTranslation("dashboard");
+
   return (
     <div className="flex flex-col gap-3">
       <div>
@@ -21,9 +24,9 @@ export function DashboardTags({
           <InputUi
             value={newTagValue}
             setValue={setNewTagValue}
-            label="Tags"
+            label={t("dashboardEditLabelTags")}
             type="text"
-            placeholder="Enter your tag"
+            placeholder={t("dashboardEditPlaceholderTags")}
           />
           {newTagValue && (
             <AnimatedContainer>
@@ -64,7 +67,7 @@ export function DashboardTags({
       {isErrorAddTag && (
         <AnimatedContainer transformAnimation={3}>
           <span className="text-[var(--color-danger)]">
-            Max tags count is 3
+            {t("dashboardEditErrorTags")}
           </span>
         </AnimatedContainer>
       )}

@@ -1,0 +1,5 @@
+{
+  "loading": "Loading...",
+  "errorFetchVacanciesHh": "Error fetch vacancies of hh.ru. Can try again.",
+  "refetch": "Refetch"
+}

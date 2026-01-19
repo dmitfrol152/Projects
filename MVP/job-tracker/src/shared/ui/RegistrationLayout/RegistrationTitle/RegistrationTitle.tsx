@@ -1,3 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export function RegistrationTitle() {
-  return <h1 className="text-2xl font-bold">Registration</h1>;
+  const { t } = useTranslation("registration");
+
+  return <h1 className="text-2xl font-bold">{t("registrationTitle")}</h1>;
 }

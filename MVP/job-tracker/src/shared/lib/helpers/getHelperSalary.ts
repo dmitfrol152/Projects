@@ -1,4 +1,4 @@
-export function getHelperSalery(
+export function getHelperSalary(
   salary: { from: number | null; to: number | null } | null
 ) {
   if (!salary || (!salary.from && !salary.to)) {
@@ -19,3 +19,4 @@ export function getHelperSalery(
 
   return "-";
 }
+

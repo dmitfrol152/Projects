@@ -1,4 +1,5 @@
 import type { VacanciesLayoutProps } from "./types.ts";
+import { useTranslation } from "react-i18next";
 
 export function VacanciesLayout({
   title,
@@ -19,9 +20,12 @@ export function VacanciesLayout({
   loadingAddJob,
   modal,
 }: VacanciesLayoutProps) {
+  const { t: tHh } = useTranslation("hh");
+  const { t: tCommon } = useTranslation("common");
+
   const loadingContainer = (
     <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-100 bg-[var(--color-black-05)]">
-      Loading...
+      {tCommon("loading")}
     </div>
   );
 
@@ -38,7 +42,7 @@ export function VacanciesLayout({
       {isSuccess && (
         <div className="flex flex-col gap-3 grow justify-between">
           <span className="flex justify-center gap-1">
-            <span className="font-semibold">Founded:</span>
+            <span className="font-semibold">{tHh("hhTextFound")}:</span>
             <span className="text-[var(--color-gray-800)]">{dataFound}</span>
           </span>
           {data}

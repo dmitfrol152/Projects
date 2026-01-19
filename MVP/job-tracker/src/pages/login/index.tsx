@@ -15,8 +15,11 @@ import { useEffect, useState } from "react";
 import IconGitHub from "@shared/assets/svg/icon-github.svg?react";
 import IconGoogleMail from "@shared/assets/svg/icon-google-mail.svg?react";
 import { supabase } from "@shared/api/supabase/supabaseClient";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
+  const { t } = useTranslation("login");
+
   const {
     register,
     formState: { errors },
@@ -108,7 +111,7 @@ export default function Login() {
           buttons={
             <>
               <ButtonUi size="md" variant="primary" type="submit">
-                Login
+                {t("loginLoginButton")}
               </ButtonUi>
               <ButtonUi
                 size="md"
@@ -116,7 +119,7 @@ export default function Login() {
                 type="button"
                 handleClickButton={handleGoToRegistration}
               >
-                Registration
+                {t("loginRegistrationButton")}
               </ButtonUi>
             </>
           }
@@ -144,16 +147,16 @@ export default function Login() {
           }
         >
           <InputUi
-            label="Email"
+            label={t("loginEmailLabel")}
             type="text"
-            placeholder="Enter your email"
+            placeholder={t("loginEmailPlaceholder")}
             error={errors.email?.message}
             {...register("email")}
           />
           <InputUi
-            label="Password"
+            label={t("loginPasswordLabel")}
             type="password"
-            placeholder="Enter your password"
+            placeholder={t("loginPasswordPlaceholder")}
             error={errors.password?.message}
             {...register("password")}
           />

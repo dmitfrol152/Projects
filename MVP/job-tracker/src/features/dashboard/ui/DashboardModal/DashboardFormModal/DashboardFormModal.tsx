@@ -6,6 +6,7 @@ import { SelectUi } from "@shared/ui/SelectUi";
 import type { DashboardFormModalProps } from "./types";
 import { TextareaUi } from "@shared/ui/TextareaUi";
 import { DashboardTags } from "@features/dashboard/ui/DashboardModal/DashboardTags";
+import { useTranslation } from "react-i18next";
 
 export function DashboardFormModal({
   handleSubmit,
@@ -20,40 +21,42 @@ export function DashboardFormModal({
   handleDeleteTag,
   isErrorAddTag,
 }: DashboardFormModalProps) {
+  const { t } = useTranslation("dashboard");
+
   return (
     <Form
       onSubmit={handleSubmit(handleSubmitEditFormDashboard)}
       buttons={
         <ButtonUi size="md" variant="primary" type="submit">
-          Edit
+          {t("dashboardEditButton")}
         </ButtonUi>
       }
     >
       <InputUi
-        label="Position"
+        label={t("dashboardEditLabelPosition")}
         type="text"
-        placeholder="Enter your position"
+        placeholder={t("dashboardEditPlaceholderPosition")}
         error={errors.position?.message}
         {...register("position")}
       />
       <InputUi
-        label="Company"
+        label={t("dashboardEditLabelCompany")}
         type="text"
-        placeholder="Enter your company"
+        placeholder={t("dashboardEditPlaceholderCompany")}
         error={errors.company?.message}
         {...register("company")}
       />
       <SelectUi
-        label="Status"
+        label={t("dashboardEditLabelStatus")}
         options={OPTIONS}
         error={errors.status?.message}
         {...register("status")}
       />
       <TextareaUi
-        label="Notes"
+        label={t("dashboardEditLabelNotes")}
         error={errors.notes?.message}
         rows={4}
-        placeholder="Enter your notes"
+        placeholder={t("dashboardEditPlaceholderNotes")}
         {...register("notes")}
       />
       <DashboardTags

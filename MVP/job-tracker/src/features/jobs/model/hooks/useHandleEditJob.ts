@@ -4,8 +4,13 @@ import type { DashboardFormResolverProps } from "@shared/ui/Form/types";
 import type { JobEditProps } from "@features/jobs/model/types";
 import { fetchTelegramApi } from "@/shared/api/telegram/tgApi";
 import { toastNotifiactionView } from "@shared/ui/ToastNotification/getToastNotifiactionView";
+import { useTranslation } from "react-i18next";
 
 export function useHandleEditJob() {
+  const { t } = useTranslation("notification");
+
+  const langCurrent = localStorage.getItem("i18nextLng");
+
   async function handleSubmitEditFormDashboardHook(
     dataProps: DashboardFormResolverProps,
     jobEditProps: JobEditProps
@@ -47,16 +52,18 @@ export function useHandleEditJob() {
         setErrorDataBase("");
 
         if (user) {
-          toastNotifiactionView.success("The vacancy was successfully updated");
+          toastNotifiactionView.success(t("notificationSuccessEdit"));
 
           fetchTelegramApi(
             user.id,
-            `✅ Notification:\nThe vacancy was successfully updated\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
+            langCurrent === "en"
+              ? `✅ Notification:\nThe vacancy was successfully updated\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
+              : `✅ Уведомление:\nВакансия была успешно обновлена\nПозиция: ${position}\nКомпания: ${company}\nСтатус: ${status}`
           );
         }
       }
     } catch (err) {
-      toastNotifiactionView.error("Error edit vacancy");
+      toastNotifiactionView.error(t("notificationErrorEdit"));
       setJobs((prev): KanbanProps[] =>
         prev.map((job): KanbanProps => (job.id === backup.id ? backup : job))
       );

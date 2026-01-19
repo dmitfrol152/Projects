@@ -1,0 +1,9 @@
+{
+  "loginTitle": "Вход",
+  "loginEmailLabel": "Почта",
+  "loginPasswordLabel": "Пароль",
+  "loginEmailPlaceholder": "Введите вашу почту",
+  "loginPasswordPlaceholder": "Введите ваш пароль",
+  "loginLoginButton": "Вход",
+  "loginRegistrationButton": "Регистрация"
+}

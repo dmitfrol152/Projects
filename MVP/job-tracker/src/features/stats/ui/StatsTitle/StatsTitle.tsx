@@ -1,3 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export function StatsTitle() {
-  return <h1 className="text-3xl font-bold">Statistics</h1>;
+  const { t } = useTranslation("statistics");
+
+  return <h1 className="text-3xl font-bold">{t("statisticsTitle")}</h1>;
 }

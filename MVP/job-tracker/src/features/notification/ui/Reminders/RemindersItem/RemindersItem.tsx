@@ -3,6 +3,7 @@ import type { ReminderProps } from "../types";
 import IconDelete from "@shared/assets/svg/icon-delete.svg?react";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 export function RemindersItem({
   reminder,
@@ -10,6 +11,7 @@ export function RemindersItem({
 }: ReminderProps) {
   const [hover, setHover] = useState<boolean | null>(null);
   const [passetNote, setPassetNote] = useState<boolean>(false);
+  const { t } = useTranslation("reminders");
 
   const currentTime = new Date(reminder.time).getTime() - Date.now();
 
@@ -45,11 +47,11 @@ export function RemindersItem({
       </div>
       {passetNote ? (
         <span className="flex items-center font-bold text-[var(--color-danger)]">
-          PASSED
+          {t("remindersInfoPassed").toUpperCase()}
         </span>
       ) : (
         <span className="flex items-center font-bold text-[var(--color-primary)]">
-          SOON
+          {t("remindersInfoSoon").toUpperCase()}
         </span>
       )}
       {hover && (

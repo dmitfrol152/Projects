@@ -15,8 +15,11 @@ import { useEffect, useState } from "react";
 import IconGitHub from "@shared/assets/svg/icon-github.svg?react";
 import IconGoogleMail from "@shared/assets/svg/icon-google-mail.svg?react";
 import { supabase } from "@shared/api/supabase/supabaseClient";
+import { useTranslation } from "react-i18next";
 
 export default function Registration() {
+  const { t } = useTranslation("registration");
+
   const {
     register,
     formState: { errors },
@@ -110,7 +113,7 @@ export default function Registration() {
           buttons={
             <>
               <ButtonUi size="md" variant="primary" type="submit">
-                Registration
+                {t("registrationRegistrationButton")}
               </ButtonUi>
               <ButtonUi
                 size="md"
@@ -118,7 +121,7 @@ export default function Registration() {
                 type="button"
                 handleClickButton={handleGoToLogin}
               >
-                Login
+                {t("registrationLoginButton")}
               </ButtonUi>
             </>
           }
@@ -146,23 +149,23 @@ export default function Registration() {
           }
         >
           <InputUi
-            label="Email"
+            label={t("registrationEmailLabel")}
             type="text"
-            placeholder="Enter your email"
+            placeholder={t("registrationEmailPlaceholder")}
             error={errors.email?.message}
             {...register("email")}
           />
           <InputUi
-            label="Password"
+            label={t("registrationPasswordLabel")}
             type="password"
-            placeholder="Enter your password"
+            placeholder={t("registrationPasswordPlaceholder")}
             error={errors.password?.message}
             {...register("password")}
           />
           <InputUi
-            label="Confirm password"
+            label={t("registrationConfirmPasswordLabel")}
             type="password"
-            placeholder="Confirm your password"
+            placeholder={t("registrationConfirmPasswordPlaceholder")}
             error={errors.confirmPassword?.message}
             {...register("confirmPassword")}
           />

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { RemindersItem } from "../RemindersItem";
 import type { RemindersArrayProps } from "../types";
 
@@ -6,8 +7,10 @@ export function RemindersList({
   handleDeleteReminder,
   loadingReminders,
 }: RemindersArrayProps) {
-  if (loadingReminders) return <p>Loading...</p>;
-  if (!reminders.length) return <p>It's empty here for now</p>;
+  const { t } = useTranslation("reminders");
+
+  if (loadingReminders) return <p>{t("remindersLoading")}</p>;
+  if (!reminders.length) return <p>{t("remindersEmpty")}</p>;
 
   return (
     <ul className="flex flex-col gap-3">

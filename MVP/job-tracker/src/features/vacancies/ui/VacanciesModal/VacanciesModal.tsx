@@ -2,6 +2,7 @@ import { Modal } from "@shared/ui/Modal";
 import { ButtonUi } from "@shared/ui/ButtonUi";
 import IconClose from "@shared/assets/svg/icon-close.svg?react";
 import type { VacanciesModalProps } from "./types";
+import { useTranslation } from "react-i18next";
 
 export function VacanciesModal({
   isOpen,
@@ -12,6 +13,8 @@ export function VacanciesModal({
   setSuccessAddInKanban,
   successAddInKanban,
 }: VacanciesModalProps) {
+  const { t } = useTranslation("hh");
+
   return (
     <Modal
       isOpen={isOpen}
@@ -25,7 +28,7 @@ export function VacanciesModal({
         )}
         {successAddInKanban && (
           <span className="text-[var(--color-success)]">
-            Add vacancy in Kanban board is success!
+            {t("hhModalAddSuccess")}
           </span>
         )}
       </div>

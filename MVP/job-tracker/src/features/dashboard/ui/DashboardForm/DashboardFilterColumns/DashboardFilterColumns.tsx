@@ -3,6 +3,7 @@ import IconFilter from "@shared/assets/svg/icon-filter.svg?react";
 import type { DashboardFilterColumnsProps } from "./types";
 import { SelectUi } from "@shared/ui/SelectUi";
 import { OPTIONS_SORTED } from "@shared/lib/constants/options";
+import { useTranslation } from "react-i18next";
 
 export function DashboardFilterColumns({
   isOpenFilters,
@@ -16,6 +17,8 @@ export function DashboardFilterColumns({
   handleDownloadXlsx,
   handleDownloadCsv,
 }: DashboardFilterColumnsProps) {
+  const { t } = useTranslation("dashboard");
+
   return (
     <div className="flex flex-col items-end gap-3 w-full sm:flex-row sm:w-auto">
       {isOpenFilters && (
@@ -26,6 +29,7 @@ export function DashboardFilterColumns({
                 options={OPTIONS_SORTED}
                 value={valueSort}
                 setValue={setValueSort}
+                translation="dashboard"
               />
             </div>
             <div className="flex items-center gap-3 flex-wrap">
@@ -38,7 +42,7 @@ export function DashboardFilterColumns({
                     type="button"
                     handleClickButton={() => handleChangeStatusColumns(column)}
                   >
-                    {column.title}
+                    {t(column.title)}
                   </ButtonUi>
                 );
               })}
@@ -46,7 +50,7 @@ export function DashboardFilterColumns({
           </div>
           {popularTags.length > 0 && (
             <div className="flex items-center gap-3 flex-wrap">
-              <span>Sorted by popular tags: </span>
+              <span>{t("dashboardFormPopularTags")} </span>
               {popularTags.map((tag, index) => {
                 if (index > 2) return null;
 

@@ -1,14 +1,17 @@
 import { InputUi } from "@shared/ui/InputUi";
 import type { SettingInputFullNameInfoProps } from "./types";
+import { useTranslation } from "react-i18next";
 
 export function SettingInputFullNameInfo({
   fullName,
   setFullName,
 }: SettingInputFullNameInfoProps) {
+  const { t } = useTranslation("settings");
+
   return (
     <InputUi
-      label="Your full name is:"
-      placeholder={fullName ? fullName : "Type your fullname"}
+      label={t("settingsLabelName")}
+      placeholder={fullName ? fullName : t("settingsNameEmpty")}
       type="text"
       value={fullName}
       setValue={setFullName}

@@ -1,11 +1,9 @@
+import { useTranslation } from "react-i18next";
+
 export function DashboardParagraph() {
+  const { t } = useTranslation("dashboard");
+
   return (
-    <p className="text-[var(--color-gray-600)]">
-      Job Tracker is a fast and intuitive tool for finding vacancies and
-      managing the hiring process. Collect all open positions in one place,
-      filter by role and company, track progress and save time on communication.
-      Modern architecture — works with API for data synchronization and supports
-      Kanban methodology for flexible candidate status management.
-    </p>
+    <p className="text-[var(--color-gray-600)]">{t("dashboardDescription")}</p>
   );
 }

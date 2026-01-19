@@ -4,8 +4,13 @@ import type { DashboardFormResolverProps } from "@shared/ui/Form/types";
 import type { JobAddProps } from "@features/jobs/model/types";
 import { fetchTelegramApi } from "@/shared/api/telegram/tgApi";
 import { toastNotifiactionView } from "@shared/ui/ToastNotification/getToastNotifiactionView";
+import { useTranslation } from "react-i18next";
 
 export function useHandleNewJob() {
+  const { t } = useTranslation("notification");
+
+  const langCurrent = localStorage.getItem("i18nextLng");
+
   async function handleSubmitNewFormDashboardHook(
     dataProps: DashboardFormResolverProps,
     jobAddProps: JobAddProps
@@ -63,18 +68,20 @@ export function useHandleNewJob() {
               return [...prev, data];
             });
 
-            toastNotifiactionView.success("The vacancy was successfully added");
+            toastNotifiactionView.success(t("notificationSuccessAdd"));
 
             fetchTelegramApi(
               user.id,
-              `✅ Notification:\nThe vacancy was successfully added\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
+              langCurrent === "en"
+                ? `✅ Notification:\nThe vacancy was successfully added\nPosition: ${position}\nCompany: ${company}\nStatus: ${status}`
+                : `✅ Уведомление:\nВакансия была успешно добавлена\nПозиция: ${position}\nКомпания: ${company}\nСтатус: ${status}`
             );
           }
         }
       }
     } catch (err) {
       setSuccessAddInKanban(false);
-      toastNotifiactionView.error("Error add vacancy");
+      toastNotifiactionView.error(t("notificationErrorAdd"));
       if (err instanceof Error) {
         setErrorDataBase(`${err.message}`);
       } else {

@@ -1,10 +1,10 @@
 import type { LinksProps } from "./types";
 
 export const LINKS: LinksProps[] = [
-  { title: "Login", path: "/login" },
-  { title: "Dashboard", path: "/" },
-  { title: "Statistics", path: "/statistics" },
-  { title: "Reminders", path: "/notification" },
-  { title: "hh.ru", path: "/vacancies" },
-  { title: "Settings", path: "/settings" },
+  { title: "login", path: "/login" },
+  { title: "navigationDashboard", path: "/" },
+  { title: "navigationStatistics", path: "/statistics" },
+  { title: "navigationReminders", path: "/notification" },
+  { title: "navigationHh", path: "/vacancies" },
+  { title: "navigationSettings", path: "/settings" },
 ];

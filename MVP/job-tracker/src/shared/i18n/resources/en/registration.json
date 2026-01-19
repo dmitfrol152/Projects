@@ -1,0 +1,11 @@
+{
+  "registrationTitle": "Registration",
+  "registrationEmailLabel": "Email",
+  "registrationPasswordLabel": "Password",
+  "registrationConfirmPasswordLabel": "Confirm password",
+  "registrationEmailPlaceholder": "Enter your email",
+  "registrationPasswordPlaceholder": "Enter your password",
+  "registrationConfirmPasswordPlaceholder": "Confirm your password",
+  "registrationRegistrationButton": "Registration",
+  "registrationLoginButton": "Login"
+}

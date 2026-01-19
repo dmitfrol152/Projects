@@ -1,0 +1,11 @@
+{
+  "registrationTitle": "Регистрация",
+  "registrationEmailLabel": "Почта",
+  "registrationPasswordLabel": "Пароль",
+  "registrationConfirmPasswordLabel": "Подтверждение пароля",
+  "registrationEmailPlaceholder": "Введите вашу почту",
+  "registrationPasswordPlaceholder": "Введите ваш пароль",
+  "registrationConfirmPasswordPlaceholder": "Введите пароль еще раз",
+  "registrationRegistrationButton": "Регистрация",
+  "registrationLoginButton": "Вход"
+}

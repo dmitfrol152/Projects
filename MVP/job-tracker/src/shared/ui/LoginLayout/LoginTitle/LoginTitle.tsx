@@ -1,3 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export function LoginTitle() {
-  return <h1 className="text-2xl font-bold">Login</h1>;
+  const { t } = useTranslation("login");
+
+  return <h1 className="text-2xl font-bold">{t("loginTitle")}</h1>;
 }

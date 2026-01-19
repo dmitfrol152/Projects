@@ -1,9 +1,29 @@
 import type { ColumnsProps } from "./types";
 
 export const COLUMNS: ColumnsProps[] = [
-  { title: "Applied", key: "applied", active: true },
-  { title: "Interview", key: "interview", active: true },
-  { title: "Offer", key: "offer", active: true },
-  { title: "Rejected", key: "rejected", active: true },
-  { title: "Washlist", key: "washlist", active: true },
+  {
+    title: "dashboardAppliedColumnTitle",
+    key: "applied",
+    active: true,
+  },
+  {
+    title: "dashboardInterviewColumnTitle",
+    key: "interview",
+    active: true,
+  },
+  {
+    title: "dashboardOfferColumnTitle",
+    key: "offer",
+    active: true,
+  },
+  {
+    title: "dashboardRejectedColumnTitle",
+    key: "rejected",
+    active: true,
+  },
+  {
+    title: "dashboardWishlistColumnTitle",
+    key: "washlist",
+    active: true,
+  },
 ];

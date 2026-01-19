@@ -1,0 +1,9 @@
+{
+  "loginTitle": "Login",
+  "loginEmailLabel": "Email",
+  "loginPasswordLabel": "Password",
+  "loginEmailPlaceholder": "Enter your email",
+  "loginPasswordPlaceholder": "Enter your password",
+  "loginLoginButton": "Login",
+  "loginRegistrationButton": "Registration"
+}

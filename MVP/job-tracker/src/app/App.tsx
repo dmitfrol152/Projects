@@ -11,8 +11,11 @@ import { ThemeWrapper } from "@app/providers/ThemeWrapper";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@app/providers/queryClient";
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function App() {
+  const { t } = useTranslation("common");
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -32,7 +35,7 @@ export default function App() {
                 <Suspense
                   fallback={
                     <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-100 bg-[var(--color-black-05)]">
-                      Loading...
+                      {t("loading")}
                     </div>
                   }
                 >

@@ -1,0 +1,15 @@
+{
+  "remindersTitle": "Reminders",
+  "remindersDescription": "Important event reminder. Configured using the Web Notification API.",
+  "remindersFormLabelMessage": "Message",
+  "remindersFormLabelDate": "Date",
+  "remindersFormPlaceholderMessage": "Enter your notification message",
+  "remindersFormPlaceholderDate": "Enter your date for notification you",
+  "remindersButtonAdd": "Add",
+  "remindersButtonClearPassed": "Clear passed",
+  "remindersButtonClearAll": "Clear all",
+  "remindersInfoSoon": "Soon",
+  "remindersInfoPassed": "Passed",
+  "remindersLoading": "Loading...",
+  "remindersEmpty": "Сейчас здесь пусто"
+}

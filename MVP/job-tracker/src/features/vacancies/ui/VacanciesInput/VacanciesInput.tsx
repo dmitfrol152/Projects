@@ -2,20 +2,23 @@ import { ButtonUi } from "@shared/ui/ButtonUi";
 import type { VacanciesInputProps } from "./types";
 import { InputUi } from "@shared/ui/InputUi";
 import IconClose from "@shared/assets/svg/icon-close-x.svg?react";
+import { useTranslation } from "react-i18next";
 
 export function VacanciesInput({
   query,
   setQuery,
   handleClearSearchField,
 }: VacanciesInputProps) {
+  const { t } = useTranslation("hh");
+
   return (
     <div className="relative">
       <InputUi
-        label="Search"
+        label={t("hhFormLabelSearch")}
         type="text"
         value={query}
         setValue={setQuery}
-        placeholder="Enter your query (position or company)..."
+        placeholder={t("hhFormPlaceholderSearch")}
       />
       {query && (
         <ButtonUi

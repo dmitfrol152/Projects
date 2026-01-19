@@ -1,0 +1,11 @@
+{
+  "statisticsTitle": "Статистика",
+  "statisticsDescription": "Динамическая недельная статистика. Отслеживайте свою активность.",
+  "statisticsColumnTotal": "Всего",
+  "statisticsColumnApplied": "Отклики",
+  "statisticsColumnInterview": "Собесы",
+  "statisticsColumnOffer": "Офферы",
+  "statisticsColumnRejected": "Отказы",
+  "statisticsChartTitle": "Статистика по неделям",
+  "statisticsChartCount": "количество"
+}

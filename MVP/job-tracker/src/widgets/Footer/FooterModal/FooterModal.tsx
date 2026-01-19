@@ -3,6 +3,7 @@ import { ButtonUi } from "@shared/ui/ButtonUi";
 import { Link } from "react-router-dom";
 import IconClose from "@shared/assets/svg/icon-close.svg?react";
 import type { FooterModalProps } from "./types";
+import { useTranslation } from "react-i18next";
 
 export function FooterModal({
   isOpen,
@@ -11,6 +12,8 @@ export function FooterModal({
   code,
   loading,
 }: FooterModalProps) {
+  const { t } = useTranslation("footer");
+
   return (
     <Modal isOpen={isOpen} modalRef={modalRef}>
       <div className="flex flex-col gap-3">
@@ -20,7 +23,7 @@ export function FooterModal({
             <span className="flex gap-1">
               <span className="font-bold text-[var(--color-black)]">1.</span>
               <span className="font-medium text-[var(--color-gray-600)]">
-                Follow the link to our TG-bot:
+                {t("tgBotLink")}
               </span>
             </span>
             <Link
@@ -34,7 +37,7 @@ export function FooterModal({
             <span className="flex gap-1">
               <span className="font-bold text-[var(--color-black)]">2.</span>
               <span className="font-medium text-[var(--color-gray-600)]">
-                Send the code:
+                {t("tgBotSendMessage")}
               </span>
             </span>
             {loading ? (

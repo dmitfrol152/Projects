@@ -1,14 +1,16 @@
 import { Navigation } from "@widgets/Navigation";
 import { useAuth } from "@/shared/lib/context/contexts";
 import { Navigate, Outlet } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function PrivateRouter() {
   const { user, loading } = useAuth();
+  const { t } = useTranslation("common");
 
   if (loading) {
     return (
       <div className="fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center z-100 bg-[var(--color-black-05)]">
-        Loading...
+        {t("loading")}
       </div>
     );
   }
