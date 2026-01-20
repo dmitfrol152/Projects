@@ -16,9 +16,11 @@ import IconGitHub from "@shared/assets/svg/icon-github.svg?react";
 import IconGoogleMail from "@shared/assets/svg/icon-google-mail.svg?react";
 import { supabase } from "@shared/api/supabase/supabaseClient";
 import { useTranslation } from "react-i18next";
+import { useWindowResize } from "@/shared/lib/hooks/useWindowResize";
 
 export default function Registration() {
   const { t } = useTranslation("registration");
+  const { width } = useWindowResize();
 
   const {
     register,
@@ -105,6 +107,7 @@ export default function Registration() {
 
   return (
     <RegistrationLayout
+      width={width}
       error={isErrorText}
       title={<RegistrationTitle />}
       form={

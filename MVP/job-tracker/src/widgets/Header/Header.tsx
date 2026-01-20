@@ -35,12 +35,17 @@ export function Header() {
     openModal();
   }
 
+  function handleSignOut() {
+    closeModal();
+    signOut();
+  }
+
   return (
     <>
       <header
         className={clsx(
           "fixed top-0 left-0 w-full bg-[var(--color-bg-pernamently)] text-[var(--color-white-pernamently)] p-4 z-10",
-          width > 1024 && " max-h-18",
+          width > 1024 && "max-h-18",
         )}
       >
         <div className="flex flex-col gap-4">
@@ -78,7 +83,7 @@ export function Header() {
               )}
             </div>
           </div>
-          {width < 1024 && (
+          {width < 1024 && user && (
             <SearchUi
               placeholder={t("searchPlaceholder")}
               value={query}
@@ -96,7 +101,7 @@ export function Header() {
             isVisibleSettingsLink={isVisibleSettingsLink}
             handleClickSearch={handleClickSearch}
             user={user}
-            signOut={signOut}
+            signOut={handleSignOut}
             closeModal={closeModal}
           />
           <ButtonUi

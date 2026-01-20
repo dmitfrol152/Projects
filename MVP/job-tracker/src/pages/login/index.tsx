@@ -16,9 +16,11 @@ import IconGitHub from "@shared/assets/svg/icon-github.svg?react";
 import IconGoogleMail from "@shared/assets/svg/icon-google-mail.svg?react";
 import { supabase } from "@shared/api/supabase/supabaseClient";
 import { useTranslation } from "react-i18next";
+import { useWindowResize } from "@/shared/lib/hooks/useWindowResize";
 
 export default function Login() {
   const { t } = useTranslation("login");
+  const { width } = useWindowResize();
 
   const {
     register,
@@ -103,6 +105,7 @@ export default function Login() {
 
   return (
     <LoginLayout
+      width={width}
       error={isErrorText}
       title={<LoginTitle />}
       form={
