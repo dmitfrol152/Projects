@@ -29,6 +29,13 @@ export const SettingsLayoutSchema = z.object({
   modal: z.custom<ReactNode>(),
   buttonPaginationScroll: z.custom<ReactNode>(),
   buttonPaginationButtons: z.custom<ReactNode>(),
+  buttonLanguageEn: z.custom<ReactNode>(),
+  buttonLanguageRu: z.custom<ReactNode>(),
+  currentLanguage: z.string(),
+  toggleLanguage: z.function({
+    input: [],
+    output: z.void(),
+  }),
 });
 
 export type SettingsLayoutProps = z.infer<typeof SettingsLayoutSchema>;

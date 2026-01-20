@@ -28,6 +28,10 @@ export function SettingsLayout({
   modal,
   buttonPaginationScroll,
   buttonPaginationButtons,
+  buttonLanguageEn,
+  buttonLanguageRu,
+  currentLanguage,
+  toggleLanguage,
 }: SettingsLayoutProps) {
   const { t: tCommon } = useTranslation("common");
   const { t: tSettings } = useTranslation("settings");
@@ -66,7 +70,7 @@ export function SettingsLayout({
                   avatarAddError
                     ? "text-[var(--color-danger)]"
                     : "text-[var(--color-gray-500)]"
-                }`
+                }`,
               )}
             >
               {tSettings("settingsImageMaxSize")}
@@ -92,6 +96,14 @@ export function SettingsLayout({
                 toggleAction={togglePagination}
                 toggleState={pagination}
                 description={tSettings("settingsButtonPagination")}
+              />
+              <span>{tSettings("settingsLabelLanguage")}</span>
+              <ButtonsContainer
+                buttonOne={buttonLanguageRu}
+                buttonTwo={buttonLanguageEn}
+                toggleAction={toggleLanguage}
+                toggleState={currentLanguage}
+                description={tSettings("settingsButtonLanguage")}
               />
             </div>
           </div>
@@ -123,13 +135,15 @@ export function ButtonsContainer({
         onClick={toggleAction}
         className={clsx(
           `relative w-14 h-8 rounded-full transition-colors cursor-pointer`,
-          toggleState === "scroll" ? "bg-[var(--color-primary)]" : "bg-gray-300"
+          toggleState === "scroll"
+            ? "bg-[var(--color-primary)]"
+            : "bg-gray-300",
         )}
       >
         <span
           className={clsx(
             `absolute top-1 left-1 w-6 h-6 bg-[var(--color-white)] rounded-full shadow transition-transform`,
-            toggleState === "scroll" ? "translate-x-6" : "translate-x-0"
+            toggleState === "scroll" ? "translate-x-6" : "translate-x-0",
           )}
         />
       </div>

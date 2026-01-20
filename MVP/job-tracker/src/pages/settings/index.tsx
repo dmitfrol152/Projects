@@ -20,6 +20,9 @@ import { SettingModal } from "@features/setting/ui/SettingModal";
 import { SettingButtonPaginationScroll } from "@features/setting/ui/SettingButtonPaginationScroll";
 import { usePaginationSetting } from "@features/profile/model/hooks/usePaginationSetting";
 import { SettingButtonPaginationButtons } from "@features/setting/ui/SettingButtonPaginationButtons";
+import { useLanguageSetting } from "@/features/profile/model/hooks/useLanguageSetting";
+import { SettingButtonLanguageRu } from "@/features/setting/ui/SettingButtonLanguageRu";
+import { SettingButtonLanguageEn } from "@/features/setting/ui/SettingButtonLanguageEn";
 
 export default React.memo(function Settings() {
   const { user, profile, refreshProfile, loadingProfile } = useAuth();
@@ -37,7 +40,7 @@ export default React.memo(function Settings() {
   const handleSaveWrapper = useHandleSave();
   const handleDeleteProfileWrapper = useHandleDeleteProfile();
   const { paginationModel, togglePaginationModel } = usePaginationSetting();
-
+  const { currentLanguage, toggleLanguage } = useLanguageSetting();
   const [fullName, setFullName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -57,7 +60,13 @@ export default React.memo(function Settings() {
     };
 
     init();
-  }, [profile?.id, profile?.avatar_url, profile?.full_name, user?.id, navigate]);
+  }, [
+    profile?.id,
+    profile?.avatar_url,
+    profile?.full_name,
+    user?.id,
+    navigate,
+  ]);
 
   function handleAddAvatar(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -157,6 +166,20 @@ export default React.memo(function Settings() {
           setPagination={togglePaginationModel}
         />
       }
+      buttonLanguageEn={
+        <SettingButtonLanguageEn
+          currentLanguage={currentLanguage}
+          toggleLanguage={toggleLanguage}
+        />
+      }
+      buttonLanguageRu={
+        <SettingButtonLanguageRu
+          currentLanguage={currentLanguage}
+          toggleLanguage={toggleLanguage}
+        />
+      }
+      currentLanguage={currentLanguage}
+      toggleLanguage={toggleLanguage}
       buttonSave={<SettingButtonSave handleSave={handleSave} />}
       buttonDeleteProfile={
         <SettingButtonDeleteProfile

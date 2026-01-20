@@ -12,11 +12,11 @@ export const ButtonUi = memo(function Button({
   disabled = false,
 }: ButtonProps) {
   const classButton = clsx(
-    "font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed w-max",
+    "font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
     {
-      md: "px-4 py-2 rounded text-base leading-[1.2] min-h-10.5",
-      lg: "px-4 py-2 rounded text-lg leading-[1.2] min-h-10.5",
-      icon: "px-1 py-1",
+      md: "px-4 py-2 rounded text-base leading-[1.2] min-h-10.5 w-max",
+      lg: "px-4 py-2 rounded text-lg leading-[1.2] min-h-10.5 w-max",
+      icon: "w-9 h-9 flex items-center justify-center rounded",
       tg: "",
     }[size],
     {
@@ -28,7 +28,7 @@ export const ButtonUi = memo(function Button({
       icon: "",
       tg: "text-[var(--color-gray-600)] hover:text-[var(--color-primary-hover)]",
     }[variant],
-    className
+    className,
   );
 
   return (

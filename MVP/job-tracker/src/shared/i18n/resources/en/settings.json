@@ -6,6 +6,8 @@
   "settingsButtonTheme": "Toggle theme:",
   "settingsLabelPagination": "Your pagination is:",
   "settingsButtonPagination": "Toggle pagination model:",
+  "settingsLabelLanguage": "Your language is:",
+  "settingsButtonLanguage": "Toggle language:",
   "settingsImageSelect": "Select file",
   "settingsImageNoFile": "File not selected",
   "settingsImageMaxSize": "Maximum size is 2MB",

@@ -1,0 +1,1 @@
+export { SettingButtonLanguageRu } from "./SettingButtonLanguageRu";
