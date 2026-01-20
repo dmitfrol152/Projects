@@ -1,5 +1,13 @@
 {
   "loading": "Loading...",
   "errorFetchVacanciesHh": "Error fetch vacancies of hh.ru. Can try again.",
-  "refetch": "Refetch"
+  "refetch": "Refetch",
+  "validationIncorrectEmail": "Incorrect email",
+  "validationMin5": "Enter at least 5 characters",
+  "validationMin8": "Please enter at least 8 characters",
+  "validationMin3": "Enter at least 3 characters",
+  "validationPasswordsMismatch": "Passwords do not match",
+  "validationChooseOption": "Choose one of the options",
+  "validationEmptyField": "Field must not be empty",
+  "validationDateNotPast": "The reminder date must not be less than the current date"
 }

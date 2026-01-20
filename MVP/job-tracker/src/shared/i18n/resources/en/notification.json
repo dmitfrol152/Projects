@@ -12,5 +12,6 @@
   "notificationSuccessDeleteComplitedReminder": "The passed reminder has been successfully removed",
   "notificationErrorDeleteComplitedReminder": "Error deleting completed reminders",
   "notificationSuccessDeleteAllReminder": "All reminders have been successfully deleted",
-  "notificationErrorDeleteAllReminder": "Error deleting all reminders"
+  "notificationErrorDeleteAllReminder": "Error deleting all reminders",
+  "notificationErrorJobExists": "The job already exists"
 }

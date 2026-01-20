@@ -21,7 +21,10 @@ export function StatsChart({ data }: StatsChartDatsProps) {
         <BarChart data={data}>
           <XAxis dataKey="week" stroke="var(--color-black)" />
           <YAxis stroke="var(--color-black)" />
-          <Tooltip wrapperStyle={{ color: "var(--color-bg-pernamently)" }} />
+          <Tooltip
+            wrapperStyle={{ color: "var(--color-bg-pernamently)" }}
+            formatter={(value) => [value, t("statisticsChartCount")]}
+          />
           <Bar dataKey="count" fill="#3b82f6" radius={[6, 6, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>

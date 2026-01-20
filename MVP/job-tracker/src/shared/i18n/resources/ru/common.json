@@ -1,5 +1,13 @@
 {
   "loading": "Загрузка...",
   "errorFetchVacanciesHh": "Ошибка получения данных с hh.ru. Пожалуйста, попробуйте еще раз.",
-  "refetch": "Обновить"
+  "refetch": "Обновить",
+  "validationIncorrectEmail": "Некорректный email",
+  "validationMin5": "Введите не менее 5 символов",
+  "validationMin8": "Введите не менее 8 символов",
+  "validationMin3": "Введите не менее 3 символов",
+  "validationPasswordsMismatch": "Пароли не совпадают",
+  "validationChooseOption": "Выберите один из вариантов",
+  "validationEmptyField": "Поле не должно быть пустым",
+  "validationDateNotPast": "Дата напоминания не может быть меньше текущей"
 }

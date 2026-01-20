@@ -1,5 +1,5 @@
 {
-  "appName": "Трекер вакансий",
+  "appName": "Job Tracker",
   "login": "Войти",
-  "searchPlaceholder": "Поиск по позиции компании..."
+  "searchPlaceholder": "Поиск по позиции или компании..."
 }

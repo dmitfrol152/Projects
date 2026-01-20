@@ -50,6 +50,7 @@ export function DashboardFormModal({
         label={t("dashboardEditLabelStatus")}
         options={OPTIONS}
         error={errors.status?.message}
+        translation="dashboard"
         {...register("status")}
       />
       <TextareaUi

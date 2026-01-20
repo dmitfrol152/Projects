@@ -12,5 +12,6 @@
   "notificationSuccessDeleteComplitedReminder": "Прошедшие напоминания были успешно удалены",
   "notificationErrorDeleteComplitedReminder": "Ошибка удаления прошедних напоминаний",
   "notificationSuccessDeleteAllReminder": "Все напоминания были успешно удалены",
-  "notificationErrorDeleteAllReminder": "Ошибка удаления всех напоминаний"
+  "notificationErrorDeleteAllReminder": "Ошибка удаления всех напоминаний",
+  "notificationErrorJobExists": "Такая вакансия уже существует"
 }

@@ -41,7 +41,7 @@ export function useHandleNewJob() {
           .maybeSingle();
 
         if (checkData) {
-          throw new Error("The job already exists");
+          throw new Error(t("notificationErrorJobExists"));
         } else if (!checkError) {
           const { data, error } = await supabase
             .from("jobs")

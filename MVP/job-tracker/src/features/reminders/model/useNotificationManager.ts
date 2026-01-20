@@ -62,9 +62,9 @@ export function useNotificationManager() {
           ? `✅ Notification:\nThe reminder has been successfully added\nText: ${
               data.message
             }\nTime: ${new Date(data.date).toLocaleString()}`
-          : `✅ Уведомление:\nНапоминание было успешно добавлено\nText: ${
+          : `✅ Уведомление:\nНапоминание было успешно добавлено\nТекст: ${
               data.message
-            }\nTime: ${new Date(data.date).toLocaleString()}`
+            }\nВремя: ${new Date(data.date).toLocaleString()}`,
       );
     }
 
@@ -85,7 +85,7 @@ export function useNotificationManager() {
         user.id,
         langCurrent === "en"
           ? `✅ Notification:\nThe reminder has been successfully removed`
-          : `✅ Уведомление:\nНапоминание было успешно удалено`
+          : `✅ Уведомление:\nНапоминание было успешно удалено`,
       );
     }
 
@@ -96,13 +96,13 @@ export function useNotificationManager() {
     const response = await deletePassedRemindersDB();
     if (!response.ok) {
       toastNotifiactionView.error(
-        t("notificationErrorDeleteComplitedReminder")
+        t("notificationErrorDeleteComplitedReminder"),
       );
       return;
     }
 
     toastNotifiactionView.success(
-      t("notificationSuccessDeleteComplitedReminder")
+      t("notificationSuccessDeleteComplitedReminder"),
     );
 
     if (user) {
@@ -110,7 +110,7 @@ export function useNotificationManager() {
         user.id,
         langCurrent === "en"
           ? `✅ Notification:\nPast reminders have been successfully deleted`
-          : `✅ Уведомление:\nПрошедшие напоминания были успешно удалены`
+          : `✅ Уведомление:\nПрошедшие напоминания были успешно удалены`,
       );
     }
 
@@ -131,7 +131,7 @@ export function useNotificationManager() {
         user.id,
         langCurrent === "en"
           ? `✅ Notification:\nAll reminders have been successfully deleted`
-          : `✅ Уведомление:\nВсе напоминания были успешно удалены`
+          : `✅ Уведомление:\nВсе напоминания были успешно удалены`,
       );
     }
 

@@ -12,8 +12,8 @@ export function SearchUi({
       <input
         name="search"
         className={clsx(
-          "w-75 transition-colors border rounded px-4 py-2 focus:outline-none border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)]",
-          className ? className : ""
+          "transition-colors border rounded px-4 py-2 focus:outline-none border-[var(--color-black)] focus:border-[var(--color-primary)] hover:border-[var(--color-primary)]",
+          className ? className : "",
         )}
         type="search"
         value={value}

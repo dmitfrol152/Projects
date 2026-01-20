@@ -40,7 +40,7 @@ export function Header() {
       <header
         className={clsx(
           "fixed top-0 left-0 w-full bg-[var(--color-bg-pernamently)] text-[var(--color-white-pernamently)] p-4 z-10",
-          width > 1024 && " max-h-18"
+          width > 1024 && " max-h-18",
         )}
       >
         <div className="flex flex-col gap-4">
@@ -80,7 +80,7 @@ export function Header() {
           </div>
           {width < 1024 && (
             <SearchUi
-              placeholder="Search by position or company..."
+              placeholder={t("searchPlaceholder")}
               value={query}
               setQuery={setQuery}
               className="w-full"

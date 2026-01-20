@@ -30,66 +30,68 @@ import ruReminders from "./resources/ru/reminders.json";
 import ruSettings from "./resources/ru/settings.json";
 import ruStatistics from "./resources/ru/statistics.json";
 
-export default i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: "en",
-    supportedLngs: ["en", "ru"],
-    debug: false,
+const i18nInstance = i18n.use(LanguageDetector).use(initReactI18next);
 
-    resources: {
-      en: {
-        common: enCommon,
-        dashboard: enDashboard,
-        footer: enFooter,
-        header: enHeader,
-        hh: enHh,
-        login: enLogin,
-        navigation: enNavigation,
-        notification: enNotification,
-        pagination: enPagination,
-        registration: enRegistration,
-        reminders: enReminders,
-        settings: enSettings,
-        statistics: enStatistics,
-      },
-      ru: {
-        common: ruCommon,
-        dashboard: ruDashboard,
-        footer: ruFooter,
-        header: ruHeader,
-        hh: ruHh,
-        login: ruLogin,
-        navigation: ruNavigation,
-        notification: ruNotification,
-        pagination: ruPagination,
-        registration: ruRegistration,
-        reminders: ruReminders,
-        settings: ruSettings,
-        statistics: ruStatistics,
-      },
+i18nInstance.init({
+  fallbackLng: "en",
+  supportedLngs: ["en", "ru"],
+  debug: false,
+
+  resources: {
+    en: {
+      common: enCommon,
+      dashboard: enDashboard,
+      footer: enFooter,
+      header: enHeader,
+      hh: enHh,
+      login: enLogin,
+      navigation: enNavigation,
+      notification: enNotification,
+      pagination: enPagination,
+      registration: enRegistration,
+      reminders: enReminders,
+      settings: enSettings,
+      statistics: enStatistics,
     },
-
-    ns: [
-      "common",
-      "dashboard",
-      "footer",
-      "header",
-      "hh",
-      "login",
-      "navigation",
-      "notification",
-      "pagination",
-      "registration",
-      "reminders",
-      "settings",
-      "statistics",
-    ],
-    // defaultNS: "common",
-
-    detection: {
-      order: ["localStorage", "navigator"],
-      caches: ["localStorage"],
+    ru: {
+      common: ruCommon,
+      dashboard: ruDashboard,
+      footer: ruFooter,
+      header: ruHeader,
+      hh: ruHh,
+      login: ruLogin,
+      navigation: ruNavigation,
+      notification: ruNotification,
+      pagination: ruPagination,
+      registration: ruRegistration,
+      reminders: ruReminders,
+      settings: ruSettings,
+      statistics: ruStatistics,
     },
-  });
+  },
+
+  ns: [
+    "common",
+    "dashboard",
+    "footer",
+    "header",
+    "hh",
+    "login",
+    "navigation",
+    "notification",
+    "pagination",
+    "registration",
+    "reminders",
+    "settings",
+    "statistics",
+  ],
+  // defaultNS: "common",
+
+  detection: {
+    order: ["localStorage", "navigator"],
+    caches: ["localStorage"],
+  },
+});
+
+export { i18nInstance };
+export default i18nInstance;
