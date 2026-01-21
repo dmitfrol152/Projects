@@ -13,6 +13,11 @@ on: # запускаем процесс
 jobs:
   build-in-test: # наименование задачи
     runs-on: ubuntu-latest # на каком сервере (OC) будет выполнена задача
+
+    defaults: # папка по умолчанию для run команд, от репозитория
+      run:
+        working-directory: "./MVP/job-tracker"
+
     steps: # шаги (план) по выполнению задачи
       - name: clone repository # клонируем файлы на сервер, чтобы они там были, и мы моглли уже устанавливать зависимости и работать с проектом
         uses: actions/checkout@v4 # наименование команды (action). которая выпонит определенное дейтсвие, заменяет самописный код
@@ -20,8 +25,9 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v4
         with: # дополнение (как аргументы в функции) к action моему
-          node-version-file: ".nvmrc"
+          node-version-file: "./MVP/job-tracker/.nvmrc"
           cache: npm
+          cache-dependency-path: "./MVP/job-tracker/package-lock.json" # путь для lock файла. чтобы кеш заработал
 
       - name: install dependencies # устанавливаем зависимости, работает с package-lock, удаялет перед установкой старые node_modules
         run: npm ci # clean install
