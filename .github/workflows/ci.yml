@@ -1,0 +1,36 @@
+name: CI # имя на gitHub Actions
+
+# БЛОК УСЛОВИЙ (проверка кода до того. как изменения попадут в осн. ветку)
+
+on: # запускаем процесс
+  push: # при пуше
+    branches: [main, dev] # в ветки main и dev
+  pull_request: # и при запросе на слияния из второстеп. ветки в основную
+    branches: [main, dev] # в ветки main и dev
+
+# БЛОК ОКРУЖЕНИЯ
+
+jobs:
+  build-in-test: # наименование задачи
+    runs-on: ubuntu-latest # на каком сервере (OC) будет выполнена задача
+    steps: # шаги (план) по выполнению задачи
+      - name: clone repository # клонируем файлы на сервер, чтобы они там были, и мы моглли уже устанавливать зависимости и работать с проектом
+        uses: actions/checkout@v4 # наименование команды (action). которая выпонит определенное дейтсвие, заменяет самописный код
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with: # дополнение (как аргументы в функции) к action моему
+          node-version: ".nvmrs"
+          cache: npm
+
+      - name: install dependencies # устанавливаем зависимости, работает с package-lock, удаялет перед установкой старые node_modules
+        run: npm ci # clean install
+
+      - name: lint # проверяем качесвство кода
+        run: npm run lint
+
+      - name: tests # тесты
+        run: npm run test:ci
+
+      - name: build # сборка
+        run: npm run build
