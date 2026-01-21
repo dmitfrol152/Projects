@@ -17,7 +17,7 @@ export function FooterModal({
   return (
     <Modal isOpen={isOpen} modalRef={modalRef}>
       <div className="flex flex-col gap-3">
-        <p className="font-bold text-lg">STEPS</p>
+        <p className="font-bold text-lg">{t("steps").toUpperCase()}</p>
         <div className="flex flex-col gap-3">
           <span className="flex flex-col gap-1">
             <span className="flex gap-1">
@@ -41,7 +41,9 @@ export function FooterModal({
               </span>
             </span>
             {loading ? (
-              <span className="text-[var(--color-gray-600)]">Loading...</span>
+              <span className="text-[var(--color-gray-600)]">
+                {t("loading")}
+              </span>
             ) : (
               <span className="text-[var(--color-primary)]">{code}</span>
             )}

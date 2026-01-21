@@ -1,5 +1,7 @@
 {
   "copyright": "Dmitry Frolkov. All rights reserved.",
   "tgBotLink": "Follow the link to our TG-bot:",
-  "tgBotSendMessage": "Send the code:"
+  "tgBotSendMessage": "Send the code:",
+  "steps": "steps",
+  "loading": "Loading a code..."
 }

@@ -35,7 +35,7 @@ jobs:
       - name: lint # проверяем качесвство кода
         run: npm run lint
 
-      - name: tests # тесты
+      - name: tests with coverage # тесты
         run: npm run test:ci
 
       - name: build # сборка
