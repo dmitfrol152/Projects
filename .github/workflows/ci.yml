@@ -20,7 +20,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v4
         with: # дополнение (как аргументы в функции) к action моему
-          node-version: ".nvmrs"
+          node-version: ".nvmrc"
           cache: npm
 
       - name: install dependencies # устанавливаем зависимости, работает с package-lock, удаялет перед установкой старые node_modules
