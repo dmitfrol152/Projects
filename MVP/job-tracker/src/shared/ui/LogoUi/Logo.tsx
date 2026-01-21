@@ -1,11 +1,8 @@
 import LogoIcon from "@shared/assets/svg/logo.svg?react";
 import emptyAvatar from "@shared/assets/png/avatar-empty.png";
 import type { LogoProps } from "./types";
-import { useTranslation } from "react-i18next";
 
 export function Logo({ profileSrc, user }: LogoProps) {
-  const { t } = useTranslation("header");
-
   return (
     <div className="flex items-center gap-3">
       {user && profileSrc !== "" ? (
@@ -19,7 +16,7 @@ export function Logo({ profileSrc, user }: LogoProps) {
       ) : (
         <LogoIcon className="w-10 h-10" />
       )}
-      <p className="text-xl font-bold">{t("appName")}</p>
+      <p className="text-xl font-bold">Job Tracker</p>
     </div>
   );
 }

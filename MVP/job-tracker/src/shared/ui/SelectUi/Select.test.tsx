@@ -1,25 +1,30 @@
 import { OPTIONS } from "@/shared/lib/constants/options";
+import i18n from "@shared/i18n";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { SelectUi } from "./SelectUi";
 import "@testing-library/jest-dom";
 
+beforeAll(() => i18n.changeLanguage("en"));
+
 describe("test SelectUi component", () => {
   it("render label", () => {
-    render(<SelectUi label="Test" options={OPTIONS} value="" />);
+    render(
+      <SelectUi label="Test" options={OPTIONS} value="" translation="dashboard" />
+    );
 
     expect(screen.getByText("Test")).toBeInTheDocument();
   });
   it("all options", () => {
-    render(<SelectUi options={OPTIONS} value="" />);
+    render(<SelectUi options={OPTIONS} value="" translation="dashboard" />);
 
     expect(screen.getByText("Applied")).toBeInTheDocument();
     expect(screen.getByText("Interview")).toBeInTheDocument();
     expect(screen.getByText("Offer")).toBeInTheDocument();
     expect(screen.getByText("Rejected")).toBeInTheDocument();
-    expect(screen.getByText("Washlist")).toBeInTheDocument();
+    expect(screen.getByText("Wishlist")).toBeInTheDocument();
   });
   it("first disabled", () => {
-    render(<SelectUi options={OPTIONS} />);
+    render(<SelectUi options={OPTIONS} translation="dashboard" />);
 
     const firstOption = screen.getByText(
       "-- Status by --"
