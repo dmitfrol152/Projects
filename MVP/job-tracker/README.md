@@ -23,7 +23,8 @@
 
 И многоу другое, включая экспорт в xlsx/csv, многофункциональное редактирование/добавление со множеством фильтров и т.д.
 
-**Приложение полностью АДАПТИВНО и ИНТЕРНАЦИАНАЛИЗИРОВАНО (англ./рус.)**
+**Приложение полностью АДАПТИВНО и ИНТЕРНАЦИАНАЛИЗИРОВАНО (англ./рус.)**  
+**Внедрены конвейеры CI/CD с использованием GitHub Actions для автоматизированного тестирования, сборки и развертывания в Netlify.**
 
 ## EN
 
@@ -45,7 +46,8 @@ Basic Settings:
 
 And much more, including export to xlsx/csv, multi-functional editing/adding with multiple filters, etc.
 
-**The app is fully ADAPTABLE and INTERNATIONALIZED (English/Russian)**
+**The app is fully ADAPTABLE and INTERNATIONALIZED (English/Russian)**  
+**Implemented CI/CD pipelines using GitHub Actions with automated testing, build and deployment to Netlify**
 
 ### STACK
 

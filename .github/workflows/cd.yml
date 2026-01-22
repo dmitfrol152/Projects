@@ -1,0 +1,44 @@
+name: CD
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main'
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: "./MVP/job-tracker"
+
+    steps:
+      - name: clone repository
+        uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "./MVP/job-tracker/.nvmrc"
+          cache: npm
+          cache-dependency-path: "./MVP/job-tracker/package-lock.json"
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: deploy
+        run: npm run build
+
+      - run: |
+          npm install -g netlify-cli
+          netlify deploy \
+            --dir=dist \
+            --prod \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
