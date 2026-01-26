@@ -1,0 +1,124 @@
+@use "../../shared/styles/global/variables" as *;
+
+.footer {
+  padding: 48px 0 48px;
+
+  display: flex;
+  flex-direction: column;
+  background-color: $color-black;
+  border-top: 1px solid #172136;
+
+  z-index: 30;
+
+  &__top {
+    margin-bottom: 4px;
+
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    padding-top: 15px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__logoText {
+    padding-left: 27px;
+
+    font-family: $font-sans;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 113%;
+    letter-spacing: -0.5px;
+    color: $color-white;
+  }
+
+  &__logoSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__right {
+    display: flex;
+    gap: 176px;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__columnTitle {
+    margin: 0;
+    padding: 0;
+    font-family: $font-secondary;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.05px;
+    color: $color-white;
+  }
+
+  &__columnList {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__columnLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-family: $font-secondary;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.05px;
+    text-align: center;
+    color: $color-gray;
+
+    transform: scale(1);
+    transition:
+      transform $transition-fast,
+      color $transition-fast;
+
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.03);
+      color: $color-white;
+    }
+
+    &:hover {
+      transform: scale(1.03);
+      color: $color-white;
+    }
+  }
+
+  &__columnIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__copyright {
+    font-family: $font-secondary;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0.05px;
+    color: $color-gray;
+  }
+}

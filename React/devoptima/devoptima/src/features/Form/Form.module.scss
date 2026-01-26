@@ -1,0 +1,45 @@
+@use "../../shared/styles/global/variables" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__wrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    max-width: 464px;
+
+    z-index: 30;
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+  }
+
+  &__loading,
+  &__success,
+  &__error {
+    width: 44px;
+    height: 44px;
+  }
+
+  &__error {
+    width: 100%;
+    padding-left: 24px;
+    font-family: $font-secondary;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.99px;
+    color: $color-red;
+    max-width: 464px;
+  }
+}

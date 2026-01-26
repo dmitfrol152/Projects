@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Aeonik";
+  src:
+    url("/src/shared/assets/fonts/aeonik-regular.woff2") format("woff2"),
+    url("/src/shared/assets/fonts/aeonik-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url("/src/shared/assets/fonts/Inter_Regular.woff2") format("woff2"),
+    url("/src/shared/assets/fonts/Inter_Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url("/src/shared/assets/fonts/Inter_Light.woff2") format("woff2"),
+    url("/src/shared/assets/fonts/Inter_Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url("/src/shared/assets/fonts/Inter_Medium.woff2") format("woff2"),
+    url("/src/shared/assets/fonts/Inter_Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url("/src/shared/assets/fonts/Inter_SemiBold.woff2") format("woff2"),
+    url("/src/shared/assets/fonts/Inter_SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

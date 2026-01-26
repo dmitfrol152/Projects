@@ -1,0 +1,48 @@
+@use "../../styles/global/variables" as *;
+
+.textInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__input {
+    width: 100%;
+    border-radius: 30px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color-border-2;
+    background: linear-gradient(
+      269.21deg,
+      $color-bc-1 22.75%,
+      $color-bc-2 93.35%
+    );
+
+    color: $color-white;
+    padding: 18px 171px 18px 24px;
+
+    font-family: $font-secondary;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: 0.5px;
+
+    &::placeholder {
+      font-family: $font-secondary;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 125%;
+      letter-spacing: 0.5px;
+      color: $color-gray;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}

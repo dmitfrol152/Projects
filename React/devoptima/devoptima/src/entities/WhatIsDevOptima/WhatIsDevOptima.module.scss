@@ -1,0 +1,80 @@
+@use "../../shared/styles/global/variables" as *;
+
+.about {
+  padding: 127px 126px;
+
+  display: flex;
+  flex-direction: column;
+
+  &__wrapper {
+    padding-left: 590px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 86px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    font-family: $font-sans;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 113%;
+    letter-spacing: -0.5px;
+    color: $color-white;
+  }
+
+  &__description {
+    margin: 0;
+    padding: 0;
+
+    font-family: $font-secondary;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0.5px;
+
+    color: $color-gray;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    max-width: 630px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__image {
+    position: absolute;
+    top: -54px;
+    left: -355px;
+
+    width: 860px;
+    height: 623px;
+  }
+
+  &__circle {
+    position: absolute;
+    top: -90px;
+    left: 240px;
+
+    width: 300px;
+    height: 300px;
+
+    background-color: rgba(20, 28, 72, 0.6);
+    filter: blur(200px);
+
+    z-index: 20;
+  }
+}

@@ -1,0 +1,26 @@
+@use "../../shared/styles/global/variables" as *;
+
+.testimonials {
+  padding: 144px 126px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__bg {
+    position: absolute;
+    top: -64px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+    height: 100%;
+  }
+}

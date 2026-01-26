@@ -1,0 +1,70 @@
+@use "../../shared/styles/global/variables" as *;
+
+.solutions {
+  padding: 97px 126px;
+
+  display: flex;
+  flex-direction: column;
+
+  &__wrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    margin-bottom: 56px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__headerTitle {
+    margin: 0;
+    padding: 0;
+
+    max-width: 537px;
+
+    font-family: $font-sans;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 113%;
+    letter-spacing: 0.05px;
+    text-align: center;
+    color: $color-white;
+  }
+
+  &__headerDescription {
+    margin: 0;
+    padding: 0;
+
+    max-width: 544px;
+
+    font-family: $font-secondary;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: $color-gray;
+  }
+
+  &__circle {
+    position: absolute;
+    top: 290px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 1220px;
+    height: 396px;
+
+    background-color: rgba(20, 28, 72, 0.6);
+    filter: blur(150px);
+
+    z-index: 20;
+  }
+}

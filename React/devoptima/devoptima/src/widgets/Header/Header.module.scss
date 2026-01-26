@@ -1,0 +1,48 @@
+@use "../../shared/styles/global/variables" as *;
+
+.header {
+  padding: 16px 0;
+
+  display: flex;
+  flex-direction: column;
+  background-color: $color-black;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    padding-top: 15px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__logoText {
+    padding-left: 30px;
+
+    font-family: $font-sans;
+    font-weight: 400;
+    font-size: 29px;
+    line-height: 113%;
+    letter-spacing: -0.5px;
+    color: $color-white;
+  }
+
+  &__logoSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 39px;
+    height: 40px;
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+  }
+}
